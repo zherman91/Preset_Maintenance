@@ -30,6 +30,7 @@
         {
             this.Main_SplitCon = new System.Windows.Forms.SplitContainer();
             this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
+            this.ViewKeys_Button = new System.Windows.Forms.Button();
             this.MainTreeView = new System.Windows.Forms.TreeView();
             this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@
             // 
             this.Main_SplitCon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main_SplitCon.Location = new System.Drawing.Point(0, 0);
+            this.Main_SplitCon.Margin = new System.Windows.Forms.Padding(2);
             this.Main_SplitCon.Name = "Main_SplitCon";
             // 
             // Main_SplitCon.Panel1
@@ -58,8 +60,9 @@
             // Main_SplitCon.Panel2
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
-            this.Main_SplitCon.Size = new System.Drawing.Size(2335, 1223);
-            this.Main_SplitCon.SplitterDistance = 1795;
+            this.Main_SplitCon.Size = new System.Drawing.Size(1346, 656);
+            this.Main_SplitCon.SplitterDistance = 1048;
+            this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
             // Nested_SplitCon
@@ -67,40 +70,53 @@
             this.Nested_SplitCon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Nested_SplitCon.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.Nested_SplitCon.Location = new System.Drawing.Point(0, 0);
+            this.Nested_SplitCon.Margin = new System.Windows.Forms.Padding(2);
             this.Nested_SplitCon.Name = "Nested_SplitCon";
             this.Nested_SplitCon.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // Nested_SplitCon.Panel1
             // 
+            this.Nested_SplitCon.Panel1.Controls.Add(this.ViewKeys_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.CurrentKey_GroupBox);
+            this.Nested_SplitCon.Panel1MinSize = 400;
             // 
             // Nested_SplitCon.Panel2
             // 
             this.Nested_SplitCon.Panel2.AccessibleName = "";
             this.Nested_SplitCon.Panel2.Controls.Add(this.KeyPriGroupBox);
+            this.Nested_SplitCon.Panel2Collapsed = true;
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(1795, 1223);
-            this.Nested_SplitCon.SplitterDistance = 626;
+            this.Nested_SplitCon.Size = new System.Drawing.Size(1048, 656);
+            this.Nested_SplitCon.SplitterDistance = 400;
+            this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
+            // 
+            // ViewKeys_Button
+            // 
+            this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ViewKeys_Button.Location = new System.Drawing.Point(498, 630);
+            this.ViewKeys_Button.Name = "ViewKeys_Button";
+            this.ViewKeys_Button.Size = new System.Drawing.Size(75, 23);
+            this.ViewKeys_Button.TabIndex = 2;
+            this.ViewKeys_Button.Text = "View Keys";
+            this.ViewKeys_Button.UseVisualStyleBackColor = true;
+            this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
             // 
             // MainTreeView
             // 
             this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTreeView.Location = new System.Drawing.Point(0, 0);
-            this.MainTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(536, 1223);
+            this.MainTreeView.Size = new System.Drawing.Size(296, 656);
             this.MainTreeView.TabIndex = 0;
             // 
             // CurrentKey_GroupBox
             // 
             this.CurrentKey_GroupBox.Controls.Add(this.button1);
             this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(75, 52);
-            this.CurrentKey_GroupBox.Margin = new System.Windows.Forms.Padding(6);
+            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(12, 12);
             this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
-            this.CurrentKey_GroupBox.Padding = new System.Windows.Forms.Padding(6);
-            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(201, 228);
+            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(100, 114);
             this.CurrentKey_GroupBox.TabIndex = 1;
             this.CurrentKey_GroupBox.TabStop = false;
             this.CurrentKey_GroupBox.Text = "Current Key";
@@ -110,37 +126,31 @@
             this.button1.BackColor = System.Drawing.Color.Lime;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(6, 43);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(3, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 179);
+            this.button1.Size = new System.Drawing.Size(94, 89);
             this.button1.TabIndex = 0;
             this.button1.Text = "Bottled Beer";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // KeyPriGroupBox
             // 
-            this.KeyPriGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyPriGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.KeyPriGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KeyPriGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPriGroupBox.Location = new System.Drawing.Point(0, 0);
-            this.KeyPriGroupBox.Margin = new System.Windows.Forms.Padding(6);
             this.KeyPriGroupBox.Name = "KeyPriGroupBox";
-            this.KeyPriGroupBox.Padding = new System.Windows.Forms.Padding(6);
-            this.KeyPriGroupBox.Size = new System.Drawing.Size(1795, 593);
+            this.KeyPriGroupBox.Size = new System.Drawing.Size(1048, 254);
             this.KeyPriGroupBox.TabIndex = 0;
             this.KeyPriGroupBox.TabStop = false;
             this.KeyPriGroupBox.Text = "Key Priority";
             // 
             // PresetForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(2335, 1223);
+            this.ClientSize = new System.Drawing.Size(1346, 656);
             this.Controls.Add(this.Main_SplitCon);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "PresetForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -167,6 +177,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TreeView MainTreeView;
         private System.Windows.Forms.SplitContainer Nested_SplitCon;
+        private System.Windows.Forms.Button ViewKeys_Button;
     }
 }
 

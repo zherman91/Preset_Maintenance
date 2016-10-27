@@ -37,5 +37,13 @@ namespace Preset_Maintenance
             jarPriority.Dock = DockStyle.Fill;
             jarPriority.Show();
         }
+        private void ViewKeys_Click(object sender, EventArgs e)
+        {
+            if (Nested_SplitCon.Panel2Collapsed)
+                Nested_SplitCon.Panel2Collapsed = false;
+            else
+                Nested_SplitCon.Panel2Collapsed = true;
+
+        }
     }
 }
