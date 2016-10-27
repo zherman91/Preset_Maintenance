@@ -49,6 +49,7 @@
     <Compile Include="CustomGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataAccessor.cs" />
     <Compile Include="JarPriority.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="KeyData.cs" />
     <Compile Include="PresetForm.cs">
       <SubType>Form</SubType>
     </Compile>

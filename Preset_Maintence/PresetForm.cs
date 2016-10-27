@@ -14,9 +14,6 @@ namespace Preset_Maintenance
     {
         JarPriority jarPriority = new JarPriority();
 
-        jartrekDataSetTableAdapters.KeyMasterDataTableAdapter keyMasterDataAdapter = new jartrekDataSetTableAdapters.KeyMasterDataTableAdapter();
-        jartrekDataSet.KeyMasterDataDataTable keyMasterDataTable = new jartrekDataSet.KeyMasterDataDataTable();
-
         public PresetForm()
         {
             InitializeComponent();
@@ -26,43 +23,19 @@ namespace Preset_Maintenance
         {
 
         }
-
         private void PresetForm_Load(object sender, EventArgs e)
         {
+            ShowJarPriorityPanel();
+            DataAccessor.GetPresetAmountKeys(MainTreeView);
+        }
+        private void ShowJarPriorityPanel()
+        {
             jarPriority.TopLevel = false;
-            SubPanel.Controls[0].Controls.Add(jarPriority);
+            var left_Split = Main_SplitCon.Panel1.Controls["Nested_SplitCon"] as SplitContainer;
+            Nested_SplitCon.Panel2.Controls[0].Controls.Add(jarPriority);
             jarPriority.FormBorderStyle = FormBorderStyle.None;
             jarPriority.Dock = DockStyle.Fill;
             jarPriority.Show();
-            this.GetPresetAmountKeys();
-        }
-
-        private void GetPresetAmountKeys()
-        {
-            int added = keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
-
-            if (added > 0)
-            {
-                MainTreeView.BeginUpdate();
-                MainTreeView.Nodes.Clear();//clears tree view each time method is called.
-                // Add a root TreeNode for each Customer object in the ArrayList.
-                foreach (DataRow keyCode in keyMasterDataTable.Rows)
-                {
-                    MainTreeView.Nodes.Add(new TreeNode().Text = keyCode.ItemArray[1].ToString());
-                }
-
-                MainTreeView.EndUpdate();
-            }
-        }
-
-       private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

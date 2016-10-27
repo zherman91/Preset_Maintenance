@@ -17,7 +17,7 @@ namespace Preset_Maintenance
         private jartrekDataSet.JarTypeDataDataTable _myJarTypeDataTable = new jartrekDataSet.JarTypeDataDataTable();
         private jartrekDataSetTableAdapters.JarTypeDataTableAdapter _myJarTypeTableAdapter = new jartrekDataSetTableAdapters.JarTypeDataTableAdapter();
 
-        private jartrekDataSetTableAdapters.KeyMasterDataTableAdapter _myKeyMasterDataAdapter = new jartrekDataSetTableAdapters.KeyMasterDataTableAdapter();
+        private jartrekDataSetTableAdapters.KeyMasterDataAdapter _myKeyMasterDataAdapter = new jartrekDataSetTableAdapters.KeyMasterDataAdapter();
         private jartrekDataSet.KeyMasterDataDataTable _myKeyMasterDataTable = new jartrekDataSet.KeyMasterDataDataTable();
 
         private static string[,] _keyPri2d;
@@ -230,7 +230,7 @@ namespace Preset_Maintenance
             {
                 Console.WriteLine(e.Message + " Somethings going wrong with setKeyText Method. ");
             }
-            setJarText();
+            //setJarText();
         }
         /// <summary>
         /// Sets the jar text.

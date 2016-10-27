@@ -167,32 +167,34 @@
             // 
             // tab_panel
             // 
-            this.tab_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tab_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tab_panel.Controls.Add(this.tabPage1);
             this.tab_panel.Controls.Add(this.tabPage2);
             this.tab_panel.Controls.Add(this.tabPage3);
             this.tab_panel.Controls.Add(this.tabPage4);
             this.tab_panel.Controls.Add(this.tabPage5);
-            this.tab_panel.Location = new System.Drawing.Point(0, 0);
+            this.tab_panel.Location = new System.Drawing.Point(0, 27);
+            this.tab_panel.Multiline = true;
             this.tab_panel.Name = "tab_panel";
             this.tab_panel.SelectedIndex = 0;
-            this.tab_panel.Size = new System.Drawing.Size(1011, 218);
+            this.tab_panel.Size = new System.Drawing.Size(1020, 241);
             this.tab_panel.TabIndex = 3;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.flowLayoutPanel2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(8, 50);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1003, 186);
+            this.tabPage1.Size = new System.Drawing.Size(1004, 183);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Screen 1";
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel2.Controls.Add(this.leftArrow_Button1);
             this.flowLayoutPanel2.Controls.Add(this.button1);
@@ -216,9 +218,10 @@
             this.flowLayoutPanel2.Controls.Add(this.button19);
             this.flowLayoutPanel2.Controls.Add(this.button20);
             this.flowLayoutPanel2.Controls.Add(this.rightArrow_Button1);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(5, 5);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(998, 175);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(998, 177);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // leftArrow_Button1
@@ -489,17 +492,16 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(8, 50);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1003, 186);
+            this.tabPage2.Size = new System.Drawing.Size(1004, 183);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Screen 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel1.Controls.Add(this.leftArrow_Button2);
             this.flowLayoutPanel1.Controls.Add(this.button21);
@@ -523,9 +525,10 @@
             this.flowLayoutPanel1.Controls.Add(this.button39);
             this.flowLayoutPanel1.Controls.Add(this.button40);
             this.flowLayoutPanel1.Controls.Add(this.rightArrow_Button2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(5, 5);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(997, 175);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(998, 177);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // leftArrow_Button2
@@ -795,17 +798,16 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.flowLayoutPanel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Location = new System.Drawing.Point(8, 50);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1003, 186);
+            this.tabPage3.Size = new System.Drawing.Size(1004, 183);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Screen 3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel3.Controls.Add(this.leftArrow_Button3);
             this.flowLayoutPanel3.Controls.Add(this.button41);
@@ -829,9 +831,10 @@
             this.flowLayoutPanel3.Controls.Add(this.button59);
             this.flowLayoutPanel3.Controls.Add(this.button60);
             this.flowLayoutPanel3.Controls.Add(this.rightArrow_Button3);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(5, 5);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(997, 176);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(998, 177);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
             // leftArrow_Button3
@@ -1101,10 +1104,10 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.flowLayoutPanel4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Location = new System.Drawing.Point(8, 50);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1003, 186);
+            this.tabPage4.Size = new System.Drawing.Size(1008, 191);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Screen 4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1112,7 +1115,6 @@
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel4.Controls.Add(this.leftArrow_Button4);
             this.flowLayoutPanel4.Controls.Add(this.button61);
@@ -1136,9 +1138,10 @@
             this.flowLayoutPanel4.Controls.Add(this.button79);
             this.flowLayoutPanel4.Controls.Add(this.button80);
             this.flowLayoutPanel4.Controls.Add(this.rightArrow_Button4);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(5, 5);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(997, 176);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1002, 185);
             this.flowLayoutPanel4.TabIndex = 1;
             // 
             // leftArrow_Button4
@@ -1408,17 +1411,16 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.flowLayoutPanel5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Location = new System.Drawing.Point(8, 50);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1003, 186);
+            this.tabPage5.Size = new System.Drawing.Size(1008, 191);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Screen 5";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel5
             // 
-            this.flowLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel5.Controls.Add(this.leftArrow_Button5);
             this.flowLayoutPanel5.Controls.Add(this.button81);
@@ -1442,9 +1444,10 @@
             this.flowLayoutPanel5.Controls.Add(this.button99);
             this.flowLayoutPanel5.Controls.Add(this.button100);
             this.flowLayoutPanel5.Controls.Add(this.rightArrow_Button5);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(5, 5);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(997, 176);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1002, 185);
             this.flowLayoutPanel5.TabIndex = 1;
             // 
             // leftArrow_Button5
@@ -1719,8 +1722,9 @@
             // JarPriority
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1015, 222);
+            this.ClientSize = new System.Drawing.Size(1032, 280);
             this.Controls.Add(this.tab_panel);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

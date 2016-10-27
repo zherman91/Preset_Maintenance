@@ -28,122 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Main_SplitCon = new System.Windows.Forms.SplitContainer();
+            this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
             this.MainTreeView = new System.Windows.Forms.TreeView();
-            this.SubPanel = new System.Windows.Forms.Panel();
-            this.KeyPriGroupBox = new Preset_Maintenance.CustomGrpBox();
-            this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
+            this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.SubPanel.SuspendLayout();
-            this.customGrpBox1.SuspendLayout();
+            this.KeyPriGroupBox = new Preset_Maintenance.CustomGrpBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitCon)).BeginInit();
+            this.Main_SplitCon.Panel1.SuspendLayout();
+            this.Main_SplitCon.Panel2.SuspendLayout();
+            this.Main_SplitCon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).BeginInit();
+            this.Nested_SplitCon.Panel1.SuspendLayout();
+            this.Nested_SplitCon.Panel2.SuspendLayout();
+            this.Nested_SplitCon.SuspendLayout();
+            this.CurrentKey_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // Main_SplitCon
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(-1, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.Main_SplitCon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Main_SplitCon.Location = new System.Drawing.Point(0, 0);
+            this.Main_SplitCon.Name = "Main_SplitCon";
             // 
-            // splitContainer1.Panel1
+            // Main_SplitCon.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.customGrpBox1);
+            this.Main_SplitCon.Panel1.Controls.Add(this.Nested_SplitCon);
             // 
-            // splitContainer1.Panel2
+            // Main_SplitCon.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.MainTreeView);
-            this.splitContainer1.Size = new System.Drawing.Size(1209, 428);
-            this.splitContainer1.SplitterDistance = 790;
-            this.splitContainer1.TabIndex = 0;
+            this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
+            this.Main_SplitCon.Size = new System.Drawing.Size(2335, 1223);
+            this.Main_SplitCon.SplitterDistance = 1795;
+            this.Main_SplitCon.TabIndex = 0;
+            // 
+            // Nested_SplitCon
+            // 
+            this.Nested_SplitCon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Nested_SplitCon.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.Nested_SplitCon.Location = new System.Drawing.Point(0, 0);
+            this.Nested_SplitCon.Name = "Nested_SplitCon";
+            this.Nested_SplitCon.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // Nested_SplitCon.Panel1
+            // 
+            this.Nested_SplitCon.Panel1.Controls.Add(this.CurrentKey_GroupBox);
+            // 
+            // Nested_SplitCon.Panel2
+            // 
+            this.Nested_SplitCon.Panel2.AccessibleName = "";
+            this.Nested_SplitCon.Panel2.Controls.Add(this.KeyPriGroupBox);
+            this.Nested_SplitCon.Panel2MinSize = 100;
+            this.Nested_SplitCon.Size = new System.Drawing.Size(1795, 1223);
+            this.Nested_SplitCon.SplitterDistance = 626;
+            this.Nested_SplitCon.TabIndex = 2;
             // 
             // MainTreeView
             // 
             this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MainTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(415, 428);
+            this.MainTreeView.Size = new System.Drawing.Size(536, 1223);
             this.MainTreeView.TabIndex = 0;
-            this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
             // 
-            // SubPanel
+            // CurrentKey_GroupBox
             // 
-            this.SubPanel.Controls.Add(this.KeyPriGroupBox);
-            this.SubPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SubPanel.Location = new System.Drawing.Point(0, 431);
-            this.SubPanel.Name = "SubPanel";
-            this.SubPanel.Size = new System.Drawing.Size(1208, 253);
-            this.SubPanel.TabIndex = 1;
+            this.CurrentKey_GroupBox.Controls.Add(this.button1);
+            this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(75, 52);
+            this.CurrentKey_GroupBox.Margin = new System.Windows.Forms.Padding(6);
+            this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
+            this.CurrentKey_GroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(201, 228);
+            this.CurrentKey_GroupBox.TabIndex = 1;
+            this.CurrentKey_GroupBox.TabStop = false;
+            this.CurrentKey_GroupBox.Text = "Current Key";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(6, 43);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 179);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Bottled Beer";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // KeyPriGroupBox
             // 
-            this.KeyPriGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.KeyPriGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KeyPriGroupBox.BackColor = System.Drawing.SystemColors.Control;
             this.KeyPriGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyPriGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.KeyPriGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.KeyPriGroupBox.Margin = new System.Windows.Forms.Padding(6);
             this.KeyPriGroupBox.Name = "KeyPriGroupBox";
-            this.KeyPriGroupBox.Size = new System.Drawing.Size(1202, 247);
+            this.KeyPriGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.KeyPriGroupBox.Size = new System.Drawing.Size(1795, 593);
             this.KeyPriGroupBox.TabIndex = 0;
             this.KeyPriGroupBox.TabStop = false;
             this.KeyPriGroupBox.Text = "Key Priority";
             // 
-            // customGrpBox1
-            // 
-            this.customGrpBox1.Controls.Add(this.button1);
-            this.customGrpBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customGrpBox1.Location = new System.Drawing.Point(13, 12);
-            this.customGrpBox1.Name = "customGrpBox1";
-            this.customGrpBox1.Size = new System.Drawing.Size(115, 121);
-            this.customGrpBox1.TabIndex = 1;
-            this.customGrpBox1.TabStop = false;
-            this.customGrpBox1.Text = "Key";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.SpringGreen;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(5, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 92);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bottled Beer";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // PresetForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1208, 684);
-            this.Controls.Add(this.SubPanel);
-            this.Controls.Add(this.splitContainer1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(2335, 1223);
+            this.Controls.Add(this.Main_SplitCon);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "PresetForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Window";
             this.Load += new System.EventHandler(this.PresetForm_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.SubPanel.ResumeLayout(false);
-            this.customGrpBox1.ResumeLayout(false);
+            this.Main_SplitCon.Panel1.ResumeLayout(false);
+            this.Main_SplitCon.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitCon)).EndInit();
+            this.Main_SplitCon.ResumeLayout(false);
+            this.Nested_SplitCon.Panel1.ResumeLayout(false);
+            this.Nested_SplitCon.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).EndInit();
+            this.Nested_SplitCon.ResumeLayout(false);
+            this.CurrentKey_GroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer Main_SplitCon;
+        private CustomGrpBox KeyPriGroupBox;
+        private CustomGrpBox CurrentKey_GroupBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TreeView MainTreeView;
-        private CustomGrpBox customGrpBox1;
-        private System.Windows.Forms.Panel SubPanel;
-        private CustomGrpBox KeyPriGroupBox;
+        private System.Windows.Forms.SplitContainer Nested_SplitCon;
     }
 }
 
