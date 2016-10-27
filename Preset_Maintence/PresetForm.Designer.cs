@@ -32,6 +32,8 @@
             this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
             this.ViewKeys_Button = new System.Windows.Forms.Button();
             this.MainTreeView = new System.Windows.Forms.TreeView();
+            this.ExpandNodes_Button = new System.Windows.Forms.Button();
+            this.CollapseNodes_Button = new System.Windows.Forms.Button();
             this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.button1 = new System.Windows.Forms.Button();
             this.KeyPriGroupBox = new Preset_Maintenance.CustomGrpBox();
@@ -60,8 +62,8 @@
             // Main_SplitCon.Panel2
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
-            this.Main_SplitCon.Size = new System.Drawing.Size(1346, 656);
-            this.Main_SplitCon.SplitterDistance = 1048;
+            this.Main_SplitCon.Size = new System.Drawing.Size(1405, 691);
+            this.Main_SplitCon.SplitterDistance = 1185;
             this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
@@ -76,6 +78,8 @@
             // 
             // Nested_SplitCon.Panel1
             // 
+            this.Nested_SplitCon.Panel1.Controls.Add(this.CollapseNodes_Button);
+            this.Nested_SplitCon.Panel1.Controls.Add(this.ExpandNodes_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ViewKeys_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.CurrentKey_GroupBox);
             this.Nested_SplitCon.Panel1MinSize = 400;
@@ -86,7 +90,7 @@
             this.Nested_SplitCon.Panel2.Controls.Add(this.KeyPriGroupBox);
             this.Nested_SplitCon.Panel2Collapsed = true;
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(1048, 656);
+            this.Nested_SplitCon.Size = new System.Drawing.Size(1185, 691);
             this.Nested_SplitCon.SplitterDistance = 400;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
@@ -94,7 +98,7 @@
             // ViewKeys_Button
             // 
             this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ViewKeys_Button.Location = new System.Drawing.Point(498, 630);
+            this.ViewKeys_Button.Location = new System.Drawing.Point(483, 651);
             this.ViewKeys_Button.Name = "ViewKeys_Button";
             this.ViewKeys_Button.Size = new System.Drawing.Size(75, 23);
             this.ViewKeys_Button.TabIndex = 2;
@@ -107,8 +111,31 @@
             this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTreeView.Location = new System.Drawing.Point(0, 0);
             this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(296, 656);
+            this.MainTreeView.Size = new System.Drawing.Size(218, 691);
             this.MainTreeView.TabIndex = 0;
+            this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
+            // 
+            // ExpandNodes_Button
+            // 
+            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExpandNodes_Button.Location = new System.Drawing.Point(1094, 3);
+            this.ExpandNodes_Button.Name = "ExpandNodes_Button";
+            this.ExpandNodes_Button.Size = new System.Drawing.Size(87, 23);
+            this.ExpandNodes_Button.TabIndex = 3;
+            this.ExpandNodes_Button.Text = "Expand Keys";
+            this.ExpandNodes_Button.UseVisualStyleBackColor = true;
+            this.ExpandNodes_Button.Click += new System.EventHandler(this.ExpandNodes_Button_Click);
+            // 
+            // CollapseNodes_Button
+            // 
+            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CollapseNodes_Button.Location = new System.Drawing.Point(1095, 32);
+            this.CollapseNodes_Button.Name = "CollapseNodes_Button";
+            this.CollapseNodes_Button.Size = new System.Drawing.Size(87, 23);
+            this.CollapseNodes_Button.TabIndex = 4;
+            this.CollapseNodes_Button.Text = "Collapse Keys";
+            this.CollapseNodes_Button.UseVisualStyleBackColor = true;
+            this.CollapseNodes_Button.Click += new System.EventHandler(this.CollapseNodes_Button_Click);
             // 
             // CurrentKey_GroupBox
             // 
@@ -140,7 +167,7 @@
             this.KeyPriGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPriGroupBox.Location = new System.Drawing.Point(0, 0);
             this.KeyPriGroupBox.Name = "KeyPriGroupBox";
-            this.KeyPriGroupBox.Size = new System.Drawing.Size(1048, 254);
+            this.KeyPriGroupBox.Size = new System.Drawing.Size(150, 46);
             this.KeyPriGroupBox.TabIndex = 0;
             this.KeyPriGroupBox.TabStop = false;
             this.KeyPriGroupBox.Text = "Key Priority";
@@ -149,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1346, 656);
+            this.ClientSize = new System.Drawing.Size(1405, 691);
             this.Controls.Add(this.Main_SplitCon);
             this.Name = "PresetForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -178,6 +205,8 @@
         private System.Windows.Forms.TreeView MainTreeView;
         private System.Windows.Forms.SplitContainer Nested_SplitCon;
         private System.Windows.Forms.Button ViewKeys_Button;
+        private System.Windows.Forms.Button ExpandNodes_Button;
+        private System.Windows.Forms.Button CollapseNodes_Button;
     }
 }
 

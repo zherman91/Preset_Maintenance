@@ -46,11 +46,9 @@ namespace Preset_Maintenance {
         
         private global::System.Data.DataRelation relationMyKeyRelate1;
         
-        private global::System.Data.DataRelation relationMyKeyRelate2;
+        private global::System.Data.DataRelation relationMyKeyRelate5;
         
-        private global::System.Data.DataRelation relationMyKeyRelate3;
-        
-        private global::System.Data.DataRelation relationMyKeyRelate4;
+        private global::System.Data.DataRelation relationMyKeyRelate6;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -356,9 +354,8 @@ namespace Preset_Maintenance {
             this.relationMyRelationship1 = this.Relations["MyRelationship1"];
             this.relationMyKeyRelate = this.Relations["MyKeyRelate"];
             this.relationMyKeyRelate1 = this.Relations["MyKeyRelate1"];
-            this.relationMyKeyRelate2 = this.Relations["MyKeyRelate2"];
-            this.relationMyKeyRelate3 = this.Relations["MyKeyRelate3"];
-            this.relationMyKeyRelate4 = this.Relations["MyKeyRelate4"];
+            this.relationMyKeyRelate5 = this.Relations["MyKeyRelate5"];
+            this.relationMyKeyRelate6 = this.Relations["MyKeyRelate6"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -399,18 +396,14 @@ namespace Preset_Maintenance {
                         this.tableKeyMasterData.KeyCodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablePresetMaster.KeyCodeColumn}, false);
             this.Relations.Add(this.relationMyKeyRelate1);
-            this.relationMyKeyRelate2 = new global::System.Data.DataRelation("MyKeyRelate2", new global::System.Data.DataColumn[] {
-                        this.tablePresetData.KeyCodeColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePresetMaster.KeyCodeColumn}, false);
-            this.Relations.Add(this.relationMyKeyRelate2);
-            this.relationMyKeyRelate3 = new global::System.Data.DataRelation("MyKeyRelate3", new global::System.Data.DataColumn[] {
+            this.relationMyKeyRelate5 = new global::System.Data.DataRelation("MyKeyRelate5", new global::System.Data.DataColumn[] {
                         this.tableKeyMaster.KeyCodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablePresetData.KeyCodeColumn}, false);
-            this.Relations.Add(this.relationMyKeyRelate3);
-            this.relationMyKeyRelate4 = new global::System.Data.DataRelation("MyKeyRelate4", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationMyKeyRelate5);
+            this.relationMyKeyRelate6 = new global::System.Data.DataRelation("MyKeyRelate6", new global::System.Data.DataColumn[] {
                         this.tableKeyMasterData.KeyCodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablePresetData.KeyCodeColumn}, false);
-            this.Relations.Add(this.relationMyKeyRelate4);
+            this.Relations.Add(this.relationMyKeyRelate6);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5124,12 +5117,6 @@ namespace Preset_Maintenance {
             
             private global::System.Data.DataColumn columnPresetLegend;
             
-            private global::System.Data.DataColumn columnPresetPriority;
-            
-            private global::System.Data.DataColumn columnPresetPrice;
-            
-            private global::System.Data.DataColumn columnPresetColor;
-            
             private global::System.Data.DataColumn columnPresetPicture;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5199,30 +5186,6 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PresetPriorityColumn {
-                get {
-                    return this.columnPresetPriority;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PresetPriceColumn {
-                get {
-                    return this.columnPresetPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PresetColorColumn {
-                get {
-                    return this.columnPresetColor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PresetPictureColumn {
                 get {
                     return this.columnPresetPicture;
@@ -5266,19 +5229,16 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresetDataRow AddPresetDataRow(KeyMasterRow parentKeyMasterRowByMyKeyRelate3, string PresetCode, string PresetDesc, string PresetLegend, int PresetPriority, decimal PresetPrice, int PresetColor, string PresetPicture) {
+            public PresetDataRow AddPresetDataRow(KeyMasterRow parentKeyMasterRowByMyKeyRelate5, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture) {
                 PresetDataRow rowPresetDataRow = ((PresetDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         PresetCode,
                         PresetDesc,
                         PresetLegend,
-                        PresetPriority,
-                        PresetPrice,
-                        PresetColor,
                         PresetPicture};
-                if ((parentKeyMasterRowByMyKeyRelate3 != null)) {
-                    columnValuesArray[0] = parentKeyMasterRowByMyKeyRelate3[0];
+                if ((parentKeyMasterRowByMyKeyRelate5 != null)) {
+                    columnValuesArray[0] = parentKeyMasterRowByMyKeyRelate5[0];
                 }
                 rowPresetDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresetDataRow);
@@ -5287,9 +5247,9 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresetDataRow FindByKeyCode(string KeyCode) {
+            public PresetDataRow FindByPresetCode(string PresetCode) {
                 return ((PresetDataRow)(this.Rows.Find(new object[] {
-                            KeyCode})));
+                            PresetCode})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5313,9 +5273,6 @@ namespace Preset_Maintenance {
                 this.columnPresetCode = base.Columns["PresetCode"];
                 this.columnPresetDesc = base.Columns["PresetDesc"];
                 this.columnPresetLegend = base.Columns["PresetLegend"];
-                this.columnPresetPriority = base.Columns["PresetPriority"];
-                this.columnPresetPrice = base.Columns["PresetPrice"];
-                this.columnPresetColor = base.Columns["PresetColor"];
                 this.columnPresetPicture = base.Columns["PresetPicture"];
             }
             
@@ -5330,20 +5287,10 @@ namespace Preset_Maintenance {
                 base.Columns.Add(this.columnPresetDesc);
                 this.columnPresetLegend = new global::System.Data.DataColumn("PresetLegend", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPresetLegend);
-                this.columnPresetPriority = new global::System.Data.DataColumn("PresetPriority", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPresetPriority);
-                this.columnPresetPrice = new global::System.Data.DataColumn("PresetPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPresetPrice);
-                this.columnPresetColor = new global::System.Data.DataColumn("PresetColor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPresetColor);
                 this.columnPresetPicture = new global::System.Data.DataColumn("PresetPicture", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPresetPicture);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnKeyCode}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnPresetCode}, false));
-                this.columnKeyCode.AllowDBNull = false;
-                this.columnKeyCode.Unique = true;
+                                this.columnPresetCode}, true));
                 this.columnKeyCode.MaxLength = 10;
                 this.columnPresetCode.AllowDBNull = false;
                 this.columnPresetCode.Unique = true;
@@ -10165,11 +10112,11 @@ namespace Preset_Maintenance {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresetDataRow[] GetPresetDataRows() {
-                if ((this.Table.ChildRelations["MyKeyRelate3"] == null)) {
+                if ((this.Table.ChildRelations["MyKeyRelate5"] == null)) {
                     return new PresetDataRow[0];
                 }
                 else {
-                    return ((PresetDataRow[])(base.GetChildRows(this.Table.ChildRelations["MyKeyRelate3"])));
+                    return ((PresetDataRow[])(base.GetChildRows(this.Table.ChildRelations["MyKeyRelate5"])));
                 }
             }
         }
@@ -10418,11 +10365,11 @@ namespace Preset_Maintenance {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresetDataRow[] GetPresetDataRows() {
-                if ((this.Table.ChildRelations["MyKeyRelate4"] == null)) {
+                if ((this.Table.ChildRelations["MyKeyRelate6"] == null)) {
                     return new PresetDataRow[0];
                 }
                 else {
-                    return ((PresetDataRow[])(base.GetChildRows(this.Table.ChildRelations["MyKeyRelate4"])));
+                    return ((PresetDataRow[])(base.GetChildRows(this.Table.ChildRelations["MyKeyRelate6"])));
                 }
             }
         }
@@ -10924,17 +10871,6 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresetDataRow PresetDataRow {
-                get {
-                    return ((PresetDataRow)(this.GetParentRow(this.Table.ParentRelations["MyKeyRelate2"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["MyKeyRelate2"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsKeyCodeNull() {
                 return this.IsNull(this.tablePresetMaster.KeyCodeColumn);
             }
@@ -11288,7 +11224,12 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string KeyCode {
                 get {
-                    return ((string)(this[this.tablePresetData.KeyCodeColumn]));
+                    try {
+                        return ((string)(this[this.tablePresetData.KeyCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KeyCode\' in table \'PresetData\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePresetData.KeyCodeColumn] = value;
@@ -11340,54 +11281,6 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PresetPriority {
-                get {
-                    try {
-                        return ((int)(this[this.tablePresetData.PresetPriorityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPriority\' in table \'PresetData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePresetData.PresetPriorityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal PresetPrice {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablePresetData.PresetPriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice\' in table \'PresetData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePresetData.PresetPriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PresetColor {
-                get {
-                    try {
-                        return ((int)(this[this.tablePresetData.PresetColorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PresetColor\' in table \'PresetData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePresetData.PresetColorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string PresetPicture {
                 get {
                     try {
@@ -11406,10 +11299,10 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KeyMasterRow KeyMasterRow {
                 get {
-                    return ((KeyMasterRow)(this.GetParentRow(this.Table.ParentRelations["MyKeyRelate3"])));
+                    return ((KeyMasterRow)(this.GetParentRow(this.Table.ParentRelations["MyKeyRelate5"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["MyKeyRelate3"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["MyKeyRelate5"]);
                 }
             }
             
@@ -11417,11 +11310,23 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KeyMasterDataRow KeyMasterDataRow {
                 get {
-                    return ((KeyMasterDataRow)(this.GetParentRow(this.Table.ParentRelations["MyKeyRelate4"])));
+                    return ((KeyMasterDataRow)(this.GetParentRow(this.Table.ParentRelations["MyKeyRelate6"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["MyKeyRelate4"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["MyKeyRelate6"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKeyCodeNull() {
+                return this.IsNull(this.tablePresetData.KeyCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKeyCodeNull() {
+                this[this.tablePresetData.KeyCodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11450,42 +11355,6 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPresetPriorityNull() {
-                return this.IsNull(this.tablePresetData.PresetPriorityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPresetPriorityNull() {
-                this[this.tablePresetData.PresetPriorityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPresetPriceNull() {
-                return this.IsNull(this.tablePresetData.PresetPriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPresetPriceNull() {
-                this[this.tablePresetData.PresetPriceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPresetColorNull() {
-                return this.IsNull(this.tablePresetData.PresetColorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPresetColorNull() {
-                this[this.tablePresetData.PresetColorColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPresetPictureNull() {
                 return this.IsNull(this.tablePresetData.PresetPictureColumn);
             }
@@ -11494,17 +11363,6 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPresetPictureNull() {
                 this[this.tablePresetData.PresetPictureColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresetMasterRow[] GetPresetMasterRows() {
-                if ((this.Table.ChildRelations["MyKeyRelate2"] == null)) {
-                    return new PresetMasterRow[0];
-                }
-                else {
-                    return ((PresetMasterRow[])(base.GetChildRows(this.Table.ChildRelations["MyKeyRelate2"])));
-                }
             }
         }
         
@@ -23683,11 +23541,49 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             tableMapping.ColumnMappings.Add("PresetCode", "PresetCode");
             tableMapping.ColumnMappings.Add("PresetDesc", "PresetDesc");
             tableMapping.ColumnMappings.Add("PresetLegend", "PresetLegend");
-            tableMapping.ColumnMappings.Add("PresetPriority", "PresetPriority");
-            tableMapping.ColumnMappings.Add("PresetPrice", "PresetPrice");
-            tableMapping.ColumnMappings.Add("PresetColor", "PresetColor");
             tableMapping.ColumnMappings.Add("PresetPicture", "PresetPicture");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `PresetMaster` WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_KeyCode", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetDesc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetLegend", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPicture", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `PresetMaster` (`KeyCode`, `PresetCode`, `PresetDesc`, `PresetLegend`" +
+                ", `PresetPicture`) VALUES (?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `PresetMaster` SET `KeyCode` = ?, `PresetCode` = ?, `PresetDesc` = ?, `PresetLegend` = ?, `PresetPicture` = ? WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_KeyCode", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetDesc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetLegend", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPicture", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23703,8 +23599,11 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PresetCode, KeyCode, PresetDesc, PresetLegend, PresetPriority, PresetPrice" +
-                ", PresetColor, PresetPicture\r\nFROM  PresetMaster";
+            this._commandCollection[0].CommandText = @"SELECT        PresetMaster.KeyCode, PresetMaster.PresetCode, PresetMaster.PresetDesc, PresetMaster.PresetLegend, PresetMaster.PresetPicture
+FROM            (PresetMaster INNER JOIN
+                         KeyMaster ON PresetMaster.KeyCode = KeyMaster.KeyCode)
+WHERE        (KeyMaster.KeyType = 'X')
+ORDER BY PresetMaster.KeyCode";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -23712,7 +23611,7 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillPresetData(jartrekDataSet.PresetDataDataTable dataTable) {
+        public virtual int FillPresetInfo(jartrekDataSet.PresetDataDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -23725,11 +23624,247 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual jartrekDataSet.PresetDataDataTable GetPresetData() {
+        public virtual jartrekDataSet.PresetDataDataTable GetPresetInfo() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             jartrekDataSet.PresetDataDataTable dataTable = new jartrekDataSet.PresetDataDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(jartrekDataSet.PresetDataDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(jartrekDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "PresetData");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
+            if ((Original_KeyCode == null)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_KeyCode));
+            }
+            if ((Original_PresetCode == null)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_PresetCode));
+            }
+            if ((Original_PresetDesc == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_PresetDesc));
+            }
+            if ((Original_PresetLegend == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_PresetLegend));
+            }
+            if ((Original_PresetPicture == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_PresetPicture));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string KeyCode, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture) {
+            if ((KeyCode == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(KeyCode));
+            }
+            if ((PresetCode == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(PresetCode));
+            }
+            if ((PresetDesc == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(PresetDesc));
+            }
+            if ((PresetLegend == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(PresetLegend));
+            }
+            if ((PresetPicture == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PresetPicture));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string KeyCode, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture, string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
+            if ((KeyCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(KeyCode));
+            }
+            if ((PresetCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(PresetCode));
+            }
+            if ((PresetDesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(PresetDesc));
+            }
+            if ((PresetLegend == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(PresetLegend));
+            }
+            if ((PresetPicture == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PresetPicture));
+            }
+            if ((Original_KeyCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_KeyCode));
+            }
+            if ((Original_PresetCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_PresetCode));
+            }
+            if ((Original_PresetDesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_PresetDesc));
+            }
+            if ((Original_PresetLegend == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PresetLegend));
+            }
+            if ((Original_PresetPicture == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PresetPicture));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string KeyCode, string PresetDesc, string PresetLegend, string PresetPicture, string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
+            return this.Update(KeyCode, Original_PresetCode, PresetDesc, PresetLegend, PresetPicture, Original_KeyCode, Original_PresetCode, Original_PresetDesc, Original_PresetLegend, Original_PresetPicture);
         }
     }
     
@@ -23756,6 +23891,8 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         private KeyMasterDataAdapter _keyMasterDataAdapter;
         
         private PresetMasterTableAdapter _presetMasterTableAdapter;
+        
+        private PresetDataTableAdapter _presetDataTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -23858,6 +23995,20 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public PresetDataTableAdapter PresetDataTableAdapter {
+            get {
+                return this._presetDataTableAdapter;
+            }
+            set {
+                this._presetDataTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -23899,6 +24050,10 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                             && (this._presetMasterTableAdapter.Connection != null))) {
                     return this._presetMasterTableAdapter.Connection;
                 }
+                if (((this._presetDataTableAdapter != null) 
+                            && (this._presetDataTableAdapter.Connection != null))) {
+                    return this._presetDataTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -23930,6 +24085,9 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 if ((this._presetMasterTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._presetDataTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -23941,24 +24099,6 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(jartrekDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._keyMasterTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.KeyMaster.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._keyMasterTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._keyMasterDataAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.KeyMasterData.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._keyMasterDataAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._jarTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.JarType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -23968,12 +24108,30 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._keyMasterTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.KeyMaster.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._keyMasterTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._jarTypeDataTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.JarTypeData.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._jarTypeDataTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._keyMasterDataAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.KeyMasterData.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._keyMasterDataAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23995,6 +24153,15 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._presetDataTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PresetData.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._presetDataTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -24005,22 +24172,6 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(jartrekDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._keyMasterTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.KeyMaster.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._keyMasterTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._keyMasterDataAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.KeyMasterData.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._keyMasterDataAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._jarTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.JarType.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -24029,11 +24180,27 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._keyMasterTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.KeyMaster.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._keyMasterTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._jarTypeDataTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.JarTypeData.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._jarTypeDataTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._keyMasterDataAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.KeyMasterData.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._keyMasterDataAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -24053,6 +24220,14 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._presetDataTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PresetData.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._presetDataTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -24063,6 +24238,14 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(jartrekDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._presetDataTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PresetData.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._presetDataTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._presetMasterTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.PresetMaster.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24079,22 +24262,6 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._jarTypeDataTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.JarTypeData.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._jarTypeDataTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._jarTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.JarType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._jarTypeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._keyMasterDataAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.KeyMasterData.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24103,11 +24270,27 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._jarTypeDataTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.JarTypeData.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._jarTypeDataTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._keyMasterTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.KeyMaster.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._keyMasterTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._jarTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.JarType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._jarTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -24177,6 +24360,11 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             }
             if (((this._presetMasterTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._presetMasterTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._presetDataTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._presetDataTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -24266,6 +24454,15 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                         adaptersWithAcceptChangesDuringUpdate.Add(this._presetMasterTableAdapter.Adapter);
                     }
                 }
+                if ((this._presetDataTableAdapter != null)) {
+                    revertConnections.Add(this._presetDataTableAdapter, this._presetDataTableAdapter.Connection);
+                    this._presetDataTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._presetDataTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._presetDataTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._presetDataTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._presetDataTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -24347,6 +24544,10 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 if ((this._presetMasterTableAdapter != null)) {
                     this._presetMasterTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._presetMasterTableAdapter]));
                     this._presetMasterTableAdapter.Transaction = null;
+                }
+                if ((this._presetDataTableAdapter != null)) {
+                    this._presetDataTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._presetDataTableAdapter]));
+                    this._presetDataTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

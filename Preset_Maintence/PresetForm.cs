@@ -26,7 +26,9 @@ namespace Preset_Maintenance
         private void PresetForm_Load(object sender, EventArgs e)
         {
             ShowJarPriorityPanel();
-            DataAccessor.GetPresetAmountKeys(MainTreeView);
+            // DataAccessor.GetPresetAmountKeys(MainTreeView);
+            DataAccessor.AddParentNodes(MainTreeView);
+
         }
         private void ShowJarPriorityPanel()
         {
@@ -43,6 +45,18 @@ namespace Preset_Maintenance
                 Nested_SplitCon.Panel2Collapsed = false;
             else
                 Nested_SplitCon.Panel2Collapsed = true;
+        }
+        private void ExpandNodes_Button_Click(object sender, EventArgs e)
+        {
+            MainTreeView.ExpandAll();
+        }
+        private void CollapseNodes_Button_Click(object sender, EventArgs e)
+        {
+            MainTreeView.CollapseAll();
+        }
+        private void MainTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            MessageBox.Show("You just double clicked a node!");
 
         }
     }
