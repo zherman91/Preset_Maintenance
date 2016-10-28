@@ -21,51 +21,60 @@ namespace Preset_Maintenance
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
         }
-        private static void AddChildNodes(TreeView MainTreeView, int index)
-        {
-            int currentNodes = MainTreeView.Nodes.Count;
-            int testcounter = 0;
 
+        private static TreeNode[] AddChildNodes(TreeView MainTreeView, int key)
+        {
+            
             var presets =
                 from presetData in presetDataTable
-                where (presetData.KeyCode) == MainTreeView.Nodes[0].ToString()
+                where (presetData.KeyCode) == MainTreeView.Nodes[key].Text
                 select presetData;
-            Console.WriteLine(presets.ToString());
 
+            TreeNode[] keyData = new TreeNode[presets.Count()];
+
+            foreach (DataRow preset in presets)
+            {
+
+            }
+
+            return keyData;
+
+            #region
             //for (int i = 0; i < currentNodes; i++)//this was inefficient.. i realize this now
             //{
-                //foreach (DataRow preset in presetDataTable)
-                //{
-                //    if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[testcounter].Text)
-                //    {
-                //        TreeNode child = new TreeNode();
-                //        //if (preset.ItemArray[3].ToString().Length != 1)
-                //            child.Text = preset.ItemArray[2].ToString();
-                //        //else
-                //          //  child.Text = preset.ItemArray[2].ToString();
-                //        MainTreeView.Nodes[testcounter].Nodes.Add(child);
-                //        testcounter++;
-                //    }
-                //}
+            //    foreach (DataRow preset in presetDataTable)
+            //    {
+            //        if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[i].Text)
+            //        {
+            //            TreeNode child = new TreeNode();
+            //            //if (preset.ItemArray[3].ToString().Length != 1)
+            //            child.Text = preset.ItemArray[2].ToString();
+            //            //else
+            //            //  child.Text = preset.ItemArray[2].ToString();
+            //            MainTreeView.Nodes[i].Nodes.Add(child);
+            //        }
+            //    }
             //}
             //Console.WriteLine(testcounter);
+            #endregion
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
             TreeNode[] nodes = new TreeNode[keyMasterDataTable.Rows.Count];
-            MainTreeView.BeginUpdate();
-            MainTreeView.Nodes.Clear();
+            //TreeNodeCollection nodeCollection = new TreeNodeCollection(MainTreeView);
             TreeNode parent;
 
+            MainTreeView.BeginUpdate();
+            MainTreeView.Nodes.Clear();
             for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
             {
                 parent = new TreeNode();
                 parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
-                AddChildNodes(MainTreeView, i);
-                Console.WriteLine(parent.Text);
                 nodes[i] = parent;
+                parent.Nodes.AddRange(AddChildNodes(MainTreeView, i));
+                Console.WriteLine(parent.Text);
+                MainTreeView.Nodes.AddRange(nodes);
             }
-            MainTreeView.Nodes.AddRange(nodes);
             MainTreeView.EndUpdate();
             //AddChildNodes(MainTreeView);
         }
