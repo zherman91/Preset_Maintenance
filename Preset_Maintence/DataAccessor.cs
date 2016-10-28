@@ -21,69 +21,53 @@ namespace Preset_Maintenance
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
         }
-
-        public static void GetPresetAmountKeys(TreeView MainTreeView)
-        {
-            int added = keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
-            int counter = 0;
-            if (added > 0)
-            {
-                MainTreeView.BeginUpdate();
-                MainTreeView.Nodes.Clear();//clears tree view each time method is called.
-                // Add a root TreeNode for each keycode object in the keymaster table.
-                foreach (DataRow keyCode in keyMasterDataTable.Rows)
-                {
-                    TreeNode parentNode = new TreeNode();
-                    TreeNode childNode = new TreeNode();
-                    parentNode.Text = keyCode.ItemArray[1].ToString();
-                    MainTreeView.Nodes[counter].Nodes.Add(parentNode);
-                    counter++;
-                }
-                MainTreeView.EndUpdate();
-            }
-            // AddChildNodes(MainTreeView);
-        }
-        private static void AddChildNodes(TreeView MainTreeView)
+        private static void AddChildNodes(TreeView MainTreeView, int index)
         {
             int currentNodes = MainTreeView.Nodes.Count;
+            int testcounter = 0;
 
-            for (int i = 0; i < currentNodes; i++)
-            {
-                foreach (DataRow preset in presetDataTable)
-                {
-                    if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[i].Text)
-                    {
-                        TreeNode child = new TreeNode();
-                        //if (preset.ItemArray[3].ToString().Length != 1)
-                            child.Text = preset.ItemArray[2].ToString();
-                        //else
-                          //  child.Text = preset.ItemArray[2].ToString();
-                        MainTreeView.Nodes[i].Nodes.Add(child);
+            var presets =
+                from presetData in presetDataTable
+                where (presetData.KeyCode) == MainTreeView.Nodes[0].ToString()
+                select presetData;
+            Console.WriteLine(presets.ToString());
 
-                    }
-                    else
-                    {
-                        //MessageBox.Show("Here is the end!");
-                    }
-                }
-            }
+            //for (int i = 0; i < currentNodes; i++)//this was inefficient.. i realize this now
+            //{
+                //foreach (DataRow preset in presetDataTable)
+                //{
+                //    if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[testcounter].Text)
+                //    {
+                //        TreeNode child = new TreeNode();
+                //        //if (preset.ItemArray[3].ToString().Length != 1)
+                //            child.Text = preset.ItemArray[2].ToString();
+                //        //else
+                //          //  child.Text = preset.ItemArray[2].ToString();
+                //        MainTreeView.Nodes[testcounter].Nodes.Add(child);
+                //        testcounter++;
+                //    }
+                //}
+            //}
+            //Console.WriteLine(testcounter);
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
             TreeNode[] nodes = new TreeNode[keyMasterDataTable.Rows.Count];
             MainTreeView.BeginUpdate();
             MainTreeView.Nodes.Clear();
-
             TreeNode parent;
+
             for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
             {
                 parent = new TreeNode();
                 parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
+                AddChildNodes(MainTreeView, i);
+                Console.WriteLine(parent.Text);
                 nodes[i] = parent;
             }
             MainTreeView.Nodes.AddRange(nodes);
             MainTreeView.EndUpdate();
-            AddChildNodes(MainTreeView);
+            //AddChildNodes(MainTreeView);
         }
     }
 }
