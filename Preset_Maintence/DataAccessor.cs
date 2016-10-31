@@ -27,36 +27,20 @@ namespace Preset_Maintenance
         private static TreeNode[] AddChildNodes(TreeView MainTreeView, string key)
         {
             int row = 0;
-            var presets =
-                from presetData in presetDataTable
-                where (presetData.KeyCode) == key
-                select presetData;
 
-            foreach (var preset in presets)
+            for (int i = 0; i < MainTreeView.Nodes.Count; i++)
             {
-                MainTreeView.Nodes[row].Nodes.Add(preset.PresetDesc);
+                var presets =
+                    from presetData in presetDataTable
+                    where (presetData.KeyCode) == MainTreeView.Nodes[i].Text
+                    select presetData;
+
+                foreach (var preset in presets)
+                {
+                    MainTreeView.Nodes[i].Nodes.Add(preset.PresetDesc);
+                }
             }
-
             return nodes;
-
-            #region
-            //for (int i = 0; i < currentNodes; i++)//this was inefficient.. i realize this now
-            //{
-            //    foreach (DataRow preset in presetDataTable)
-            //    {
-            //        if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[i].Text)
-            //        {
-            //            TreeNode child = new TreeNode();
-            //            //if (preset.ItemArray[3].ToString().Length != 1)
-            //            child.Text = preset.ItemArray[2].ToString();
-            //            //else
-            //            //  child.Text = preset.ItemArray[2].ToString();
-            //            MainTreeView.Nodes[i].Nodes.Add(child);
-            //        }
-            //    }
-            //}
-            //Console.WriteLine(testcounter);
-            #endregion
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
@@ -79,7 +63,6 @@ namespace Preset_Maintenance
                 Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
             }
             MainTreeView.EndUpdate();
-            //AddChildNodes(MainTreeView);
         }
     }
 }
