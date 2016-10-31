@@ -16,28 +16,28 @@ namespace Preset_Maintenance
         private static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
         private static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
 
+        private static TreeNode[] nodes;
+
         static DataAccessor()
         {
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
         }
 
-        private static TreeNode[] AddChildNodes(TreeView MainTreeView, int key)
+        private static TreeNode[] AddChildNodes(TreeView MainTreeView, string key)
         {
-            
+            int row = 0;
             var presets =
                 from presetData in presetDataTable
-                where (presetData.KeyCode) == MainTreeView.Nodes[key].Text
+                where (presetData.KeyCode) == key
                 select presetData;
 
-            TreeNode[] keyData = new TreeNode[presets.Count()];
-
-            foreach (DataRow preset in presets)
+            foreach (var preset in presets)
             {
-
+                MainTreeView.Nodes[row].Nodes.Add(preset.PresetDesc);
             }
 
-            return keyData;
+            return nodes;
 
             #region
             //for (int i = 0; i < currentNodes; i++)//this was inefficient.. i realize this now
@@ -60,20 +60,23 @@ namespace Preset_Maintenance
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
-            TreeNode[] nodes = new TreeNode[keyMasterDataTable.Rows.Count];
-            //TreeNodeCollection nodeCollection = new TreeNodeCollection(MainTreeView);
-            TreeNode parent;
-
-            MainTreeView.BeginUpdate();
-            MainTreeView.Nodes.Clear();
-            for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
+            int rows = 0;
+            if (MainTreeView.Nodes.Count == 0)
+                nodes = new TreeNode[keyMasterDataTable.Rows.Count];
+            try
             {
-                parent = new TreeNode();
-                parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
-                nodes[i] = parent;
-                parent.Nodes.AddRange(AddChildNodes(MainTreeView, i));
-                Console.WriteLine(parent.Text);
-                MainTreeView.Nodes.AddRange(nodes);
+                for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
+                {
+                    var parent = new TreeNode();
+                    parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
+                    MainTreeView.Nodes.Add(parent);
+                }
+                AddChildNodes(MainTreeView, MainTreeView.Nodes[rows].Text);
+                rows++;
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
             }
             MainTreeView.EndUpdate();
             //AddChildNodes(MainTreeView);
