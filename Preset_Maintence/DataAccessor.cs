@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +17,21 @@ namespace Preset_Maintenance
         private static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
         private static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
 
+        private const string BitMapPath = @"C:\Jartrek\BitMaps\";
+
+
         private static TreeNode[] nodes;
 
         static DataAccessor()
         {
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
+            Console.WriteLine(GetBitMaps());
+
         }
 
-        private static TreeNode[] AddChildNodes(TreeView MainTreeView, string key)
+        private static void AddChildNodes(TreeView MainTreeView)
         {
-            int row = 0;
-
             for (int i = 0; i < MainTreeView.Nodes.Count; i++)
             {
                 var presets =
@@ -40,11 +44,10 @@ namespace Preset_Maintenance
                     MainTreeView.Nodes[i].Nodes.Add(preset.PresetDesc);
                 }
             }
-            return nodes;
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
-            int rows = 0;
+            MainTreeView.BeginUpdate();
             if (MainTreeView.Nodes.Count == 0)
                 nodes = new TreeNode[keyMasterDataTable.Rows.Count];
             try
@@ -55,14 +58,21 @@ namespace Preset_Maintenance
                     parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
                     MainTreeView.Nodes.Add(parent);
                 }
-                AddChildNodes(MainTreeView, MainTreeView.Nodes[rows].Text);
-                rows++;
+                AddChildNodes(MainTreeView);
             }
             catch (ArgumentNullException e)
             {
                 Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
             }
+            MainTreeView.Sort();
             MainTreeView.EndUpdate();
         }
+
+        //internal static Image GetBitMaps()
+        //{
+        //    Bitmap bitmap = new Bitmap("PresetImage");
+
+        //    return BitMapPath + presetDataTable.Rows[0].ItemArray[4].ToString();
+        //}
     }
 }
