@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,12 @@ namespace Preset_Maintenance
 
         private const string BitMapPath = @"C:\Jartrek\BitMaps\";
 
-
         private static TreeNode[] nodes;
 
         static DataAccessor()
         {
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
-            Console.WriteLine(GetBitMaps());
-
         }
 
         private static void AddChildNodes(TreeView MainTreeView)
@@ -67,12 +65,21 @@ namespace Preset_Maintenance
             MainTreeView.Sort();
             MainTreeView.EndUpdate();
         }
-
-        //internal static Image GetBitMaps()
-        //{
-        //    Bitmap bitmap = new Bitmap("PresetImage");
-
-        //    return BitMapPath + presetDataTable.Rows[0].ItemArray[4].ToString();
-        //}
+        internal static Bitmap GetBitMaps(string code)
+        {
+            var presetPic =
+                from presetData in presetDataTable
+                where (presetData.PresetDesc) == code
+                select presetData.PresetPicture;
+            try
+            {
+                return new Bitmap(BitMapPath + presetPic.First());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }
