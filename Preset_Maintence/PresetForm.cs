@@ -92,10 +92,14 @@ namespace Preset_Maintenance
                 Preview_Button.Text = e.Node.Parent.Text;
                 CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Text);
                 if (CurrentPreset_Button.Image != null)
-                    CurrentPreset_Button.Text = "";
+                {
+                    CurrentPreset_Button.Text = null;
+                    CurrentPreset_Button.BackColor = SetColor.GetColor((SetColor.JartrekColors)7);
+                }
                 else
                 {
                     CurrentPreset_Button.Text = e.Node.Text.ToLower();
+                    CurrentPreset_Button.BackColor = SetColor.GetNewJarColor();
                 }
                 Preset_Label.Text = e.Node.Text.ToLower();
             }
@@ -107,10 +111,11 @@ namespace Preset_Maintenance
         private void PresetSearch_Button_Click(object sender, EventArgs e)
         {
             string searchText = PresetSearch_TextBox.Text;
+
             if (string.IsNullOrEmpty(searchText))
             {
                 return;
-            };
+            }
 
             if (lastSearchText != searchText)
             {
@@ -138,7 +143,6 @@ namespace Preset_Maintenance
         }
         private void SearchNodes(string SearchText, TreeNode StartNode)
         {
-            TreeNode node = null;
             while (StartNode != null)
             {
                 if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
@@ -148,7 +152,6 @@ namespace Preset_Maintenance
                 if (StartNode.Nodes.Count != 0)
                 {
                     SearchNodes(SearchText, StartNode.Nodes[0]);//recursive search
-
                 };
                 StartNode = StartNode.NextNode;
             }

@@ -47,32 +47,9 @@ namespace Preset_Maintenance
         private static int _currentJarColor;
         public static Color currentlySetColor = Color.Silver;
 
-        public bool inJarTrek
-        {
-            get { return true; }
-        }
-        public int currentJarColor
-        {
-            get
-            {
-                return _currentJarColor;
-            }
-            set
-            {
-                _currentJarColor = value;
-            }
-        }
-        public int currentScreen
-        {
-            get
-            {
-                return currentScreenPosition;
-            }
-            set
-            {
-                currentScreenPosition = value;
-            }
-        }
+        public bool inJarTrek { get { return true; } }
+        public int currentJarColor { get { return _currentJarColor; } set { _currentJarColor = value; } }
+        public int currentScreen { get { return currentScreenPosition; } set { currentScreenPosition = value; } }
         #endregion
 
         public delegate int buttonClicked(Object sender, EventArgs e);
@@ -351,7 +328,7 @@ namespace Preset_Maintenance
                 btnArray[btnClicked].BackColor = prevColor;
                 btnArray[btnClicked].UseVisualStyleBackColor = false;
                 button.Text = jarLegend;
-               // button.BackColor = _currentColor;
+                // button.BackColor = _currentColor;
                 btnClicked = index;
             }
             else if (button.Text == jarLegend)
