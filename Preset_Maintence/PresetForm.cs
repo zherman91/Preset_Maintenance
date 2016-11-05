@@ -156,5 +156,10 @@ namespace Preset_Maintenance
                 StartNode = StartNode.NextNode;
             }
         }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            PresetSearch_TextBox.Clear();
+        }
     }
 }
