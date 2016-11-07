@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,74 +18,69 @@ namespace Preset_Maintenance
         private static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
         private static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
 
+        private const string BitMapPath = @"C:\Jartrek\BitMaps\";
+
+        private static TreeNode[] nodes;
+
         static DataAccessor()
         {
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
         }
 
-        public static void GetPresetAmountKeys(TreeView MainTreeView)
-        {
-            int added = keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
-            int counter = 0;
-            if (added > 0)
-            {
-                MainTreeView.BeginUpdate();
-                MainTreeView.Nodes.Clear();//clears tree view each time method is called.
-                // Add a root TreeNode for each keycode object in the keymaster table.
-                foreach (DataRow keyCode in keyMasterDataTable.Rows)
-                {
-                    TreeNode parentNode = new TreeNode();
-                    TreeNode childNode = new TreeNode();
-                    parentNode.Text = keyCode.ItemArray[1].ToString();
-                    MainTreeView.Nodes[counter].Nodes.Add(parentNode);
-                    counter++;
-                }
-                MainTreeView.EndUpdate();
-            }
-            // AddChildNodes(MainTreeView);
-        }
         private static void AddChildNodes(TreeView MainTreeView)
         {
-            int currentNodes = MainTreeView.Nodes.Count;
-
-            for (int i = 0; i < currentNodes; i++)
+            for (int i = 0; i < MainTreeView.Nodes.Count; i++)
             {
-                foreach (DataRow preset in presetDataTable)
-                {
-                    if (preset.ItemArray[0].ToString() == MainTreeView.Nodes[i].Text)
-                    {
-                        TreeNode child = new TreeNode();
-                        //if (preset.ItemArray[3].ToString().Length != 1)
-                            child.Text = preset.ItemArray[2].ToString();
-                        //else
-                          //  child.Text = preset.ItemArray[2].ToString();
-                        MainTreeView.Nodes[i].Nodes.Add(child);
+                var presets =
+                    from presetData in presetDataTable
+                    where (presetData.KeyCode) == MainTreeView.Nodes[i].Text
+                    select presetData;
 
-                    }
-                    else
-                    {
-                        //MessageBox.Show("Here is the end!");
-                    }
+                foreach (var preset in presets)
+                {
+                    MainTreeView.Nodes[i].Nodes.Add(preset.PresetDesc);
                 }
             }
         }
         public static void AddParentNodes(TreeView MainTreeView)
         {
-            TreeNode[] nodes = new TreeNode[keyMasterDataTable.Rows.Count];
             MainTreeView.BeginUpdate();
-            MainTreeView.Nodes.Clear();
-
-            TreeNode parent;
-            for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
+            if (MainTreeView.Nodes.Count == 0)
+                nodes = new TreeNode[keyMasterDataTable.Rows.Count];
+            try
             {
-                parent = new TreeNode();
-                parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
-                nodes[i] = parent;
+                for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
+                {
+                    var parent = new TreeNode();
+                    parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
+                    MainTreeView.Nodes.Add(parent);
+                }
+                AddChildNodes(MainTreeView);
             }
-            MainTreeView.Nodes.AddRange(nodes);
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
+            }
+            MainTreeView.Sort();
             MainTreeView.EndUpdate();
-            AddChildNodes(MainTreeView);
         }
+        internal static Bitmap GetBitMaps(string code)
+        {
+            var presetPic =
+                from presetData in presetDataTable
+                where (presetData.PresetDesc) == code
+                select presetData.PresetPicture;
+            try
+            {
+                return new Bitmap(BitMapPath + presetPic.First());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
     }
 }

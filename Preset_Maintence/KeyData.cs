@@ -17,7 +17,6 @@ namespace Preset_Maintenance
         {
             public PresetData()
             {
-
             }
         }
     }

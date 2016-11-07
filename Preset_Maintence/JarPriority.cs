@@ -47,53 +47,9 @@ namespace Preset_Maintenance
         private static int _currentJarColor;
         public static Color currentlySetColor = Color.Silver;
 
-        public bool inJarTrek
-        {
-            get
-            {
-                return true;
-            }
-        }
-        public Color _currentColor
-        {
-            get
-            {
-                if (inJarTrek)
-                {
-                    return SetColor.GetColor((SetColor.JartrekColors)Int32.Parse(jarTrekRowArray[0].ItemArray[1].ToString()));
-                }
-                else
-                {
-                    return SetColor.GetColor((SetColor.JartrekColors)Int32.Parse(jarLogRowArray[0].ItemArray[1].ToString()));
-                }
-            }
-            set
-            {
-                currentlySetColor = value;
-            }
-        }
-        public int currentJarColor
-        {
-            get
-            {
-                return _currentJarColor;
-            }
-            set
-            {
-                _currentJarColor = value;
-            }
-        }
-        public int currentScreen
-        {
-            get
-            {
-                return currentScreenPosition;
-            }
-            set
-            {
-                currentScreenPosition = value;
-            }
-        }
+        public bool inJarTrek { get { return true; } }
+        public int currentJarColor { get { return _currentJarColor; } set { _currentJarColor = value; } }
+        public int currentScreen { get { return currentScreenPosition; } set { currentScreenPosition = value; } }
         #endregion
 
         public delegate int buttonClicked(Object sender, EventArgs e);
@@ -104,7 +60,8 @@ namespace Preset_Maintenance
         public JarPriority()
         {
             InitializeComponent();
-        }    
+        }
+
         /// <summary>
         /// Handles the Loaded event of the Form control.
         /// </summary>
@@ -125,8 +82,6 @@ namespace Preset_Maintenance
                                button91, button92, button93, button94, button95, button96, button97, button98, button99, button100 };
             #endregion
 
-            //current_game_label.Text = formNumber;
-            //jarLegend_Label.Text = jarLegend;
             _myJarTypeTableAdapter.FillReqData(_myJarTypeDataTable);
             _myKeyMasterDataAdapter.FillKeyMasterData(_myKeyMasterDataTable);
             jarRowCount = _myJarTypeDataTable.Rows.Count;
@@ -137,7 +92,7 @@ namespace Preset_Maintenance
             _jarTrekDataView = _myJarTypeDataTable.AsDataView();
             _jarTrekDataView.RowFilter = expression;
 
-            jarTrekRowArray = _myJarTypeDataTable.Select(expression);            
+            jarTrekRowArray = _myJarTypeDataTable.Select(expression);
 
             getKeyPriority();//-> getJarPriority();
             setKeyText();//-> setJarText();
@@ -199,23 +154,10 @@ namespace Preset_Maintenance
             }
         }
         /// <summary>
-        /// Gets the color of the jar.
-        /// </summary>
-        /// <returns>Color.</returns>
-        private Color getJarColor()
-        {
-            for (int k = 0; k < jarColorArray.Length; k++)
-            {
-                jarColorArray[k] = (int)_myJarTypeDataTable.Rows[k]["JarColor"];
-            }
-            return randomColor;
-        }
-        /// <summary>
         /// Sets the key text.
         /// </summary>
         private void setKeyText()
         {
-            int counter = 0;
             try
             {
                 for (int i = 0; i < _myKeyMasterDataTable.Rows.Count; i++)
@@ -223,14 +165,12 @@ namespace Preset_Maintenance
                     Button myBtn = btnArray[Int32.Parse(_keyPri2d[i, 0].ToString())];
                     myBtn.Text = _myKeyMasterDataTable.Rows[i]["KeyLegend"].ToString();
                     myBtn.BackColor = SetColor.GetColor((SetColor.JartrekColors)_myKeyMasterDataTable.Rows[i]["KeyColor"]);//eliminated SetKeyColorMethod!
-                    counter++;
                 }
             }
             catch (IndexOutOfRangeException e)
             {
                 Console.WriteLine(e.Message + " Somethings going wrong with setKeyText Method. ");
             }
-            //setJarText();
         }
         /// <summary>
         /// Sets the jar text.
@@ -388,7 +328,7 @@ namespace Preset_Maintenance
                 btnArray[btnClicked].BackColor = prevColor;
                 btnArray[btnClicked].UseVisualStyleBackColor = false;
                 button.Text = jarLegend;
-                button.BackColor = _currentColor;
+                // button.BackColor = _currentColor;
                 btnClicked = index;
             }
             else if (button.Text == jarLegend)
@@ -407,31 +347,6 @@ namespace Preset_Maintenance
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void confirm_Button_Click(object sender, EventArgs e)
-        {
-            if (btnClicked == 0)
-            {
-                finalPriority = btnClicked;
-            }
-            else
-            {
-                finalPriority = btnClicked + 1;
-                priorityChosen = finalPriority - 1;
-            }
-
-            if (finalPriority < 101)
-            {
-                SetButtonData(btnArray[priorityChosen]);
-                //need to pass the new color back to the preview button.
-                Close();
-            }
-            else if (MessageBox.Show("This game will not be placed on the screen. Are you sure?", "Leave game off screen?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-            {
-                finalPriority = 0;
-                Console.WriteLine("Rows effected: " + _myJarTypeTableAdapter.UpdatePriority(finalPriority, formNumber).ToString());
-                Close();
-            }
-        }
         private void rightArrow_Button_Click(object sender, EventArgs e)
         {
             int currentScreen = tab_panel.SelectedIndex;
@@ -471,19 +386,6 @@ namespace Preset_Maintenance
                     tab_panel.SelectTab(3);
                     break;
             }
-        }
-        private void cancel_Button_Click(object sender, EventArgs e)
-        {
-
-            this.DialogResult = DialogResult.OK;
-            //if (MessageBox.Show("Are you sure you want to cancel?", "Cancel Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-            //{
-            //    this.DialogResult = DialogResult.Abort;
-            //}
-            //else
-            //{                
-            //    this.Show();
-            //}
         }
     }
 
