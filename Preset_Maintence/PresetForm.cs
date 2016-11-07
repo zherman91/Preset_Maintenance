@@ -25,6 +25,11 @@ namespace Preset_Maintenance
 
         private void PresetForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'jartrekDataSet.PresetData' table. You can move, or remove it, as needed.
+            this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
+            // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
+            this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
+
             ShowJarPriorityPanel();
             DataAccessor.AddParentNodes(MainTreeView);
         }
@@ -87,6 +92,10 @@ namespace Preset_Maintenance
         }
         private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            presetDataBindingSource.Position = presetDataBindingSource.Find("PresetDesc", (sender as TreeView).SelectedNode.Text);
+
+            // presetDataBindingSource.Position = MainTreeView.SelectedNode.Index;
+
             try
             {
                 Preview_Button.Text = e.Node.Parent.Text;
@@ -156,10 +165,19 @@ namespace Preset_Maintenance
                 StartNode = StartNode.NextNode;
             }
         }
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
             PresetSearch_TextBox.Clear();
+        }
+
+        private void NextPos_Button_Click(object sender, EventArgs e)
+        {
+            this.presetDataBindingSource.Position = presetDataBindingSource.Position + 1;
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            presetDataDataGridView.CurrentCell = presetDataDataGridView.Rows[presetDataDataGridView.NewRowIndex].Cells[1];
         }
     }
 }

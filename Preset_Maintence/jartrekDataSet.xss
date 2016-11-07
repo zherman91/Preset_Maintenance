@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:TipJar" ZOrder="7" X="373" Y="-8" Height="343" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:KeyMaster" ZOrder="8" X="794" Y="-10" Height="343" Width="206" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:JarTypeData" ZOrder="6" X="403" Y="422" Height="191" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
-    <Shape ID="DesignTable:KeyMasterData" ZOrder="3" X="1231" Y="454" Height="153" Width="233" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
+    <Shape ID="DesignTable:KeyMasterData" ZOrder="3" X="1123" Y="406" Height="153" Width="233" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:PresetMaster" ZOrder="9" X="1117" Y="4" Height="305" Width="221" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:PresetData" ZOrder="5" X="803" Y="410" Height="172" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
@@ -54,11 +54,11 @@
     <Connector ID="DesignRelation:MyKeyRelate1" ZOrder="10" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>1284</X>
-          <Y>454</Y>
+          <X>1176</X>
+          <Y>406</Y>
         </Point>
         <Point>
-          <X>1284</X>
+          <X>1176</X>
           <Y>309</Y>
         </Point>
       </RoutePoints>
@@ -78,12 +78,12 @@
     <Connector ID="DesignRelation:MyKeyRelate6" ZOrder="1" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>1231</X>
-          <Y>530</Y>
+          <X>1123</X>
+          <Y>482</Y>
         </Point>
         <Point>
           <X>1011</X>
-          <Y>530</Y>
+          <Y>482</Y>
         </Point>
       </RoutePoints>
     </Connector>

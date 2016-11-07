@@ -5117,6 +5117,24 @@ namespace Preset_Maintenance {
             
             private global::System.Data.DataColumn columnPresetLegend;
             
+            private global::System.Data.DataColumn columnPresetTax;
+            
+            private global::System.Data.DataColumn columnPresetPrice;
+            
+            private global::System.Data.DataColumn columnPresetPrice2;
+            
+            private global::System.Data.DataColumn columnPresetPrice3;
+            
+            private global::System.Data.DataColumn columnPresetPrice4;
+            
+            private global::System.Data.DataColumn columnPresetPrice5;
+            
+            private global::System.Data.DataColumn columnPresetPrice6;
+            
+            private global::System.Data.DataColumn columnPresetPrice7;
+            
+            private global::System.Data.DataColumn columnPresetPrice8;
+            
             private global::System.Data.DataColumn columnPresetPicture;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5186,6 +5204,78 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetTaxColumn {
+                get {
+                    return this.columnPresetTax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPriceColumn {
+                get {
+                    return this.columnPresetPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice2Column {
+                get {
+                    return this.columnPresetPrice2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice3Column {
+                get {
+                    return this.columnPresetPrice3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice4Column {
+                get {
+                    return this.columnPresetPrice4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice5Column {
+                get {
+                    return this.columnPresetPrice5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice6Column {
+                get {
+                    return this.columnPresetPrice6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice7Column {
+                get {
+                    return this.columnPresetPrice7;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PresetPrice8Column {
+                get {
+                    return this.columnPresetPrice8;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PresetPictureColumn {
                 get {
                     return this.columnPresetPicture;
@@ -5229,13 +5319,22 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresetDataRow AddPresetDataRow(KeyMasterRow parentKeyMasterRowByMyKeyRelate5, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture) {
+            public PresetDataRow AddPresetDataRow(KeyMasterRow parentKeyMasterRowByMyKeyRelate5, string PresetCode, string PresetDesc, string PresetLegend, string PresetTax, decimal PresetPrice, decimal PresetPrice2, decimal PresetPrice3, decimal PresetPrice4, decimal PresetPrice5, decimal PresetPrice6, decimal PresetPrice7, decimal PresetPrice8, string PresetPicture) {
                 PresetDataRow rowPresetDataRow = ((PresetDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         PresetCode,
                         PresetDesc,
                         PresetLegend,
+                        PresetTax,
+                        PresetPrice,
+                        PresetPrice2,
+                        PresetPrice3,
+                        PresetPrice4,
+                        PresetPrice5,
+                        PresetPrice6,
+                        PresetPrice7,
+                        PresetPrice8,
                         PresetPicture};
                 if ((parentKeyMasterRowByMyKeyRelate5 != null)) {
                     columnValuesArray[0] = parentKeyMasterRowByMyKeyRelate5[0];
@@ -5273,6 +5372,15 @@ namespace Preset_Maintenance {
                 this.columnPresetCode = base.Columns["PresetCode"];
                 this.columnPresetDesc = base.Columns["PresetDesc"];
                 this.columnPresetLegend = base.Columns["PresetLegend"];
+                this.columnPresetTax = base.Columns["PresetTax"];
+                this.columnPresetPrice = base.Columns["PresetPrice"];
+                this.columnPresetPrice2 = base.Columns["PresetPrice2"];
+                this.columnPresetPrice3 = base.Columns["PresetPrice3"];
+                this.columnPresetPrice4 = base.Columns["PresetPrice4"];
+                this.columnPresetPrice5 = base.Columns["PresetPrice5"];
+                this.columnPresetPrice6 = base.Columns["PresetPrice6"];
+                this.columnPresetPrice7 = base.Columns["PresetPrice7"];
+                this.columnPresetPrice8 = base.Columns["PresetPrice8"];
                 this.columnPresetPicture = base.Columns["PresetPicture"];
             }
             
@@ -5287,6 +5395,24 @@ namespace Preset_Maintenance {
                 base.Columns.Add(this.columnPresetDesc);
                 this.columnPresetLegend = new global::System.Data.DataColumn("PresetLegend", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPresetLegend);
+                this.columnPresetTax = new global::System.Data.DataColumn("PresetTax", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetTax);
+                this.columnPresetPrice = new global::System.Data.DataColumn("PresetPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice);
+                this.columnPresetPrice2 = new global::System.Data.DataColumn("PresetPrice2", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice2);
+                this.columnPresetPrice3 = new global::System.Data.DataColumn("PresetPrice3", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice3);
+                this.columnPresetPrice4 = new global::System.Data.DataColumn("PresetPrice4", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice4);
+                this.columnPresetPrice5 = new global::System.Data.DataColumn("PresetPrice5", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice5);
+                this.columnPresetPrice6 = new global::System.Data.DataColumn("PresetPrice6", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice6);
+                this.columnPresetPrice7 = new global::System.Data.DataColumn("PresetPrice7", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice7);
+                this.columnPresetPrice8 = new global::System.Data.DataColumn("PresetPrice8", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresetPrice8);
                 this.columnPresetPicture = new global::System.Data.DataColumn("PresetPicture", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPresetPicture);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -5297,6 +5423,7 @@ namespace Preset_Maintenance {
                 this.columnPresetCode.MaxLength = 10;
                 this.columnPresetDesc.MaxLength = 50;
                 this.columnPresetLegend.MaxLength = 20;
+                this.columnPresetTax.MaxLength = 1;
                 this.columnPresetPicture.MaxLength = 25;
             }
             
@@ -11281,6 +11408,150 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PresetTax {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresetData.PresetTaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetTax\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetTaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice2 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice2\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice3 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice3\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice4 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice4\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice5 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice5\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice6 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice6Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice6\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice6Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice7 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice7Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice7\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice7Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PresetPrice8 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresetData.PresetPrice8Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PresetPrice8\' in table \'PresetData\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresetData.PresetPrice8Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string PresetPicture {
                 get {
                     try {
@@ -11351,6 +11622,114 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPresetLegendNull() {
                 this[this.tablePresetData.PresetLegendColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetTaxNull() {
+                return this.IsNull(this.tablePresetData.PresetTaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetTaxNull() {
+                this[this.tablePresetData.PresetTaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPriceNull() {
+                return this.IsNull(this.tablePresetData.PresetPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPriceNull() {
+                this[this.tablePresetData.PresetPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice2Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice2Null() {
+                this[this.tablePresetData.PresetPrice2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice3Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice3Null() {
+                this[this.tablePresetData.PresetPrice3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice4Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice4Null() {
+                this[this.tablePresetData.PresetPrice4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice5Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice5Null() {
+                this[this.tablePresetData.PresetPrice5Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice6Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice6Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice6Null() {
+                this[this.tablePresetData.PresetPrice6Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice7Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice7Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice7Null() {
+                this[this.tablePresetData.PresetPrice7Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPresetPrice8Null() {
+                return this.IsNull(this.tablePresetData.PresetPrice8Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPresetPrice8Null() {
+                this[this.tablePresetData.PresetPrice8Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23541,11 +23920,20 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             tableMapping.ColumnMappings.Add("PresetCode", "PresetCode");
             tableMapping.ColumnMappings.Add("PresetDesc", "PresetDesc");
             tableMapping.ColumnMappings.Add("PresetLegend", "PresetLegend");
+            tableMapping.ColumnMappings.Add("PresetTax", "PresetTax");
+            tableMapping.ColumnMappings.Add("PresetPrice", "PresetPrice");
+            tableMapping.ColumnMappings.Add("PresetPrice2", "PresetPrice2");
+            tableMapping.ColumnMappings.Add("PresetPrice3", "PresetPrice3");
+            tableMapping.ColumnMappings.Add("PresetPrice4", "PresetPrice4");
+            tableMapping.ColumnMappings.Add("PresetPrice5", "PresetPrice5");
+            tableMapping.ColumnMappings.Add("PresetPrice6", "PresetPrice6");
+            tableMapping.ColumnMappings.Add("PresetPrice7", "PresetPrice7");
+            tableMapping.ColumnMappings.Add("PresetPrice8", "PresetPrice8");
             tableMapping.ColumnMappings.Add("PresetPicture", "PresetPicture");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `PresetMaster` WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `PresetMaster` WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)) AND ((? = 1 AND `PresetTax` IS NULL) OR (`PresetTax` = ?)) AND ((? = 1 AND `PresetPrice` IS NULL) OR (`PresetPrice` = ?)) AND ((? = 1 AND `PresetPrice2` IS NULL) OR (`PresetPrice2` = ?)) AND ((? = 1 AND `PresetPrice3` IS NULL) OR (`PresetPrice3` = ?)) AND ((? = 1 AND `PresetPrice4` IS NULL) OR (`PresetPrice4` = ?)) AND ((? = 1 AND `PresetPrice5` IS NULL) OR (`PresetPrice5` = ?)) AND ((? = 1 AND `PresetPrice6` IS NULL) OR (`PresetPrice6` = ?)) AND ((? = 1 AND `PresetPrice7` IS NULL) OR (`PresetPrice7` = ?)) AND ((? = 1 AND `PresetPrice8` IS NULL) OR (`PresetPrice8` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_KeyCode", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, false, null));
@@ -23556,25 +23944,60 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPicture", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetTax", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice2", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice2", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice3", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice3", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice4", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice4", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice5", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice5", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice6", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice6", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice7", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice7", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice8", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice8", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `PresetMaster` (`KeyCode`, `PresetCode`, `PresetDesc`, `PresetLegend`" +
-                ", `PresetPicture`) VALUES (?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `PresetMaster` (`KeyCode`, `PresetCode`, `PresetDesc`, `PresetLegend`, `PresetPicture`, `PresetTax`, `PresetPrice`, `PresetPrice2`, `PresetPrice3`, `PresetPrice4`, `PresetPrice5`, `PresetPrice6`, `PresetPrice7`, `PresetPrice8`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetTax", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice2", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice3", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice4", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice5", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice6", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice7", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice8", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `PresetMaster` SET `KeyCode` = ?, `PresetCode` = ?, `PresetDesc` = ?, `PresetLegend` = ?, `PresetPicture` = ? WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `PresetMaster` SET `KeyCode` = ?, `PresetCode` = ?, `PresetDesc` = ?, `PresetLegend` = ?, `PresetPicture` = ?, `PresetTax` = ?, `PresetPrice` = ?, `PresetPrice2` = ?, `PresetPrice3` = ?, `PresetPrice4` = ?, `PresetPrice5` = ?, `PresetPrice6` = ?, `PresetPrice7` = ?, `PresetPrice8` = ? WHERE (((? = 1 AND `KeyCode` IS NULL) OR (`KeyCode` = ?)) AND (`PresetCode` = ?) AND ((? = 1 AND `PresetDesc` IS NULL) OR (`PresetDesc` = ?)) AND ((? = 1 AND `PresetLegend` IS NULL) OR (`PresetLegend` = ?)) AND ((? = 1 AND `PresetPicture` IS NULL) OR (`PresetPicture` = ?)) AND ((? = 1 AND `PresetTax` IS NULL) OR (`PresetTax` = ?)) AND ((? = 1 AND `PresetPrice` IS NULL) OR (`PresetPrice` = ?)) AND ((? = 1 AND `PresetPrice2` IS NULL) OR (`PresetPrice2` = ?)) AND ((? = 1 AND `PresetPrice3` IS NULL) OR (`PresetPrice3` = ?)) AND ((? = 1 AND `PresetPrice4` IS NULL) OR (`PresetPrice4` = ?)) AND ((? = 1 AND `PresetPrice5` IS NULL) OR (`PresetPrice5` = ?)) AND ((? = 1 AND `PresetPrice6` IS NULL) OR (`PresetPrice6` = ?)) AND ((? = 1 AND `PresetPrice7` IS NULL) OR (`PresetPrice7` = ?)) AND ((? = 1 AND `PresetPrice8` IS NULL) OR (`PresetPrice8` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetDesc", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetDesc", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetTax", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice2", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice3", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice4", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice5", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice6", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice7", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PresetPrice8", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_KeyCode", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_KeyCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "KeyCode", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetCode", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetCode", global::System.Data.DataRowVersion.Original, false, null));
@@ -23584,6 +24007,24 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetLegend", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetLegend", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPicture", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPicture", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPicture", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetTax", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetTax", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice2", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice2", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice2", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice3", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice3", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice3", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice4", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice4", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice4", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice5", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice5", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice5", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice6", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice6", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice6", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice7", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice7", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice7", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PresetPrice8", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PresetPrice8", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PresetPrice8", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23599,7 +24040,9 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        PresetMaster.KeyCode, PresetMaster.PresetCode, PresetMaster.PresetDesc, PresetMaster.PresetLegend, PresetMaster.PresetPicture
+            this._commandCollection[0].CommandText = @"SELECT        PresetMaster.KeyCode, PresetMaster.PresetCode, PresetMaster.PresetDesc, PresetMaster.PresetLegend, PresetMaster.PresetPicture, PresetMaster.PresetTax, PresetMaster.PresetPrice, 
+                         PresetMaster.PresetPrice2, PresetMaster.PresetPrice3, PresetMaster.PresetPrice4, PresetMaster.PresetPrice5, PresetMaster.PresetPrice6, 
+                         PresetMaster.PresetPrice7, PresetMaster.PresetPrice8
 FROM            (PresetMaster INNER JOIN
                          KeyMaster ON PresetMaster.KeyCode = KeyMaster.KeyCode)
 WHERE        (KeyMaster.KeyType = 'X')
@@ -23664,7 +24107,7 @@ ORDER BY PresetMaster.KeyCode";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
+        public virtual int Delete(string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture, string Original_PresetTax, global::System.Nullable<decimal> Original_PresetPrice, global::System.Nullable<decimal> Original_PresetPrice2, global::System.Nullable<decimal> Original_PresetPrice3, global::System.Nullable<decimal> Original_PresetPrice4, global::System.Nullable<decimal> Original_PresetPrice5, global::System.Nullable<decimal> Original_PresetPrice6, global::System.Nullable<decimal> Original_PresetPrice7, global::System.Nullable<decimal> Original_PresetPrice8) {
             if ((Original_KeyCode == null)) {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -23703,6 +24146,78 @@ ORDER BY PresetMaster.KeyCode";
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_PresetPicture));
             }
+            if ((Original_PresetTax == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_PresetTax));
+            }
+            if ((Original_PresetPrice.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_PresetPrice.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice2.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_PresetPrice2.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice3.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_PresetPrice3.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice4.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((decimal)(Original_PresetPrice4.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice5.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_PresetPrice5.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice6.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((decimal)(Original_PresetPrice6.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice7.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((decimal)(Original_PresetPrice7.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice8.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((decimal)(Original_PresetPrice8.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -23723,7 +24238,7 @@ ORDER BY PresetMaster.KeyCode";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string KeyCode, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture) {
+        public virtual int Insert(string KeyCode, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture, string PresetTax, global::System.Nullable<decimal> PresetPrice, global::System.Nullable<decimal> PresetPrice2, global::System.Nullable<decimal> PresetPrice3, global::System.Nullable<decimal> PresetPrice4, global::System.Nullable<decimal> PresetPrice5, global::System.Nullable<decimal> PresetPrice6, global::System.Nullable<decimal> PresetPrice7, global::System.Nullable<decimal> PresetPrice8) {
             if ((KeyCode == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -23754,6 +24269,60 @@ ORDER BY PresetMaster.KeyCode";
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PresetPicture));
             }
+            if ((PresetTax == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(PresetTax));
+            }
+            if ((PresetPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(PresetPrice.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(PresetPrice2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice3.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(PresetPrice3.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice4.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(PresetPrice4.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice5.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(PresetPrice5.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice6.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(PresetPrice6.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice7.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(PresetPrice7.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice8.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(PresetPrice8.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -23774,7 +24343,35 @@ ORDER BY PresetMaster.KeyCode";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string KeyCode, string PresetCode, string PresetDesc, string PresetLegend, string PresetPicture, string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
+        public virtual int Update(
+                    string KeyCode, 
+                    string PresetCode, 
+                    string PresetDesc, 
+                    string PresetLegend, 
+                    string PresetPicture, 
+                    string PresetTax, 
+                    global::System.Nullable<decimal> PresetPrice, 
+                    global::System.Nullable<decimal> PresetPrice2, 
+                    global::System.Nullable<decimal> PresetPrice3, 
+                    global::System.Nullable<decimal> PresetPrice4, 
+                    global::System.Nullable<decimal> PresetPrice5, 
+                    global::System.Nullable<decimal> PresetPrice6, 
+                    global::System.Nullable<decimal> PresetPrice7, 
+                    global::System.Nullable<decimal> PresetPrice8, 
+                    string Original_KeyCode, 
+                    string Original_PresetCode, 
+                    string Original_PresetDesc, 
+                    string Original_PresetLegend, 
+                    string Original_PresetPicture, 
+                    string Original_PresetTax, 
+                    global::System.Nullable<decimal> Original_PresetPrice, 
+                    global::System.Nullable<decimal> Original_PresetPrice2, 
+                    global::System.Nullable<decimal> Original_PresetPrice3, 
+                    global::System.Nullable<decimal> Original_PresetPrice4, 
+                    global::System.Nullable<decimal> Original_PresetPrice5, 
+                    global::System.Nullable<decimal> Original_PresetPrice6, 
+                    global::System.Nullable<decimal> Original_PresetPrice7, 
+                    global::System.Nullable<decimal> Original_PresetPrice8) {
             if ((KeyCode == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -23805,43 +24402,169 @@ ORDER BY PresetMaster.KeyCode";
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PresetPicture));
             }
-            if ((Original_KeyCode == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+            if ((PresetTax == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(PresetTax));
+            }
+            if ((PresetPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(PresetPrice.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_KeyCode));
+            if ((PresetPrice2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(PresetPrice2.Value));
             }
-            if ((Original_PresetCode == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_PresetCode));
+            if ((PresetPrice3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(PresetPrice3.Value));
             }
-            if ((Original_PresetDesc == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(PresetPrice4.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_PresetDesc));
+            if ((PresetPrice5.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(PresetPrice5.Value));
             }
-            if ((Original_PresetLegend == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice6.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(PresetPrice6.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PresetLegend));
+            if ((PresetPrice7.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(PresetPrice7.Value));
             }
-            if ((Original_PresetPicture == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((PresetPrice8.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(PresetPrice8.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
+            if ((Original_KeyCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PresetPicture));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_KeyCode));
+            }
+            if ((Original_PresetCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_PresetCode));
+            }
+            if ((Original_PresetDesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_PresetDesc));
+            }
+            if ((Original_PresetLegend == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_PresetLegend));
+            }
+            if ((Original_PresetPicture == null)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_PresetPicture));
+            }
+            if ((Original_PresetTax == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_PresetTax));
+            }
+            if ((Original_PresetPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_PresetPrice.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(Original_PresetPrice2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(Original_PresetPrice3.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(Original_PresetPrice4.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice5.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(Original_PresetPrice5.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice6.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(Original_PresetPrice6.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice7.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(Original_PresetPrice7.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PresetPrice8.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((decimal)(Original_PresetPrice8.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -23863,8 +24586,35 @@ ORDER BY PresetMaster.KeyCode";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string KeyCode, string PresetDesc, string PresetLegend, string PresetPicture, string Original_KeyCode, string Original_PresetCode, string Original_PresetDesc, string Original_PresetLegend, string Original_PresetPicture) {
-            return this.Update(KeyCode, Original_PresetCode, PresetDesc, PresetLegend, PresetPicture, Original_KeyCode, Original_PresetCode, Original_PresetDesc, Original_PresetLegend, Original_PresetPicture);
+        public virtual int Update(
+                    string KeyCode, 
+                    string PresetDesc, 
+                    string PresetLegend, 
+                    string PresetPicture, 
+                    string PresetTax, 
+                    global::System.Nullable<decimal> PresetPrice, 
+                    global::System.Nullable<decimal> PresetPrice2, 
+                    global::System.Nullable<decimal> PresetPrice3, 
+                    global::System.Nullable<decimal> PresetPrice4, 
+                    global::System.Nullable<decimal> PresetPrice5, 
+                    global::System.Nullable<decimal> PresetPrice6, 
+                    global::System.Nullable<decimal> PresetPrice7, 
+                    global::System.Nullable<decimal> PresetPrice8, 
+                    string Original_KeyCode, 
+                    string Original_PresetCode, 
+                    string Original_PresetDesc, 
+                    string Original_PresetLegend, 
+                    string Original_PresetPicture, 
+                    string Original_PresetTax, 
+                    global::System.Nullable<decimal> Original_PresetPrice, 
+                    global::System.Nullable<decimal> Original_PresetPrice2, 
+                    global::System.Nullable<decimal> Original_PresetPrice3, 
+                    global::System.Nullable<decimal> Original_PresetPrice4, 
+                    global::System.Nullable<decimal> Original_PresetPrice5, 
+                    global::System.Nullable<decimal> Original_PresetPrice6, 
+                    global::System.Nullable<decimal> Original_PresetPrice7, 
+                    global::System.Nullable<decimal> Original_PresetPrice8) {
+            return this.Update(KeyCode, Original_PresetCode, PresetDesc, PresetLegend, PresetPicture, PresetTax, PresetPrice, PresetPrice2, PresetPrice3, PresetPrice4, PresetPrice5, PresetPrice6, PresetPrice7, PresetPrice8, Original_KeyCode, Original_PresetCode, Original_PresetDesc, Original_PresetLegend, Original_PresetPicture, Original_PresetTax, Original_PresetPrice, Original_PresetPrice2, Original_PresetPrice3, Original_PresetPrice4, Original_PresetPrice5, Original_PresetPrice6, Original_PresetPrice7, Original_PresetPrice8);
         }
     }
     
