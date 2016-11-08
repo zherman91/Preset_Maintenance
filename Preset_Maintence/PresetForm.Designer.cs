@@ -88,7 +88,6 @@
             this.PresetSearchLabel = new System.Windows.Forms.Label();
             this.PresetSearch_TextBox = new System.Windows.Forms.TextBox();
             this.Preset_Label = new System.Windows.Forms.Label();
-            this.ExpandTree_Button = new System.Windows.Forms.Button();
             this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
             this.CurrentPreset_Button = new System.Windows.Forms.Button();
             this.CollapseNodes_Button = new System.Windows.Forms.Button();
@@ -302,7 +301,6 @@
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearchLabel);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearch_TextBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.Preset_Label);
-            this.Nested_SplitCon.Panel1.Controls.Add(this.ExpandTree_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.customGrpBox1);
             this.Nested_SplitCon.Panel1.Controls.Add(this.CollapseNodes_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ExpandNodes_Button);
@@ -729,18 +727,6 @@
             this.Preset_Label.Text = "Current Preset";
             this.Preset_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ExpandTree_Button
-            // 
-            this.ExpandTree_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpandTree_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExpandTree_Button.Location = new System.Drawing.Point(999, 240);
-            this.ExpandTree_Button.Name = "ExpandTree_Button";
-            this.ExpandTree_Button.Size = new System.Drawing.Size(17, 49);
-            this.ExpandTree_Button.TabIndex = 9;
-            this.ExpandTree_Button.Text = ">";
-            this.ExpandTree_Button.UseVisualStyleBackColor = true;
-            this.ExpandTree_Button.Click += new System.EventHandler(this.ExpandTree_Button_Click);
-            // 
             // customGrpBox1
             // 
             this.customGrpBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -923,7 +909,6 @@
         private System.Windows.Forms.Button CollapseNodes_Button;
         private CustomGrpBox customGrpBox1;
         private System.Windows.Forms.Button CurrentPreset_Button;
-        private System.Windows.Forms.Button ExpandTree_Button;
         private System.Windows.Forms.Label Preset_Label;
         private System.Windows.Forms.Button PresetSearch_Button;
         private System.Windows.Forms.Label PresetSearchLabel;
