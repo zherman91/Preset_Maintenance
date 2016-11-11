@@ -37,7 +37,7 @@ namespace Preset_Maintenance
         {
             jarPriority.TopLevel = false;
             var left_Split = Main_SplitCon.Panel1.Controls["Nested_SplitCon"] as SplitContainer;
-            Nested_SplitCon.Panel2.Controls[0].Controls.Add(jarPriority);
+            //Nested_SplitCon.Panel2.Controls[0].Controls.Add(jarPriority);
             jarPriority.FormBorderStyle = FormBorderStyle.None;
             jarPriority.Dock = DockStyle.Fill;
             jarPriority.Show();
@@ -99,7 +99,7 @@ namespace Preset_Maintenance
             try
             {
                 Preview_Button.Text = e.Node.Parent.Text;
-                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Text);
+                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Name);
                 if (CurrentPreset_Button.Image != null)
                 {
                     CurrentPreset_Button.Text = null;
@@ -120,9 +120,11 @@ namespace Preset_Maintenance
         private void PresetSearch_Button_Click(object sender, EventArgs e)
         {
             string searchText = PresetSearch_TextBox.Text;
+            SearchResults_Label.Text = "Items Found: ";
 
             if (string.IsNullOrEmpty(searchText))
             {
+                Console.WriteLine("You have to enter text to search for ding dong...");
                 return;
             }
 
@@ -130,6 +132,7 @@ namespace Preset_Maintenance
             {
                 //new search
                 currentNodeMatches.Clear();
+                SearchResults_DataGrid.Rows.Clear();
                 lastSearchText = searchText;
                 lastNodeIndex = 0;
                 SearchNodes(searchText, MainTreeView.Nodes[0]);
@@ -137,19 +140,31 @@ namespace Preset_Maintenance
 
             if (lastNodeIndex >= 0 && currentNodeMatches.Count > 0 && lastNodeIndex < currentNodeMatches.Count)
             {
+                SearchResults_DataGrid.Rows.Clear();
                 TreeNode selectedNode = currentNodeMatches[lastNodeIndex];
                 lastNodeIndex++;
                 this.MainTreeView.SelectedNode = selectedNode;
                 MainTreeView.SelectedNode.Expand();
                 MainTreeView.Select();
+                for (int i = 0; i < currentNodeMatches.Count; i++)
+                {
+                    SearchResults_DataGrid.Rows.Add(currentNodeMatches[i].Text);
+                }
             }
             PresetSearch_Button.Select();
+            SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
+
 
         }
         private void PresetSearch_TextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
+        /// <summary>
+        /// Recursivly searches for the specified node and starting node. 
+        /// </summary>
+        /// <param name="SearchText">The search text.</param>
+        /// <param name="StartNode">The start node.</param>
         private void SearchNodes(string SearchText, TreeNode StartNode)
         {
             while (StartNode != null)
@@ -168,16 +183,18 @@ namespace Preset_Maintenance
         private void ClearButton_Click(object sender, EventArgs e)
         {
             PresetSearch_TextBox.Clear();
+            SearchResults_DataGrid.Rows.Clear();
         }
-
-        private void NextPos_Button_Click(object sender, EventArgs e)
-        {
-            this.presetDataBindingSource.Position = presetDataBindingSource.Position + 1;
-        }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             presetDataDataGridView.CurrentCell = presetDataDataGridView.Rows[presetDataDataGridView.NewRowIndex].Cells[1];
         }
+        private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
+            PresetSearch_TextBox.Text = test;
+            PresetSearch_Button.PerformClick();
+        }
+
     }
 }

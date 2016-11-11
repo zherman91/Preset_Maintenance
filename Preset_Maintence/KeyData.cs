@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Preset_Maintenance
 {
@@ -13,10 +14,11 @@ namespace Preset_Maintenance
 
         }
 
-        public class PresetData
+        public class PresetData : TreeNode
         {
             public PresetData()
             {
+
             }
         }
     }

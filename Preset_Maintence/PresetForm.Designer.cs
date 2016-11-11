@@ -45,6 +45,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PresetForm));
             this.Main_SplitCon = new System.Windows.Forms.SplitContainer();
             this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
+            this.SearchResults_DataGrid = new System.Windows.Forms.DataGridView();
+            this.PresetDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RegularPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SearchResults_Label = new System.Windows.Forms.Label();
             this.presetDataDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,19 +92,18 @@
             this.PresetSearchLabel = new System.Windows.Forms.Label();
             this.PresetSearch_TextBox = new System.Windows.Forms.TextBox();
             this.Preset_Label = new System.Windows.Forms.Label();
-            this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
-            this.CurrentPreset_Button = new System.Windows.Forms.Button();
             this.CollapseNodes_Button = new System.Windows.Forms.Button();
             this.ExpandNodes_Button = new System.Windows.Forms.Button();
             this.ViewKeys_Button = new System.Windows.Forms.Button();
-            this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
-            this.Preview_Button = new System.Windows.Forms.Button();
-            this.KeyPriGroupBox = new Preset_Maintenance.CustomGrpBox();
             this.MainTreeView = new System.Windows.Forms.TreeView();
             this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
             this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
             this.presetDataTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetDataTableAdapter();
+            this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
+            this.CurrentPreset_Button = new System.Windows.Forms.Button();
+            this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
+            this.Preview_Button = new System.Windows.Forms.Button();
             keyCodeLabel = new System.Windows.Forms.Label();
             presetCodeLabel = new System.Windows.Forms.Label();
             presetDescLabel = new System.Windows.Forms.Label();
@@ -122,15 +125,16 @@
             this.Nested_SplitCon.Panel1.SuspendLayout();
             this.Nested_SplitCon.Panel2.SuspendLayout();
             this.Nested_SplitCon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
             this.Pricing_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PresetNavigator)).BeginInit();
             this.PresetNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             this.customGrpBox1.SuspendLayout();
             this.CurrentKey_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // keyCodeLabel
@@ -277,8 +281,8 @@
             // Main_SplitCon.Panel2
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
-            this.Main_SplitCon.Size = new System.Drawing.Size(1272, 667);
-            this.Main_SplitCon.SplitterDistance = 1020;
+            this.Main_SplitCon.Size = new System.Drawing.Size(1221, 728);
+            this.Main_SplitCon.SplitterDistance = 951;
             this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
@@ -294,7 +298,8 @@
             // Nested_SplitCon.Panel1
             // 
             this.Nested_SplitCon.Panel1.AutoScroll = true;
-            this.Nested_SplitCon.Panel1.Controls.Add(this.presetDataDataGridView);
+            this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_DataGrid);
+            this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_Label);
             this.Nested_SplitCon.Panel1.Controls.Add(this.Pricing_GroupBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ClearButton);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearch_Button);
@@ -311,13 +316,49 @@
             // Nested_SplitCon.Panel2
             // 
             this.Nested_SplitCon.Panel2.AccessibleName = "";
-            this.Nested_SplitCon.Panel2.Controls.Add(this.KeyPriGroupBox);
-            this.Nested_SplitCon.Panel2Collapsed = true;
+            this.Nested_SplitCon.Panel2.Controls.Add(this.presetDataDataGridView);
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(1020, 667);
-            this.Nested_SplitCon.SplitterDistance = 400;
+            this.Nested_SplitCon.Size = new System.Drawing.Size(951, 728);
+            this.Nested_SplitCon.SplitterDistance = 465;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
+            // 
+            // SearchResults_DataGrid
+            // 
+            this.SearchResults_DataGrid.AllowUserToDeleteRows = false;
+            this.SearchResults_DataGrid.AllowUserToOrderColumns = true;
+            this.SearchResults_DataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SearchResults_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PresetDesc,
+            this.RegularPrice});
+            this.SearchResults_DataGrid.Location = new System.Drawing.Point(762, 232);
+            this.SearchResults_DataGrid.Name = "SearchResults_DataGrid";
+            this.SearchResults_DataGrid.RowHeadersWidth = 15;
+            this.SearchResults_DataGrid.Size = new System.Drawing.Size(186, 168);
+            this.SearchResults_DataGrid.TabIndex = 16;
+            this.SearchResults_DataGrid.TabStop = false;
+            this.SearchResults_DataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
+            // 
+            // PresetDesc
+            // 
+            this.PresetDesc.HeaderText = "Preset Desc";
+            this.PresetDesc.Name = "PresetDesc";
+            // 
+            // RegularPrice
+            // 
+            this.RegularPrice.HeaderText = "RegularPrice";
+            this.RegularPrice.Name = "RegularPrice";
+            // 
+            // SearchResults_Label
+            // 
+            this.SearchResults_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_Label.AutoSize = true;
+            this.SearchResults_Label.Location = new System.Drawing.Point(859, 403);
+            this.SearchResults_Label.Name = "SearchResults_Label";
+            this.SearchResults_Label.Size = new System.Drawing.Size(71, 13);
+            this.SearchResults_Label.TabIndex = 100;
+            this.SearchResults_Label.Text = "Items Found: ";
             // 
             // presetDataDataGridView
             // 
@@ -336,10 +377,12 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13});
             this.presetDataDataGridView.DataSource = this.presetDataBindingSource;
-            this.presetDataDataGridView.Location = new System.Drawing.Point(12, 422);
+            this.presetDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
             this.presetDataDataGridView.Name = "presetDataDataGridView";
-            this.presetDataDataGridView.Size = new System.Drawing.Size(246, 220);
+            this.presetDataDataGridView.Size = new System.Drawing.Size(951, 261);
             this.presetDataDataGridView.TabIndex = 15;
+            this.presetDataDataGridView.TabStop = false;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -679,10 +722,10 @@
             // ClearButton
             // 
             this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearButton.Location = new System.Drawing.Point(993, 140);
+            this.ClearButton.Location = new System.Drawing.Point(924, 140);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(20, 27);
-            this.ClearButton.TabIndex = 14;
+            this.ClearButton.TabIndex = 3;
             this.ClearButton.Text = "X";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -690,10 +733,10 @@
             // PresetSearch_Button
             // 
             this.PresetSearch_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_Button.Location = new System.Drawing.Point(931, 140);
+            this.PresetSearch_Button.Location = new System.Drawing.Point(862, 140);
             this.PresetSearch_Button.Name = "PresetSearch_Button";
             this.PresetSearch_Button.Size = new System.Drawing.Size(56, 27);
-            this.PresetSearch_Button.TabIndex = 13;
+            this.PresetSearch_Button.TabIndex = 2;
             this.PresetSearch_Button.Text = "Search";
             this.PresetSearch_Button.UseVisualStyleBackColor = true;
             this.PresetSearch_Button.Click += new System.EventHandler(this.PresetSearch_Button_Click);
@@ -701,7 +744,7 @@
             // PresetSearchLabel
             // 
             this.PresetSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearchLabel.Location = new System.Drawing.Point(831, 116);
+            this.PresetSearchLabel.Location = new System.Drawing.Point(731, 117);
             this.PresetSearchLabel.Name = "PresetSearchLabel";
             this.PresetSearchLabel.Size = new System.Drawing.Size(94, 20);
             this.PresetSearchLabel.TabIndex = 12;
@@ -711,54 +754,28 @@
             // PresetSearch_TextBox
             // 
             this.PresetSearch_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_TextBox.Location = new System.Drawing.Point(931, 117);
+            this.PresetSearch_TextBox.Location = new System.Drawing.Point(831, 117);
             this.PresetSearch_TextBox.Name = "PresetSearch_TextBox";
-            this.PresetSearch_TextBox.Size = new System.Drawing.Size(82, 20);
-            this.PresetSearch_TextBox.TabIndex = 11;
+            this.PresetSearch_TextBox.Size = new System.Drawing.Size(113, 20);
+            this.PresetSearch_TextBox.TabIndex = 1;
             this.PresetSearch_TextBox.TextChanged += new System.EventHandler(this.PresetSearch_TextBox_TextChanged);
             // 
             // Preset_Label
             // 
             this.Preset_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Preset_Label.Location = new System.Drawing.Point(931, 94);
+            this.Preset_Label.Location = new System.Drawing.Point(862, 94);
             this.Preset_Label.Name = "Preset_Label";
             this.Preset_Label.Size = new System.Drawing.Size(85, 20);
             this.Preset_Label.TabIndex = 10;
             this.Preset_Label.Text = "Current Preset";
             this.Preset_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // customGrpBox1
-            // 
-            this.customGrpBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customGrpBox1.Controls.Add(this.CurrentPreset_Button);
-            this.customGrpBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customGrpBox1.Location = new System.Drawing.Point(934, 3);
-            this.customGrpBox1.Name = "customGrpBox1";
-            this.customGrpBox1.Size = new System.Drawing.Size(82, 88);
-            this.customGrpBox1.TabIndex = 2;
-            this.customGrpBox1.TabStop = false;
-            this.customGrpBox1.Text = "Current Preset";
-            // 
-            // CurrentPreset_Button
-            // 
-            this.CurrentPreset_Button.AutoSize = true;
-            this.CurrentPreset_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CurrentPreset_Button.BackColor = System.Drawing.Color.White;
-            this.CurrentPreset_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CurrentPreset_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentPreset_Button.Location = new System.Drawing.Point(3, 17);
-            this.CurrentPreset_Button.Name = "CurrentPreset_Button";
-            this.CurrentPreset_Button.Size = new System.Drawing.Size(76, 68);
-            this.CurrentPreset_Button.TabIndex = 0;
-            this.CurrentPreset_Button.Text = "Bud Lite";
-            this.CurrentPreset_Button.UseVisualStyleBackColor = false;
-            // 
             // CollapseNodes_Button
             // 
-            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CollapseNodes_Button.Location = new System.Drawing.Point(929, 640);
+            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CollapseNodes_Button.Location = new System.Drawing.Point(862, 203);
             this.CollapseNodes_Button.Name = "CollapseNodes_Button";
-            this.CollapseNodes_Button.Size = new System.Drawing.Size(87, 23);
+            this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 23);
             this.CollapseNodes_Button.TabIndex = 4;
             this.CollapseNodes_Button.Text = "Collapse Keys";
             this.CollapseNodes_Button.UseVisualStyleBackColor = true;
@@ -766,10 +783,10 @@
             // 
             // ExpandNodes_Button
             // 
-            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpandNodes_Button.Location = new System.Drawing.Point(929, 611);
+            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExpandNodes_Button.Location = new System.Drawing.Point(862, 174);
             this.ExpandNodes_Button.Name = "ExpandNodes_Button";
-            this.ExpandNodes_Button.Size = new System.Drawing.Size(87, 23);
+            this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 23);
             this.ExpandNodes_Button.TabIndex = 3;
             this.ExpandNodes_Button.Text = "Expand Keys";
             this.ExpandNodes_Button.UseVisualStyleBackColor = true;
@@ -779,7 +796,7 @@
             // 
             this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(485, 648);
+            this.ViewKeys_Button.Location = new System.Drawing.Point(450, 446);
             this.ViewKeys_Button.Name = "ViewKeys_Button";
             this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
             this.ViewKeys_Button.TabIndex = 2;
@@ -787,48 +804,12 @@
             this.ViewKeys_Button.UseVisualStyleBackColor = true;
             this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
             // 
-            // CurrentKey_GroupBox
-            // 
-            this.CurrentKey_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentKey_GroupBox.Controls.Add(this.Preview_Button);
-            this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(831, 3);
-            this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
-            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(100, 101);
-            this.CurrentKey_GroupBox.TabIndex = 1;
-            this.CurrentKey_GroupBox.TabStop = false;
-            this.CurrentKey_GroupBox.Text = "Current Key";
-            // 
-            // Preview_Button
-            // 
-            this.Preview_Button.BackColor = System.Drawing.Color.Lime;
-            this.Preview_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Preview_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Preview_Button.Location = new System.Drawing.Point(3, 17);
-            this.Preview_Button.Name = "Preview_Button";
-            this.Preview_Button.Size = new System.Drawing.Size(94, 81);
-            this.Preview_Button.TabIndex = 0;
-            this.Preview_Button.Text = "Bottled Beer";
-            this.Preview_Button.UseVisualStyleBackColor = false;
-            // 
-            // KeyPriGroupBox
-            // 
-            this.KeyPriGroupBox.BackColor = System.Drawing.SystemColors.Control;
-            this.KeyPriGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KeyPriGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyPriGroupBox.Location = new System.Drawing.Point(0, 0);
-            this.KeyPriGroupBox.Name = "KeyPriGroupBox";
-            this.KeyPriGroupBox.Size = new System.Drawing.Size(150, 46);
-            this.KeyPriGroupBox.TabIndex = 0;
-            this.KeyPriGroupBox.TabStop = false;
-            this.KeyPriGroupBox.Text = "Key Priority";
-            // 
             // MainTreeView
             // 
             this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTreeView.Location = new System.Drawing.Point(0, 0);
             this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(250, 667);
+            this.MainTreeView.Size = new System.Drawing.Size(268, 728);
             this.MainTreeView.TabIndex = 0;
             this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
             this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
@@ -860,11 +841,64 @@
             // 
             this.presetDataTableAdapter.ClearBeforeFill = true;
             // 
+            // customGrpBox1
+            // 
+            this.customGrpBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.customGrpBox1.Controls.Add(this.CurrentPreset_Button);
+            this.customGrpBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customGrpBox1.Location = new System.Drawing.Point(865, 3);
+            this.customGrpBox1.Name = "customGrpBox1";
+            this.customGrpBox1.Size = new System.Drawing.Size(82, 88);
+            this.customGrpBox1.TabIndex = 99;
+            this.customGrpBox1.TabStop = false;
+            this.customGrpBox1.Text = "Current Preset";
+            // 
+            // CurrentPreset_Button
+            // 
+            this.CurrentPreset_Button.AutoEllipsis = true;
+            this.CurrentPreset_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CurrentPreset_Button.BackColor = System.Drawing.Color.White;
+            this.CurrentPreset_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrentPreset_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentPreset_Button.Location = new System.Drawing.Point(3, 17);
+            this.CurrentPreset_Button.Name = "CurrentPreset_Button";
+            this.CurrentPreset_Button.Size = new System.Drawing.Size(76, 68);
+            this.CurrentPreset_Button.TabIndex = 0;
+            this.CurrentPreset_Button.TabStop = false;
+            this.CurrentPreset_Button.Text = "Bud Lite";
+            this.CurrentPreset_Button.UseVisualStyleBackColor = false;
+            // 
+            // CurrentKey_GroupBox
+            // 
+            this.CurrentKey_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CurrentKey_GroupBox.Controls.Add(this.Preview_Button);
+            this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(762, 3);
+            this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
+            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(100, 101);
+            this.CurrentKey_GroupBox.TabIndex = 99;
+            this.CurrentKey_GroupBox.TabStop = false;
+            this.CurrentKey_GroupBox.Text = "Current Key";
+            // 
+            // Preview_Button
+            // 
+            this.Preview_Button.AutoEllipsis = true;
+            this.Preview_Button.BackColor = System.Drawing.Color.Lime;
+            this.Preview_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Preview_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Preview_Button.Location = new System.Drawing.Point(3, 17);
+            this.Preview_Button.Name = "Preview_Button";
+            this.Preview_Button.Size = new System.Drawing.Size(94, 81);
+            this.Preview_Button.TabIndex = 0;
+            this.Preview_Button.TabStop = false;
+            this.Preview_Button.Text = "Bottled Beer";
+            this.Preview_Button.UseVisualStyleBackColor = false;
+            // 
             // PresetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1272, 667);
+            this.ClientSize = new System.Drawing.Size(1221, 728);
             this.Controls.Add(this.Main_SplitCon);
             this.Name = "PresetForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -880,6 +914,7 @@
             this.Nested_SplitCon.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).EndInit();
             this.Nested_SplitCon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
@@ -888,10 +923,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PresetNavigator)).EndInit();
             this.PresetNavigator.ResumeLayout(false);
             this.PresetNavigator.PerformLayout();
-            this.customGrpBox1.ResumeLayout(false);
-            this.customGrpBox1.PerformLayout();
-            this.CurrentKey_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
+            this.customGrpBox1.ResumeLayout(false);
+            this.CurrentKey_GroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -899,7 +933,6 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer Main_SplitCon;
-        private CustomGrpBox KeyPriGroupBox;
         private CustomGrpBox CurrentKey_GroupBox;
         private System.Windows.Forms.Button Preview_Button;
         private System.Windows.Forms.TreeView MainTreeView;
@@ -945,7 +978,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.DataGridView presetDataDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
@@ -956,6 +988,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.DataGridView SearchResults_DataGrid;
+        private System.Windows.Forms.Label SearchResults_Label;
+        public System.Windows.Forms.DataGridView presetDataDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PresetDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RegularPrice;
     }
 }
 

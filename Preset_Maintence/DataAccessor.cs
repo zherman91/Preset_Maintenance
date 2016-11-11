@@ -39,7 +39,7 @@ namespace Preset_Maintenance
 
                 foreach (var preset in presets)
                 {
-                    MainTreeView.Nodes[i].Nodes.Add(preset.PresetDesc);
+                    MainTreeView.Nodes[i].Nodes.Add(preset.PresetCode, preset.PresetDesc);
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace Preset_Maintenance
         {
             var presetPic =
                 from presetData in presetDataTable
-                where (presetData.PresetDesc) == code
+                where (presetData.PresetCode) == code
                 select presetData.PresetPicture;
             try
             {
