@@ -15,8 +15,12 @@ namespace Preset_Maintenance
         private static jartrekDataSetTableAdapters.KeyMasterDataAdapter keyMasterDataAdapter = new jartrekDataSetTableAdapters.KeyMasterDataAdapter();
         private static jartrekDataSet.KeyMasterDataDataTable keyMasterDataTable = new jartrekDataSet.KeyMasterDataDataTable();
 
-        private static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
-        private static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
+        public static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
+        public static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
+
+        public static jartrekDataSetTableAdapters.PresetMasterTableAdapter presetMasterAdapter = new jartrekDataSetTableAdapters.PresetMasterTableAdapter();
+        public static jartrekDataSet.PresetMasterDataTable presetMasterDataTable = new jartrekDataSet.PresetMasterDataTable();
+
 
         private const string BitMapPath = @"C:\Jartrek\BitMaps\";
 
@@ -26,6 +30,22 @@ namespace Preset_Maintenance
         {
             presetDataAdapter.FillPresetInfo(presetDataTable);
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
+        }
+
+        public static void UpdatePreset(DataRowView presetRow)//i have the datarow that has the changes i made here...
+        {
+            try
+            {
+                Console.WriteLine($"Updating {presetRow["PresetCode"]}...");
+                Console.WriteLine($"Price 1 = {presetRow["PresetPrice"]}");
+
+
+            }
+            catch (Exception u)
+            {
+
+            }
+
         }
 
         private static void AddChildNodes(TreeView MainTreeView)
@@ -81,6 +101,19 @@ namespace Preset_Maintenance
                 return null;
             }
         }
+    }
 
+    public class RowEvents
+    { 
+        public RowEvents()
+        {
+            DataAccessor.presetDataTable.RowChanging += PresetDataTable_RowChanging;
+        }
+
+        private static void PresetDataTable_RowChanging(object sender, DataRowChangeEventArgs e)
+        {
+            MessageBox.Show($"The row {e.Row.ItemArray[0]} is changing!");
+
+        }
     }
 }

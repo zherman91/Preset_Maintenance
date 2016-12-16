@@ -13,7 +13,6 @@ namespace Preset_Maintenance
 {
     public partial class PresetForm : Form
     {
-        JarPriority jarPriority = new JarPriority();
         List<TreeNode> currentNodeMatches = new List<TreeNode>();
         int lastNodeIndex = 0;
         string lastSearchText;
@@ -26,22 +25,17 @@ namespace Preset_Maintenance
         private void PresetForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetData' table. You can move, or remove it, as needed.
-            this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
+             this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
-            this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
+             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
 
-            ShowJarPriorityPanel();
+            // DataAccessor.presetDataAdapter.FillPresetInfo(DataAccessor.presetDataTable);
+
+            // DataAccessor.presetMasterAdapter.Fill(DataAccessor.presetMasterDataTable);
+
             DataAccessor.AddParentNodes(MainTreeView);
         }
-        private void ShowJarPriorityPanel()
-        {
-            jarPriority.TopLevel = false;
-            var left_Split = Main_SplitCon.Panel1.Controls["Nested_SplitCon"] as SplitContainer;
-            //Nested_SplitCon.Panel2.Controls[0].Controls.Add(jarPriority);
-            jarPriority.FormBorderStyle = FormBorderStyle.None;
-            jarPriority.Dock = DockStyle.Fill;
-            jarPriority.Show();
-        }
+
         private void ViewKeys_Click(object sender, EventArgs e)
         {
             if (Nested_SplitCon.Panel2Collapsed)
@@ -49,18 +43,22 @@ namespace Preset_Maintenance
             else
                 Nested_SplitCon.Panel2Collapsed = true;
         }
+
         private void ExpandNodes_Button_Click(object sender, EventArgs e)
         {
             MainTreeView.ExpandAll();
         }
+
         private void CollapseNodes_Button_Click(object sender, EventArgs e)
         {
             MainTreeView.CollapseAll();
         }
+
         private void MainTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            MessageBox.Show("You just double clicked a node!");
+            // MessageBox.Show("You just double clicked a node!");
         }
+
         private void MainTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             try
@@ -77,6 +75,7 @@ namespace Preset_Maintenance
                 Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
             }
         }
+
         private void ExpandTree_Button_Click(object sender, EventArgs e)
         {
             if (Main_SplitCon.Panel2Collapsed)
@@ -90,11 +89,10 @@ namespace Preset_Maintenance
                 (sender as Button).Text = "<";
             }
         }
+
         private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             presetDataBindingSource.Position = presetDataBindingSource.Find("PresetDesc", (sender as TreeView).SelectedNode.Text);
-
-            // presetDataBindingSource.Position = MainTreeView.SelectedNode.Index;
 
             try
             {
@@ -117,6 +115,7 @@ namespace Preset_Maintenance
                 Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
             }
         }
+
         private void PresetSearch_Button_Click(object sender, EventArgs e)
         {
             string searchText = PresetSearch_TextBox.Text;
@@ -149,17 +148,18 @@ namespace Preset_Maintenance
                 for (int i = 0; i < currentNodeMatches.Count; i++)
                 {
                     SearchResults_DataGrid.Rows.Add(currentNodeMatches[i].Text);
+
                 }
             }
             PresetSearch_Button.Select();
             SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
-
-
         }
+
         private void PresetSearch_TextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
         /// <summary>
         /// Recursivly searches for the specified node and starting node. 
         /// </summary>
@@ -180,15 +180,18 @@ namespace Preset_Maintenance
                 StartNode = StartNode.NextNode;
             }
         }
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
             PresetSearch_TextBox.Clear();
             SearchResults_DataGrid.Rows.Clear();
         }
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             presetDataDataGridView.CurrentCell = presetDataDataGridView.Rows[presetDataDataGridView.NewRowIndex].Cells[1];
         }
+
         private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
@@ -196,5 +199,162 @@ namespace Preset_Maintenance
             PresetSearch_Button.PerformClick();
         }
 
+        private void Update_Button_Click(object sender, EventArgs e)
+        {
+            var presetInfo = presetDataBindingSource.Current as DataRowView;
+            DataAccessor.UpdatePreset(presetInfo);
+        }
+    }
+
+    public static class SetColor
+    {
+        [Flags]
+        public enum JartrekColors { RegisterDefault = 0, Red = 1, Green = 2, Yellow = 3, Blue = 4, Magenta = 5, Cyan = 6, White = 7, Beige = 8, Goldenrod = 9, Khaki = 10, Plum = 11, Orange = 12, PaleGreen = 13, Pink = 14, Salmon = 15, Sienna = 16, Tan = 17 };
+        public static Color GetColor(JartrekColors keyColor)
+        {
+            Color currentColor = Color.Silver;
+
+            switch (keyColor)
+            {
+                case JartrekColors.Red:
+                    currentColor = Color.Red;
+                    break;
+                case JartrekColors.Green:
+                    currentColor = Color.Lime;
+                    break;
+                case JartrekColors.Yellow:
+                    currentColor = Color.Yellow;
+                    break;
+                case JartrekColors.Blue:
+                    currentColor = Color.Blue;
+                    break;
+                case JartrekColors.Magenta:
+                    currentColor = Color.Fuchsia;
+                    break;
+                case JartrekColors.Cyan:
+                    currentColor = Color.Aqua;
+                    break;
+                case JartrekColors.White:
+                    currentColor = Color.White;
+                    break;
+                case JartrekColors.Beige:
+                    currentColor = Color.Beige;
+                    break;
+                case JartrekColors.Goldenrod:
+                    currentColor = Color.Goldenrod;
+                    break;
+                case JartrekColors.Khaki:
+                    currentColor = Color.Khaki;
+                    break;
+                case JartrekColors.Plum:
+                    currentColor = Color.Plum;
+                    break;
+                case JartrekColors.Orange:
+                    currentColor = Color.Orange;
+                    break;
+                case JartrekColors.PaleGreen:
+                    currentColor = Color.PaleGreen;
+                    break;
+                case JartrekColors.Pink:
+                    currentColor = Color.Pink;
+                    break;
+                case JartrekColors.Salmon:
+                    currentColor = Color.Salmon;
+                    break;
+                case JartrekColors.Sienna:
+                    currentColor = Color.Sienna;
+                    break;
+                case JartrekColors.Tan:
+                    currentColor = Color.Tan;
+                    break;
+                default: return currentColor;
+            }
+            return currentColor;
+        }
+        public static int GetColorInt(JartrekColors keyColor)
+        {
+            Color currentColor = Color.Silver;
+            int colorInt = 1;
+            switch (keyColor)
+            {
+                case JartrekColors.Red:
+                    currentColor = Color.Red;
+                    colorInt = 1;
+                    break;
+                case JartrekColors.Green:
+                    currentColor = Color.Lime;
+                    colorInt = 2;
+                    break;
+                case JartrekColors.Yellow:
+                    currentColor = Color.Yellow;
+                    colorInt = 3;
+                    break;
+                case JartrekColors.Blue:
+                    currentColor = Color.Blue;
+                    colorInt = 4;
+                    break;
+                case JartrekColors.Magenta:
+                    currentColor = Color.Fuchsia;
+                    colorInt = 5;
+                    break;
+                case JartrekColors.Cyan:
+                    currentColor = Color.Aqua;
+                    colorInt = 6;
+                    break;
+                case JartrekColors.White:
+                    currentColor = Color.White;
+                    colorInt = 7;
+                    break;
+                case JartrekColors.Beige:
+                    currentColor = Color.Beige;
+                    colorInt = 8;
+                    break;
+                case JartrekColors.Goldenrod:
+                    currentColor = Color.Goldenrod;
+                    colorInt = 9;
+                    break;
+                case JartrekColors.Khaki:
+                    currentColor = Color.Khaki;
+                    colorInt = 10;
+                    break;
+                case JartrekColors.Plum:
+                    currentColor = Color.Plum;
+                    colorInt = 11;
+                    break;
+                case JartrekColors.Orange:
+                    currentColor = Color.Orange;
+                    colorInt = 12;
+                    break;
+                case JartrekColors.PaleGreen:
+                    currentColor = Color.PaleGreen;
+                    colorInt = 13;
+                    break;
+                case JartrekColors.Pink:
+                    currentColor = Color.Pink;
+                    colorInt = 14;
+                    break;
+                case JartrekColors.Salmon:
+                    currentColor = Color.Salmon;
+                    colorInt = 15;
+                    break;
+                case JartrekColors.Sienna:
+                    currentColor = Color.Sienna;
+                    colorInt = 16;
+                    break;
+                case JartrekColors.Tan:
+                    currentColor = Color.Tan;
+                    colorInt = 17;
+                    break;
+                default: return colorInt;
+            }
+            return colorInt;
+        }
+        public static Color GetNewJarColor()
+        {
+            int randomColorValue = new Random().Next(1, 17);
+            Color currentColor = SetColor.GetColor((SetColor.JartrekColors)randomColorValue);
+
+            return currentColor;
+        }
     }
 }

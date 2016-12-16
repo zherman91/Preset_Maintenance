@@ -78,23 +78,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataAccessor.cs" />
-    <Compile Include="JarPriority.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JarPriority.Designer.cs">
-      <DependentUpon>JarPriority.cs</DependentUpon>
-    </Compile>
     <Compile Include="jartrekDataSet.cs">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="jartrekDataSet1.Designer.cs">
+    <Compile Include="jartrekDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="KeyData.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="PresetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,9 +97,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="JarPriority.resx">
-      <DependentUpon>JarPriority.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PresetForm.resx">
       <DependentUpon>PresetForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,9 +116,9 @@
     </None>
     <None Include="jartrekDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>jartrekDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LastGenOutput>jartrekDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="jartrekDataSet.xss">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>

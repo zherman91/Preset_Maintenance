@@ -34,7 +34,6 @@
             System.Windows.Forms.Label presetDescLabel;
             System.Windows.Forms.Label presetLegendLabel;
             System.Windows.Forms.Label presetTaxLabel;
-            System.Windows.Forms.Label presetPriceLabel;
             System.Windows.Forms.Label presetPrice2Label;
             System.Windows.Forms.Label presetPrice3Label;
             System.Windows.Forms.Label presetPrice4Label;
@@ -42,26 +41,20 @@
             System.Windows.Forms.Label presetPrice6Label;
             System.Windows.Forms.Label presetPrice7Label;
             System.Windows.Forms.Label presetPrice8Label;
+            System.Windows.Forms.Label presetPriceLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PresetForm));
             this.Main_SplitCon = new System.Windows.Forms.SplitContainer();
             this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
+            this.SearchResults_GroupBox = new System.Windows.Forms.GroupBox();
             this.SearchResults_DataGrid = new System.Windows.Forms.DataGridView();
             this.PresetDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RegularPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchResults_Label = new System.Windows.Forms.Label();
-            this.presetDataDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pricing_GroupBox = new System.Windows.Forms.GroupBox();
+            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
             this.presetDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jartrekDataSet = new Preset_Maintenance.jartrekDataSet();
-            this.Pricing_GroupBox = new System.Windows.Forms.GroupBox();
+            this.Update_Button = new System.Windows.Forms.Button();
             this.PresetNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -78,7 +71,6 @@
             this.presetCodeTextBox = new System.Windows.Forms.TextBox();
             this.presetDescTextBox = new System.Windows.Forms.TextBox();
             this.presetLegendTextBox = new System.Windows.Forms.TextBox();
-            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
             this.presetTaxTextBox = new System.Windows.Forms.TextBox();
             this.presetPrice2TextBox = new System.Windows.Forms.TextBox();
             this.presetPrice3TextBox = new System.Windows.Forms.TextBox();
@@ -92,24 +84,34 @@
             this.PresetSearchLabel = new System.Windows.Forms.Label();
             this.PresetSearch_TextBox = new System.Windows.Forms.TextBox();
             this.Preset_Label = new System.Windows.Forms.Label();
+            this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
+            this.CurrentPreset_Button = new System.Windows.Forms.Button();
             this.CollapseNodes_Button = new System.Windows.Forms.Button();
             this.ExpandNodes_Button = new System.Windows.Forms.Button();
             this.ViewKeys_Button = new System.Windows.Forms.Button();
+            this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
+            this.Preview_Button = new System.Windows.Forms.Button();
+            this.presetDataDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PresetPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTreeView = new System.Windows.Forms.TreeView();
             this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
             this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
             this.presetDataTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetDataTableAdapter();
-            this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
-            this.CurrentPreset_Button = new System.Windows.Forms.Button();
-            this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
-            this.Preview_Button = new System.Windows.Forms.Button();
             keyCodeLabel = new System.Windows.Forms.Label();
             presetCodeLabel = new System.Windows.Forms.Label();
             presetDescLabel = new System.Windows.Forms.Label();
             presetLegendLabel = new System.Windows.Forms.Label();
             presetTaxLabel = new System.Windows.Forms.Label();
-            presetPriceLabel = new System.Windows.Forms.Label();
             presetPrice2Label = new System.Windows.Forms.Label();
             presetPrice3Label = new System.Windows.Forms.Label();
             presetPrice4Label = new System.Windows.Forms.Label();
@@ -117,6 +119,7 @@
             presetPrice6Label = new System.Windows.Forms.Label();
             presetPrice7Label = new System.Windows.Forms.Label();
             presetPrice8Label = new System.Windows.Forms.Label();
+            presetPriceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitCon)).BeginInit();
             this.Main_SplitCon.Panel1.SuspendLayout();
             this.Main_SplitCon.Panel2.SuspendLayout();
@@ -125,16 +128,17 @@
             this.Nested_SplitCon.Panel1.SuspendLayout();
             this.Nested_SplitCon.Panel2.SuspendLayout();
             this.Nested_SplitCon.SuspendLayout();
+            this.SearchResults_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
+            this.Pricing_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
-            this.Pricing_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PresetNavigator)).BeginInit();
             this.PresetNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             this.customGrpBox1.SuspendLayout();
             this.CurrentKey_GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // keyCodeLabel
@@ -186,16 +190,6 @@
             presetTaxLabel.Size = new System.Drawing.Size(68, 15);
             presetTaxLabel.TabIndex = 8;
             presetTaxLabel.Text = "Preset Tax:";
-            // 
-            // presetPriceLabel
-            // 
-            presetPriceLabel.AutoSize = true;
-            presetPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            presetPriceLabel.Location = new System.Drawing.Point(6, 158);
-            presetPriceLabel.Name = "presetPriceLabel";
-            presetPriceLabel.Size = new System.Drawing.Size(76, 15);
-            presetPriceLabel.TabIndex = 10;
-            presetPriceLabel.Text = "Preset Price:";
             // 
             // presetPrice2Label
             // 
@@ -267,6 +261,16 @@
             presetPrice8Label.TabIndex = 24;
             presetPrice8Label.Text = "Preset Price8:";
             // 
+            // presetPriceLabel
+            // 
+            presetPriceLabel.AutoSize = true;
+            presetPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            presetPriceLabel.Location = new System.Drawing.Point(6, 158);
+            presetPriceLabel.Name = "presetPriceLabel";
+            presetPriceLabel.Size = new System.Drawing.Size(76, 15);
+            presetPriceLabel.TabIndex = 30;
+            presetPriceLabel.Text = "Preset Price:";
+            // 
             // Main_SplitCon
             // 
             this.Main_SplitCon.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -282,7 +286,7 @@
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
             this.Main_SplitCon.Size = new System.Drawing.Size(1221, 728);
-            this.Main_SplitCon.SplitterDistance = 951;
+            this.Main_SplitCon.SplitterDistance = 977;
             this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
@@ -298,7 +302,7 @@
             // Nested_SplitCon.Panel1
             // 
             this.Nested_SplitCon.Panel1.AutoScroll = true;
-            this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_DataGrid);
+            this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_GroupBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_Label);
             this.Nested_SplitCon.Panel1.Controls.Add(this.Pricing_GroupBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ClearButton);
@@ -318,24 +322,40 @@
             this.Nested_SplitCon.Panel2.AccessibleName = "";
             this.Nested_SplitCon.Panel2.Controls.Add(this.presetDataDataGridView);
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(951, 728);
-            this.Nested_SplitCon.SplitterDistance = 465;
+            this.Nested_SplitCon.Size = new System.Drawing.Size(977, 728);
+            this.Nested_SplitCon.SplitterDistance = 496;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
+            // 
+            // SearchResults_GroupBox
+            // 
+            this.SearchResults_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_GroupBox.Controls.Add(this.SearchResults_DataGrid);
+            this.SearchResults_GroupBox.Location = new System.Drawing.Point(342, 12);
+            this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
+            this.SearchResults_GroupBox.Size = new System.Drawing.Size(417, 226);
+            this.SearchResults_GroupBox.TabIndex = 101;
+            this.SearchResults_GroupBox.TabStop = false;
+            this.SearchResults_GroupBox.Text = "Search Results";
             // 
             // SearchResults_DataGrid
             // 
             this.SearchResults_DataGrid.AllowUserToDeleteRows = false;
             this.SearchResults_DataGrid.AllowUserToOrderColumns = true;
-            this.SearchResults_DataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_DataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.SearchResults_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SearchResults_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PresetDesc,
             this.RegularPrice});
-            this.SearchResults_DataGrid.Location = new System.Drawing.Point(762, 232);
+            this.SearchResults_DataGrid.Location = new System.Drawing.Point(6, 19);
             this.SearchResults_DataGrid.Name = "SearchResults_DataGrid";
             this.SearchResults_DataGrid.RowHeadersWidth = 15;
-            this.SearchResults_DataGrid.Size = new System.Drawing.Size(186, 168);
+            this.SearchResults_DataGrid.Size = new System.Drawing.Size(405, 201);
             this.SearchResults_DataGrid.TabIndex = 16;
             this.SearchResults_DataGrid.TabStop = false;
             this.SearchResults_DataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
@@ -354,102 +374,17 @@
             // 
             this.SearchResults_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchResults_Label.AutoSize = true;
-            this.SearchResults_Label.Location = new System.Drawing.Point(859, 403);
+            this.SearchResults_Label.Location = new System.Drawing.Point(886, 248);
             this.SearchResults_Label.Name = "SearchResults_Label";
             this.SearchResults_Label.Size = new System.Drawing.Size(71, 13);
             this.SearchResults_Label.TabIndex = 100;
             this.SearchResults_Label.Text = "Items Found: ";
             // 
-            // presetDataDataGridView
-            // 
-            this.presetDataDataGridView.AllowUserToDeleteRows = false;
-            this.presetDataDataGridView.AllowUserToOrderColumns = true;
-            this.presetDataDataGridView.AutoGenerateColumns = false;
-            this.presetDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.presetDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13});
-            this.presetDataDataGridView.DataSource = this.presetDataBindingSource;
-            this.presetDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.presetDataDataGridView.Name = "presetDataDataGridView";
-            this.presetDataDataGridView.Size = new System.Drawing.Size(951, 261);
-            this.presetDataDataGridView.TabIndex = 15;
-            this.presetDataDataGridView.TabStop = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PresetCode";
-            this.dataGridViewTextBoxColumn2.HeaderText = "PresetCode";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PresetPrice";
-            this.dataGridViewTextBoxColumn6.HeaderText = "PresetPrice";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "PresetPrice2";
-            this.dataGridViewTextBoxColumn7.HeaderText = "PresetPrice2";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "PresetPrice3";
-            this.dataGridViewTextBoxColumn8.HeaderText = "PresetPrice3";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "PresetPrice4";
-            this.dataGridViewTextBoxColumn9.HeaderText = "PresetPrice4";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "PresetPrice5";
-            this.dataGridViewTextBoxColumn10.HeaderText = "PresetPrice5";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "PresetPrice6";
-            this.dataGridViewTextBoxColumn11.HeaderText = "PresetPrice6";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "PresetPrice7";
-            this.dataGridViewTextBoxColumn12.HeaderText = "PresetPrice7";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "PresetPrice8";
-            this.dataGridViewTextBoxColumn13.HeaderText = "PresetPrice8";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // presetDataBindingSource
-            // 
-            this.presetDataBindingSource.DataMember = "PresetData";
-            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
-            // 
-            // jartrekDataSet
-            // 
-            this.jartrekDataSet.DataSetName = "jartrekDataSet";
-            this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Pricing_GroupBox
             // 
+            this.Pricing_GroupBox.Controls.Add(presetPriceLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPriceTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.Update_Button);
             this.Pricing_GroupBox.Controls.Add(this.PresetNavigator);
             this.Pricing_GroupBox.Controls.Add(keyCodeLabel);
             this.Pricing_GroupBox.Controls.Add(this.keyCodeTextBox);
@@ -460,8 +395,6 @@
             this.Pricing_GroupBox.Controls.Add(presetLegendLabel);
             this.Pricing_GroupBox.Controls.Add(this.presetLegendTextBox);
             this.Pricing_GroupBox.Controls.Add(presetTaxLabel);
-            this.Pricing_GroupBox.Controls.Add(presetPriceLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPriceTextBox);
             this.Pricing_GroupBox.Controls.Add(this.presetTaxTextBox);
             this.Pricing_GroupBox.Controls.Add(presetPrice2Label);
             this.Pricing_GroupBox.Controls.Add(this.presetPrice2TextBox);
@@ -480,10 +413,40 @@
             this.Pricing_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pricing_GroupBox.Location = new System.Drawing.Point(12, 12);
             this.Pricing_GroupBox.Name = "Pricing_GroupBox";
-            this.Pricing_GroupBox.Size = new System.Drawing.Size(325, 404);
+            this.Pricing_GroupBox.Size = new System.Drawing.Size(324, 415);
             this.Pricing_GroupBox.TabIndex = 15;
             this.Pricing_GroupBox.TabStop = false;
             this.Pricing_GroupBox.Text = "Pricing";
+            // 
+            // presetPriceTextBox
+            // 
+            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetDataBindingSource, "PresetPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.presetPriceTextBox.Location = new System.Drawing.Point(116, 155);
+            this.presetPriceTextBox.Name = "presetPriceTextBox";
+            this.presetPriceTextBox.Size = new System.Drawing.Size(100, 21);
+            this.presetPriceTextBox.TabIndex = 31;
+            // 
+            // presetDataBindingSource
+            // 
+            this.presetDataBindingSource.DataMember = "PresetData";
+            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
+            // 
+            // jartrekDataSet
+            // 
+            this.jartrekDataSet.DataSetName = "jartrekDataSet";
+            this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // Update_Button
+            // 
+            this.Update_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Update_Button.Location = new System.Drawing.Point(222, 367);
+            this.Update_Button.Name = "Update_Button";
+            this.Update_Button.Size = new System.Drawing.Size(75, 28);
+            this.Update_Button.TabIndex = 30;
+            this.Update_Button.Text = "Update";
+            this.Update_Button.UseVisualStyleBackColor = true;
+            this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
             // 
             // PresetNavigator
             // 
@@ -511,7 +474,7 @@
             this.PresetNavigator.Name = "PresetNavigator";
             this.PresetNavigator.PositionItem = this.bindingNavigatorPositionItem;
             this.PresetNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.PresetNavigator.Size = new System.Drawing.Size(319, 25);
+            this.PresetNavigator.Size = new System.Drawing.Size(318, 25);
             this.PresetNavigator.Stretch = true;
             this.PresetNavigator.TabIndex = 29;
             this.PresetNavigator.Text = "bindingNavigator1";
@@ -638,15 +601,6 @@
             this.presetLegendTextBox.Size = new System.Drawing.Size(193, 21);
             this.presetLegendTextBox.TabIndex = 7;
             // 
-            // presetPriceTextBox
-            // 
-            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetDataBindingSource, "PresetPrice5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.presetPriceTextBox.Location = new System.Drawing.Point(116, 155);
-            this.presetPriceTextBox.Name = "presetPriceTextBox";
-            this.presetPriceTextBox.Size = new System.Drawing.Size(100, 21);
-            this.presetPriceTextBox.TabIndex = 11;
-            // 
             // presetTaxTextBox
             // 
             this.presetTaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetDataBindingSource, "PresetTax", true));
@@ -722,7 +676,7 @@
             // ClearButton
             // 
             this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearButton.Location = new System.Drawing.Point(924, 140);
+            this.ClearButton.Location = new System.Drawing.Point(948, 154);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(20, 27);
             this.ClearButton.TabIndex = 3;
@@ -733,7 +687,7 @@
             // PresetSearch_Button
             // 
             this.PresetSearch_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_Button.Location = new System.Drawing.Point(862, 140);
+            this.PresetSearch_Button.Location = new System.Drawing.Point(886, 154);
             this.PresetSearch_Button.Name = "PresetSearch_Button";
             this.PresetSearch_Button.Size = new System.Drawing.Size(56, 27);
             this.PresetSearch_Button.TabIndex = 2;
@@ -744,7 +698,7 @@
             // PresetSearchLabel
             // 
             this.PresetSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearchLabel.Location = new System.Drawing.Point(731, 117);
+            this.PresetSearchLabel.Location = new System.Drawing.Point(759, 127);
             this.PresetSearchLabel.Name = "PresetSearchLabel";
             this.PresetSearchLabel.Size = new System.Drawing.Size(94, 20);
             this.PresetSearchLabel.TabIndex = 12;
@@ -754,101 +708,30 @@
             // PresetSearch_TextBox
             // 
             this.PresetSearch_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_TextBox.Location = new System.Drawing.Point(831, 117);
+            this.PresetSearch_TextBox.Location = new System.Drawing.Point(859, 128);
             this.PresetSearch_TextBox.Name = "PresetSearch_TextBox";
-            this.PresetSearch_TextBox.Size = new System.Drawing.Size(113, 20);
+            this.PresetSearch_TextBox.Size = new System.Drawing.Size(109, 20);
             this.PresetSearch_TextBox.TabIndex = 1;
             this.PresetSearch_TextBox.TextChanged += new System.EventHandler(this.PresetSearch_TextBox_TextChanged);
             // 
             // Preset_Label
             // 
             this.Preset_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Preset_Label.Location = new System.Drawing.Point(862, 94);
+            this.Preset_Label.Location = new System.Drawing.Point(886, 103);
             this.Preset_Label.Name = "Preset_Label";
-            this.Preset_Label.Size = new System.Drawing.Size(85, 20);
+            this.Preset_Label.Size = new System.Drawing.Size(80, 20);
             this.Preset_Label.TabIndex = 10;
             this.Preset_Label.Text = "Current Preset";
             this.Preset_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CollapseNodes_Button
-            // 
-            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CollapseNodes_Button.Location = new System.Drawing.Point(862, 203);
-            this.CollapseNodes_Button.Name = "CollapseNodes_Button";
-            this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 23);
-            this.CollapseNodes_Button.TabIndex = 4;
-            this.CollapseNodes_Button.Text = "Collapse Keys";
-            this.CollapseNodes_Button.UseVisualStyleBackColor = true;
-            this.CollapseNodes_Button.Click += new System.EventHandler(this.CollapseNodes_Button_Click);
-            // 
-            // ExpandNodes_Button
-            // 
-            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpandNodes_Button.Location = new System.Drawing.Point(862, 174);
-            this.ExpandNodes_Button.Name = "ExpandNodes_Button";
-            this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 23);
-            this.ExpandNodes_Button.TabIndex = 3;
-            this.ExpandNodes_Button.Text = "Expand Keys";
-            this.ExpandNodes_Button.UseVisualStyleBackColor = true;
-            this.ExpandNodes_Button.Click += new System.EventHandler(this.ExpandNodes_Button_Click);
-            // 
-            // ViewKeys_Button
-            // 
-            this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(450, 446);
-            this.ViewKeys_Button.Name = "ViewKeys_Button";
-            this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
-            this.ViewKeys_Button.TabIndex = 2;
-            this.ViewKeys_Button.Text = "^";
-            this.ViewKeys_Button.UseVisualStyleBackColor = true;
-            this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
-            // 
-            // MainTreeView
-            // 
-            this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTreeView.Location = new System.Drawing.Point(0, 0);
-            this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(268, 728);
-            this.MainTreeView.TabIndex = 0;
-            this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
-            this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
-            this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
-            // 
-            // presetMasterBindingSource
-            // 
-            this.presetMasterBindingSource.AllowNew = false;
-            this.presetMasterBindingSource.DataMember = "PresetMaster";
-            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
-            // 
-            // presetMasterTableAdapter
-            // 
-            this.presetMasterTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.JarTypeDataTableAdapter = null;
-            this.tableAdapterManager.JarTypeTableAdapter = null;
-            this.tableAdapterManager.KeyMasterDataAdapter = null;
-            this.tableAdapterManager.KeyMasterTableAdapter = null;
-            this.tableAdapterManager.PresetDataTableAdapter = this.presetDataTableAdapter;
-            this.tableAdapterManager.PresetMasterTableAdapter = this.presetMasterTableAdapter;
-            this.tableAdapterManager.TipJarTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // presetDataTableAdapter
-            // 
-            this.presetDataTableAdapter.ClearBeforeFill = true;
             // 
             // customGrpBox1
             // 
             this.customGrpBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.customGrpBox1.Controls.Add(this.CurrentPreset_Button);
             this.customGrpBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customGrpBox1.Location = new System.Drawing.Point(865, 3);
+            this.customGrpBox1.Location = new System.Drawing.Point(883, 12);
             this.customGrpBox1.Name = "customGrpBox1";
-            this.customGrpBox1.Size = new System.Drawing.Size(82, 88);
+            this.customGrpBox1.Size = new System.Drawing.Size(88, 88);
             this.customGrpBox1.TabIndex = 99;
             this.customGrpBox1.TabStop = false;
             this.customGrpBox1.Text = "Current Preset";
@@ -862,18 +745,52 @@
             this.CurrentPreset_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentPreset_Button.Location = new System.Drawing.Point(3, 17);
             this.CurrentPreset_Button.Name = "CurrentPreset_Button";
-            this.CurrentPreset_Button.Size = new System.Drawing.Size(76, 68);
+            this.CurrentPreset_Button.Size = new System.Drawing.Size(82, 68);
             this.CurrentPreset_Button.TabIndex = 0;
             this.CurrentPreset_Button.TabStop = false;
             this.CurrentPreset_Button.Text = "Bud Lite";
             this.CurrentPreset_Button.UseVisualStyleBackColor = false;
+            // 
+            // CollapseNodes_Button
+            // 
+            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CollapseNodes_Button.Location = new System.Drawing.Point(886, 216);
+            this.CollapseNodes_Button.Name = "CollapseNodes_Button";
+            this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 23);
+            this.CollapseNodes_Button.TabIndex = 4;
+            this.CollapseNodes_Button.Text = "Collapse Keys";
+            this.CollapseNodes_Button.UseVisualStyleBackColor = true;
+            this.CollapseNodes_Button.Click += new System.EventHandler(this.CollapseNodes_Button_Click);
+            // 
+            // ExpandNodes_Button
+            // 
+            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExpandNodes_Button.Location = new System.Drawing.Point(886, 187);
+            this.ExpandNodes_Button.Name = "ExpandNodes_Button";
+            this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 23);
+            this.ExpandNodes_Button.TabIndex = 3;
+            this.ExpandNodes_Button.Text = "Expand Keys";
+            this.ExpandNodes_Button.UseVisualStyleBackColor = true;
+            this.ExpandNodes_Button.Click += new System.EventHandler(this.ExpandNodes_Button_Click);
+            // 
+            // ViewKeys_Button
+            // 
+            this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewKeys_Button.Location = new System.Drawing.Point(467, 478);
+            this.ViewKeys_Button.Name = "ViewKeys_Button";
+            this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
+            this.ViewKeys_Button.TabIndex = 2;
+            this.ViewKeys_Button.Text = "^";
+            this.ViewKeys_Button.UseVisualStyleBackColor = true;
+            this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
             // 
             // CurrentKey_GroupBox
             // 
             this.CurrentKey_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentKey_GroupBox.Controls.Add(this.Preview_Button);
             this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(762, 3);
+            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(780, 12);
             this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
             this.CurrentKey_GroupBox.Size = new System.Drawing.Size(100, 101);
             this.CurrentKey_GroupBox.TabIndex = 99;
@@ -893,6 +810,128 @@
             this.Preview_Button.TabStop = false;
             this.Preview_Button.Text = "Bottled Beer";
             this.Preview_Button.UseVisualStyleBackColor = false;
+            // 
+            // presetDataDataGridView
+            // 
+            this.presetDataDataGridView.AllowUserToDeleteRows = false;
+            this.presetDataDataGridView.AllowUserToOrderColumns = true;
+            this.presetDataDataGridView.AutoGenerateColumns = false;
+            this.presetDataDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.presetDataDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.presetDataDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.presetDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.presetDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.PresetPicture,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
+            this.presetDataDataGridView.DataSource = this.presetDataBindingSource;
+            this.presetDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.presetDataDataGridView.Name = "presetDataDataGridView";
+            this.presetDataDataGridView.Size = new System.Drawing.Size(977, 230);
+            this.presetDataDataGridView.TabIndex = 15;
+            this.presetDataDataGridView.TabStop = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PresetCode";
+            this.dataGridViewTextBoxColumn2.HeaderText = "PresetCode";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // PresetPicture
+            // 
+            this.PresetPicture.DataPropertyName = "PresetPicture";
+            this.PresetPicture.HeaderText = "PresetPicture";
+            this.PresetPicture.Name = "PresetPicture";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PresetPrice";
+            this.dataGridViewTextBoxColumn6.HeaderText = "PresetPrice";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "PresetPrice2";
+            this.dataGridViewTextBoxColumn7.HeaderText = "PresetPrice2";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "PresetPrice3";
+            this.dataGridViewTextBoxColumn8.HeaderText = "PresetPrice3";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "PresetPrice4";
+            this.dataGridViewTextBoxColumn9.HeaderText = "PresetPrice4";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "PresetPrice5";
+            this.dataGridViewTextBoxColumn10.HeaderText = "PresetPrice5";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "PresetPrice6";
+            this.dataGridViewTextBoxColumn11.HeaderText = "PresetPrice6";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "PresetPrice7";
+            this.dataGridViewTextBoxColumn12.HeaderText = "PresetPrice7";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "PresetPrice8";
+            this.dataGridViewTextBoxColumn13.HeaderText = "PresetPrice8";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // MainTreeView
+            // 
+            this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MainTreeView.Name = "MainTreeView";
+            this.MainTreeView.Size = new System.Drawing.Size(242, 728);
+            this.MainTreeView.TabIndex = 0;
+            this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
+            this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
+            this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
+            // 
+            // presetMasterBindingSource
+            // 
+            this.presetMasterBindingSource.AllowNew = false;
+            this.presetMasterBindingSource.DataMember = "PresetMaster";
+            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
+            // 
+            // presetMasterTableAdapter
+            // 
+            this.presetMasterTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.KeyMasterDataAdapter = null;
+            this.tableAdapterManager.KeyMasterTableAdapter = null;
+            this.tableAdapterManager.PresetDataTableAdapter = this.presetDataTableAdapter;
+            this.tableAdapterManager.PresetMasterTableAdapter = this.presetMasterTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // presetDataTableAdapter
+            // 
+            this.presetDataTableAdapter.ClearBeforeFill = true;
             // 
             // PresetForm
             // 
@@ -914,18 +953,19 @@
             this.Nested_SplitCon.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).EndInit();
             this.Nested_SplitCon.ResumeLayout(false);
+            this.SearchResults_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
             this.Pricing_GroupBox.ResumeLayout(false);
             this.Pricing_GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PresetNavigator)).EndInit();
             this.PresetNavigator.ResumeLayout(false);
             this.PresetNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
             this.customGrpBox1.ResumeLayout(false);
             this.CurrentKey_GroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -959,7 +999,6 @@
         private System.Windows.Forms.TextBox presetDescTextBox;
         private System.Windows.Forms.TextBox presetLegendTextBox;
         private System.Windows.Forms.TextBox presetTaxTextBox;
-        private System.Windows.Forms.TextBox presetPriceTextBox;
         private System.Windows.Forms.TextBox presetPrice2TextBox;
         private System.Windows.Forms.TextBox presetPrice3TextBox;
         private System.Windows.Forms.TextBox presetPrice4TextBox;
@@ -978,7 +1017,14 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.DataGridView SearchResults_DataGrid;
+        private System.Windows.Forms.Label SearchResults_Label;
+        public System.Windows.Forms.DataGridView presetDataDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PresetDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RegularPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PresetPicture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
@@ -987,12 +1033,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.DataGridView SearchResults_DataGrid;
-        private System.Windows.Forms.Label SearchResults_Label;
-        public System.Windows.Forms.DataGridView presetDataDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PresetDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RegularPrice;
+        private System.Windows.Forms.GroupBox SearchResults_GroupBox;
+        private System.Windows.Forms.Button Update_Button;
+        private System.Windows.Forms.TextBox presetPriceTextBox;
     }
 }
 
