@@ -29,10 +29,6 @@ namespace Preset_Maintenance
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
              this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
 
-            // DataAccessor.presetDataAdapter.FillPresetInfo(DataAccessor.presetDataTable);
-
-            // DataAccessor.presetMasterAdapter.Fill(DataAccessor.presetMasterDataTable);
-
             DataAccessor.AddParentNodes(MainTreeView);
         }
 
@@ -92,7 +88,7 @@ namespace Preset_Maintenance
 
         private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            presetDataBindingSource.Position = presetDataBindingSource.Find("PresetDesc", (sender as TreeView).SelectedNode.Text);
+            presetMasterBindingSource.Position = presetMasterBindingSource.Find("PresetDesc", (sender as TreeView).SelectedNode.Text);
 
             try
             {
@@ -201,8 +197,14 @@ namespace Preset_Maintenance
 
         private void Update_Button_Click(object sender, EventArgs e)
         {
-            var presetInfo = presetDataBindingSource.Current as DataRowView;
-            DataAccessor.UpdatePreset(presetInfo);
+            var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
+            var editedRow = (presetMasterBindingSource.Current as DataRowView);
+
+            DataAccessor.ChangeRow(presetToEdit, editedRow);
+
+
+            //DataAccessor.ChangeRow(presetMasterTableAdapter.GetData().FindByPresetCode(test.PresetCode));
+            
         }
     }
 

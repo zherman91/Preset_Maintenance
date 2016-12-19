@@ -39,6 +39,12 @@ namespace Preset_Maintenance
                 Console.WriteLine($"Updating {presetRow["PresetCode"]}...");
                 Console.WriteLine($"Price 1 = {presetRow["PresetPrice"]}");
 
+                var newRow = presetMasterAdapter.GetData().FindByPresetCode(presetRow.Row.ItemArray[1].ToString());
+
+                newRow = (jartrekDataSet.PresetMasterRow)presetRow.Row;
+
+                if (presetMasterAdapter.Update(newRow) > 0)
+                    MessageBox.Show("Success!");
 
             }
             catch (Exception u)
@@ -101,10 +107,29 @@ namespace Preset_Maintenance
                 return null;
             }
         }
+
+        internal static void ChangeRow(jartrekDataSet.PresetMasterRow rowToEdit, DataRowView editedRow)
+        {
+            try
+            {
+                if (rowToEdit.RowState == DataRowState.Unchanged)
+                {
+                    rowToEdit.ItemArray = editedRow.Row.ItemArray;
+                }
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Too many characters!");
+            }
+
+            if (presetMasterAdapter.Update(rowToEdit) > 0)
+                MessageBox.Show("Success!");
+
+        }
     }
 
     public class RowEvents
-    { 
+    {
         public RowEvents()
         {
             DataAccessor.presetDataTable.RowChanging += PresetDataTable_RowChanging;
