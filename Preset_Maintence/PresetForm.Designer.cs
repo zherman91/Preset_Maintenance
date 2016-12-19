@@ -59,9 +59,40 @@
             this.RegularPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchResults_Label = new System.Windows.Forms.Label();
             this.Pricing_GroupBox = new System.Windows.Forms.GroupBox();
-            this.presetDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presetMasterBindingNaviagator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jartrekDataSet = new Preset_Maintenance.jartrekDataSet();
-            this.Update_Button = new System.Windows.Forms.Button();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.presetCodeTextBox = new System.Windows.Forms.TextBox();
+            this.presetDescTextBox = new System.Windows.Forms.TextBox();
+            this.presetLegendTextBox = new System.Windows.Forms.TextBox();
+            this.presetTaxTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrintTextBox = new System.Windows.Forms.TextBox();
+            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
+            this.presetColorTextBox = new System.Windows.Forms.TextBox();
+            this.presetReceiptTextBox = new System.Windows.Forms.TextBox();
+            this.presetPictureTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice2TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice8TextBox = new System.Windows.Forms.TextBox();
+            this.presetChipTextBox = new System.Windows.Forms.TextBox();
+            this.presetChippableTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice3TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice7TextBox = new System.Windows.Forms.TextBox();
+            this.presetChitToggleTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrintChitTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice4TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice6TextBox = new System.Windows.Forms.TextBox();
+            this.presetChitScanTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice5TextBox = new System.Windows.Forms.TextBox();
             this.ClearButton = new System.Windows.Forms.Button();
             this.PresetSearch_Button = new System.Windows.Forms.Button();
             this.PresetSearchLabel = new System.Windows.Forms.Label();
@@ -70,6 +101,7 @@
             this.CollapseNodes_Button = new System.Windows.Forms.Button();
             this.ExpandNodes_Button = new System.Windows.Forms.Button();
             this.ViewKeys_Button = new System.Windows.Forms.Button();
+            this.Update_Button = new System.Windows.Forms.Button();
             this.presetDataDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PresetPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,43 +114,10 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTreeView = new System.Windows.Forms.TreeView();
-            this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presetDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
             this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
             this.presetDataTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetDataTableAdapter();
-            this.presetCodeTextBox = new System.Windows.Forms.TextBox();
-            this.presetDescTextBox = new System.Windows.Forms.TextBox();
-            this.presetLegendTextBox = new System.Windows.Forms.TextBox();
-            this.presetTaxTextBox = new System.Windows.Forms.TextBox();
-            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrintTextBox = new System.Windows.Forms.TextBox();
-            this.presetColorTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice2TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice3TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice4TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice5TextBox = new System.Windows.Forms.TextBox();
-            this.presetReceiptTextBox = new System.Windows.Forms.TextBox();
-            this.presetPictureTextBox = new System.Windows.Forms.TextBox();
-            this.presetChipTextBox = new System.Windows.Forms.TextBox();
-            this.presetChippableTextBox = new System.Windows.Forms.TextBox();
-            this.presetChitToggleTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrintChitTextBox = new System.Windows.Forms.TextBox();
-            this.presetChitScanTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice6TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice7TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice8TextBox = new System.Windows.Forms.TextBox();
-            this.presetMasterBindingNaviagator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
             this.CurrentPreset_Button = new System.Windows.Forms.Button();
             this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
@@ -155,15 +154,213 @@
             this.SearchResults_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).BeginInit();
             this.Pricing_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNaviagator)).BeginInit();
             this.presetMasterBindingNaviagator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
             this.customGrpBox1.SuspendLayout();
             this.CurrentKey_GroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // presetCodeLabel
+            // 
+            presetCodeLabel.AutoSize = true;
+            presetCodeLabel.Location = new System.Drawing.Point(6, 48);
+            presetCodeLabel.Name = "presetCodeLabel";
+            presetCodeLabel.Size = new System.Drawing.Size(77, 15);
+            presetCodeLabel.TabIndex = 30;
+            presetCodeLabel.Text = "Preset Code:";
+            // 
+            // presetDescLabel
+            // 
+            presetDescLabel.AutoSize = true;
+            presetDescLabel.Location = new System.Drawing.Point(6, 75);
+            presetDescLabel.Name = "presetDescLabel";
+            presetDescLabel.Size = new System.Drawing.Size(76, 15);
+            presetDescLabel.TabIndex = 34;
+            presetDescLabel.Text = "Preset Desc:";
+            // 
+            // presetLegendLabel
+            // 
+            presetLegendLabel.AutoSize = true;
+            presetLegendLabel.Location = new System.Drawing.Point(6, 102);
+            presetLegendLabel.Name = "presetLegendLabel";
+            presetLegendLabel.Size = new System.Drawing.Size(90, 15);
+            presetLegendLabel.TabIndex = 36;
+            presetLegendLabel.Text = "Preset Legend:";
+            // 
+            // presetTaxLabel
+            // 
+            presetTaxLabel.AutoSize = true;
+            presetTaxLabel.Location = new System.Drawing.Point(6, 129);
+            presetTaxLabel.Name = "presetTaxLabel";
+            presetTaxLabel.Size = new System.Drawing.Size(68, 15);
+            presetTaxLabel.TabIndex = 40;
+            presetTaxLabel.Text = "Preset Tax:";
+            // 
+            // presetPriceLabel
+            // 
+            presetPriceLabel.AutoSize = true;
+            presetPriceLabel.Location = new System.Drawing.Point(6, 156);
+            presetPriceLabel.Name = "presetPriceLabel";
+            presetPriceLabel.Size = new System.Drawing.Size(76, 15);
+            presetPriceLabel.TabIndex = 42;
+            presetPriceLabel.Text = "Preset Price:";
+            // 
+            // presetPrintLabel
+            // 
+            presetPrintLabel.AutoSize = true;
+            presetPrintLabel.Location = new System.Drawing.Point(6, 370);
+            presetPrintLabel.Name = "presetPrintLabel";
+            presetPrintLabel.Size = new System.Drawing.Size(73, 15);
+            presetPrintLabel.TabIndex = 44;
+            presetPrintLabel.Text = "Preset Print:";
+            presetPrintLabel.Visible = false;
+            // 
+            // presetColorLabel
+            // 
+            presetColorLabel.AutoSize = true;
+            presetColorLabel.Location = new System.Drawing.Point(6, 397);
+            presetColorLabel.Name = "presetColorLabel";
+            presetColorLabel.Size = new System.Drawing.Size(77, 15);
+            presetColorLabel.TabIndex = 58;
+            presetColorLabel.Text = "Preset Color:";
+            presetColorLabel.Visible = false;
+            // 
+            // presetPrice2Label
+            // 
+            presetPrice2Label.AutoSize = true;
+            presetPrice2Label.Location = new System.Drawing.Point(6, 182);
+            presetPrice2Label.Name = "presetPrice2Label";
+            presetPrice2Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice2Label.TabIndex = 60;
+            presetPrice2Label.Text = "Preset Price2:";
+            // 
+            // presetPrice3Label
+            // 
+            presetPrice3Label.AutoSize = true;
+            presetPrice3Label.Location = new System.Drawing.Point(6, 209);
+            presetPrice3Label.Name = "presetPrice3Label";
+            presetPrice3Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice3Label.TabIndex = 62;
+            presetPrice3Label.Text = "Preset Price3:";
+            // 
+            // presetPrice4Label
+            // 
+            presetPrice4Label.AutoSize = true;
+            presetPrice4Label.Location = new System.Drawing.Point(6, 236);
+            presetPrice4Label.Name = "presetPrice4Label";
+            presetPrice4Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice4Label.TabIndex = 64;
+            presetPrice4Label.Text = "Preset Price4:";
+            // 
+            // presetPrice5Label
+            // 
+            presetPrice5Label.AutoSize = true;
+            presetPrice5Label.Location = new System.Drawing.Point(6, 263);
+            presetPrice5Label.Name = "presetPrice5Label";
+            presetPrice5Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice5Label.TabIndex = 66;
+            presetPrice5Label.Text = "Preset Price5:";
+            // 
+            // presetReceiptLabel
+            // 
+            presetReceiptLabel.AutoSize = true;
+            presetReceiptLabel.Location = new System.Drawing.Point(6, 424);
+            presetReceiptLabel.Name = "presetReceiptLabel";
+            presetReceiptLabel.Size = new System.Drawing.Size(90, 15);
+            presetReceiptLabel.TabIndex = 68;
+            presetReceiptLabel.Text = "Preset Receipt:";
+            presetReceiptLabel.Visible = false;
+            // 
+            // presetPictureLabel
+            // 
+            presetPictureLabel.AutoSize = true;
+            presetPictureLabel.Location = new System.Drawing.Point(6, 451);
+            presetPictureLabel.Name = "presetPictureLabel";
+            presetPictureLabel.Size = new System.Drawing.Size(86, 15);
+            presetPictureLabel.TabIndex = 70;
+            presetPictureLabel.Text = "Preset Picture:";
+            presetPictureLabel.Visible = false;
+            // 
+            // presetChipLabel
+            // 
+            presetChipLabel.AutoSize = true;
+            presetChipLabel.Location = new System.Drawing.Point(6, 478);
+            presetChipLabel.Name = "presetChipLabel";
+            presetChipLabel.Size = new System.Drawing.Size(73, 15);
+            presetChipLabel.TabIndex = 72;
+            presetChipLabel.Text = "Preset Chip:";
+            presetChipLabel.Visible = false;
+            // 
+            // presetChippableLabel
+            // 
+            presetChippableLabel.AutoSize = true;
+            presetChippableLabel.Location = new System.Drawing.Point(6, 505);
+            presetChippableLabel.Name = "presetChippableLabel";
+            presetChippableLabel.Size = new System.Drawing.Size(104, 15);
+            presetChippableLabel.TabIndex = 74;
+            presetChippableLabel.Text = "Preset Chippable:";
+            presetChippableLabel.Visible = false;
+            // 
+            // presetChitToggleLabel
+            // 
+            presetChitToggleLabel.AutoSize = true;
+            presetChitToggleLabel.Location = new System.Drawing.Point(6, 532);
+            presetChitToggleLabel.Name = "presetChitToggleLabel";
+            presetChitToggleLabel.Size = new System.Drawing.Size(110, 15);
+            presetChitToggleLabel.TabIndex = 76;
+            presetChitToggleLabel.Text = "Preset Chit Toggle:";
+            presetChitToggleLabel.Visible = false;
+            // 
+            // presetPrintChitLabel
+            // 
+            presetPrintChitLabel.AutoSize = true;
+            presetPrintChitLabel.Location = new System.Drawing.Point(6, 559);
+            presetPrintChitLabel.Name = "presetPrintChitLabel";
+            presetPrintChitLabel.Size = new System.Drawing.Size(97, 15);
+            presetPrintChitLabel.TabIndex = 78;
+            presetPrintChitLabel.Text = "Preset Print Chit:";
+            presetPrintChitLabel.Visible = false;
+            // 
+            // presetChitScanLabel
+            // 
+            presetChitScanLabel.AutoSize = true;
+            presetChitScanLabel.Location = new System.Drawing.Point(6, 586);
+            presetChitScanLabel.Name = "presetChitScanLabel";
+            presetChitScanLabel.Size = new System.Drawing.Size(100, 15);
+            presetChitScanLabel.TabIndex = 80;
+            presetChitScanLabel.Text = "Preset Chit Scan:";
+            presetChitScanLabel.Visible = false;
+            // 
+            // presetPrice6Label
+            // 
+            presetPrice6Label.AutoSize = true;
+            presetPrice6Label.Location = new System.Drawing.Point(6, 289);
+            presetPrice6Label.Name = "presetPrice6Label";
+            presetPrice6Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice6Label.TabIndex = 82;
+            presetPrice6Label.Text = "Preset Price6:";
+            // 
+            // presetPrice7Label
+            // 
+            presetPrice7Label.AutoSize = true;
+            presetPrice7Label.Location = new System.Drawing.Point(6, 316);
+            presetPrice7Label.Name = "presetPrice7Label";
+            presetPrice7Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice7Label.TabIndex = 84;
+            presetPrice7Label.Text = "Preset Price7:";
+            // 
+            // presetPrice8Label
+            // 
+            presetPrice8Label.AutoSize = true;
+            presetPrice8Label.Location = new System.Drawing.Point(6, 343);
+            presetPrice8Label.Name = "presetPrice8Label";
+            presetPrice8Label.Size = new System.Drawing.Size(83, 15);
+            presetPrice8Label.TabIndex = 86;
+            presetPrice8Label.Text = "Preset Price8:";
             // 
             // Main_SplitCon
             // 
@@ -218,7 +415,7 @@
             this.Nested_SplitCon.Panel2.Controls.Add(this.presetDataDataGridView);
             this.Nested_SplitCon.Panel2MinSize = 100;
             this.Nested_SplitCon.Size = new System.Drawing.Size(971, 841);
-            this.Nested_SplitCon.SplitterDistance = 642;
+            this.Nested_SplitCon.SplitterDistance = 644;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
             // 
@@ -230,7 +427,7 @@
             this.SearchResults_GroupBox.Controls.Add(this.SearchResults_DataGrid);
             this.SearchResults_GroupBox.Location = new System.Drawing.Point(356, 12);
             this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
-            this.SearchResults_GroupBox.Size = new System.Drawing.Size(345, 372);
+            this.SearchResults_GroupBox.Size = new System.Drawing.Size(345, 374);
             this.SearchResults_GroupBox.TabIndex = 101;
             this.SearchResults_GroupBox.TabStop = false;
             this.SearchResults_GroupBox.Text = "Search Results";
@@ -250,7 +447,7 @@
             this.SearchResults_DataGrid.Location = new System.Drawing.Point(6, 19);
             this.SearchResults_DataGrid.Name = "SearchResults_DataGrid";
             this.SearchResults_DataGrid.RowHeadersWidth = 15;
-            this.SearchResults_DataGrid.Size = new System.Drawing.Size(333, 347);
+            this.SearchResults_DataGrid.Size = new System.Drawing.Size(333, 349);
             this.SearchResults_DataGrid.TabIndex = 16;
             this.SearchResults_DataGrid.TabStop = false;
             this.SearchResults_DataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
@@ -328,27 +525,299 @@
             this.Pricing_GroupBox.TabStop = false;
             this.Pricing_GroupBox.Text = "Pricing";
             // 
-            // presetDataBindingSource
+            // presetMasterBindingNaviagator
             // 
-            this.presetDataBindingSource.DataMember = "PresetData";
-            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
+            this.presetMasterBindingNaviagator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.presetMasterBindingNaviagator.BindingSource = this.presetMasterBindingSource;
+            this.presetMasterBindingNaviagator.CountItem = this.bindingNavigatorCountItem;
+            this.presetMasterBindingNaviagator.DeleteItem = null;
+            this.presetMasterBindingNaviagator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem});
+            this.presetMasterBindingNaviagator.Location = new System.Drawing.Point(3, 17);
+            this.presetMasterBindingNaviagator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.presetMasterBindingNaviagator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.presetMasterBindingNaviagator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.presetMasterBindingNaviagator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.presetMasterBindingNaviagator.Name = "presetMasterBindingNaviagator";
+            this.presetMasterBindingNaviagator.PositionItem = this.bindingNavigatorPositionItem;
+            this.presetMasterBindingNaviagator.Size = new System.Drawing.Size(332, 25);
+            this.presetMasterBindingNaviagator.TabIndex = 88;
+            this.presetMasterBindingNaviagator.Text = "masterBinding";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click_1);
+            // 
+            // presetMasterBindingSource
+            // 
+            this.presetMasterBindingSource.AllowNew = false;
+            this.presetMasterBindingSource.DataMember = "PresetMaster";
+            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
             // 
             // jartrekDataSet
             // 
             this.jartrekDataSet.DataSetName = "jartrekDataSet";
             this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // Update_Button
+            // bindingNavigatorCountItem
             // 
-            this.Update_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Update_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Update_Button.Location = new System.Drawing.Point(356, 390);
-            this.Update_Button.Name = "Update_Button";
-            this.Update_Button.Size = new System.Drawing.Size(75, 28);
-            this.Update_Button.TabIndex = 30;
-            this.Update_Button.Text = "Update";
-            this.Update_Button.UseVisualStyleBackColor = true;
-            this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // presetCodeTextBox
+            // 
+            this.presetCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetCode", true));
+            this.presetCodeTextBox.Location = new System.Drawing.Point(141, 45);
+            this.presetCodeTextBox.Name = "presetCodeTextBox";
+            this.presetCodeTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetCodeTextBox.TabIndex = 31;
+            // 
+            // presetDescTextBox
+            // 
+            this.presetDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetDesc", true));
+            this.presetDescTextBox.Location = new System.Drawing.Point(141, 72);
+            this.presetDescTextBox.Name = "presetDescTextBox";
+            this.presetDescTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetDescTextBox.TabIndex = 35;
+            // 
+            // presetLegendTextBox
+            // 
+            this.presetLegendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetLegend", true));
+            this.presetLegendTextBox.Location = new System.Drawing.Point(141, 99);
+            this.presetLegendTextBox.Name = "presetLegendTextBox";
+            this.presetLegendTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetLegendTextBox.TabIndex = 37;
+            // 
+            // presetTaxTextBox
+            // 
+            this.presetTaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetTax", true));
+            this.presetTaxTextBox.Location = new System.Drawing.Point(141, 126);
+            this.presetTaxTextBox.Name = "presetTaxTextBox";
+            this.presetTaxTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetTaxTextBox.TabIndex = 41;
+            // 
+            // presetPrintTextBox
+            // 
+            this.presetPrintTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrint", true));
+            this.presetPrintTextBox.Location = new System.Drawing.Point(141, 367);
+            this.presetPrintTextBox.Name = "presetPrintTextBox";
+            this.presetPrintTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrintTextBox.TabIndex = 45;
+            this.presetPrintTextBox.Visible = false;
+            // 
+            // presetPriceTextBox
+            // 
+            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPriceTextBox.Location = new System.Drawing.Point(141, 153);
+            this.presetPriceTextBox.Name = "presetPriceTextBox";
+            this.presetPriceTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPriceTextBox.TabIndex = 43;
+            this.presetPriceTextBox.TextChanged += new System.EventHandler(this.presetPriceTextBox_TextChanged);
+            // 
+            // presetColorTextBox
+            // 
+            this.presetColorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetColor", true));
+            this.presetColorTextBox.Location = new System.Drawing.Point(141, 394);
+            this.presetColorTextBox.Name = "presetColorTextBox";
+            this.presetColorTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetColorTextBox.TabIndex = 59;
+            this.presetColorTextBox.Visible = false;
+            // 
+            // presetReceiptTextBox
+            // 
+            this.presetReceiptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
+            this.presetReceiptTextBox.Location = new System.Drawing.Point(141, 421);
+            this.presetReceiptTextBox.Name = "presetReceiptTextBox";
+            this.presetReceiptTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetReceiptTextBox.TabIndex = 69;
+            this.presetReceiptTextBox.Visible = false;
+            // 
+            // presetPictureTextBox
+            // 
+            this.presetPictureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
+            this.presetPictureTextBox.Location = new System.Drawing.Point(141, 448);
+            this.presetPictureTextBox.Name = "presetPictureTextBox";
+            this.presetPictureTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPictureTextBox.TabIndex = 71;
+            this.presetPictureTextBox.Visible = false;
+            // 
+            // presetPrice2TextBox
+            // 
+            this.presetPrice2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice2TextBox.Location = new System.Drawing.Point(141, 179);
+            this.presetPrice2TextBox.Name = "presetPrice2TextBox";
+            this.presetPrice2TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice2TextBox.TabIndex = 61;
+            // 
+            // presetPrice8TextBox
+            // 
+            this.presetPrice8TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice8", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice8TextBox.Location = new System.Drawing.Point(141, 340);
+            this.presetPrice8TextBox.Name = "presetPrice8TextBox";
+            this.presetPrice8TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice8TextBox.TabIndex = 87;
+            // 
+            // presetChipTextBox
+            // 
+            this.presetChipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChip", true));
+            this.presetChipTextBox.Location = new System.Drawing.Point(141, 475);
+            this.presetChipTextBox.Name = "presetChipTextBox";
+            this.presetChipTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChipTextBox.TabIndex = 73;
+            this.presetChipTextBox.Visible = false;
+            // 
+            // presetChippableTextBox
+            // 
+            this.presetChippableTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChippable", true));
+            this.presetChippableTextBox.Location = new System.Drawing.Point(141, 502);
+            this.presetChippableTextBox.Name = "presetChippableTextBox";
+            this.presetChippableTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChippableTextBox.TabIndex = 75;
+            this.presetChippableTextBox.Visible = false;
+            // 
+            // presetPrice3TextBox
+            // 
+            this.presetPrice3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice3TextBox.Location = new System.Drawing.Point(141, 206);
+            this.presetPrice3TextBox.Name = "presetPrice3TextBox";
+            this.presetPrice3TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice3TextBox.TabIndex = 63;
+            // 
+            // presetPrice7TextBox
+            // 
+            this.presetPrice7TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice7", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice7TextBox.Location = new System.Drawing.Point(141, 313);
+            this.presetPrice7TextBox.Name = "presetPrice7TextBox";
+            this.presetPrice7TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice7TextBox.TabIndex = 85;
+            // 
+            // presetChitToggleTextBox
+            // 
+            this.presetChitToggleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitToggle", true));
+            this.presetChitToggleTextBox.Location = new System.Drawing.Point(141, 529);
+            this.presetChitToggleTextBox.Name = "presetChitToggleTextBox";
+            this.presetChitToggleTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChitToggleTextBox.TabIndex = 77;
+            this.presetChitToggleTextBox.Visible = false;
+            // 
+            // presetPrintChitTextBox
+            // 
+            this.presetPrintChitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrintChit", true));
+            this.presetPrintChitTextBox.Location = new System.Drawing.Point(141, 556);
+            this.presetPrintChitTextBox.Name = "presetPrintChitTextBox";
+            this.presetPrintChitTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrintChitTextBox.TabIndex = 79;
+            this.presetPrintChitTextBox.Visible = false;
+            // 
+            // presetPrice4TextBox
+            // 
+            this.presetPrice4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice4TextBox.Location = new System.Drawing.Point(141, 233);
+            this.presetPrice4TextBox.Name = "presetPrice4TextBox";
+            this.presetPrice4TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice4TextBox.TabIndex = 65;
+            // 
+            // presetPrice6TextBox
+            // 
+            this.presetPrice6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice6TextBox.Location = new System.Drawing.Point(141, 286);
+            this.presetPrice6TextBox.Name = "presetPrice6TextBox";
+            this.presetPrice6TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice6TextBox.TabIndex = 83;
+            // 
+            // presetChitScanTextBox
+            // 
+            this.presetChitScanTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitScan", true));
+            this.presetChitScanTextBox.Location = new System.Drawing.Point(141, 583);
+            this.presetChitScanTextBox.Name = "presetChitScanTextBox";
+            this.presetChitScanTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChitScanTextBox.TabIndex = 81;
+            this.presetChitScanTextBox.Visible = false;
+            // 
+            // presetPrice5TextBox
+            // 
+            this.presetPrice5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice5TextBox.Location = new System.Drawing.Point(141, 260);
+            this.presetPrice5TextBox.Name = "presetPrice5TextBox";
+            this.presetPrice5TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice5TextBox.TabIndex = 67;
             // 
             // ClearButton
             // 
@@ -427,7 +896,7 @@
             // 
             this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(463, 623);
+            this.ViewKeys_Button.Location = new System.Drawing.Point(463, 625);
             this.ViewKeys_Button.Name = "ViewKeys_Button";
             this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
             this.ViewKeys_Button.TabIndex = 2;
@@ -435,10 +904,21 @@
             this.ViewKeys_Button.UseVisualStyleBackColor = true;
             this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
             // 
+            // Update_Button
+            // 
+            this.Update_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Update_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Update_Button.Location = new System.Drawing.Point(356, 392);
+            this.Update_Button.Name = "Update_Button";
+            this.Update_Button.Size = new System.Drawing.Size(75, 28);
+            this.Update_Button.TabIndex = 30;
+            this.Update_Button.Text = "Update";
+            this.Update_Button.UseVisualStyleBackColor = true;
+            this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
+            // 
             // presetDataDataGridView
             // 
             this.presetDataDataGridView.AllowUserToDeleteRows = false;
-            this.presetDataDataGridView.AllowUserToOrderColumns = true;
             this.presetDataDataGridView.AutoGenerateColumns = false;
             this.presetDataDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.presetDataDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -460,7 +940,7 @@
             this.presetDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
             this.presetDataDataGridView.Name = "presetDataDataGridView";
-            this.presetDataDataGridView.Size = new System.Drawing.Size(971, 197);
+            this.presetDataDataGridView.Size = new System.Drawing.Size(971, 195);
             this.presetDataDataGridView.TabIndex = 15;
             this.presetDataDataGridView.TabStop = false;
             // 
@@ -535,11 +1015,10 @@
             this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
             this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
             // 
-            // presetMasterBindingSource
+            // presetDataBindingSource
             // 
-            this.presetMasterBindingSource.AllowNew = false;
-            this.presetMasterBindingSource.DataMember = "PresetMaster";
-            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
+            this.presetDataBindingSource.DataMember = "PresetData";
+            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
             // 
             // presetMasterTableAdapter
             // 
@@ -557,495 +1036,6 @@
             // presetDataTableAdapter
             // 
             this.presetDataTableAdapter.ClearBeforeFill = true;
-            // 
-            // presetCodeLabel
-            // 
-            presetCodeLabel.AutoSize = true;
-            presetCodeLabel.Location = new System.Drawing.Point(6, 48);
-            presetCodeLabel.Name = "presetCodeLabel";
-            presetCodeLabel.Size = new System.Drawing.Size(77, 15);
-            presetCodeLabel.TabIndex = 30;
-            presetCodeLabel.Text = "Preset Code:";
-            // 
-            // presetCodeTextBox
-            // 
-            this.presetCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetCode", true));
-            this.presetCodeTextBox.Location = new System.Drawing.Point(141, 45);
-            this.presetCodeTextBox.Name = "presetCodeTextBox";
-            this.presetCodeTextBox.Size = new System.Drawing.Size(191, 21);
-            this.presetCodeTextBox.TabIndex = 31;
-            // 
-            // presetDescLabel
-            // 
-            presetDescLabel.AutoSize = true;
-            presetDescLabel.Location = new System.Drawing.Point(6, 75);
-            presetDescLabel.Name = "presetDescLabel";
-            presetDescLabel.Size = new System.Drawing.Size(76, 15);
-            presetDescLabel.TabIndex = 34;
-            presetDescLabel.Text = "Preset Desc:";
-            // 
-            // presetDescTextBox
-            // 
-            this.presetDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetDesc", true));
-            this.presetDescTextBox.Location = new System.Drawing.Point(141, 72);
-            this.presetDescTextBox.Name = "presetDescTextBox";
-            this.presetDescTextBox.Size = new System.Drawing.Size(191, 21);
-            this.presetDescTextBox.TabIndex = 35;
-            // 
-            // presetLegendLabel
-            // 
-            presetLegendLabel.AutoSize = true;
-            presetLegendLabel.Location = new System.Drawing.Point(6, 102);
-            presetLegendLabel.Name = "presetLegendLabel";
-            presetLegendLabel.Size = new System.Drawing.Size(90, 15);
-            presetLegendLabel.TabIndex = 36;
-            presetLegendLabel.Text = "Preset Legend:";
-            // 
-            // presetLegendTextBox
-            // 
-            this.presetLegendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetLegend", true));
-            this.presetLegendTextBox.Location = new System.Drawing.Point(141, 99);
-            this.presetLegendTextBox.Name = "presetLegendTextBox";
-            this.presetLegendTextBox.Size = new System.Drawing.Size(191, 21);
-            this.presetLegendTextBox.TabIndex = 37;
-            // 
-            // presetTaxLabel
-            // 
-            presetTaxLabel.AutoSize = true;
-            presetTaxLabel.Location = new System.Drawing.Point(6, 129);
-            presetTaxLabel.Name = "presetTaxLabel";
-            presetTaxLabel.Size = new System.Drawing.Size(68, 15);
-            presetTaxLabel.TabIndex = 40;
-            presetTaxLabel.Text = "Preset Tax:";
-            // 
-            // presetTaxTextBox
-            // 
-            this.presetTaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetTax", true));
-            this.presetTaxTextBox.Location = new System.Drawing.Point(141, 126);
-            this.presetTaxTextBox.Name = "presetTaxTextBox";
-            this.presetTaxTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetTaxTextBox.TabIndex = 41;
-            // 
-            // presetPriceLabel
-            // 
-            presetPriceLabel.AutoSize = true;
-            presetPriceLabel.Location = new System.Drawing.Point(6, 156);
-            presetPriceLabel.Name = "presetPriceLabel";
-            presetPriceLabel.Size = new System.Drawing.Size(76, 15);
-            presetPriceLabel.TabIndex = 42;
-            presetPriceLabel.Text = "Preset Price:";
-            // 
-            // presetPriceTextBox
-            // 
-            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPriceTextBox.Location = new System.Drawing.Point(141, 153);
-            this.presetPriceTextBox.Name = "presetPriceTextBox";
-            this.presetPriceTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPriceTextBox.TabIndex = 43;
-            // 
-            // presetPrintLabel
-            // 
-            presetPrintLabel.AutoSize = true;
-            presetPrintLabel.Location = new System.Drawing.Point(6, 370);
-            presetPrintLabel.Name = "presetPrintLabel";
-            presetPrintLabel.Size = new System.Drawing.Size(73, 15);
-            presetPrintLabel.TabIndex = 44;
-            presetPrintLabel.Text = "Preset Print:";
-            presetPrintLabel.Visible = false;
-            // 
-            // presetPrintTextBox
-            // 
-            this.presetPrintTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrint", true));
-            this.presetPrintTextBox.Location = new System.Drawing.Point(141, 367);
-            this.presetPrintTextBox.Name = "presetPrintTextBox";
-            this.presetPrintTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrintTextBox.TabIndex = 45;
-            this.presetPrintTextBox.Visible = false;
-            // 
-            // presetColorLabel
-            // 
-            presetColorLabel.AutoSize = true;
-            presetColorLabel.Location = new System.Drawing.Point(6, 397);
-            presetColorLabel.Name = "presetColorLabel";
-            presetColorLabel.Size = new System.Drawing.Size(77, 15);
-            presetColorLabel.TabIndex = 58;
-            presetColorLabel.Text = "Preset Color:";
-            presetColorLabel.Visible = false;
-            // 
-            // presetColorTextBox
-            // 
-            this.presetColorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetColor", true));
-            this.presetColorTextBox.Location = new System.Drawing.Point(141, 394);
-            this.presetColorTextBox.Name = "presetColorTextBox";
-            this.presetColorTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetColorTextBox.TabIndex = 59;
-            this.presetColorTextBox.Visible = false;
-            // 
-            // presetPrice2Label
-            // 
-            presetPrice2Label.AutoSize = true;
-            presetPrice2Label.Location = new System.Drawing.Point(6, 182);
-            presetPrice2Label.Name = "presetPrice2Label";
-            presetPrice2Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice2Label.TabIndex = 60;
-            presetPrice2Label.Text = "Preset Price2:";
-            // 
-            // presetPrice2TextBox
-            // 
-            this.presetPrice2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice2TextBox.Location = new System.Drawing.Point(141, 179);
-            this.presetPrice2TextBox.Name = "presetPrice2TextBox";
-            this.presetPrice2TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice2TextBox.TabIndex = 61;
-            // 
-            // presetPrice3Label
-            // 
-            presetPrice3Label.AutoSize = true;
-            presetPrice3Label.Location = new System.Drawing.Point(6, 209);
-            presetPrice3Label.Name = "presetPrice3Label";
-            presetPrice3Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice3Label.TabIndex = 62;
-            presetPrice3Label.Text = "Preset Price3:";
-            // 
-            // presetPrice3TextBox
-            // 
-            this.presetPrice3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice3TextBox.Location = new System.Drawing.Point(141, 206);
-            this.presetPrice3TextBox.Name = "presetPrice3TextBox";
-            this.presetPrice3TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice3TextBox.TabIndex = 63;
-            // 
-            // presetPrice4Label
-            // 
-            presetPrice4Label.AutoSize = true;
-            presetPrice4Label.Location = new System.Drawing.Point(6, 236);
-            presetPrice4Label.Name = "presetPrice4Label";
-            presetPrice4Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice4Label.TabIndex = 64;
-            presetPrice4Label.Text = "Preset Price4:";
-            // 
-            // presetPrice4TextBox
-            // 
-            this.presetPrice4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice4TextBox.Location = new System.Drawing.Point(141, 233);
-            this.presetPrice4TextBox.Name = "presetPrice4TextBox";
-            this.presetPrice4TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice4TextBox.TabIndex = 65;
-            // 
-            // presetPrice5Label
-            // 
-            presetPrice5Label.AutoSize = true;
-            presetPrice5Label.Location = new System.Drawing.Point(6, 263);
-            presetPrice5Label.Name = "presetPrice5Label";
-            presetPrice5Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice5Label.TabIndex = 66;
-            presetPrice5Label.Text = "Preset Price5:";
-            // 
-            // presetPrice5TextBox
-            // 
-            this.presetPrice5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice5TextBox.Location = new System.Drawing.Point(141, 260);
-            this.presetPrice5TextBox.Name = "presetPrice5TextBox";
-            this.presetPrice5TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice5TextBox.TabIndex = 67;
-            // 
-            // presetReceiptLabel
-            // 
-            presetReceiptLabel.AutoSize = true;
-            presetReceiptLabel.Location = new System.Drawing.Point(6, 424);
-            presetReceiptLabel.Name = "presetReceiptLabel";
-            presetReceiptLabel.Size = new System.Drawing.Size(90, 15);
-            presetReceiptLabel.TabIndex = 68;
-            presetReceiptLabel.Text = "Preset Receipt:";
-            presetReceiptLabel.Visible = false;
-            // 
-            // presetReceiptTextBox
-            // 
-            this.presetReceiptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
-            this.presetReceiptTextBox.Location = new System.Drawing.Point(141, 421);
-            this.presetReceiptTextBox.Name = "presetReceiptTextBox";
-            this.presetReceiptTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetReceiptTextBox.TabIndex = 69;
-            this.presetReceiptTextBox.Visible = false;
-            // 
-            // presetPictureLabel
-            // 
-            presetPictureLabel.AutoSize = true;
-            presetPictureLabel.Location = new System.Drawing.Point(6, 451);
-            presetPictureLabel.Name = "presetPictureLabel";
-            presetPictureLabel.Size = new System.Drawing.Size(86, 15);
-            presetPictureLabel.TabIndex = 70;
-            presetPictureLabel.Text = "Preset Picture:";
-            presetPictureLabel.Visible = false;
-            // 
-            // presetPictureTextBox
-            // 
-            this.presetPictureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
-            this.presetPictureTextBox.Location = new System.Drawing.Point(141, 448);
-            this.presetPictureTextBox.Name = "presetPictureTextBox";
-            this.presetPictureTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPictureTextBox.TabIndex = 71;
-            this.presetPictureTextBox.Visible = false;
-            // 
-            // presetChipLabel
-            // 
-            presetChipLabel.AutoSize = true;
-            presetChipLabel.Location = new System.Drawing.Point(6, 478);
-            presetChipLabel.Name = "presetChipLabel";
-            presetChipLabel.Size = new System.Drawing.Size(73, 15);
-            presetChipLabel.TabIndex = 72;
-            presetChipLabel.Text = "Preset Chip:";
-            presetChipLabel.Visible = false;
-            // 
-            // presetChipTextBox
-            // 
-            this.presetChipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChip", true));
-            this.presetChipTextBox.Location = new System.Drawing.Point(141, 475);
-            this.presetChipTextBox.Name = "presetChipTextBox";
-            this.presetChipTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChipTextBox.TabIndex = 73;
-            this.presetChipTextBox.Visible = false;
-            // 
-            // presetChippableLabel
-            // 
-            presetChippableLabel.AutoSize = true;
-            presetChippableLabel.Location = new System.Drawing.Point(6, 505);
-            presetChippableLabel.Name = "presetChippableLabel";
-            presetChippableLabel.Size = new System.Drawing.Size(104, 15);
-            presetChippableLabel.TabIndex = 74;
-            presetChippableLabel.Text = "Preset Chippable:";
-            presetChippableLabel.Visible = false;
-            // 
-            // presetChippableTextBox
-            // 
-            this.presetChippableTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChippable", true));
-            this.presetChippableTextBox.Location = new System.Drawing.Point(141, 502);
-            this.presetChippableTextBox.Name = "presetChippableTextBox";
-            this.presetChippableTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChippableTextBox.TabIndex = 75;
-            this.presetChippableTextBox.Visible = false;
-            // 
-            // presetChitToggleLabel
-            // 
-            presetChitToggleLabel.AutoSize = true;
-            presetChitToggleLabel.Location = new System.Drawing.Point(6, 532);
-            presetChitToggleLabel.Name = "presetChitToggleLabel";
-            presetChitToggleLabel.Size = new System.Drawing.Size(110, 15);
-            presetChitToggleLabel.TabIndex = 76;
-            presetChitToggleLabel.Text = "Preset Chit Toggle:";
-            presetChitToggleLabel.Visible = false;
-            // 
-            // presetChitToggleTextBox
-            // 
-            this.presetChitToggleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitToggle", true));
-            this.presetChitToggleTextBox.Location = new System.Drawing.Point(141, 529);
-            this.presetChitToggleTextBox.Name = "presetChitToggleTextBox";
-            this.presetChitToggleTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChitToggleTextBox.TabIndex = 77;
-            this.presetChitToggleTextBox.Visible = false;
-            // 
-            // presetPrintChitLabel
-            // 
-            presetPrintChitLabel.AutoSize = true;
-            presetPrintChitLabel.Location = new System.Drawing.Point(6, 559);
-            presetPrintChitLabel.Name = "presetPrintChitLabel";
-            presetPrintChitLabel.Size = new System.Drawing.Size(97, 15);
-            presetPrintChitLabel.TabIndex = 78;
-            presetPrintChitLabel.Text = "Preset Print Chit:";
-            presetPrintChitLabel.Visible = false;
-            // 
-            // presetPrintChitTextBox
-            // 
-            this.presetPrintChitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrintChit", true));
-            this.presetPrintChitTextBox.Location = new System.Drawing.Point(141, 556);
-            this.presetPrintChitTextBox.Name = "presetPrintChitTextBox";
-            this.presetPrintChitTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrintChitTextBox.TabIndex = 79;
-            this.presetPrintChitTextBox.Visible = false;
-            // 
-            // presetChitScanLabel
-            // 
-            presetChitScanLabel.AutoSize = true;
-            presetChitScanLabel.Location = new System.Drawing.Point(6, 586);
-            presetChitScanLabel.Name = "presetChitScanLabel";
-            presetChitScanLabel.Size = new System.Drawing.Size(100, 15);
-            presetChitScanLabel.TabIndex = 80;
-            presetChitScanLabel.Text = "Preset Chit Scan:";
-            presetChitScanLabel.Visible = false;
-            // 
-            // presetChitScanTextBox
-            // 
-            this.presetChitScanTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitScan", true));
-            this.presetChitScanTextBox.Location = new System.Drawing.Point(141, 583);
-            this.presetChitScanTextBox.Name = "presetChitScanTextBox";
-            this.presetChitScanTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChitScanTextBox.TabIndex = 81;
-            this.presetChitScanTextBox.Visible = false;
-            // 
-            // presetPrice6Label
-            // 
-            presetPrice6Label.AutoSize = true;
-            presetPrice6Label.Location = new System.Drawing.Point(6, 289);
-            presetPrice6Label.Name = "presetPrice6Label";
-            presetPrice6Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice6Label.TabIndex = 82;
-            presetPrice6Label.Text = "Preset Price6:";
-            // 
-            // presetPrice6TextBox
-            // 
-            this.presetPrice6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice6TextBox.Location = new System.Drawing.Point(141, 286);
-            this.presetPrice6TextBox.Name = "presetPrice6TextBox";
-            this.presetPrice6TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice6TextBox.TabIndex = 83;
-            // 
-            // presetPrice7Label
-            // 
-            presetPrice7Label.AutoSize = true;
-            presetPrice7Label.Location = new System.Drawing.Point(6, 316);
-            presetPrice7Label.Name = "presetPrice7Label";
-            presetPrice7Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice7Label.TabIndex = 84;
-            presetPrice7Label.Text = "Preset Price7:";
-            // 
-            // presetPrice7TextBox
-            // 
-            this.presetPrice7TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice7", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice7TextBox.Location = new System.Drawing.Point(141, 313);
-            this.presetPrice7TextBox.Name = "presetPrice7TextBox";
-            this.presetPrice7TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice7TextBox.TabIndex = 85;
-            // 
-            // presetPrice8Label
-            // 
-            presetPrice8Label.AutoSize = true;
-            presetPrice8Label.Location = new System.Drawing.Point(6, 343);
-            presetPrice8Label.Name = "presetPrice8Label";
-            presetPrice8Label.Size = new System.Drawing.Size(83, 15);
-            presetPrice8Label.TabIndex = 86;
-            presetPrice8Label.Text = "Preset Price8:";
-            // 
-            // presetPrice8TextBox
-            // 
-            this.presetPrice8TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice8", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice8TextBox.Location = new System.Drawing.Point(141, 340);
-            this.presetPrice8TextBox.Name = "presetPrice8TextBox";
-            this.presetPrice8TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice8TextBox.TabIndex = 87;
-            // 
-            // presetMasterBindingNaviagator
-            // 
-            this.presetMasterBindingNaviagator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.presetMasterBindingNaviagator.BindingSource = this.presetMasterBindingSource;
-            this.presetMasterBindingNaviagator.CountItem = this.bindingNavigatorCountItem;
-            this.presetMasterBindingNaviagator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.presetMasterBindingNaviagator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.presetMasterBindingNaviagator.Location = new System.Drawing.Point(3, 17);
-            this.presetMasterBindingNaviagator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.presetMasterBindingNaviagator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.presetMasterBindingNaviagator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.presetMasterBindingNaviagator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.presetMasterBindingNaviagator.Name = "presetMasterBindingNaviagator";
-            this.presetMasterBindingNaviagator.PositionItem = this.bindingNavigatorPositionItem;
-            this.presetMasterBindingNaviagator.Size = new System.Drawing.Size(332, 25);
-            this.presetMasterBindingNaviagator.TabIndex = 88;
-            this.presetMasterBindingNaviagator.Text = "masterBinding";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // customGrpBox1
             // 
@@ -1124,13 +1114,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).EndInit();
             this.Pricing_GroupBox.ResumeLayout(false);
             this.Pricing_GroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNaviagator)).EndInit();
             this.presetMasterBindingNaviagator.ResumeLayout(false);
             this.presetMasterBindingNaviagator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
             this.customGrpBox1.ResumeLayout(false);
             this.CurrentKey_GroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1202,7 +1192,6 @@
         private System.Windows.Forms.BindingNavigator presetMasterBindingNaviagator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;

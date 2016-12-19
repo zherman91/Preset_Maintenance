@@ -14,6 +14,9 @@ namespace Preset_Maintenance
     public partial class PresetForm : Form
     {
         List<TreeNode> currentNodeMatches = new List<TreeNode>();
+
+        private TextBox[] prices;
+
         int lastNodeIndex = 0;
         string lastSearchText;
 
@@ -25,10 +28,11 @@ namespace Preset_Maintenance
         private void PresetForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetData' table. You can move, or remove it, as needed.
-             this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
+            this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
-             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
+            this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
 
+            
             DataAccessor.AddParentNodes(MainTreeView);
         }
 
@@ -204,7 +208,23 @@ namespace Preset_Maintenance
 
 
             //DataAccessor.ChangeRow(presetMasterTableAdapter.GetData().FindByPresetCode(test.PresetCode));
-            
+
+        }
+
+        private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string newPrice = (sender as TextBox).Text;
+            prices = new TextBox[] { presetPrice2TextBox, presetPrice3TextBox, presetPrice4TextBox, presetPrice5TextBox, presetPrice6TextBox, presetPrice7TextBox, presetPrice8TextBox };
+
+            foreach (TextBox price in prices)
+                price.Text = newPrice;
+
+        }
+
+        private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add a new item!");
+
         }
     }
 
