@@ -20,8 +20,7 @@ namespace Preset_Maintenance
 
         public static jartrekDataSetTableAdapters.PresetMasterTableAdapter presetMasterAdapter = new jartrekDataSetTableAdapters.PresetMasterTableAdapter();
         public static jartrekDataSet.PresetMasterDataTable presetMasterDataTable = new jartrekDataSet.PresetMasterDataTable();
-
-
+                
         private const string BitMapPath = @"C:\Jartrek\BitMaps\";
 
         private static TreeNode[] nodes;
@@ -93,19 +92,24 @@ namespace Preset_Maintenance
         }
         internal static Bitmap GetBitMaps(string code)
         {
-            var presetPic =
-                from presetData in presetDataTable
-                where (presetData.PresetCode) == code
-                select presetData.PresetPicture;
-            try
+            while (code != "<None>")
             {
-                return new Bitmap(BitMapPath + presetPic.First());
+                var presetPic =
+                         from presetData in presetDataTable
+                         where (presetData.PresetCode) == code
+                         select presetData.PresetPicture;
+
+                try
+                {
+                    return new Bitmap(BitMapPath + presetPic.First());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
+            return null;
         }
 
         internal static void ChangeRow(jartrekDataSet.PresetMasterRow rowToEdit, DataRowView editedRow)
@@ -125,6 +129,29 @@ namespace Preset_Maintenance
             if (presetMasterAdapter.Update(rowToEdit) > 0)
                 MessageBox.Show("Success!");
 
+        }
+
+        internal static Image GetBitMaps(string presetCode, string bitMap)
+        {
+            if (bitMap != "<None>")
+            {
+                var presetPic =
+                    from presetData in presetDataTable
+                    where (presetData.PresetCode) == presetCode
+                    select presetData.PresetPicture;
+
+                try
+                {
+                    return new Bitmap(BitMapPath + presetPic.First());
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("New message");
+                    return null;
+                }
+            }
+            return null;
         }
     }
 

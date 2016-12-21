@@ -14,6 +14,8 @@ namespace Preset_Maintenance
     public partial class PresetForm : Form
     {
         List<TreeNode> currentNodeMatches = new List<TreeNode>();
+        PresetPriority pri;
+
 
         private TextBox[] prices;
 
@@ -23,6 +25,12 @@ namespace Preset_Maintenance
         public PresetForm()
         {
             InitializeComponent();
+
+            for (int i = 2; i < presetDataDataGridView.ColumnCount; i++)
+            {
+                presetDataDataGridView.Columns[i].DefaultCellStyle.Format = "c";
+            }
+            pri = new PresetPriority(this);
         }
 
         private void PresetForm_Load(object sender, EventArgs e)
@@ -32,8 +40,9 @@ namespace Preset_Maintenance
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
 
-            
             DataAccessor.AddParentNodes(MainTreeView);
+            PresetSplitContainer.Panel2Collapsed = true;
+            //setFormatting();
         }
 
         private void ViewKeys_Click(object sender, EventArgs e)
@@ -63,8 +72,8 @@ namespace Preset_Maintenance
         {
             try
             {
-                Preview_Button.Text = e.Node.Parent.Text;
-                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Text);
+                KeyPreview_Button.Text = e.Node.Parent.Text;
+                CurrentPreset_Button.Image = DataAccessor.GetBitMaps((presetMasterBindingSource.Current as jartrekDataSet.PresetMasterRow).PresetCode, e.Node.Text);
                 if (CurrentPreset_Button.Image != null)
                     CurrentPreset_Button.Text = "";
                 else
@@ -96,7 +105,7 @@ namespace Preset_Maintenance
 
             try
             {
-                Preview_Button.Text = e.Node.Parent.Text;
+                KeyPreview_Button.Text = e.Node.Parent.Text;
                 CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Name);
                 if (CurrentPreset_Button.Image != null)
                 {
@@ -160,6 +169,34 @@ namespace Preset_Maintenance
 
         }
 
+        private bool validateInput()
+        {
+            var textBoxes = Pricing_GroupBox.Controls.OfType<Control>()
+                            .OfType<TextBox>()
+                            .OrderBy(control => control.TabIndex);
+
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Focus();
+                if (textBox.Enabled)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        textBox.Focus();
+
+                        // remove "txt" prefix:
+                        var fieldName = textBox.Name.Substring(3);
+                        MessageBox.Show(string.Format("Field '{0}' cannot be empty.", fieldName));
+
+                        return false;
+                    }
+                }
+            }
+            Update_Button.Focus();
+            return true;
+
+        }
+
         /// <summary>
         /// Recursivly searches for the specified node and starting node. 
         /// </summary>
@@ -201,14 +238,14 @@ namespace Preset_Maintenance
 
         private void Update_Button_Click(object sender, EventArgs e)
         {
-            var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
-            var editedRow = (presetMasterBindingSource.Current as DataRowView);
-
-            DataAccessor.ChangeRow(presetToEdit, editedRow);
-
-
-            //DataAccessor.ChangeRow(presetMasterTableAdapter.GetData().FindByPresetCode(test.PresetCode));
-
+            if (validateInput())
+            {
+                var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
+                var editedRow = (presetMasterBindingSource.Current as DataRowView);
+                DataAccessor.ChangeRow(presetToEdit, editedRow);
+            }
+            else
+                return;//input is not valid
         }
 
         private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
@@ -224,6 +261,127 @@ namespace Preset_Maintenance
         private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Add a new item!");
+        }
+
+        private void PresetPriorityButton_Click(object sender, EventArgs e)
+        {
+            if (PresetSplitContainer.Panel2Collapsed)
+            {
+                PresetSplitContainer.Panel2Collapsed = false;
+                (sender as Button).Text = ">";
+                //need to pass a ref of this...
+            }
+            else
+            {
+                PresetSplitContainer.Panel2Collapsed = true;
+                (sender as Button).Text = "<";
+                //need to resetPresets here...
+            }
+        }
+
+        private void presetPrice2TextBox_Leave(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public class PresetPriority
+    {
+        PresetForm parent;
+
+        const string originalLegend = "Not Used!";
+        const int originalColor = -1;
+        const string originalBitMap = "<None>";
+
+        public PresetPriority(PresetForm pref)
+        {
+            parent = pref;
+            assignButtonTags();
+        }
+
+        private void resetPresets()
+        {
+            foreach (Button btn in parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>())
+            {
+                btn.Text = originalLegend;
+                btn.BackColor = default(Color);
+                btn.UseVisualStyleBackColor = true;
+                btn.Image = DataAccessor.GetBitMaps(originalBitMap);
+            }
+        }
+
+        private void assignButtonTags()
+        {
+            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
+
+            foreach (Button btn in buttons)
+            {
+                btn.Click += Btn_Click;
+                var buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
+                var row = buttonName % 6;
+                var col = Math.Floor((double)buttonName / 6) + 1;
+                var pri = (((col - 1) * 6) + row);
+
+                btn.Tag = pri.ToString();
+            }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            parent.PresetPriority_Label.Text = string.Empty;
+            parent.PresetPriority_Label.Text = "Button Position: ";
+            parent.PresetPriority_Label.Text = parent.PresetPriority_Label.Text + (sender as Button).Tag.ToString();
+        }
+
+        private int getIndex(int dbIndex)
+        {
+            var row = dbIndex % 6;
+            var col = Math.Floor((double)dbIndex / 6) + 1;
+            int pri = (int)(((col - 1) * 6) + row);
+
+            return pri;
+        }
+
+        private void selectButton()
+        {
+            if (!parent.PresetSplitContainer.Panel2Collapsed)
+            {
+                var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
+                var test = buttons.Select<Button, string>((b) => b.Tag.ToString());
+            }
+        }
+
+        private void composePriority()
+        {
+            //need to clear the previous buttons..
+
+            resetPresets();
+
+            var presets = DataAccessor.presetMasterAdapter.GetPresetPriority((parent.presetMasterBindingSource.Current as DataRowView).Row["KeyCode"].ToString());
+
+            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary<Button, int>
+                        ((btn) => int.Parse(btn.Tag.ToString()));
+
+            foreach (jartrekDataSet.PresetMasterRow row in presets)
+            {
+                string legend = row.PresetLegend;
+                int color = row.PresetColor;
+                string bitMap = row.PresetPicture;
+                int priority = row.PresetPriority;
+
+                Button btn = buttons[priority];
+
+                if (int.Parse(btn.Tag.ToString()) == priority)
+                {
+                    btn.Text = legend;
+                    btn.BackColor = SetColor.GetColor((SetColor.JartrekColors)color);
+                    btn.Image = DataAccessor.GetBitMaps(row.PresetCode, bitMap);
+                }
+            }
+        }
+
+        private void updatePriority()
+        {
 
         }
     }

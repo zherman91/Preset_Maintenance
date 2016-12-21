@@ -28,12 +28,10 @@ namespace Preset_Maintenance
         {
             get
             {
-
                 return _Text;
             }
             set
             {
-
                 _Text = value;
                 this.Invalidate();
             }
