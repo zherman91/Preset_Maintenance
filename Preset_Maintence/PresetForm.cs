@@ -30,7 +30,10 @@ namespace Preset_Maintenance
             {
                 presetDataDataGridView.Columns[i].DefaultCellStyle.Format = "c";
             }
-            pri = new PresetPriority(this);
+
+           // presetPriceTextBox. += new System.EventHandler(presetPriceTextBox_TextChanged);
+          //  pri = new PresetPriority(this);
+
         }
 
         private void PresetForm_Load(object sender, EventArgs e)
@@ -70,19 +73,25 @@ namespace Preset_Maintenance
 
         private void MainTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            try
+
+            if (e.Node.Parent != null)
             {
-                KeyPreview_Button.Text = e.Node.Parent.Text;
-                CurrentPreset_Button.Image = DataAccessor.GetBitMaps((presetMasterBindingSource.Current as jartrekDataSet.PresetMasterRow).PresetCode, e.Node.Text);
-                if (CurrentPreset_Button.Image != null)
-                    CurrentPreset_Button.Text = "";
-                else
-                    CurrentPreset_Button.Text = e.Node.Text.ToLowerInvariant();
+                var test = presetMasterBindingSource.Position;
+
+
+                var current = e.Node.Parent.Text;
+                var currentRow = presetMasterBindingSource.Current as DataRowView;
+                var row = currentRow.Row;
+                //  int index = presetMasterBindingNaviagator.BindingSource.Find(row.ItemArray[0], currentRow.Row.);
+
+
+
             }
-            catch (NullReferenceException nr)
+            else//must have been a key clicked.. cool :)
             {
-                Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
+                string currentKeyCode = e.Node.Text;
             }
+            //int rowIndex = 
         }
 
         private void ExpandTree_Button_Click(object sender, EventArgs e)
@@ -101,12 +110,29 @@ namespace Preset_Maintenance
 
         private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            presetMasterBindingSource.Position = presetMasterBindingSource.Find("PresetDesc", (sender as TreeView).SelectedNode.Text);
+            var tree = sender as TreeView;
+            string currentNodeText;
+
+            if (e.Node.Parent != null)
+            {
+                currentNodeText = e.Node.Parent.Text;
+                presetMasterBindingSource.Position = presetMasterBindingSource.Find("PresetCode", e.Node.Name);
+            }
+            else
+                currentNodeText = e.Node.Text;
+
+            presetMasterBindingNaviagator.Refresh();
+            var currentSourceRow = (presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow;
+            //PresetPriority prii = new PresetPriority(this);
+
+
+            new PresetPriority(this);
 
             try
             {
-                KeyPreview_Button.Text = e.Node.Parent.Text;
-                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(e.Node.Name);
+                KeyPreview_Button.Text = currentNodeText;
+                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(currentSourceRow.PresetCode, currentSourceRow.PresetPicture);
+
                 if (CurrentPreset_Button.Image != null)
                 {
                     CurrentPreset_Button.Text = null;
@@ -125,7 +151,10 @@ namespace Preset_Maintenance
             }
         }
 
-        private void PresetSearch_Button_Click(object sender, EventArgs e)
+        //need a method that handles setting the binding source position property
+
+
+        private void PresetSearch_Button_Click(object sender, EventArgs e)//this needs fixed
         {
             string searchText = PresetSearch_TextBox.Text;
             SearchResults_Label.Text = "Items Found: ";
@@ -162,11 +191,6 @@ namespace Preset_Maintenance
             }
             PresetSearch_Button.Select();
             SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
-        }
-
-        private void PresetSearch_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private bool validateInput()
@@ -250,12 +274,14 @@ namespace Preset_Maintenance
 
         private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
         {
-            string newPrice = (sender as TextBox).Text;
-            prices = new TextBox[] { presetPrice2TextBox, presetPrice3TextBox, presetPrice4TextBox, presetPrice5TextBox, presetPrice6TextBox, presetPrice7TextBox, presetPrice8TextBox };
+            //string newPrice = (sender as TextBox).Text;
+            //prices = new TextBox[] { presetPrice2TextBox, presetPrice3TextBox, presetPrice4TextBox, presetPrice5TextBox, presetPrice6TextBox, presetPrice7TextBox, presetPrice8TextBox };
 
-            foreach (TextBox price in prices)
-                price.Text = newPrice;
-
+            //foreach (TextBox price in prices)
+            //{
+            //    //price.Focus();//gotta admit, much more logical.
+            //    price.Text = newPrice;
+            //}
         }
 
         private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
@@ -297,6 +323,7 @@ namespace Preset_Maintenance
         {
             parent = pref;
             assignButtonTags();
+            composePriority();
         }
 
         private void resetPresets()
@@ -357,7 +384,8 @@ namespace Preset_Maintenance
 
             resetPresets();
 
-            var presets = DataAccessor.presetMasterAdapter.GetPresetPriority((parent.presetMasterBindingSource.Current as DataRowView).Row["KeyCode"].ToString());
+            var presets = DataAccessor.presetMasterAdapter.GetPresetPriority(
+                ((parent.presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow).KeyCode);
 
             var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary<Button, int>
                         ((btn) => int.Parse(btn.Tag.ToString()));

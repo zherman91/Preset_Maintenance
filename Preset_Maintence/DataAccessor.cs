@@ -131,7 +131,7 @@ namespace Preset_Maintenance
 
         }
 
-        internal static Image GetBitMaps(string presetCode, string bitMap)
+        internal static Image GetBitMaps(string presetCode, string bitMap)//can make this wayyyyyy more efficient!
         {
             if (bitMap != "<None>")
             {
@@ -142,7 +142,7 @@ namespace Preset_Maintenance
 
                 try
                 {
-                    return new Bitmap(BitMapPath + presetPic.First());
+                    return new Bitmap(BitMapPath + bitMap);
 
                 }
                 catch (Exception e)
