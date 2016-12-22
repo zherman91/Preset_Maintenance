@@ -20,8 +20,10 @@ namespace Preset_Maintenance
 
         public static jartrekDataSetTableAdapters.PresetMasterTableAdapter presetMasterAdapter = new jartrekDataSetTableAdapters.PresetMasterTableAdapter();
         public static jartrekDataSet.PresetMasterDataTable presetMasterDataTable = new jartrekDataSet.PresetMasterDataTable();
-                
+
         private const string BitMapPath = @"C:\Jartrek\BitMaps\";
+
+        public static string BitPath { get { return BitMapPath; } }
 
         private static TreeNode[] nodes;
 
@@ -46,12 +48,13 @@ namespace Preset_Maintenance
                     MessageBox.Show("Success!");
 
             }
-            catch (Exception u)
+            catch (Exception)
             {
 
             }
-
         }
+
+
 
         private static void AddChildNodes(TreeView MainTreeView)
         {
@@ -145,7 +148,7 @@ namespace Preset_Maintenance
                     return new Bitmap(BitMapPath + bitMap);
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("New message");
                     return null;

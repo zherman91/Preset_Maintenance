@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,10 @@ namespace Preset_Maintenance
             {
                 presetDataDataGridView.Columns[i].DefaultCellStyle.Format = "c";
             }
-
-           // presetPriceTextBox. += new System.EventHandler(presetPriceTextBox_TextChanged);
-          //  pri = new PresetPriority(this);
-
+            foreach (string bitmap in Directory.GetFiles(DataAccessor.BitPath))
+            {
+                bitMap_ComboBox.Items.Add(Path.GetFileName(bitmap));
+            }
         }
 
         private void PresetForm_Load(object sender, EventArgs e)
@@ -96,16 +97,7 @@ namespace Preset_Maintenance
 
         private void ExpandTree_Button_Click(object sender, EventArgs e)
         {
-            if (Main_SplitCon.Panel2Collapsed)
-            {
-                Main_SplitCon.Panel2Collapsed = false;
-                (sender as Button).Text = ">";
-            }
-            else
-            {
-                Main_SplitCon.Panel2Collapsed = true;
-                (sender as Button).Text = "<";
-            }
+
         }
 
         private void MainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -150,10 +142,7 @@ namespace Preset_Maintenance
                 Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
             }
         }
-
-        //need a method that handles setting the binding source position property
-
-
+        
         private void PresetSearch_Button_Click(object sender, EventArgs e)//this needs fixed
         {
             string searchText = PresetSearch_TextBox.Text;
@@ -309,260 +298,278 @@ namespace Preset_Maintenance
         {
 
         }
-    }
 
-    public class PresetPriority
-    {
-        PresetForm parent;
-
-        const string originalLegend = "Not Used!";
-        const int originalColor = -1;
-        const string originalBitMap = "<None>";
-
-        public PresetPriority(PresetForm pref)
+        private void fillByBitMapToolStripButton_Click(object sender, EventArgs e)
         {
-            parent = pref;
-            assignButtonTags();
-            composePriority();
-        }
-
-        private void resetPresets()
-        {
-            foreach (Button btn in parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>())
+            try
             {
-                btn.Text = originalLegend;
-                btn.BackColor = default(Color);
-                btn.UseVisualStyleBackColor = true;
-                btn.Image = DataAccessor.GetBitMaps(originalBitMap);
+                this.presetMasterTableAdapter.FillByBitMap(this.jartrekDataSet.PresetMaster);
             }
-        }
-
-        private void assignButtonTags()
-        {
-            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
-
-            foreach (Button btn in buttons)
+            catch (System.Exception ex)
             {
-                btn.Click += Btn_Click;
-                var buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
-                var row = buttonName % 6;
-                var col = Math.Floor((double)buttonName / 6) + 1;
-                var pri = (((col - 1) * 6) + row);
-
-                btn.Tag = pri.ToString();
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+
         }
 
-        private void Btn_Click(object sender, EventArgs e)
+        private void bitMap_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            parent.PresetPriority_Label.Text = string.Empty;
-            parent.PresetPriority_Label.Text = "Button Position: ";
-            parent.PresetPriority_Label.Text = parent.PresetPriority_Label.Text + (sender as Button).Tag.ToString();
+
         }
 
-        private int getIndex(int dbIndex)
+        public class PresetPriority
         {
-            var row = dbIndex % 6;
-            var col = Math.Floor((double)dbIndex / 6) + 1;
-            int pri = (int)(((col - 1) * 6) + row);
+            PresetForm parent;
 
-            return pri;
-        }
+            const string originalLegend = "Not Used!";
+            const int originalColor = -1;
+            const string originalBitMap = "<None>";
 
-        private void selectButton()
-        {
-            if (!parent.PresetSplitContainer.Panel2Collapsed)
+            public PresetPriority(PresetForm pref)
             {
-                var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
-                var test = buttons.Select<Button, string>((b) => b.Tag.ToString());
+                parent = pref;
+                assignButtonTags();
+                composePriority();
             }
-        }
 
-        private void composePriority()
-        {
-            //need to clear the previous buttons..
-
-            resetPresets();
-
-            var presets = DataAccessor.presetMasterAdapter.GetPresetPriority(
-                ((parent.presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow).KeyCode);
-
-            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary<Button, int>
-                        ((btn) => int.Parse(btn.Tag.ToString()));
-
-            foreach (jartrekDataSet.PresetMasterRow row in presets)
+            private void resetPresets()
             {
-                string legend = row.PresetLegend;
-                int color = row.PresetColor;
-                string bitMap = row.PresetPicture;
-                int priority = row.PresetPriority;
-
-                Button btn = buttons[priority];
-
-                if (int.Parse(btn.Tag.ToString()) == priority)
+                foreach (Button btn in parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>())
                 {
-                    btn.Text = legend;
-                    btn.BackColor = SetColor.GetColor((SetColor.JartrekColors)color);
-                    btn.Image = DataAccessor.GetBitMaps(row.PresetCode, bitMap);
+                    btn.Text = originalLegend;
+                    btn.BackColor = default(Color);
+                    btn.UseVisualStyleBackColor = true;
+                    btn.Image = DataAccessor.GetBitMaps(originalBitMap);
                 }
             }
-        }
 
-        private void updatePriority()
-        {
-
-        }
-    }
-
-    public static class SetColor
-    {
-        [Flags]
-        public enum JartrekColors { RegisterDefault = 0, Red = 1, Green = 2, Yellow = 3, Blue = 4, Magenta = 5, Cyan = 6, White = 7, Beige = 8, Goldenrod = 9, Khaki = 10, Plum = 11, Orange = 12, PaleGreen = 13, Pink = 14, Salmon = 15, Sienna = 16, Tan = 17 };
-        public static Color GetColor(JartrekColors keyColor)
-        {
-            Color currentColor = Color.Silver;
-
-            switch (keyColor)
+            private void assignButtonTags()
             {
-                case JartrekColors.Red:
-                    currentColor = Color.Red;
-                    break;
-                case JartrekColors.Green:
-                    currentColor = Color.Lime;
-                    break;
-                case JartrekColors.Yellow:
-                    currentColor = Color.Yellow;
-                    break;
-                case JartrekColors.Blue:
-                    currentColor = Color.Blue;
-                    break;
-                case JartrekColors.Magenta:
-                    currentColor = Color.Fuchsia;
-                    break;
-                case JartrekColors.Cyan:
-                    currentColor = Color.Aqua;
-                    break;
-                case JartrekColors.White:
-                    currentColor = Color.White;
-                    break;
-                case JartrekColors.Beige:
-                    currentColor = Color.Beige;
-                    break;
-                case JartrekColors.Goldenrod:
-                    currentColor = Color.Goldenrod;
-                    break;
-                case JartrekColors.Khaki:
-                    currentColor = Color.Khaki;
-                    break;
-                case JartrekColors.Plum:
-                    currentColor = Color.Plum;
-                    break;
-                case JartrekColors.Orange:
-                    currentColor = Color.Orange;
-                    break;
-                case JartrekColors.PaleGreen:
-                    currentColor = Color.PaleGreen;
-                    break;
-                case JartrekColors.Pink:
-                    currentColor = Color.Pink;
-                    break;
-                case JartrekColors.Salmon:
-                    currentColor = Color.Salmon;
-                    break;
-                case JartrekColors.Sienna:
-                    currentColor = Color.Sienna;
-                    break;
-                case JartrekColors.Tan:
-                    currentColor = Color.Tan;
-                    break;
-                default: return currentColor;
-            }
-            return currentColor;
-        }
-        public static int GetColorInt(JartrekColors keyColor)
-        {
-            Color currentColor = Color.Silver;
-            int colorInt = 1;
-            switch (keyColor)
-            {
-                case JartrekColors.Red:
-                    currentColor = Color.Red;
-                    colorInt = 1;
-                    break;
-                case JartrekColors.Green:
-                    currentColor = Color.Lime;
-                    colorInt = 2;
-                    break;
-                case JartrekColors.Yellow:
-                    currentColor = Color.Yellow;
-                    colorInt = 3;
-                    break;
-                case JartrekColors.Blue:
-                    currentColor = Color.Blue;
-                    colorInt = 4;
-                    break;
-                case JartrekColors.Magenta:
-                    currentColor = Color.Fuchsia;
-                    colorInt = 5;
-                    break;
-                case JartrekColors.Cyan:
-                    currentColor = Color.Aqua;
-                    colorInt = 6;
-                    break;
-                case JartrekColors.White:
-                    currentColor = Color.White;
-                    colorInt = 7;
-                    break;
-                case JartrekColors.Beige:
-                    currentColor = Color.Beige;
-                    colorInt = 8;
-                    break;
-                case JartrekColors.Goldenrod:
-                    currentColor = Color.Goldenrod;
-                    colorInt = 9;
-                    break;
-                case JartrekColors.Khaki:
-                    currentColor = Color.Khaki;
-                    colorInt = 10;
-                    break;
-                case JartrekColors.Plum:
-                    currentColor = Color.Plum;
-                    colorInt = 11;
-                    break;
-                case JartrekColors.Orange:
-                    currentColor = Color.Orange;
-                    colorInt = 12;
-                    break;
-                case JartrekColors.PaleGreen:
-                    currentColor = Color.PaleGreen;
-                    colorInt = 13;
-                    break;
-                case JartrekColors.Pink:
-                    currentColor = Color.Pink;
-                    colorInt = 14;
-                    break;
-                case JartrekColors.Salmon:
-                    currentColor = Color.Salmon;
-                    colorInt = 15;
-                    break;
-                case JartrekColors.Sienna:
-                    currentColor = Color.Sienna;
-                    colorInt = 16;
-                    break;
-                case JartrekColors.Tan:
-                    currentColor = Color.Tan;
-                    colorInt = 17;
-                    break;
-                default: return colorInt;
-            }
-            return colorInt;
-        }
-        public static Color GetNewJarColor()
-        {
-            int randomColorValue = new Random().Next(1, 17);
-            Color currentColor = SetColor.GetColor((SetColor.JartrekColors)randomColorValue);
+                var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
 
-            return currentColor;
+                foreach (Button btn in buttons)
+                {
+                    btn.Click += Btn_Click;
+                    var buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
+                    var row = buttonName % 6;
+                    var col = Math.Floor((double)buttonName / 6) + 1;
+                    var pri = (((col - 1) * 6) + row);
+
+                    btn.Tag = pri.ToString();
+                }
+            }
+
+            private void Btn_Click(object sender, EventArgs e)
+            {
+                parent.PresetPriority_Label.Text = string.Empty;
+                parent.PresetPriority_Label.Text = "Button Position: ";
+                parent.PresetPriority_Label.Text = parent.PresetPriority_Label.Text + (sender as Button).Tag.ToString();
+            }
+
+            private int getIndex(int dbIndex)
+            {
+                var row = dbIndex % 6;
+                var col = Math.Floor((double)dbIndex / 6) + 1;
+                int pri = (int)(((col - 1) * 6) + row);
+
+                return pri;
+            }
+
+            private void selectButton()
+            {
+                if (!parent.PresetSplitContainer.Panel2Collapsed)
+                {
+                    var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
+                    var test = buttons.Select<Button, string>((b) => b.Tag.ToString());
+                }
+            }
+
+            private void composePriority()
+            {
+                //need to clear the previous buttons..
+
+                resetPresets();
+
+                var presets = DataAccessor.presetMasterAdapter.GetPresetPriority(
+                    ((parent.presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow).KeyCode);
+
+                var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary<Button, int>
+                            ((btn) => int.Parse(btn.Tag.ToString()));
+
+                foreach (jartrekDataSet.PresetMasterRow row in presets)
+                {
+                    string legend = row.PresetLegend;
+                    int color = row.PresetColor;
+                    string bitMap = row.PresetPicture;
+                    int priority = row.PresetPriority;
+
+                    Button btn = buttons[priority];
+
+                    if (int.Parse(btn.Tag.ToString()) == priority)
+                    {
+                        btn.Text = legend;
+                        btn.BackColor = SetColor.GetColor((SetColor.JartrekColors)color);
+                        btn.Image = DataAccessor.GetBitMaps(row.PresetCode, bitMap);
+                    }
+                }
+            }
+
+            private void updatePriority()
+            {
+
+            }
+        }
+
+        public static class SetColor
+        {
+            [Flags]
+            public enum JartrekColors { RegisterDefault = 0, Red = 1, Green = 2, Yellow = 3, Blue = 4, Magenta = 5, Cyan = 6, White = 7, Beige = 8, Goldenrod = 9, Khaki = 10, Plum = 11, Orange = 12, PaleGreen = 13, Pink = 14, Salmon = 15, Sienna = 16, Tan = 17 };
+            public static Color GetColor(JartrekColors keyColor)
+            {
+                Color currentColor = Color.Silver;
+
+                switch (keyColor)
+                {
+                    case JartrekColors.Red:
+                        currentColor = Color.Red;
+                        break;
+                    case JartrekColors.Green:
+                        currentColor = Color.Lime;
+                        break;
+                    case JartrekColors.Yellow:
+                        currentColor = Color.Yellow;
+                        break;
+                    case JartrekColors.Blue:
+                        currentColor = Color.Blue;
+                        break;
+                    case JartrekColors.Magenta:
+                        currentColor = Color.Fuchsia;
+                        break;
+                    case JartrekColors.Cyan:
+                        currentColor = Color.Aqua;
+                        break;
+                    case JartrekColors.White:
+                        currentColor = Color.White;
+                        break;
+                    case JartrekColors.Beige:
+                        currentColor = Color.Beige;
+                        break;
+                    case JartrekColors.Goldenrod:
+                        currentColor = Color.Goldenrod;
+                        break;
+                    case JartrekColors.Khaki:
+                        currentColor = Color.Khaki;
+                        break;
+                    case JartrekColors.Plum:
+                        currentColor = Color.Plum;
+                        break;
+                    case JartrekColors.Orange:
+                        currentColor = Color.Orange;
+                        break;
+                    case JartrekColors.PaleGreen:
+                        currentColor = Color.PaleGreen;
+                        break;
+                    case JartrekColors.Pink:
+                        currentColor = Color.Pink;
+                        break;
+                    case JartrekColors.Salmon:
+                        currentColor = Color.Salmon;
+                        break;
+                    case JartrekColors.Sienna:
+                        currentColor = Color.Sienna;
+                        break;
+                    case JartrekColors.Tan:
+                        currentColor = Color.Tan;
+                        break;
+                    default: return currentColor;
+                }
+                return currentColor;
+            }
+            public static int GetColorInt(JartrekColors keyColor)
+            {
+                Color currentColor = Color.Silver;
+                int colorInt = 1;
+                switch (keyColor)
+                {
+                    case JartrekColors.Red:
+                        currentColor = Color.Red;
+                        colorInt = 1;
+                        break;
+                    case JartrekColors.Green:
+                        currentColor = Color.Lime;
+                        colorInt = 2;
+                        break;
+                    case JartrekColors.Yellow:
+                        currentColor = Color.Yellow;
+                        colorInt = 3;
+                        break;
+                    case JartrekColors.Blue:
+                        currentColor = Color.Blue;
+                        colorInt = 4;
+                        break;
+                    case JartrekColors.Magenta:
+                        currentColor = Color.Fuchsia;
+                        colorInt = 5;
+                        break;
+                    case JartrekColors.Cyan:
+                        currentColor = Color.Aqua;
+                        colorInt = 6;
+                        break;
+                    case JartrekColors.White:
+                        currentColor = Color.White;
+                        colorInt = 7;
+                        break;
+                    case JartrekColors.Beige:
+                        currentColor = Color.Beige;
+                        colorInt = 8;
+                        break;
+                    case JartrekColors.Goldenrod:
+                        currentColor = Color.Goldenrod;
+                        colorInt = 9;
+                        break;
+                    case JartrekColors.Khaki:
+                        currentColor = Color.Khaki;
+                        colorInt = 10;
+                        break;
+                    case JartrekColors.Plum:
+                        currentColor = Color.Plum;
+                        colorInt = 11;
+                        break;
+                    case JartrekColors.Orange:
+                        currentColor = Color.Orange;
+                        colorInt = 12;
+                        break;
+                    case JartrekColors.PaleGreen:
+                        currentColor = Color.PaleGreen;
+                        colorInt = 13;
+                        break;
+                    case JartrekColors.Pink:
+                        currentColor = Color.Pink;
+                        colorInt = 14;
+                        break;
+                    case JartrekColors.Salmon:
+                        currentColor = Color.Salmon;
+                        colorInt = 15;
+                        break;
+                    case JartrekColors.Sienna:
+                        currentColor = Color.Sienna;
+                        colorInt = 16;
+                        break;
+                    case JartrekColors.Tan:
+                        currentColor = Color.Tan;
+                        colorInt = 17;
+                        break;
+                    default: return colorInt;
+                }
+                return colorInt;
+            }
+            public static Color GetNewJarColor()
+            {
+                int randomColorValue = new Random().Next(1, 17);
+                Color currentColor = SetColor.GetColor((SetColor.JartrekColors)randomColorValue);
+
+                return currentColor;
+            }
         }
     }
 }
