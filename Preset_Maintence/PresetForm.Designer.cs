@@ -492,7 +492,7 @@
             this.Nested_SplitCon.Panel2.Controls.Add(this.presetDataDataGridView);
             this.Nested_SplitCon.Panel2MinSize = 100;
             this.Nested_SplitCon.Size = new System.Drawing.Size(983, 778);
-            this.Nested_SplitCon.SplitterDistance = 653;
+            this.Nested_SplitCon.SplitterDistance = 655;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
             // 
@@ -500,7 +500,7 @@
             // 
             this.PresetSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSplitContainer.Location = new System.Drawing.Point(340, 279);
+            this.PresetSplitContainer.Location = new System.Drawing.Point(340, 281);
             this.PresetSplitContainer.Name = "PresetSplitContainer";
             // 
             // PresetSplitContainer.Panel1
@@ -914,7 +914,7 @@
             this.SearchResults_GroupBox.Controls.Add(this.SearchResults_DataGrid);
             this.SearchResults_GroupBox.Location = new System.Drawing.Point(340, 12);
             this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
-            this.SearchResults_GroupBox.Size = new System.Drawing.Size(421, 261);
+            this.SearchResults_GroupBox.Size = new System.Drawing.Size(421, 263);
             this.SearchResults_GroupBox.TabIndex = 101;
             this.SearchResults_GroupBox.TabStop = false;
             this.SearchResults_GroupBox.Text = "Search Results";
@@ -934,7 +934,7 @@
             this.SearchResults_DataGrid.Location = new System.Drawing.Point(6, 19);
             this.SearchResults_DataGrid.Name = "SearchResults_DataGrid";
             this.SearchResults_DataGrid.RowHeadersWidth = 15;
-            this.SearchResults_DataGrid.Size = new System.Drawing.Size(409, 239);
+            this.SearchResults_DataGrid.Size = new System.Drawing.Size(409, 241);
             this.SearchResults_DataGrid.TabIndex = 16;
             this.SearchResults_DataGrid.TabStop = false;
             this.SearchResults_DataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
@@ -1011,7 +1011,7 @@
             this.Pricing_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pricing_GroupBox.Location = new System.Drawing.Point(12, 12);
             this.Pricing_GroupBox.Name = "Pricing_GroupBox";
-            this.Pricing_GroupBox.Size = new System.Drawing.Size(322, 637);
+            this.Pricing_GroupBox.Size = new System.Drawing.Size(322, 639);
             this.Pricing_GroupBox.TabIndex = 15;
             this.Pricing_GroupBox.TabStop = false;
             this.Pricing_GroupBox.Text = "Pricing";
@@ -1438,7 +1438,7 @@
             // 
             this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(526, 633);
+            this.ViewKeys_Button.Location = new System.Drawing.Point(526, 635);
             this.ViewKeys_Button.Name = "ViewKeys_Button";
             this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
             this.ViewKeys_Button.TabIndex = 2;
@@ -1498,7 +1498,7 @@
             this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
             this.presetDataDataGridView.Name = "presetDataDataGridView";
             this.presetDataDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.presetDataDataGridView.Size = new System.Drawing.Size(983, 123);
+            this.presetDataDataGridView.Size = new System.Drawing.Size(983, 121);
             this.presetDataDataGridView.TabIndex = 15;
             this.presetDataDataGridView.TabStop = false;
             // 
