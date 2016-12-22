@@ -89,25 +89,25 @@
     </Compile>
     <Compile Include="KeyData.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="PresetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PresetForm.Designer.cs">
-      <DependentUpon>PresetForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="OldPresetPriority.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OldPresetPriority.Designer.cs">
       <DependentUpon>OldPresetPriority.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresetForm.Designer.cs">
+      <DependentUpon>PresetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PresetForm.resx">
-      <DependentUpon>PresetForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="OldPresetPriority.resx">
       <DependentUpon>OldPresetPriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresetForm.resx">
+      <DependentUpon>PresetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

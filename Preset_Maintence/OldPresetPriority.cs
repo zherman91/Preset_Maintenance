@@ -36,7 +36,7 @@ namespace Preset_Maintenance
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            PriorityLabel.Text = getIndex(int.Parse((sender as Button).Tag.ToString())).ToString();
+            //PriorityLabel.Text = getIndex(int.Parse((sender as Button).Tag.ToString())).ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

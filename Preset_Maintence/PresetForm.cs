@@ -15,8 +15,7 @@ namespace Preset_Maintenance
     public partial class PresetForm : Form
     {
         List<TreeNode> currentNodeMatches = new List<TreeNode>();
-        PresetPriority pri;
-
+        jartrekDataSet.PresetMasterRow newRow;
 
         private TextBox[] prices;
 
@@ -27,9 +26,9 @@ namespace Preset_Maintenance
         {
             InitializeComponent();
 
-            for (int i = 2; i < presetDataDataGridView.ColumnCount; i++)
+            for (int i = 2; i < searchResults_DataGridView.ColumnCount; i++)
             {
-                presetDataDataGridView.Columns[i].DefaultCellStyle.Format = "c";
+                searchResults_DataGridView.Columns[i].DefaultCellStyle.Format = "c";
             }
             foreach (string bitmap in Directory.GetFiles(DataAccessor.BitPath))
             {
@@ -39,22 +38,22 @@ namespace Preset_Maintenance
 
         private void PresetForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'jartrekDataSet.PresetData' table. You can move, or remove it, as needed.
-            this.presetDataTableAdapter.FillPresetInfo(this.jartrekDataSet.PresetData);
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
 
             DataAccessor.AddParentNodes(MainTreeView);
-            PresetSplitContainer.Panel2Collapsed = true;
+
+            SearchResults_GroupBox.Show();
+
             //setFormatting();
         }
 
         private void ViewKeys_Click(object sender, EventArgs e)
         {
-            if (Nested_SplitCon.Panel2Collapsed)
-                Nested_SplitCon.Panel2Collapsed = false;
+            if (SearchResults_GroupBox.Visible)
+                SearchResults_GroupBox.Hide();
             else
-                Nested_SplitCon.Panel2Collapsed = true;
+                SearchResults_GroupBox.Show();
         }
 
         private void ExpandNodes_Button_Click(object sender, EventArgs e)
@@ -115,9 +114,6 @@ namespace Preset_Maintenance
 
             presetMasterBindingNaviagator.Refresh();
             var currentSourceRow = (presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow;
-            //PresetPriority prii = new PresetPriority(this);
-
-
             new PresetPriority(this);
 
             try
@@ -135,7 +131,6 @@ namespace Preset_Maintenance
                     CurrentPreset_Button.Text = e.Node.Text.ToLower();
                     CurrentPreset_Button.BackColor = SetColor.GetNewJarColor();
                 }
-                Preset_Label.Text = e.Node.Text.ToLower();
             }
             catch (NullReferenceException nr)
             {
@@ -158,7 +153,9 @@ namespace Preset_Maintenance
             {
                 //new search
                 currentNodeMatches.Clear();
-                SearchResults_DataGrid.Rows.Clear();
+
+                searchResults_DataGridView.Rows.Clear();
+
                 lastSearchText = searchText;
                 lastNodeIndex = 0;
                 SearchNodes(searchText, MainTreeView.Nodes[0]);
@@ -166,7 +163,7 @@ namespace Preset_Maintenance
 
             if (lastNodeIndex >= 0 && currentNodeMatches.Count > 0 && lastNodeIndex < currentNodeMatches.Count)
             {
-                SearchResults_DataGrid.Rows.Clear();
+                searchResults_DataGridView.Rows.Clear();
                 TreeNode selectedNode = currentNodeMatches[lastNodeIndex];
                 lastNodeIndex++;
                 this.MainTreeView.SelectedNode = selectedNode;
@@ -174,12 +171,156 @@ namespace Preset_Maintenance
                 MainTreeView.Select();
                 for (int i = 0; i < currentNodeMatches.Count; i++)
                 {
-                    SearchResults_DataGrid.Rows.Add(currentNodeMatches[i].Text);
-
+                    searchResults_DataGridView.Rows.Add(currentNodeMatches[i].Text);
                 }
             }
             PresetSearch_Button.Select();
             SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
+        }
+
+        /// <summary>
+        /// Recursivly searches for the specified node and starting node. 
+        /// </summary>
+        /// <param name="SearchText">The search text.</param>
+        /// <param name="StartNode">The start node.</param>
+        private void SearchNodes(string SearchText, TreeNode StartNode)
+        {
+            while (StartNode != null)
+            {
+                if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
+                {
+                    currentNodeMatches.Add(StartNode);
+                    //StartNode = currentNodeMatches[0].Parent;
+                };
+                if (StartNode.Nodes.Count != 0)
+                {
+                    SearchNodes(SearchText, StartNode.Nodes[0]);//recursive search
+                };
+                StartNode = StartNode.NextNode;
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            PresetSearch_TextBox.Clear();
+            searchResults_DataGridView.Rows.Clear();
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            ConfirmAdd_Button.Visible = true;
+
+            var sourceList = presetMasterBindingSource.List;
+            var row = presetMasterBindingSource.Current as DataRowView;
+            newRow = row.Row as jartrekDataSet.PresetMasterRow;
+            // row.PresetCode = presetCodeTextBox.Text;//send this to a different method
+
+        }
+
+        private void createNewRow(jartrekDataSet.PresetMasterRow newRow)
+        {
+            presetMasterBindingSource.Add(newRow);
+
+        }
+
+        private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
+            PresetSearch_TextBox.Text = test;
+            PresetSearch_Button.PerformClick();
+        }
+
+        private void Update_Button_Click(object sender, EventArgs e)
+        {
+            if (validateInput())
+            {
+                var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
+                var editedRow = (presetMasterBindingSource.Current as DataRowView);
+                DataAccessor.ChangeRow(presetToEdit, editedRow);
+            }
+            else
+                return;//input is not valid
+        }
+
+        private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PresetPriorityButton_Click(object sender, EventArgs e)//can remove most likely...
+        {
+            if (PresetSplitContainer.Panel2Collapsed)
+            {
+                PresetSplitContainer.Panel2Collapsed = false;
+                (sender as Button).Text = ">";
+                //SearchResults_GroupBox.Hide();
+            }
+            else
+            {
+                PresetSplitContainer.Panel2Collapsed = true;
+                (sender as Button).Text = "<";
+                // SearchResults_GroupBox.Show();
+            }
+        }
+
+        private void presetPrice2TextBox_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bitMap_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Console.WriteLine((sender as ComboBox).SelectedItem);
+            presetPictureTextBox.Text = (sender as ComboBox).SelectedItem.ToString();
+
+        }
+
+        private void presetPriceTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string newPrice = (sender as TextBox).Text;
+                prices = new TextBox[] { presetPrice2TextBox, presetPrice3TextBox, presetPrice4TextBox, presetPrice5TextBox, presetPrice6TextBox, presetPrice7TextBox, presetPrice8TextBox };
+
+                foreach (TextBox price in prices)
+                {
+                    price.Focus();//much more logical.
+                    price.Text = newPrice;
+                }
+                presetPrice2TextBox.Focus();
+            }
+        }
+
+        private void ConfirmAdd_Button_Click(object sender, EventArgs e)
+        {
+            if (validateInput())
+            {
+                if (newRow != null)
+                {
+                    newRow.PresetCode = presetCodeTextBox.Text;
+                    newRow.PresetDesc = presetDescTextBox.Text;
+                    newRow.PresetLegend = presetLegendTextBox.Text;
+                    newRow.PresetReceipt = presetReceiptTextBox1.Text;
+                    newRow.PresetPicture = presetPictureTextBox.Text;
+                    newRow.PresetTax = presetTaxTextBox.Text;
+                    newRow.PresetPrice = decimal.Parse(presetPriceTextBox.Text.Substring(1, presetPriceTextBox.Text.Length- 1));
+                    newRow.PresetPrice2 = decimal.Parse(presetPrice2TextBox.Text.Substring(1, presetPrice2TextBox.Text.Length - 1));
+                    newRow.PresetPrice3 = decimal.Parse(presetPrice3TextBox.Text.Substring(1, presetPrice3TextBox.Text.Length - 1));
+                    newRow.PresetPrice4 = decimal.Parse(presetPrice4TextBox.Text.Substring(1, presetPrice4TextBox.Text.Length - 1));
+                    newRow.PresetPrice5 = decimal.Parse(presetPrice5TextBox.Text.Substring(1, presetPrice5TextBox.Text.Length - 1));
+                    newRow.PresetPrice6 = decimal.Parse(presetPrice6TextBox.Text.Substring(1, presetPrice6TextBox.Text.Length - 1));
+                    newRow.PresetPrice7 = decimal.Parse(presetPrice7TextBox.Text.Substring(1, presetPrice7TextBox.Text.Length - 1));
+                    newRow.PresetPrice8 = decimal.Parse(presetPrice8TextBox.Text.Substring(1, presetPrice8TextBox.Text.Length - 1));
+
+                }
+                createNewRow(newRow);
+
+            }
+        }
+
+        private void presetMasterBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+
         }
 
         private bool validateInput()
@@ -209,113 +350,12 @@ namespace Preset_Maintenance
 
         }
 
-        /// <summary>
-        /// Recursivly searches for the specified node and starting node. 
-        /// </summary>
-        /// <param name="SearchText">The search text.</param>
-        /// <param name="StartNode">The start node.</param>
-        private void SearchNodes(string SearchText, TreeNode StartNode)
+        private void presetMasterBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
-            while (StartNode != null)
-            {
-                if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
-                {
-                    currentNodeMatches.Add(StartNode);
-                };
-                if (StartNode.Nodes.Count != 0)
-                {
-                    SearchNodes(SearchText, StartNode.Nodes[0]);//recursive search
-                };
-                StartNode = StartNode.NextNode;
-            }
-        }
+            MessageBox.Show("This is adding new");
 
-        private void ClearButton_Click(object sender, EventArgs e)
-        {
-            PresetSearch_TextBox.Clear();
-            SearchResults_DataGrid.Rows.Clear();
-        }
-
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
-            presetDataDataGridView.CurrentCell = presetDataDataGridView.Rows[presetDataDataGridView.NewRowIndex].Cells[1];
-        }
-
-        private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
-            PresetSearch_TextBox.Text = test;
-            PresetSearch_Button.PerformClick();
-        }
-
-        private void Update_Button_Click(object sender, EventArgs e)
-        {
-            if (validateInput())
-            {
-                var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
-                var editedRow = (presetMasterBindingSource.Current as DataRowView);
-                DataAccessor.ChangeRow(presetToEdit, editedRow);
-            }
-            else
-                return;//input is not valid
-        }
-
-        private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("Add a new item!");
-        }
-
-        private void PresetPriorityButton_Click(object sender, EventArgs e)
-        {
-            if (PresetSplitContainer.Panel2Collapsed)
-            {
-                PresetSplitContainer.Panel2Collapsed = false;
-                (sender as Button).Text = ">";
-                //need to pass a ref of this...
-            }
-            else
-            {
-                PresetSplitContainer.Panel2Collapsed = true;
-                (sender as Button).Text = "<";
-                //need to resetPresets here...
-            }
-        }
-
-        private void presetPrice2TextBox_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bitMap_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Console.WriteLine((sender as ComboBox).SelectedItem);
-            presetPictureTextBox.Text = (sender as ComboBox).SelectedItem.ToString();
-
-        }
-
-        private void presetPriceTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-            if (e.KeyCode == Keys.Enter)
-            {
-                string newPrice = (sender as TextBox).Text;
-                prices = new TextBox[] { presetPrice2TextBox, presetPrice3TextBox, presetPrice4TextBox, presetPrice5TextBox, presetPrice6TextBox, presetPrice7TextBox, presetPrice8TextBox };
-
-                foreach (TextBox price in prices)
-                {
-                    price.Focus();//gotta admit, much more logical.
-                    price.Text = newPrice;
-                }
-                (sender as TextBox).Focus();
-            }
         }
     }
-
 
     public class PresetPriority
     {
@@ -419,8 +459,6 @@ namespace Preset_Maintenance
 
         }
     }
-
-
 
     public static class SetColor
     {

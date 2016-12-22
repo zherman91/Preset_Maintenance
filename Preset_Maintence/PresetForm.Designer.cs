@@ -58,11 +58,64 @@
             this.PresetSplitContainer = new System.Windows.Forms.SplitContainer();
             this.bitMap_ComboBox = new System.Windows.Forms.ComboBox();
             this.PresetPriority_Label = new System.Windows.Forms.Label();
-            this.Update_Button = new System.Windows.Forms.Button();
-            this.PresetPriorityButton = new System.Windows.Forms.Button();
             this.presetPriorityTextBox = new System.Windows.Forms.TextBox();
             this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jartrekDataSet = new Preset_Maintenance.jartrekDataSet();
+            this.SearchResults_GroupBox = new System.Windows.Forms.GroupBox();
+            this.searchResults_DataGridView = new System.Windows.Forms.DataGridView();
+            this.PresetDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SearchResults_Label = new System.Windows.Forms.Label();
+            this.Pricing_GroupBox = new System.Windows.Forms.GroupBox();
+            this.ConfirmAdd_Button = new System.Windows.Forms.Button();
+            this.presetMasterBindingNaviagator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.presetReceiptTextBox1 = new System.Windows.Forms.TextBox();
+            this.Update_Button = new System.Windows.Forms.Button();
+            this.presetCodeTextBox = new System.Windows.Forms.TextBox();
+            this.presetColorTextBox = new System.Windows.Forms.TextBox();
+            this.presetPictureTextBox = new System.Windows.Forms.TextBox();
+            this.presetDescTextBox = new System.Windows.Forms.TextBox();
+            this.presetLegendTextBox = new System.Windows.Forms.TextBox();
+            this.presetTaxTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrintTextBox = new System.Windows.Forms.TextBox();
+            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
+            this.presetReceiptTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice2TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice8TextBox = new System.Windows.Forms.TextBox();
+            this.presetChipTextBox = new System.Windows.Forms.TextBox();
+            this.presetChippableTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice3TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice7TextBox = new System.Windows.Forms.TextBox();
+            this.presetChitToggleTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrintChitTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice4TextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice6TextBox = new System.Windows.Forms.TextBox();
+            this.presetChitScanTextBox = new System.Windows.Forms.TextBox();
+            this.presetPrice5TextBox = new System.Windows.Forms.TextBox();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.PresetSearch_Button = new System.Windows.Forms.Button();
+            this.PresetSearchLabel = new System.Windows.Forms.Label();
+            this.PresetSearch_TextBox = new System.Windows.Forms.TextBox();
+            this.CollapseNodes_Button = new System.Windows.Forms.Button();
+            this.ExpandNodes_Button = new System.Windows.Forms.Button();
+            this.ViewKeys_Button = new System.Windows.Forms.Button();
+            this.MainTreeView = new System.Windows.Forms.TreeView();
+            this.presetDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
+            this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
+            this.presetDataTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetDataTableAdapter();
+            this.presetTrashBin = new Preset_Maintenance.CustomGrpBox();
+            this.presetClipBoard = new Preset_Maintenance.CustomGrpBox();
             this.Preset_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.presetPanel = new System.Windows.Forms.Panel();
             this.button25 = new System.Windows.Forms.Button();
@@ -95,74 +148,10 @@
             this.button03 = new System.Windows.Forms.Button();
             this.button02 = new System.Windows.Forms.Button();
             this.button01 = new System.Windows.Forms.Button();
-            this.SearchResults_GroupBox = new System.Windows.Forms.GroupBox();
-            this.SearchResults_DataGrid = new System.Windows.Forms.DataGridView();
-            this.PresetDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RegularPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SearchResults_Label = new System.Windows.Forms.Label();
-            this.Pricing_GroupBox = new System.Windows.Forms.GroupBox();
-            this.presetMasterBindingNaviagator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.presetReceiptTextBox1 = new System.Windows.Forms.TextBox();
-            this.presetCodeTextBox = new System.Windows.Forms.TextBox();
-            this.presetColorTextBox = new System.Windows.Forms.TextBox();
-            this.presetPictureTextBox = new System.Windows.Forms.TextBox();
-            this.presetDescTextBox = new System.Windows.Forms.TextBox();
-            this.presetLegendTextBox = new System.Windows.Forms.TextBox();
-            this.presetTaxTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrintTextBox = new System.Windows.Forms.TextBox();
-            this.presetPriceTextBox = new System.Windows.Forms.TextBox();
-            this.presetReceiptTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice2TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice8TextBox = new System.Windows.Forms.TextBox();
-            this.presetChipTextBox = new System.Windows.Forms.TextBox();
-            this.presetChippableTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice3TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice7TextBox = new System.Windows.Forms.TextBox();
-            this.presetChitToggleTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrintChitTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice4TextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice6TextBox = new System.Windows.Forms.TextBox();
-            this.presetChitScanTextBox = new System.Windows.Forms.TextBox();
-            this.presetPrice5TextBox = new System.Windows.Forms.TextBox();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.PresetSearch_Button = new System.Windows.Forms.Button();
-            this.PresetSearchLabel = new System.Windows.Forms.Label();
-            this.PresetSearch_TextBox = new System.Windows.Forms.TextBox();
-            this.Preset_Label = new System.Windows.Forms.Label();
             this.customGrpBox1 = new Preset_Maintenance.CustomGrpBox();
             this.CurrentPreset_Button = new System.Windows.Forms.Button();
-            this.CollapseNodes_Button = new System.Windows.Forms.Button();
-            this.ExpandNodes_Button = new System.Windows.Forms.Button();
-            this.ViewKeys_Button = new System.Windows.Forms.Button();
             this.CurrentKey_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.KeyPreview_Button = new System.Windows.Forms.Button();
-            this.presetDataDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PresetPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MainTreeView = new System.Windows.Forms.TreeView();
-            this.presetDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
-            this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
-            this.presetDataTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetDataTableAdapter();
             presetCodeLabel = new System.Windows.Forms.Label();
             presetDescLabel = new System.Windows.Forms.Label();
             presetLegendLabel = new System.Windows.Forms.Label();
@@ -192,7 +181,6 @@
             this.Main_SplitCon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).BeginInit();
             this.Nested_SplitCon.Panel1.SuspendLayout();
-            this.Nested_SplitCon.Panel2.SuspendLayout();
             this.Nested_SplitCon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PresetSplitContainer)).BeginInit();
             this.PresetSplitContainer.Panel1.SuspendLayout();
@@ -200,17 +188,16 @@
             this.PresetSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
-            this.Preset_GroupBox.SuspendLayout();
-            this.presetPanel.SuspendLayout();
             this.SearchResults_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchResults_DataGridView)).BeginInit();
             this.Pricing_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNaviagator)).BeginInit();
             this.presetMasterBindingNaviagator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
+            this.Preset_GroupBox.SuspendLayout();
+            this.presetPanel.SuspendLayout();
             this.customGrpBox1.SuspendLayout();
             this.CurrentKey_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // presetCodeLabel
@@ -422,7 +409,7 @@
             // 
             presetPriorityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             presetPriorityLabel.AutoSize = true;
-            presetPriorityLabel.Location = new System.Drawing.Point(7, 42);
+            presetPriorityLabel.Location = new System.Drawing.Point(72, 33);
             presetPriorityLabel.Name = "presetPriorityLabel";
             presetPriorityLabel.Size = new System.Drawing.Size(74, 13);
             presetPriorityLabel.TabIndex = 101;
@@ -451,8 +438,8 @@
             // Main_SplitCon.Panel2
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.MainTreeView);
-            this.Main_SplitCon.Size = new System.Drawing.Size(1229, 778);
-            this.Main_SplitCon.SplitterDistance = 983;
+            this.Main_SplitCon.Size = new System.Drawing.Size(1229, 795);
+            this.Main_SplitCon.SplitterDistance = 922;
             this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
@@ -470,15 +457,16 @@
             // Nested_SplitCon.Panel1
             // 
             this.Nested_SplitCon.Panel1.AutoScroll = true;
+            this.Nested_SplitCon.Panel1.Controls.Add(this.ConfirmAdd_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSplitContainer);
             this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_GroupBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_Label);
             this.Nested_SplitCon.Panel1.Controls.Add(this.Pricing_GroupBox);
+            this.Nested_SplitCon.Panel1.Controls.Add(this.Update_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ClearButton);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearch_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearchLabel);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSearch_TextBox);
-            this.Nested_SplitCon.Panel1.Controls.Add(this.Preset_Label);
             this.Nested_SplitCon.Panel1.Controls.Add(this.customGrpBox1);
             this.Nested_SplitCon.Panel1.Controls.Add(this.CollapseNodes_Button);
             this.Nested_SplitCon.Panel1.Controls.Add(this.ExpandNodes_Button);
@@ -489,37 +477,35 @@
             // Nested_SplitCon.Panel2
             // 
             this.Nested_SplitCon.Panel2.AccessibleName = "";
-            this.Nested_SplitCon.Panel2.Controls.Add(this.presetDataDataGridView);
+            this.Nested_SplitCon.Panel2Collapsed = true;
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(983, 778);
-            this.Nested_SplitCon.SplitterDistance = 653;
+            this.Nested_SplitCon.Size = new System.Drawing.Size(922, 795);
+            this.Nested_SplitCon.SplitterDistance = 400;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
             // 
             // PresetSplitContainer
             // 
-            this.PresetSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSplitContainer.Location = new System.Drawing.Point(340, 279);
+            this.PresetSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.PresetSplitContainer.Location = new System.Drawing.Point(334, 428);
             this.PresetSplitContainer.Name = "PresetSplitContainer";
             // 
             // PresetSplitContainer.Panel1
             // 
-            this.PresetSplitContainer.Panel1.AutoScroll = true;
+            this.PresetSplitContainer.Panel1.Controls.Add(this.presetTrashBin);
+            this.PresetSplitContainer.Panel1.Controls.Add(this.presetClipBoard);
             this.PresetSplitContainer.Panel1.Controls.Add(this.bitMap_ComboBox);
             this.PresetSplitContainer.Panel1.Controls.Add(this.PresetPriority_Label);
-            this.PresetSplitContainer.Panel1.Controls.Add(this.Update_Button);
-            this.PresetSplitContainer.Panel1.Controls.Add(this.PresetPriorityButton);
-            this.PresetSplitContainer.Panel1.Controls.Add(this.presetPriorityTextBox);
             this.PresetSplitContainer.Panel1.Controls.Add(presetPriorityLabel);
+            this.PresetSplitContainer.Panel1.Controls.Add(this.presetPriorityTextBox);
             // 
             // PresetSplitContainer.Panel2
             // 
             this.PresetSplitContainer.Panel2.Controls.Add(this.Preset_GroupBox);
-            this.PresetSplitContainer.Size = new System.Drawing.Size(639, 348);
-            this.PresetSplitContainer.SplitterDistance = 309;
-            this.PresetSplitContainer.SplitterIncrement = 280;
-            this.PresetSplitContainer.TabIndex = 104;
+            this.PresetSplitContainer.Size = new System.Drawing.Size(585, 355);
+            this.PresetSplitContainer.SplitterDistance = 255;
+            this.PresetSplitContainer.TabIndex = 106;
             // 
             // bitMap_ComboBox
             // 
@@ -528,7 +514,7 @@
             this.bitMap_ComboBox.FormattingEnabled = true;
             this.bitMap_ComboBox.Items.AddRange(new object[] {
             "None"});
-            this.bitMap_ComboBox.Location = new System.Drawing.Point(10, 100);
+            this.bitMap_ComboBox.Location = new System.Drawing.Point(55, 3);
             this.bitMap_ComboBox.Name = "bitMap_ComboBox";
             this.bitMap_ComboBox.Size = new System.Drawing.Size(197, 21);
             this.bitMap_ComboBox.TabIndex = 105;
@@ -538,63 +524,622 @@
             // PresetPriority_Label
             // 
             this.PresetPriority_Label.AutoSize = true;
-            this.PresetPriority_Label.Location = new System.Drawing.Point(10, 73);
+            this.PresetPriority_Label.Location = new System.Drawing.Point(168, 53);
             this.PresetPriority_Label.Name = "PresetPriority_Label";
             this.PresetPriority_Label.Size = new System.Drawing.Size(84, 13);
             this.PresetPriority_Label.TabIndex = 104;
             this.PresetPriority_Label.Text = "Button Position: ";
             // 
-            // Update_Button
-            // 
-            this.Update_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Update_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Update_Button.Location = new System.Drawing.Point(3, 3);
-            this.Update_Button.Name = "Update_Button";
-            this.Update_Button.Size = new System.Drawing.Size(75, 28);
-            this.Update_Button.TabIndex = 30;
-            this.Update_Button.Text = "Update";
-            this.Update_Button.UseVisualStyleBackColor = true;
-            this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
-            // 
-            // PresetPriorityButton
-            // 
-            this.PresetPriorityButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetPriorityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PresetPriorityButton.Location = new System.Drawing.Point(289, 116);
-            this.PresetPriorityButton.Name = "PresetPriorityButton";
-            this.PresetPriorityButton.Size = new System.Drawing.Size(17, 107);
-            this.PresetPriorityButton.TabIndex = 103;
-            this.PresetPriorityButton.Text = "<";
-            this.PresetPriorityButton.UseVisualStyleBackColor = true;
-            this.PresetPriorityButton.Click += new System.EventHandler(this.PresetPriorityButton_Click);
-            // 
             // presetPriorityTextBox
             // 
             this.presetPriorityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.presetPriorityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPriority", true));
-            this.presetPriorityTextBox.Location = new System.Drawing.Point(87, 39);
+            this.presetPriorityTextBox.Location = new System.Drawing.Point(152, 30);
             this.presetPriorityTextBox.Name = "presetPriorityTextBox";
             this.presetPriorityTextBox.Size = new System.Drawing.Size(100, 20);
             this.presetPriorityTextBox.TabIndex = 102;
             // 
             // presetMasterBindingSource
             // 
-            this.presetMasterBindingSource.AllowNew = false;
+            this.presetMasterBindingSource.AllowNew = true;
             this.presetMasterBindingSource.DataMember = "PresetMaster";
             this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
+            this.presetMasterBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.presetMasterBindingSource_AddingNew);
+            this.presetMasterBindingSource.PositionChanged += new System.EventHandler(this.presetMasterBindingSource_PositionChanged);
             // 
             // jartrekDataSet
             // 
             this.jartrekDataSet.DataSetName = "jartrekDataSet";
             this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // SearchResults_GroupBox
+            // 
+            this.SearchResults_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_GroupBox.Controls.Add(this.searchResults_DataGridView);
+            this.SearchResults_GroupBox.Location = new System.Drawing.Point(651, 24);
+            this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
+            this.SearchResults_GroupBox.Size = new System.Drawing.Size(267, 253);
+            this.SearchResults_GroupBox.TabIndex = 105;
+            this.SearchResults_GroupBox.TabStop = false;
+            this.SearchResults_GroupBox.Text = "Search Results";
+            // 
+            // searchResults_DataGridView
+            // 
+            this.searchResults_DataGridView.AllowUserToDeleteRows = false;
+            this.searchResults_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.searchResults_DataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.searchResults_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchResults_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchResults_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PresetDesc});
+            this.searchResults_DataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.presetMasterBindingSource, "PresetCode", true));
+            this.searchResults_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchResults_DataGridView.Location = new System.Drawing.Point(3, 16);
+            this.searchResults_DataGridView.Name = "searchResults_DataGridView";
+            this.searchResults_DataGridView.RowHeadersWidth = 20;
+            this.searchResults_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.searchResults_DataGridView.Size = new System.Drawing.Size(261, 234);
+            this.searchResults_DataGridView.TabIndex = 16;
+            this.searchResults_DataGridView.TabStop = false;
+            this.searchResults_DataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
+            // 
+            // PresetDesc
+            // 
+            this.PresetDesc.HeaderText = "Preset Description";
+            this.PresetDesc.Name = "PresetDesc";
+            // 
+            // SearchResults_Label
+            // 
+            this.SearchResults_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResults_Label.AutoSize = true;
+            this.SearchResults_Label.Location = new System.Drawing.Point(833, 399);
+            this.SearchResults_Label.Name = "SearchResults_Label";
+            this.SearchResults_Label.Size = new System.Drawing.Size(71, 13);
+            this.SearchResults_Label.TabIndex = 100;
+            this.SearchResults_Label.Text = "Items Found: ";
+            // 
+            // Pricing_GroupBox
+            // 
+            this.Pricing_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.Pricing_GroupBox.Controls.Add(this.presetMasterBindingNaviagator);
+            this.Pricing_GroupBox.Controls.Add(presetReceiptLegendLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetReceiptTextBox1);
+            this.Pricing_GroupBox.Controls.Add(presetCodeLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetCodeTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetColorTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetColorLabel);
+            this.Pricing_GroupBox.Controls.Add(presetPictureLabel);
+            this.Pricing_GroupBox.Controls.Add(presetDescLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPictureTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetDescTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetLegendLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetLegendTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetTaxLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetTaxTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetPriceLabel);
+            this.Pricing_GroupBox.Controls.Add(presetPrintLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrintTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetPriceTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetReceiptLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetReceiptTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetPrice2Label);
+            this.Pricing_GroupBox.Controls.Add(presetPrice6Label);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice2TextBox);
+            this.Pricing_GroupBox.Controls.Add(presetChipLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice8TextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetChipTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetPrice3Label);
+            this.Pricing_GroupBox.Controls.Add(presetChippableLabel);
+            this.Pricing_GroupBox.Controls.Add(presetPrice8Label);
+            this.Pricing_GroupBox.Controls.Add(this.presetChippableTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice3TextBox);
+            this.Pricing_GroupBox.Controls.Add(presetChitToggleLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice7TextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetChitToggleTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetPrice4Label);
+            this.Pricing_GroupBox.Controls.Add(presetPrintChitLabel);
+            this.Pricing_GroupBox.Controls.Add(presetPrice7Label);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrintChitTextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice4TextBox);
+            this.Pricing_GroupBox.Controls.Add(presetChitScanLabel);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice6TextBox);
+            this.Pricing_GroupBox.Controls.Add(this.presetChitScanTextBox);
+            this.Pricing_GroupBox.Controls.Add(presetPrice5Label);
+            this.Pricing_GroupBox.Controls.Add(this.presetPrice5TextBox);
+            this.Pricing_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pricing_GroupBox.Location = new System.Drawing.Point(12, 12);
+            this.Pricing_GroupBox.Name = "Pricing_GroupBox";
+            this.Pricing_GroupBox.Size = new System.Drawing.Size(322, 771);
+            this.Pricing_GroupBox.TabIndex = 15;
+            this.Pricing_GroupBox.TabStop = false;
+            this.Pricing_GroupBox.Text = "Pricing";
+            // 
+            // ConfirmAdd_Button
+            // 
+            this.ConfirmAdd_Button.Location = new System.Drawing.Point(340, 190);
+            this.ConfirmAdd_Button.Name = "ConfirmAdd_Button";
+            this.ConfirmAdd_Button.Size = new System.Drawing.Size(63, 26);
+            this.ConfirmAdd_Button.TabIndex = 91;
+            this.ConfirmAdd_Button.Text = "Confirm";
+            this.ConfirmAdd_Button.UseVisualStyleBackColor = true;
+            this.ConfirmAdd_Button.Visible = false;
+            this.ConfirmAdd_Button.Click += new System.EventHandler(this.ConfirmAdd_Button_Click);
+            // 
+            // presetMasterBindingNaviagator
+            // 
+            this.presetMasterBindingNaviagator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.presetMasterBindingNaviagator.AllowItemReorder = true;
+            this.presetMasterBindingNaviagator.BindingSource = this.presetMasterBindingSource;
+            this.presetMasterBindingNaviagator.CountItem = this.bindingNavigatorCountItem;
+            this.presetMasterBindingNaviagator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.presetMasterBindingNaviagator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.presetMasterBindingNaviagator.Location = new System.Drawing.Point(3, 17);
+            this.presetMasterBindingNaviagator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.presetMasterBindingNaviagator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.presetMasterBindingNaviagator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.presetMasterBindingNaviagator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.presetMasterBindingNaviagator.Name = "presetMasterBindingNaviagator";
+            this.presetMasterBindingNaviagator.PositionItem = this.bindingNavigatorPositionItem;
+            this.presetMasterBindingNaviagator.Size = new System.Drawing.Size(316, 25);
+            this.presetMasterBindingNaviagator.TabIndex = 90;
+            this.presetMasterBindingNaviagator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // presetReceiptTextBox1
+            // 
+            this.presetReceiptTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
+            this.presetReceiptTextBox1.Location = new System.Drawing.Point(122, 126);
+            this.presetReceiptTextBox1.Name = "presetReceiptTextBox1";
+            this.presetReceiptTextBox1.Size = new System.Drawing.Size(191, 21);
+            this.presetReceiptTextBox1.TabIndex = 89;
+            // 
+            // Update_Button
+            // 
+            this.Update_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Update_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Update_Button.Location = new System.Drawing.Point(340, 222);
+            this.Update_Button.Name = "Update_Button";
+            this.Update_Button.Size = new System.Drawing.Size(63, 46);
+            this.Update_Button.TabIndex = 30;
+            this.Update_Button.Text = "Update";
+            this.Update_Button.UseVisualStyleBackColor = true;
+            this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
+            // 
+            // presetCodeTextBox
+            // 
+            this.presetCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetCode", true));
+            this.presetCodeTextBox.Location = new System.Drawing.Point(122, 45);
+            this.presetCodeTextBox.Name = "presetCodeTextBox";
+            this.presetCodeTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetCodeTextBox.TabIndex = 31;
+            // 
+            // presetColorTextBox
+            // 
+            this.presetColorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetColor", true));
+            this.presetColorTextBox.Enabled = false;
+            this.presetColorTextBox.Location = new System.Drawing.Point(122, 180);
+            this.presetColorTextBox.Name = "presetColorTextBox";
+            this.presetColorTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetColorTextBox.TabIndex = 59;
+            this.presetColorTextBox.Text = " ";
+            this.presetColorTextBox.Visible = false;
+            // 
+            // presetPictureTextBox
+            // 
+            this.presetPictureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
+            this.presetPictureTextBox.Location = new System.Drawing.Point(122, 153);
+            this.presetPictureTextBox.Name = "presetPictureTextBox";
+            this.presetPictureTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetPictureTextBox.TabIndex = 71;
+            this.presetPictureTextBox.Text = " ";
+            // 
+            // presetDescTextBox
+            // 
+            this.presetDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetDesc", true));
+            this.presetDescTextBox.Location = new System.Drawing.Point(122, 72);
+            this.presetDescTextBox.Name = "presetDescTextBox";
+            this.presetDescTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetDescTextBox.TabIndex = 35;
+            // 
+            // presetLegendTextBox
+            // 
+            this.presetLegendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetLegend", true));
+            this.presetLegendTextBox.Location = new System.Drawing.Point(122, 99);
+            this.presetLegendTextBox.Name = "presetLegendTextBox";
+            this.presetLegendTextBox.Size = new System.Drawing.Size(191, 21);
+            this.presetLegendTextBox.TabIndex = 37;
+            // 
+            // presetTaxTextBox
+            // 
+            this.presetTaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetTax", true));
+            this.presetTaxTextBox.Location = new System.Drawing.Point(122, 207);
+            this.presetTaxTextBox.Name = "presetTaxTextBox";
+            this.presetTaxTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetTaxTextBox.TabIndex = 41;
+            // 
+            // presetPrintTextBox
+            // 
+            this.presetPrintTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrint", true));
+            this.presetPrintTextBox.Enabled = false;
+            this.presetPrintTextBox.Location = new System.Drawing.Point(122, 448);
+            this.presetPrintTextBox.Name = "presetPrintTextBox";
+            this.presetPrintTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrintTextBox.TabIndex = 45;
+            this.presetPrintTextBox.Text = " ";
+            this.presetPrintTextBox.Visible = false;
+            // 
+            // presetPriceTextBox
+            // 
+            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPriceTextBox.Location = new System.Drawing.Point(122, 234);
+            this.presetPriceTextBox.Name = "presetPriceTextBox";
+            this.presetPriceTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPriceTextBox.TabIndex = 43;
+            this.presetPriceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presetPriceTextBox_KeyDown);
+            // 
+            // presetReceiptTextBox
+            // 
+            this.presetReceiptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
+            this.presetReceiptTextBox.Enabled = false;
+            this.presetReceiptTextBox.Location = new System.Drawing.Point(122, 475);
+            this.presetReceiptTextBox.Name = "presetReceiptTextBox";
+            this.presetReceiptTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetReceiptTextBox.TabIndex = 69;
+            this.presetReceiptTextBox.Text = " ";
+            this.presetReceiptTextBox.Visible = false;
+            // 
+            // presetPrice2TextBox
+            // 
+            this.presetPrice2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice2TextBox.Location = new System.Drawing.Point(122, 260);
+            this.presetPrice2TextBox.Name = "presetPrice2TextBox";
+            this.presetPrice2TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice2TextBox.TabIndex = 61;
+            this.presetPrice2TextBox.Leave += new System.EventHandler(this.presetPrice2TextBox_Leave);
+            // 
+            // presetPrice8TextBox
+            // 
+            this.presetPrice8TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice8", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice8TextBox.Location = new System.Drawing.Point(122, 421);
+            this.presetPrice8TextBox.Name = "presetPrice8TextBox";
+            this.presetPrice8TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice8TextBox.TabIndex = 87;
+            // 
+            // presetChipTextBox
+            // 
+            this.presetChipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChip", true));
+            this.presetChipTextBox.Enabled = false;
+            this.presetChipTextBox.Location = new System.Drawing.Point(122, 502);
+            this.presetChipTextBox.Name = "presetChipTextBox";
+            this.presetChipTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChipTextBox.TabIndex = 73;
+            this.presetChipTextBox.Text = " ";
+            this.presetChipTextBox.Visible = false;
+            // 
+            // presetChippableTextBox
+            // 
+            this.presetChippableTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChippable", true));
+            this.presetChippableTextBox.Enabled = false;
+            this.presetChippableTextBox.Location = new System.Drawing.Point(122, 529);
+            this.presetChippableTextBox.Name = "presetChippableTextBox";
+            this.presetChippableTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChippableTextBox.TabIndex = 75;
+            this.presetChippableTextBox.Text = " ";
+            this.presetChippableTextBox.Visible = false;
+            // 
+            // presetPrice3TextBox
+            // 
+            this.presetPrice3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice3TextBox.Location = new System.Drawing.Point(122, 287);
+            this.presetPrice3TextBox.Name = "presetPrice3TextBox";
+            this.presetPrice3TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice3TextBox.TabIndex = 63;
+            // 
+            // presetPrice7TextBox
+            // 
+            this.presetPrice7TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice7", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice7TextBox.Location = new System.Drawing.Point(122, 394);
+            this.presetPrice7TextBox.Name = "presetPrice7TextBox";
+            this.presetPrice7TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice7TextBox.TabIndex = 85;
+            // 
+            // presetChitToggleTextBox
+            // 
+            this.presetChitToggleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitToggle", true));
+            this.presetChitToggleTextBox.Enabled = false;
+            this.presetChitToggleTextBox.Location = new System.Drawing.Point(122, 556);
+            this.presetChitToggleTextBox.Name = "presetChitToggleTextBox";
+            this.presetChitToggleTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChitToggleTextBox.TabIndex = 77;
+            this.presetChitToggleTextBox.Text = " ";
+            this.presetChitToggleTextBox.Visible = false;
+            // 
+            // presetPrintChitTextBox
+            // 
+            this.presetPrintChitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrintChit", true));
+            this.presetPrintChitTextBox.Enabled = false;
+            this.presetPrintChitTextBox.Location = new System.Drawing.Point(122, 583);
+            this.presetPrintChitTextBox.Name = "presetPrintChitTextBox";
+            this.presetPrintChitTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrintChitTextBox.TabIndex = 79;
+            this.presetPrintChitTextBox.Text = " ";
+            this.presetPrintChitTextBox.Visible = false;
+            // 
+            // presetPrice4TextBox
+            // 
+            this.presetPrice4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice4TextBox.Location = new System.Drawing.Point(122, 314);
+            this.presetPrice4TextBox.Name = "presetPrice4TextBox";
+            this.presetPrice4TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice4TextBox.TabIndex = 65;
+            // 
+            // presetPrice6TextBox
+            // 
+            this.presetPrice6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice6TextBox.Location = new System.Drawing.Point(122, 367);
+            this.presetPrice6TextBox.Name = "presetPrice6TextBox";
+            this.presetPrice6TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice6TextBox.TabIndex = 83;
+            // 
+            // presetChitScanTextBox
+            // 
+            this.presetChitScanTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitScan", true));
+            this.presetChitScanTextBox.Enabled = false;
+            this.presetChitScanTextBox.Location = new System.Drawing.Point(122, 610);
+            this.presetChitScanTextBox.Name = "presetChitScanTextBox";
+            this.presetChitScanTextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetChitScanTextBox.TabIndex = 81;
+            this.presetChitScanTextBox.Text = " ";
+            this.presetChitScanTextBox.Visible = false;
+            // 
+            // presetPrice5TextBox
+            // 
+            this.presetPrice5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.presetPrice5TextBox.Location = new System.Drawing.Point(122, 341);
+            this.presetPrice5TextBox.Name = "presetPrice5TextBox";
+            this.presetPrice5TextBox.Size = new System.Drawing.Size(108, 21);
+            this.presetPrice5TextBox.TabIndex = 67;
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearButton.Location = new System.Drawing.Point(895, 309);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(20, 27);
+            this.ClearButton.TabIndex = 3;
+            this.ClearButton.Text = "X";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // PresetSearch_Button
+            // 
+            this.PresetSearch_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetSearch_Button.Location = new System.Drawing.Point(833, 309);
+            this.PresetSearch_Button.Name = "PresetSearch_Button";
+            this.PresetSearch_Button.Size = new System.Drawing.Size(56, 27);
+            this.PresetSearch_Button.TabIndex = 2;
+            this.PresetSearch_Button.Text = "Search";
+            this.PresetSearch_Button.UseVisualStyleBackColor = true;
+            this.PresetSearch_Button.Click += new System.EventHandler(this.PresetSearch_Button_Click);
+            // 
+            // PresetSearchLabel
+            // 
+            this.PresetSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetSearchLabel.Location = new System.Drawing.Point(651, 283);
+            this.PresetSearchLabel.Name = "PresetSearchLabel";
+            this.PresetSearchLabel.Size = new System.Drawing.Size(94, 20);
+            this.PresetSearchLabel.TabIndex = 12;
+            this.PresetSearchLabel.Text = "Search for Preset";
+            this.PresetSearchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PresetSearch_TextBox
+            // 
+            this.PresetSearch_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetSearch_TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PresetSearch_TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.PresetSearch_TextBox.Location = new System.Drawing.Point(751, 283);
+            this.PresetSearch_TextBox.Name = "PresetSearch_TextBox";
+            this.PresetSearch_TextBox.Size = new System.Drawing.Size(164, 20);
+            this.PresetSearch_TextBox.TabIndex = 1;
+            // 
+            // CollapseNodes_Button
+            // 
+            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CollapseNodes_Button.Location = new System.Drawing.Point(833, 369);
+            this.CollapseNodes_Button.Name = "CollapseNodes_Button";
+            this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 27);
+            this.CollapseNodes_Button.TabIndex = 4;
+            this.CollapseNodes_Button.Text = "Collapse Keys";
+            this.CollapseNodes_Button.UseVisualStyleBackColor = true;
+            this.CollapseNodes_Button.Click += new System.EventHandler(this.CollapseNodes_Button_Click);
+            // 
+            // ExpandNodes_Button
+            // 
+            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExpandNodes_Button.Location = new System.Drawing.Point(833, 338);
+            this.ExpandNodes_Button.Name = "ExpandNodes_Button";
+            this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 27);
+            this.ExpandNodes_Button.TabIndex = 3;
+            this.ExpandNodes_Button.Text = "Expand Keys";
+            this.ExpandNodes_Button.UseVisualStyleBackColor = true;
+            this.ExpandNodes_Button.Click += new System.EventHandler(this.ExpandNodes_Button_Click);
+            // 
+            // ViewKeys_Button
+            // 
+            this.ViewKeys_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewKeys_Button.Location = new System.Drawing.Point(872, 3);
+            this.ViewKeys_Button.Name = "ViewKeys_Button";
+            this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
+            this.ViewKeys_Button.TabIndex = 2;
+            this.ViewKeys_Button.Text = "^";
+            this.ViewKeys_Button.UseVisualStyleBackColor = true;
+            this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
+            // 
+            // MainTreeView
+            // 
+            this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MainTreeView.Name = "MainTreeView";
+            this.MainTreeView.Size = new System.Drawing.Size(305, 795);
+            this.MainTreeView.TabIndex = 0;
+            this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
+            this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
+            this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
+            // 
+            // presetDataBindingSource
+            // 
+            this.presetDataBindingSource.AllowNew = true;
+            this.presetDataBindingSource.DataMember = "PresetData";
+            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
+            // 
+            // presetMasterTableAdapter
+            // 
+            this.presetMasterTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.GoToPriorTableAdapter = null;
+            this.tableAdapterManager.KeyMasterDataAdapter = null;
+            this.tableAdapterManager.KeyMasterTableAdapter = null;
+            this.tableAdapterManager.PresetDataTableAdapter = this.presetDataTableAdapter;
+            this.tableAdapterManager.PresetMasterTableAdapter = this.presetMasterTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // presetDataTableAdapter
+            // 
+            this.presetDataTableAdapter.ClearBeforeFill = true;
+            // 
+            // presetTrashBin
+            // 
+            this.presetTrashBin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.presetTrashBin.Location = new System.Drawing.Point(3, 239);
+            this.presetTrashBin.Name = "presetTrashBin";
+            this.presetTrashBin.Size = new System.Drawing.Size(249, 113);
+            this.presetTrashBin.TabIndex = 1;
+            this.presetTrashBin.TabStop = false;
+            this.presetTrashBin.Text = "Games to Remove from Screen";
+            // 
+            // presetClipBoard
+            // 
+            this.presetClipBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.presetClipBoard.Location = new System.Drawing.Point(3, 105);
+            this.presetClipBoard.Name = "presetClipBoard";
+            this.presetClipBoard.Size = new System.Drawing.Size(249, 128);
+            this.presetClipBoard.TabIndex = 0;
+            this.presetClipBoard.TabStop = false;
+            this.presetClipBoard.Text = "Clip Board";
+            // 
             // Preset_GroupBox
             // 
+            this.Preset_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Preset_GroupBox.Controls.Add(this.presetPanel);
-            this.Preset_GroupBox.Location = new System.Drawing.Point(3, 3);
+            this.Preset_GroupBox.Location = new System.Drawing.Point(3, 1);
             this.Preset_GroupBox.Name = "Preset_GroupBox";
-            this.Preset_GroupBox.Size = new System.Drawing.Size(316, 339);
-            this.Preset_GroupBox.TabIndex = 89;
+            this.Preset_GroupBox.Size = new System.Drawing.Size(320, 351);
+            this.Preset_GroupBox.TabIndex = 90;
             this.Preset_GroupBox.TabStop = false;
             this.Preset_GroupBox.Text = "Screen Layout";
             // 
@@ -631,9 +1176,9 @@
             this.presetPanel.Controls.Add(this.button03);
             this.presetPanel.Controls.Add(this.button02);
             this.presetPanel.Controls.Add(this.button01);
-            this.presetPanel.Location = new System.Drawing.Point(0, 13);
+            this.presetPanel.Location = new System.Drawing.Point(6, 19);
             this.presetPanel.Name = "presetPanel";
-            this.presetPanel.Size = new System.Drawing.Size(313, 326);
+            this.presetPanel.Size = new System.Drawing.Size(308, 326);
             this.presetPanel.TabIndex = 0;
             // 
             // button25
@@ -906,493 +1451,14 @@
             this.button01.Text = "Not Used!";
             this.button01.UseVisualStyleBackColor = true;
             // 
-            // SearchResults_GroupBox
-            // 
-            this.SearchResults_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchResults_GroupBox.Controls.Add(this.SearchResults_DataGrid);
-            this.SearchResults_GroupBox.Location = new System.Drawing.Point(340, 12);
-            this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
-            this.SearchResults_GroupBox.Size = new System.Drawing.Size(421, 261);
-            this.SearchResults_GroupBox.TabIndex = 101;
-            this.SearchResults_GroupBox.TabStop = false;
-            this.SearchResults_GroupBox.Text = "Search Results";
-            // 
-            // SearchResults_DataGrid
-            // 
-            this.SearchResults_DataGrid.AllowUserToDeleteRows = false;
-            this.SearchResults_DataGrid.AllowUserToOrderColumns = true;
-            this.SearchResults_DataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchResults_DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.SearchResults_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SearchResults_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PresetDesc,
-            this.RegularPrice});
-            this.SearchResults_DataGrid.Location = new System.Drawing.Point(6, 19);
-            this.SearchResults_DataGrid.Name = "SearchResults_DataGrid";
-            this.SearchResults_DataGrid.RowHeadersWidth = 15;
-            this.SearchResults_DataGrid.Size = new System.Drawing.Size(409, 239);
-            this.SearchResults_DataGrid.TabIndex = 16;
-            this.SearchResults_DataGrid.TabStop = false;
-            this.SearchResults_DataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResults_DataGrid_CellContentDoubleClick);
-            // 
-            // PresetDesc
-            // 
-            this.PresetDesc.HeaderText = "Preset Desc";
-            this.PresetDesc.Name = "PresetDesc";
-            // 
-            // RegularPrice
-            // 
-            this.RegularPrice.HeaderText = "RegularPrice";
-            this.RegularPrice.Name = "RegularPrice";
-            // 
-            // SearchResults_Label
-            // 
-            this.SearchResults_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchResults_Label.AutoSize = true;
-            this.SearchResults_Label.Location = new System.Drawing.Point(893, 249);
-            this.SearchResults_Label.Name = "SearchResults_Label";
-            this.SearchResults_Label.Size = new System.Drawing.Size(71, 13);
-            this.SearchResults_Label.TabIndex = 100;
-            this.SearchResults_Label.Text = "Items Found: ";
-            // 
-            // Pricing_GroupBox
-            // 
-            this.Pricing_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.Pricing_GroupBox.Controls.Add(this.presetMasterBindingNaviagator);
-            this.Pricing_GroupBox.Controls.Add(presetReceiptLegendLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetReceiptTextBox1);
-            this.Pricing_GroupBox.Controls.Add(presetCodeLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetCodeTextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetColorTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetColorLabel);
-            this.Pricing_GroupBox.Controls.Add(presetPictureLabel);
-            this.Pricing_GroupBox.Controls.Add(presetDescLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPictureTextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetDescTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetLegendLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetLegendTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetTaxLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetTaxTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetPriceLabel);
-            this.Pricing_GroupBox.Controls.Add(presetPrintLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrintTextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetPriceTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetReceiptLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetReceiptTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetPrice2Label);
-            this.Pricing_GroupBox.Controls.Add(presetPrice6Label);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice2TextBox);
-            this.Pricing_GroupBox.Controls.Add(presetChipLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice8TextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetChipTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetPrice3Label);
-            this.Pricing_GroupBox.Controls.Add(presetChippableLabel);
-            this.Pricing_GroupBox.Controls.Add(presetPrice8Label);
-            this.Pricing_GroupBox.Controls.Add(this.presetChippableTextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice3TextBox);
-            this.Pricing_GroupBox.Controls.Add(presetChitToggleLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice7TextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetChitToggleTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetPrice4Label);
-            this.Pricing_GroupBox.Controls.Add(presetPrintChitLabel);
-            this.Pricing_GroupBox.Controls.Add(presetPrice7Label);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrintChitTextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice4TextBox);
-            this.Pricing_GroupBox.Controls.Add(presetChitScanLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice6TextBox);
-            this.Pricing_GroupBox.Controls.Add(this.presetChitScanTextBox);
-            this.Pricing_GroupBox.Controls.Add(presetPrice5Label);
-            this.Pricing_GroupBox.Controls.Add(this.presetPrice5TextBox);
-            this.Pricing_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pricing_GroupBox.Location = new System.Drawing.Point(12, 12);
-            this.Pricing_GroupBox.Name = "Pricing_GroupBox";
-            this.Pricing_GroupBox.Size = new System.Drawing.Size(322, 637);
-            this.Pricing_GroupBox.TabIndex = 15;
-            this.Pricing_GroupBox.TabStop = false;
-            this.Pricing_GroupBox.Text = "Pricing";
-            // 
-            // presetMasterBindingNaviagator
-            // 
-            this.presetMasterBindingNaviagator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.presetMasterBindingNaviagator.BindingSource = this.presetMasterBindingSource;
-            this.presetMasterBindingNaviagator.CountItem = this.bindingNavigatorCountItem;
-            this.presetMasterBindingNaviagator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.presetMasterBindingNaviagator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.presetMasterBindingNaviagator.Location = new System.Drawing.Point(3, 17);
-            this.presetMasterBindingNaviagator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.presetMasterBindingNaviagator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.presetMasterBindingNaviagator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.presetMasterBindingNaviagator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.presetMasterBindingNaviagator.Name = "presetMasterBindingNaviagator";
-            this.presetMasterBindingNaviagator.PositionItem = this.bindingNavigatorPositionItem;
-            this.presetMasterBindingNaviagator.Size = new System.Drawing.Size(316, 25);
-            this.presetMasterBindingNaviagator.TabIndex = 90;
-            this.presetMasterBindingNaviagator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // presetReceiptTextBox1
-            // 
-            this.presetReceiptTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
-            this.presetReceiptTextBox1.Location = new System.Drawing.Point(141, 126);
-            this.presetReceiptTextBox1.Name = "presetReceiptTextBox1";
-            this.presetReceiptTextBox1.Size = new System.Drawing.Size(172, 21);
-            this.presetReceiptTextBox1.TabIndex = 89;
-            // 
-            // presetCodeTextBox
-            // 
-            this.presetCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetCode", true));
-            this.presetCodeTextBox.Location = new System.Drawing.Point(141, 45);
-            this.presetCodeTextBox.Name = "presetCodeTextBox";
-            this.presetCodeTextBox.Size = new System.Drawing.Size(172, 21);
-            this.presetCodeTextBox.TabIndex = 31;
-            // 
-            // presetColorTextBox
-            // 
-            this.presetColorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetColor", true));
-            this.presetColorTextBox.Enabled = false;
-            this.presetColorTextBox.Location = new System.Drawing.Point(141, 180);
-            this.presetColorTextBox.Name = "presetColorTextBox";
-            this.presetColorTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetColorTextBox.TabIndex = 59;
-            this.presetColorTextBox.Text = " ";
-            this.presetColorTextBox.Visible = false;
-            // 
-            // presetPictureTextBox
-            // 
-            this.presetPictureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
-            this.presetPictureTextBox.Location = new System.Drawing.Point(141, 153);
-            this.presetPictureTextBox.Name = "presetPictureTextBox";
-            this.presetPictureTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPictureTextBox.TabIndex = 71;
-            this.presetPictureTextBox.Text = " ";
-            // 
-            // presetDescTextBox
-            // 
-            this.presetDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetDesc", true));
-            this.presetDescTextBox.Location = new System.Drawing.Point(141, 72);
-            this.presetDescTextBox.Name = "presetDescTextBox";
-            this.presetDescTextBox.Size = new System.Drawing.Size(172, 21);
-            this.presetDescTextBox.TabIndex = 35;
-            // 
-            // presetLegendTextBox
-            // 
-            this.presetLegendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetLegend", true));
-            this.presetLegendTextBox.Location = new System.Drawing.Point(141, 99);
-            this.presetLegendTextBox.Name = "presetLegendTextBox";
-            this.presetLegendTextBox.Size = new System.Drawing.Size(172, 21);
-            this.presetLegendTextBox.TabIndex = 37;
-            // 
-            // presetTaxTextBox
-            // 
-            this.presetTaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetTax", true));
-            this.presetTaxTextBox.Location = new System.Drawing.Point(141, 207);
-            this.presetTaxTextBox.Name = "presetTaxTextBox";
-            this.presetTaxTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetTaxTextBox.TabIndex = 41;
-            // 
-            // presetPrintTextBox
-            // 
-            this.presetPrintTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrint", true));
-            this.presetPrintTextBox.Enabled = false;
-            this.presetPrintTextBox.Location = new System.Drawing.Point(141, 448);
-            this.presetPrintTextBox.Name = "presetPrintTextBox";
-            this.presetPrintTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrintTextBox.TabIndex = 45;
-            this.presetPrintTextBox.Text = " ";
-            this.presetPrintTextBox.Visible = false;
-            // 
-            // presetPriceTextBox
-            // 
-            this.presetPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPriceTextBox.Location = new System.Drawing.Point(141, 234);
-            this.presetPriceTextBox.Name = "presetPriceTextBox";
-            this.presetPriceTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPriceTextBox.TabIndex = 43;
-            this.presetPriceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presetPriceTextBox_KeyDown);
-            // 
-            // presetReceiptTextBox
-            // 
-            this.presetReceiptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetReceipt", true));
-            this.presetReceiptTextBox.Enabled = false;
-            this.presetReceiptTextBox.Location = new System.Drawing.Point(141, 475);
-            this.presetReceiptTextBox.Name = "presetReceiptTextBox";
-            this.presetReceiptTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetReceiptTextBox.TabIndex = 69;
-            this.presetReceiptTextBox.Text = " ";
-            this.presetReceiptTextBox.Visible = false;
-            // 
-            // presetPrice2TextBox
-            // 
-            this.presetPrice2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice2", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice2TextBox.Location = new System.Drawing.Point(141, 260);
-            this.presetPrice2TextBox.Name = "presetPrice2TextBox";
-            this.presetPrice2TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice2TextBox.TabIndex = 61;
-            this.presetPrice2TextBox.Leave += new System.EventHandler(this.presetPrice2TextBox_Leave);
-            // 
-            // presetPrice8TextBox
-            // 
-            this.presetPrice8TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice8", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice8TextBox.Location = new System.Drawing.Point(141, 421);
-            this.presetPrice8TextBox.Name = "presetPrice8TextBox";
-            this.presetPrice8TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice8TextBox.TabIndex = 87;
-            // 
-            // presetChipTextBox
-            // 
-            this.presetChipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChip", true));
-            this.presetChipTextBox.Enabled = false;
-            this.presetChipTextBox.Location = new System.Drawing.Point(141, 502);
-            this.presetChipTextBox.Name = "presetChipTextBox";
-            this.presetChipTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChipTextBox.TabIndex = 73;
-            this.presetChipTextBox.Text = " ";
-            this.presetChipTextBox.Visible = false;
-            // 
-            // presetChippableTextBox
-            // 
-            this.presetChippableTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChippable", true));
-            this.presetChippableTextBox.Enabled = false;
-            this.presetChippableTextBox.Location = new System.Drawing.Point(141, 529);
-            this.presetChippableTextBox.Name = "presetChippableTextBox";
-            this.presetChippableTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChippableTextBox.TabIndex = 75;
-            this.presetChippableTextBox.Text = " ";
-            this.presetChippableTextBox.Visible = false;
-            // 
-            // presetPrice3TextBox
-            // 
-            this.presetPrice3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice3", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice3TextBox.Location = new System.Drawing.Point(141, 287);
-            this.presetPrice3TextBox.Name = "presetPrice3TextBox";
-            this.presetPrice3TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice3TextBox.TabIndex = 63;
-            // 
-            // presetPrice7TextBox
-            // 
-            this.presetPrice7TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice7", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice7TextBox.Location = new System.Drawing.Point(141, 394);
-            this.presetPrice7TextBox.Name = "presetPrice7TextBox";
-            this.presetPrice7TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice7TextBox.TabIndex = 85;
-            // 
-            // presetChitToggleTextBox
-            // 
-            this.presetChitToggleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitToggle", true));
-            this.presetChitToggleTextBox.Enabled = false;
-            this.presetChitToggleTextBox.Location = new System.Drawing.Point(141, 556);
-            this.presetChitToggleTextBox.Name = "presetChitToggleTextBox";
-            this.presetChitToggleTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChitToggleTextBox.TabIndex = 77;
-            this.presetChitToggleTextBox.Text = " ";
-            this.presetChitToggleTextBox.Visible = false;
-            // 
-            // presetPrintChitTextBox
-            // 
-            this.presetPrintChitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrintChit", true));
-            this.presetPrintChitTextBox.Enabled = false;
-            this.presetPrintChitTextBox.Location = new System.Drawing.Point(141, 583);
-            this.presetPrintChitTextBox.Name = "presetPrintChitTextBox";
-            this.presetPrintChitTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrintChitTextBox.TabIndex = 79;
-            this.presetPrintChitTextBox.Text = " ";
-            this.presetPrintChitTextBox.Visible = false;
-            // 
-            // presetPrice4TextBox
-            // 
-            this.presetPrice4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice4", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice4TextBox.Location = new System.Drawing.Point(141, 314);
-            this.presetPrice4TextBox.Name = "presetPrice4TextBox";
-            this.presetPrice4TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice4TextBox.TabIndex = 65;
-            // 
-            // presetPrice6TextBox
-            // 
-            this.presetPrice6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice6", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice6TextBox.Location = new System.Drawing.Point(141, 367);
-            this.presetPrice6TextBox.Name = "presetPrice6TextBox";
-            this.presetPrice6TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice6TextBox.TabIndex = 83;
-            // 
-            // presetChitScanTextBox
-            // 
-            this.presetChitScanTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetChitScan", true));
-            this.presetChitScanTextBox.Enabled = false;
-            this.presetChitScanTextBox.Location = new System.Drawing.Point(141, 610);
-            this.presetChitScanTextBox.Name = "presetChitScanTextBox";
-            this.presetChitScanTextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetChitScanTextBox.TabIndex = 81;
-            this.presetChitScanTextBox.Text = " ";
-            this.presetChitScanTextBox.Visible = false;
-            // 
-            // presetPrice5TextBox
-            // 
-            this.presetPrice5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPrice5", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.presetPrice5TextBox.Location = new System.Drawing.Point(141, 341);
-            this.presetPrice5TextBox.Name = "presetPrice5TextBox";
-            this.presetPrice5TextBox.Size = new System.Drawing.Size(108, 21);
-            this.presetPrice5TextBox.TabIndex = 67;
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearButton.Location = new System.Drawing.Point(955, 161);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(20, 27);
-            this.ClearButton.TabIndex = 3;
-            this.ClearButton.Text = "X";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // PresetSearch_Button
-            // 
-            this.PresetSearch_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_Button.Location = new System.Drawing.Point(893, 161);
-            this.PresetSearch_Button.Name = "PresetSearch_Button";
-            this.PresetSearch_Button.Size = new System.Drawing.Size(56, 27);
-            this.PresetSearch_Button.TabIndex = 2;
-            this.PresetSearch_Button.Text = "Search";
-            this.PresetSearch_Button.UseVisualStyleBackColor = true;
-            this.PresetSearch_Button.Click += new System.EventHandler(this.PresetSearch_Button_Click);
-            // 
-            // PresetSearchLabel
-            // 
-            this.PresetSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearchLabel.Location = new System.Drawing.Point(766, 134);
-            this.PresetSearchLabel.Name = "PresetSearchLabel";
-            this.PresetSearchLabel.Size = new System.Drawing.Size(94, 20);
-            this.PresetSearchLabel.TabIndex = 12;
-            this.PresetSearchLabel.Text = "Search for Preset";
-            this.PresetSearchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PresetSearch_TextBox
-            // 
-            this.PresetSearch_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.PresetSearch_TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.PresetSearch_TextBox.Location = new System.Drawing.Point(866, 135);
-            this.PresetSearch_TextBox.Name = "PresetSearch_TextBox";
-            this.PresetSearch_TextBox.Size = new System.Drawing.Size(109, 20);
-            this.PresetSearch_TextBox.TabIndex = 1;
-            // 
-            // Preset_Label
-            // 
-            this.Preset_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Preset_Label.Location = new System.Drawing.Point(893, 110);
-            this.Preset_Label.Name = "Preset_Label";
-            this.Preset_Label.Size = new System.Drawing.Size(80, 20);
-            this.Preset_Label.TabIndex = 10;
-            this.Preset_Label.Text = "Current Preset";
-            this.Preset_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // customGrpBox1
             // 
             this.customGrpBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.customGrpBox1.Controls.Add(this.CurrentPreset_Button);
             this.customGrpBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customGrpBox1.Location = new System.Drawing.Point(881, 14);
+            this.customGrpBox1.Location = new System.Drawing.Point(459, 12);
             this.customGrpBox1.Name = "customGrpBox1";
-            this.customGrpBox1.Size = new System.Drawing.Size(98, 96);
+            this.customGrpBox1.Size = new System.Drawing.Size(102, 103);
             this.customGrpBox1.TabIndex = 99;
             this.customGrpBox1.TabStop = false;
             this.customGrpBox1.Text = "Current Preset";
@@ -1402,58 +1468,25 @@
             this.CurrentPreset_Button.AutoEllipsis = true;
             this.CurrentPreset_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CurrentPreset_Button.BackColor = System.Drawing.Color.White;
+            this.CurrentPreset_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CurrentPreset_Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CurrentPreset_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentPreset_Button.Location = new System.Drawing.Point(3, 17);
             this.CurrentPreset_Button.Name = "CurrentPreset_Button";
-            this.CurrentPreset_Button.Size = new System.Drawing.Size(92, 76);
+            this.CurrentPreset_Button.Size = new System.Drawing.Size(96, 83);
             this.CurrentPreset_Button.TabIndex = 0;
             this.CurrentPreset_Button.TabStop = false;
             this.CurrentPreset_Button.Text = "Bud Lite";
             this.CurrentPreset_Button.UseVisualStyleBackColor = false;
-            // 
-            // CollapseNodes_Button
-            // 
-            this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CollapseNodes_Button.Location = new System.Drawing.Point(893, 223);
-            this.CollapseNodes_Button.Name = "CollapseNodes_Button";
-            this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 23);
-            this.CollapseNodes_Button.TabIndex = 4;
-            this.CollapseNodes_Button.Text = "Collapse Keys";
-            this.CollapseNodes_Button.UseVisualStyleBackColor = true;
-            this.CollapseNodes_Button.Click += new System.EventHandler(this.CollapseNodes_Button_Click);
-            // 
-            // ExpandNodes_Button
-            // 
-            this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpandNodes_Button.Location = new System.Drawing.Point(893, 194);
-            this.ExpandNodes_Button.Name = "ExpandNodes_Button";
-            this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 23);
-            this.ExpandNodes_Button.TabIndex = 3;
-            this.ExpandNodes_Button.Text = "Expand Keys";
-            this.ExpandNodes_Button.UseVisualStyleBackColor = true;
-            this.ExpandNodes_Button.Click += new System.EventHandler(this.ExpandNodes_Button_Click);
-            // 
-            // ViewKeys_Button
-            // 
-            this.ViewKeys_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(526, 633);
-            this.ViewKeys_Button.Name = "ViewKeys_Button";
-            this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
-            this.ViewKeys_Button.TabIndex = 2;
-            this.ViewKeys_Button.Text = "^";
-            this.ViewKeys_Button.UseVisualStyleBackColor = true;
-            this.ViewKeys_Button.Click += new System.EventHandler(this.ViewKeys_Click);
             // 
             // CurrentKey_GroupBox
             // 
             this.CurrentKey_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentKey_GroupBox.Controls.Add(this.KeyPreview_Button);
             this.CurrentKey_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(761, 12);
+            this.CurrentKey_GroupBox.Location = new System.Drawing.Point(340, 12);
             this.CurrentKey_GroupBox.Name = "CurrentKey_GroupBox";
-            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(100, 98);
+            this.CurrentKey_GroupBox.Size = new System.Drawing.Size(116, 120);
             this.CurrentKey_GroupBox.TabIndex = 99;
             this.CurrentKey_GroupBox.TabStop = false;
             this.CurrentKey_GroupBox.Text = "Current Key";
@@ -1467,140 +1500,17 @@
             this.KeyPreview_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview_Button.Location = new System.Drawing.Point(3, 17);
             this.KeyPreview_Button.Name = "KeyPreview_Button";
-            this.KeyPreview_Button.Size = new System.Drawing.Size(94, 78);
+            this.KeyPreview_Button.Size = new System.Drawing.Size(110, 100);
             this.KeyPreview_Button.TabIndex = 0;
             this.KeyPreview_Button.TabStop = false;
             this.KeyPreview_Button.Text = "Bottled Beer";
             this.KeyPreview_Button.UseVisualStyleBackColor = false;
             // 
-            // presetDataDataGridView
-            // 
-            this.presetDataDataGridView.AllowUserToDeleteRows = false;
-            this.presetDataDataGridView.AutoGenerateColumns = false;
-            this.presetDataDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.presetDataDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.presetDataDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.presetDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.presetDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.PresetPicture,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13});
-            this.presetDataDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.presetMasterBindingSource, "PresetPrice", true));
-            this.presetDataDataGridView.DataSource = this.presetMasterBindingSource;
-            this.presetDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.presetDataDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.presetDataDataGridView.Name = "presetDataDataGridView";
-            this.presetDataDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.presetDataDataGridView.Size = new System.Drawing.Size(983, 123);
-            this.presetDataDataGridView.TabIndex = 15;
-            this.presetDataDataGridView.TabStop = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PresetCode";
-            this.dataGridViewTextBoxColumn2.HeaderText = "PresetCode";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // PresetPicture
-            // 
-            this.PresetPicture.DataPropertyName = "PresetPicture";
-            this.PresetPicture.HeaderText = "PresetPicture";
-            this.PresetPicture.Name = "PresetPicture";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PresetPrice";
-            this.dataGridViewTextBoxColumn6.HeaderText = "PresetPrice";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "PresetPrice2";
-            this.dataGridViewTextBoxColumn7.HeaderText = "PresetPrice2";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "PresetPrice3";
-            this.dataGridViewTextBoxColumn8.HeaderText = "PresetPrice3";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "PresetPrice4";
-            this.dataGridViewTextBoxColumn9.HeaderText = "PresetPrice4";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "PresetPrice5";
-            this.dataGridViewTextBoxColumn10.HeaderText = "PresetPrice5";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "PresetPrice6";
-            this.dataGridViewTextBoxColumn11.HeaderText = "PresetPrice6";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "PresetPrice7";
-            this.dataGridViewTextBoxColumn12.HeaderText = "PresetPrice7";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "PresetPrice8";
-            this.dataGridViewTextBoxColumn13.HeaderText = "PresetPrice8";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // MainTreeView
-            // 
-            this.MainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTreeView.Location = new System.Drawing.Point(0, 0);
-            this.MainTreeView.Name = "MainTreeView";
-            this.MainTreeView.Size = new System.Drawing.Size(244, 778);
-            this.MainTreeView.TabIndex = 0;
-            this.MainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTreeView_AfterSelect);
-            this.MainTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseClick);
-            this.MainTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTreeView_NodeMouseDoubleClick);
-            // 
-            // presetDataBindingSource
-            // 
-            this.presetDataBindingSource.DataMember = "PresetData";
-            this.presetDataBindingSource.DataSource = this.jartrekDataSet;
-            // 
-            // presetMasterTableAdapter
-            // 
-            this.presetMasterTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.GoToPriorTableAdapter = null;
-            this.tableAdapterManager.KeyMasterDataAdapter = null;
-            this.tableAdapterManager.KeyMasterTableAdapter = null;
-            this.tableAdapterManager.PresetDataTableAdapter = this.presetDataTableAdapter;
-            this.tableAdapterManager.PresetMasterTableAdapter = this.presetMasterTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // presetDataTableAdapter
-            // 
-            this.presetDataTableAdapter.ClearBeforeFill = true;
-            // 
             // PresetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1229, 778);
+            this.ClientSize = new System.Drawing.Size(1229, 795);
             this.Controls.Add(this.Main_SplitCon);
             this.Name = "PresetForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -1613,7 +1523,6 @@
             this.Main_SplitCon.ResumeLayout(false);
             this.Nested_SplitCon.Panel1.ResumeLayout(false);
             this.Nested_SplitCon.Panel1.PerformLayout();
-            this.Nested_SplitCon.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).EndInit();
             this.Nested_SplitCon.ResumeLayout(false);
             this.PresetSplitContainer.Panel1.ResumeLayout(false);
@@ -1623,19 +1532,18 @@
             this.PresetSplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
-            this.Preset_GroupBox.ResumeLayout(false);
-            this.presetPanel.ResumeLayout(false);
             this.SearchResults_GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SearchResults_DataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchResults_DataGridView)).EndInit();
             this.Pricing_GroupBox.ResumeLayout(false);
             this.Pricing_GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNaviagator)).EndInit();
             this.presetMasterBindingNaviagator.ResumeLayout(false);
             this.presetMasterBindingNaviagator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
+            this.Preset_GroupBox.ResumeLayout(false);
+            this.presetPanel.ResumeLayout(false);
             this.customGrpBox1.ResumeLayout(false);
             this.CurrentKey_GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetDataBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1652,7 +1560,6 @@
         private System.Windows.Forms.Button CollapseNodes_Button;
         private CustomGrpBox customGrpBox1;
         private System.Windows.Forms.Button CurrentPreset_Button;
-        private System.Windows.Forms.Label Preset_Label;
         private System.Windows.Forms.Button PresetSearch_Button;
         private System.Windows.Forms.Label PresetSearchLabel;
         private System.Windows.Forms.TextBox PresetSearch_TextBox;
@@ -1664,22 +1571,7 @@
         private jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataTableAdapter;
         public System.Windows.Forms.BindingSource presetMasterBindingSource;
         private System.Windows.Forms.BindingSource presetDataBindingSource;
-        private System.Windows.Forms.DataGridView SearchResults_DataGrid;
         private System.Windows.Forms.Label SearchResults_Label;
-        public System.Windows.Forms.DataGridView presetDataDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PresetDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RegularPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PresetPicture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.GroupBox SearchResults_GroupBox;
         private System.Windows.Forms.Button Update_Button;
         private System.Windows.Forms.TextBox presetCodeTextBox;
         private System.Windows.Forms.TextBox presetDescTextBox;
@@ -1703,7 +1595,27 @@
         private System.Windows.Forms.TextBox presetChitScanTextBox;
         private System.Windows.Forms.TextBox presetPrice5TextBox;
         private System.Windows.Forms.TextBox presetPriorityTextBox;
-        private System.Windows.Forms.Button PresetPriorityButton;
+        private System.Windows.Forms.TextBox presetReceiptTextBox1;
+        public System.Windows.Forms.Label PresetPriority_Label;
+        private System.Windows.Forms.ComboBox bitMap_ComboBox;
+        private System.Windows.Forms.BindingNavigator presetMasterBindingNaviagator;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.Button ConfirmAdd_Button;
+        private System.Windows.Forms.GroupBox SearchResults_GroupBox;
+        public System.Windows.Forms.DataGridView searchResults_DataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PresetDesc;
+        private CustomGrpBox presetTrashBin;
+        private CustomGrpBox presetClipBoard;
         private CustomGrpBox Preset_GroupBox;
         private System.Windows.Forms.Panel presetPanel;
         private System.Windows.Forms.Button button25;
@@ -1736,22 +1648,7 @@
         private System.Windows.Forms.Button button03;
         private System.Windows.Forms.Button button02;
         private System.Windows.Forms.Button button01;
-        private System.Windows.Forms.TextBox presetReceiptTextBox1;
         public System.Windows.Forms.SplitContainer PresetSplitContainer;
-        public System.Windows.Forms.Label PresetPriority_Label;
-        private System.Windows.Forms.ComboBox bitMap_ComboBox;
-        private System.Windows.Forms.BindingNavigator presetMasterBindingNaviagator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
     }
 }
 

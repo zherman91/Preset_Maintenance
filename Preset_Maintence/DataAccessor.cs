@@ -53,9 +53,7 @@ namespace Preset_Maintenance
 
             }
         }
-
-
-
+        
         private static void AddChildNodes(TreeView MainTreeView)
         {
             for (int i = 0; i < MainTreeView.Nodes.Count; i++)
@@ -150,7 +148,7 @@ namespace Preset_Maintenance
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("New message");
+                    Console.WriteLine("No picture for this preset...");
                     return null;
                 }
             }
