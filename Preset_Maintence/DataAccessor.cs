@@ -33,7 +33,15 @@ namespace Preset_Maintenance
             keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
         }
 
-        public static void UpdatePreset(DataRowView presetRow)//i have the datarow that has the changes i made here...
+        private static void searchBindingSource()
+        {
+            //SELECT au_id, au_lname, state
+            //FROM authors
+            //WHERE(state = ?)
+
+        }
+
+        public static void UpdatePreset(DataRowView presetRow)
         {
             try
             {
@@ -53,7 +61,7 @@ namespace Preset_Maintenance
 
             }
         }
-        
+
         private static void AddChildNodes(TreeView MainTreeView)
         {
             for (int i = 0; i < MainTreeView.Nodes.Count; i++)
@@ -69,6 +77,7 @@ namespace Preset_Maintenance
                 }
             }
         }
+
         public static void AddParentNodes(TreeView MainTreeView)
         {
             MainTreeView.BeginUpdate();
@@ -91,6 +100,7 @@ namespace Preset_Maintenance
             MainTreeView.Sort();
             MainTreeView.EndUpdate();
         }
+
         internal static Bitmap GetBitMaps(string code)
         {
             while (code != "<None>")
@@ -154,6 +164,7 @@ namespace Preset_Maintenance
             }
             return null;
         }
+
     }
 
     public class RowEvents

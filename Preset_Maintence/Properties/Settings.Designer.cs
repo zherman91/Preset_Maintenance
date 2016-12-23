@@ -32,5 +32,17 @@ namespace Preset_Maintenance.Properties {
                 return ((string)(this["Jartrek"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Chippable {
+            get {
+                return ((bool)(this["Chippable"]));
+            }
+            set {
+                this["Chippable"] = value;
+            }
+        }
     }
 }
