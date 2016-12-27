@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Preset_Maintenance.KeyData;
+using static Preset_Maintenance.Key;
+using static Preset_Maintenance.SetColor;
 
 namespace Preset_Maintenance
 {
@@ -17,12 +18,17 @@ namespace Preset_Maintenance
         List<TreeNode> currentNodeMatches = new List<TreeNode>();
         jartrekDataSet.PresetMasterRow newRow;
 
+        // object[] pricingControls;
+        // object[] checkBoxControls;
+
         private TextBox[] prices;
 
         int lastNodeIndex = 0;
         string lastSearchText;
         string currentKey;
         string currentPresetCode;
+
+        public DataRowView CurrentRow { get { return presetMasterBindingSource.Current as DataRowView; } }
 
         public PresetForm()
         {
@@ -47,76 +53,65 @@ namespace Preset_Maintenance
 
             SearchResults_GroupBox.Show();
 
-            bindControls();
-
+            //bindControls();
+            //testMethod();
             //testMethod();
         }
 
-        private void testMethod()
-        {
-            Binding bind = new Binding("Checked", ((jartrekDataSet.PresetMasterRow)((DataRowView)presetMasterBindingSource.Current).Row).PresetChippable, string.Empty, true);
-
-            bind.Format += (s, e) =>
-            {
-                if ((string)e.Value == "Y")
-                    ((s as Binding).Control as CheckBox).Checked = true;
-                else if ((string)e.Value == "N")
-                    ((s as Binding).Control as CheckBox).CheckState = CheckState.Unchecked;
-
-            };
-            PresetChippable_CheckBox.DataBindings.Clear();
-            PresetChippable_CheckBox.DataBindings.Add(bind);
-
-
-            //PresetChippable_CheckBox.DataBindings.Add(new Binding("Checked", test, "Y"));
-
-        }
-
         #region New Row Methods
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            keyCodeTextBox.Text = currentKey;
-            presetPictureTextBox.Text = "<None>";
-            presetTaxTextBox.Text = "N";
-            presetChippableTextBox.Text = "Y";
-
-            var test = presetMasterBindingSource.List;
-
-            var newItem = presetMasterBindingSource.AddNew() as DataRowView;
-
+            HideLabels();
+            bindingNavigatorAddNewItem.Enabled = false;
+            CurrentlyAdding_Label.Visible = true;
+            CancelChanges_Button.Visible = true;
             ConfirmAdd_Button.Visible = true;
+
+            keyCodeTextBox.Text = currentKey;
+            //keyCodeComboBox.Text = currentKey;
+
+            var newRow = ((presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow);
+            if (CurrentRow.IsNew)
+            {
+                newRow.BeginEdit();
+                Preset preset = new Preset(newRow);
+                newRow = preset.Data.DefaultPresetData;
+                newRow.KeyCode = currentKey;
+
+                presetMasterBindingSource.ResetBindings(false);
+            }
         }
 
         private void presetMasterBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
+            Console.WriteLine("Adding new event..");
+
             currentKey = keyCodeTextBox.Text;
             currentPresetCode = presetCodeTextBox.Text;
+
+            List<string> keys = new List<string>();
+
+            foreach (TreeNode key in MainTreeView.Nodes)
+            {
+                keys.Add(key.Text);
+            }
+            keyCodeComboBox.Items.AddRange(keys.ToArray());
         }
 
         private void ConfirmAdd_Button_Click(object sender, EventArgs e)
         {
             if (validateInput())
             {
-                if (newRow != null)
+                if (newRow == null)
                 {
-                    newRow.KeyCode = keyCodeTextBox.Text;
-                    newRow.PresetCode = presetCodeTextBox.Text;
-                    newRow.PresetDesc = presetDescTextBox.Text;
-                    newRow.PresetLegend = presetLegendTextBox.Text;
-                    newRow.PresetReceipt = presetReceiptTextBox.Text;
-                    newRow.PresetPicture = presetPictureTextBox.Text;
-                    newRow.PresetTax = presetTaxTextBox.Text;
-                    newRow.PresetPrice = decimal.Parse(presetPriceTextBox.Text.Substring(1, presetPriceTextBox.Text.Length - 1));
-                    newRow.PresetPrice2 = decimal.Parse(presetPrice2TextBox.Text.Substring(1, presetPrice2TextBox.Text.Length - 1));
-                    newRow.PresetPrice3 = decimal.Parse(presetPrice3TextBox.Text.Substring(1, presetPrice3TextBox.Text.Length - 1));
-                    newRow.PresetPrice4 = decimal.Parse(presetPrice4TextBox.Text.Substring(1, presetPrice4TextBox.Text.Length - 1));
-                    newRow.PresetPrice5 = decimal.Parse(presetPrice5TextBox.Text.Substring(1, presetPrice5TextBox.Text.Length - 1));
-                    newRow.PresetPrice6 = decimal.Parse(presetPrice6TextBox.Text.Substring(1, presetPrice6TextBox.Text.Length - 1));
-                    newRow.PresetPrice7 = decimal.Parse(presetPrice7TextBox.Text.Substring(1, presetPrice7TextBox.Text.Length - 1));
-                    newRow.PresetPrice8 = decimal.Parse(presetPrice8TextBox.Text.Substring(1, presetPrice8TextBox.Text.Length - 1));
+                    newRow = ((presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow);
+
+                    presetMasterTableAdapter.Update(newRow);
+                    newRow.EndEdit();
+                    Update_Button.PerformClick();
 
                 }
-                createNewRow(newRow);
             }
         }
 
@@ -124,12 +119,32 @@ namespace Preset_Maintenance
         {
             if (validateInput())
             {
-                var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
-                var editedRow = (presetMasterBindingSource.Current as DataRowView);
-                DataAccessor.ChangeRow(presetToEdit, editedRow);
+                if (((presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow).RowState != DataRowState.Detached)
+                {
+                    var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((presetMasterBindingSource.Current as DataRowView).Row.ItemArray[0].ToString());
+                    var editedRow = (presetMasterBindingSource.Current as DataRowView);
+                    DataAccessor.ChangeRow(presetToEdit, editedRow);
+                    HideLabels();
+                    UpdateRow_Label.Visible = true;
+                }
+                else
+                {
+                    Console.WriteLine("Are you adding a new row?");
+                    if ((presetMasterBindingSource.Current as DataRowView).IsNew)
+                    {
+                        (presetMasterBindingSource.Current as DataRowView).EndEdit();
+                        presetMasterTableAdapter.Update((presetMasterBindingSource.Current as DataRowView).Row);
+                        bindControls();
+                        HideLabels();
+                        Success_Label.Visible = true;
+                    }
+                }
             }
             else
+            {
+                Console.WriteLine("Input invalid!");
                 return;//input is not valid
+            }
         }
 
         private bool validateInput()
@@ -159,10 +174,9 @@ namespace Preset_Maintenance
 
         }
 
-        private void createNewRow(jartrekDataSet.PresetMasterRow newRow)
+        private void createNewRow(object newRow)
         {
-            presetMasterBindingSource.Add(newRow);
-
+            DataAccessor.AddNewItem(newRow);
         }
 
         #endregion
@@ -201,14 +215,11 @@ namespace Preset_Maintenance
                 var current = e.Node.Parent.Text;
                 var currentRow = presetMasterBindingSource.Current as DataRowView;
                 var row = currentRow.Row;
-                //  int index = presetMasterBindingNaviagator.BindingSource.Find(row.ItemArray[0], currentRow.Row.);
-
             }
-            else//must have been a key clicked.. cool :)
+            else//must have been a key clicked.. cool 
             {
                 string currentKeyCode = e.Node.Text;
             }
-            //int rowIndex = 
         }
 
         private void ExpandTree_Button_Click(object sender, EventArgs e)
@@ -228,8 +239,6 @@ namespace Preset_Maintenance
             }
             else
                 currentNodeText = e.Node.Text;
-
-            presetMasterBindingNaviagator.Refresh();
             var currentSourceRow = (presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow;
             new PresetPriority(this);
 
@@ -255,68 +264,55 @@ namespace Preset_Maintenance
             }
         }
 
-        /// <summary>
-        /// Recursivly searches for the specified node and starting node. 
-        /// </summary>
-        /// <param name="SearchText">The search text.</param>
-        /// <param name="StartNode">The start node.</param>
-        private void SearchNodes(string SearchText, TreeNode StartNode)
+        private void MainTreeView_BindingContextChanged(object sender, EventArgs e)
         {
-            while (StartNode != null)
-            {
-                if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
-                {
-                    currentNodeMatches.Add(StartNode);
-                    //StartNode = currentNodeMatches[0].Parent;
-                };
-                if (StartNode.Nodes.Count != 0)
-                {
-                    SearchNodes(SearchText, StartNode.Nodes[0]);//recursive search
-                };
-                StartNode = StartNode.NextNode;
-            }
+            Console.WriteLine("Binding context changed on tree view");
+
         }
 
         #endregion
 
         #region Pricing Events
 
-        private void presetPrice2TextBox_Leave(object sender, EventArgs e)
-        {
-
-        }
-
         private void bindControls()
         {
-            var row = (jartrekDataSet.PresetMasterRow)((DataRowView)presetMasterBindingSource.Current).Row;
-
-            Binding bind = new Binding("Checked", row.PresetChippable, string.Empty, true);
-            Binding rem1 = new Binding("Checked", row.PreRemPrt1, string.Empty, true);
-            Binding rem2 = new Binding("Checked", row.PreRemPrt2, string.Empty, true);
-
-            Binding[] binders = { bind, rem1, rem2 };
-            foreach (Binding binder in binders)
+            var row = presetMasterBindingSource.Current as DataRowView;
+            //var row = ((presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow);
+            if (row.IsEdit && !row.IsNew)
             {
-                binder.Format += (s, v) =>
+                var newRow = row.Row as jartrekDataSet.PresetMasterRow;
+                Binding bind = new Binding("Checked", newRow.PresetChippable, string.Empty, true);
+                Binding rem1 = new Binding("Checked", newRow.PreRemPrt1, string.Empty, true);
+                Binding rem2 = new Binding("Checked", newRow.PreRemPrt2, string.Empty, true);
+
+                Binding[] binders = { bind, rem1, rem2 };
+                foreach (Binding binder in binders)
                 {
-                    if ((string)v.Value == "Y")
-                        ((s as Binding).Control as CheckBox).Checked = true;
-                    else if ((string)v.Value == "N")
-                        ((s as Binding).Control as CheckBox).CheckState = CheckState.Unchecked;
-                };
+                    binder.Format += (s, v) =>
+                    {
+                        if ((string)v.Value == "Y")
+                            ((s as Binding).Control as CheckBox).Checked = true;
+                        else if ((string)v.Value == "N")
+                            ((s as Binding).Control as CheckBox).Checked = false;
+                    };
+                }
+                PresetChippable_CheckBox.DataBindings.Clear();
+                Remote1_CheckBox.DataBindings.Clear();
+                Remote2_CheckBox.DataBindings.Clear();
+                PresetChippable_CheckBox.DataBindings.Add(bind);
+                Remote1_CheckBox.DataBindings.Add(rem1);
+                Remote2_CheckBox.DataBindings.Add(rem2);
             }
-            PresetChippable_CheckBox.DataBindings.Clear();
-            Remote1_CheckBox.DataBindings.Clear();
-            Remote2_CheckBox.DataBindings.Clear();
-            PresetChippable_CheckBox.DataBindings.Add(bind);
-            Remote1_CheckBox.DataBindings.Add(rem1);
-            Remote2_CheckBox.DataBindings.Add(rem2);
+            else if (row.IsNew)
+            {
+                Console.WriteLine("New Row!!");
+
+            }
         }
 
         private void presetMasterBindingSource_PositionChanged(object sender, EventArgs e)
         {
-
-
+            bindControls();
         }
 
         private void presetPriceTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -335,25 +331,16 @@ namespace Preset_Maintenance
             }
         }
 
-        private void presetDescTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void bitMap_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             Console.WriteLine((sender as ComboBox).SelectedItem);
             presetPictureTextBox.Text = (sender as ComboBox).SelectedItem.ToString();
-
         }
+
         #endregion
 
         #region Search Methods
+
         private void PresetSearch_Button_Click(object sender, EventArgs e)//this needs fixed
         {
             string searchText = PresetSearch_TextBox.Text;
@@ -392,6 +379,28 @@ namespace Preset_Maintenance
             SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
         }
 
+        /// <summary>
+        /// Recursivly searches for the specified node and starting node. 
+        /// </summary>
+        /// <param name="SearchText">The search text.</param>
+        /// <param name="StartNode">The start node.</param>
+        private void SearchNodes(string SearchText, TreeNode StartNode)
+        {
+            while (StartNode != null)
+            {
+                if (StartNode.Text.ToLower().Contains(SearchText.ToLower()))
+                {
+                    currentNodeMatches.Add(StartNode);
+                    //StartNode = currentNodeMatches[0].Parent;
+                };
+                if (StartNode.Nodes.Count != 0)
+                {
+                    SearchNodes(SearchText, StartNode.Nodes[0]);//recursive search
+                };
+                StartNode = StartNode.NextNode;
+            }
+        }
+
         private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
@@ -404,11 +413,10 @@ namespace Preset_Maintenance
             PresetSearch_TextBox.Clear();
             searchResults_DataGridView.Rows.Clear();
         }
+
         #endregion
 
         #region CheckBox Events
-
-        #endregion
 
         private void CheckBox_CheckStateChanged(object sender, EventArgs e)
         {
@@ -422,7 +430,7 @@ namespace Preset_Maintenance
             else
                 result = "N";
 
-            switch (snd.Name.ToString())
+            switch (snd.Name)
             {
                 case "PresetChippable_CheckBox":
                     currentRow.PresetChippable = result;
@@ -433,10 +441,66 @@ namespace Preset_Maintenance
                 case "Remote2_CheckBox":
                     currentRow.PreRemPrt2 = result;
                     break;
+                default:
+                    Console.WriteLine("Invalid name!");
+                    break;
             }
+        }
+
+        #endregion
+
+        private void keyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            keyCodeTextBox.Text = (sender as ComboBox).Text;
+        }
+
+        private void presetDescTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (CurrentRow.IsNew)
+                presetCodeTextBox.Text = (keyCodeTextBox.Text + (sender as TextBox).Text).Trim(' ');
+        }
+
+        private void presetMasterBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HideLabels()
+        {
+            Success_Label.Visible = false;
+            CanceledChanges_Label.Visible = false;
+            UpdateRow_Label.Visible = false;
+            CurrentlyAdding_Label.Visible = false;
+        }
+
+        private void presetMasterBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+
+        }
+
+        private void presetLegendTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CurrentPreset_Button.Text = (sender as TextBox).Text;
+        }
+
+        private void PresetForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("keydown");
+
+        }
+
+        private void CancelChanges_Button_Click(object sender, EventArgs e)
+        {
+            presetMasterBindingSource.CancelEdit();
+            bindingNavigatorAddNewItem.Enabled = true;
+            ConfirmAdd_Button.Visible = false;
+            HideLabels();
+            CanceledChanges_Label.Visible = true;
+            (sender as Button).Visible = false;
         }
     }
 
+    #region - Preset Priority Class
     public class PresetPriority
     {
         PresetForm parent;
@@ -452,20 +516,10 @@ namespace Preset_Maintenance
             composePriority();
         }
 
-        private void resetPresets()
-        {
-            foreach (Button btn in parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>())
-            {
-                btn.Text = originalLegend;
-                btn.BackColor = default(Color);
-                btn.UseVisualStyleBackColor = true;
-                btn.Image = DataAccessor.GetBitMaps(originalBitMap);
-            }
-        }
-
         private void assignButtonTags()
         {
             var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
+            Console.WriteLine("Assigning tags...");
 
             foreach (Button btn in buttons)
             {
@@ -478,32 +532,18 @@ namespace Preset_Maintenance
                 btn.Tag = pri.ToString();
             }
         }
-
         private void Btn_Click(object sender, EventArgs e)
         {
+            var sndr = sender as Button;
+            Console.WriteLine(sndr.Name.ToString());
+
             parent.PresetPriority_Label.Text = string.Empty;
             parent.PresetPriority_Label.Text = "Button Position: ";
-            parent.PresetPriority_Label.Text = parent.PresetPriority_Label.Text + (sender as Button).Tag.ToString();
+            parent.PresetPriority_Label.Text = parent.PresetPriority_Label.Text + sndr.Tag.ToString();
+
+            Console.WriteLine(sndr.Text);
+
         }
-
-        private int getIndex(int dbIndex)
-        {
-            var row = dbIndex % 6;
-            var col = Math.Floor((double)dbIndex / 6) + 1;
-            int pri = (int)(((col - 1) * 6) + row);
-
-            return pri;
-        }
-
-        private void selectButton()
-        {
-            if (!parent.PresetSplitContainer.Panel2Collapsed)
-            {
-                var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>();
-                var test = buttons.Select<Button, string>((b) => b.Tag.ToString());
-            }
-        }
-
         private void composePriority()
         {
             //need to clear the previous buttons..
@@ -513,8 +553,7 @@ namespace Preset_Maintenance
             var presets = DataAccessor.presetMasterAdapter.GetPresetPriority(
                 ((parent.presetMasterBindingSource.Current as DataRowView).Row as jartrekDataSet.PresetMasterRow).KeyCode);
 
-            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary<Button, int>
-                        ((btn) => int.Parse(btn.Tag.ToString()));
+            var buttons = parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>().ToDictionary((btn) => int.Parse(btn.Tag.ToString()));
 
             foreach (jartrekDataSet.PresetMasterRow row in presets)
             {
@@ -533,13 +572,31 @@ namespace Preset_Maintenance
                 }
             }
         }
-
-        private void updatePriority()
+        private void resetPresets()
         {
+            Console.WriteLine("Resetting Presets...");
 
+            foreach (Button btn in parent.PresetSplitContainer.Panel2.Controls[0].Controls[0].Controls.OfType<Button>())
+            {
+                btn.Text = originalLegend;
+                btn.BackColor = default(Color);
+                btn.UseVisualStyleBackColor = true;
+                btn.Image = DataAccessor.GetBitMaps(originalBitMap);
+            }
+        }
+        private int getIndex(int dbIndex)
+        {
+            var row = dbIndex % 6;
+            var col = Math.Floor((double)dbIndex / 6) + 1;
+            int pri = (int)(((col - 1) * 6) + row);
+
+            return pri;
         }
     }
 
+    #endregion
+
+    #region - SetColorClass
     public static class SetColor
     {
         [Flags]
@@ -691,5 +748,6 @@ namespace Preset_Maintenance
             return currentColor;
         }
     }
+    #endregion
 }
 
