@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyTreeView;
 
 namespace Preset_Maintenance
 {
     public static class DataAccessor
     {
-        private static jartrekDataSetTableAdapters.KeyMasterDataAdapter keyMasterDataAdapter = new jartrekDataSetTableAdapters.KeyMasterDataAdapter();
-        private static jartrekDataSet.KeyMasterDataDataTable keyMasterDataTable = new jartrekDataSet.KeyMasterDataDataTable();
+        #region Variable Declarations
 
-        public static jartrekDataSetTableAdapters.PresetDataTableAdapter presetDataAdapter = new jartrekDataSetTableAdapters.PresetDataTableAdapter();
-        public static jartrekDataSet.PresetDataDataTable presetDataTable = new jartrekDataSet.PresetDataDataTable();
+        public static jartrekDataSetTableAdapters.TableAdapterManager tableAdapterManager;
 
-        public static jartrekDataSetTableAdapters.PresetMasterTableAdapter presetMasterAdapter = new jartrekDataSetTableAdapters.PresetMasterTableAdapter();
-        public static jartrekDataSet.PresetMasterDataTable presetMasterDataTable = new jartrekDataSet.PresetMasterDataTable();
+        public static jartrekDataSetTableAdapters.KeyMasterTableAdapter keyMasterAdapter;
+        public static jartrekDataSet.KeyMasterDataTable keyMasterDataTable;
+
+        public static jartrekDataSet.PresetMasterDataTable presetMasterDataTable;
+        public static jartrekDataSetTableAdapters.PresetMasterTableAdapter presetMasterAdapter;
 
         private const string BitMapPath = @"C:\Jartrek\BitMaps\";
 
@@ -27,10 +29,15 @@ namespace Preset_Maintenance
 
         private static TreeNode[] nodes;
 
+        #endregion
+
         static DataAccessor()
         {
-            presetDataAdapter.FillPresetInfo(presetDataTable);
-            keyMasterDataAdapter.FillKeyMasterData(keyMasterDataTable);
+            // presetDataAdapter.FillPresetInfo(presetDataTable);
+            //keyMasterAdapter.Fill(keyMasterDataTable);
+            presetMasterAdapter = new jartrekDataSetTableAdapters.PresetMasterTableAdapter();
+            presetMasterDataTable = new jartrekDataSet.PresetMasterDataTable();
+            presetMasterAdapter.Fill(presetMasterDataTable);
         }
 
         #region TreeView Methods
@@ -40,7 +47,7 @@ namespace Preset_Maintenance
             for (int i = 0; i < MainTreeView.Nodes.Count; i++)
             {
                 var presets =
-                    from presetData in presetDataTable
+                    from presetData in presetMasterDataTable
                     where (presetData.KeyCode) == MainTreeView.Nodes[i].Text
                     select presetData;
 
@@ -54,7 +61,7 @@ namespace Preset_Maintenance
         public static void AddParentNodes(TreeView MainTreeView)
         {
             MainTreeView.BeginUpdate();
-            if (MainTreeView.Nodes.Count == 0)
+            if (MainTreeView.Nodes == null)
                 nodes = new TreeNode[keyMasterDataTable.Rows.Count];
             try
             {
@@ -79,6 +86,17 @@ namespace Preset_Maintenance
 
         }
 
+        public static void RebuildTree(TreeView MainTreeView, PresetPriorityControl priority)
+        {
+            if (!presetMasterAdapter.ClearBeforeFill)
+                presetMasterDataTable.Clear();
+            int rows = presetMasterAdapter.Fill(presetMasterDataTable);
+
+            MainTreeView.Nodes.Clear();
+            AddParentNodes(MainTreeView);
+            priority.ResetPriority();
+        }
+
         #endregion
 
         internal static Bitmap GetBitMaps(string code)
@@ -95,10 +113,10 @@ namespace Preset_Maintenance
 
         internal static Image GetBitMaps(string presetCode, string bitMap)//can make this wayyyyyy more efficient!
         {
-            if (bitMap != "<None>")
+            if (bitMap != "<None>" || bitMap == "None")//TODO: FIX THIS
             {
                 var presetPic =
-                    from presetData in presetDataTable
+                    from presetData in presetMasterDataTable
                     where (presetData.PresetCode) == presetCode
                     select presetData.PresetPicture;
 
@@ -107,9 +125,9 @@ namespace Preset_Maintenance
                     return new Bitmap(BitMapPath + bitMap);
 
                 }
-                catch (Exception)
+                catch (ArgumentException e)
                 {
-                    Console.WriteLine("No picture for this preset...");
+                    Console.WriteLine("No picture for this preset..." + e.Message);
                     return null;
                 }
             }
@@ -146,22 +164,7 @@ namespace Preset_Maintenance
         internal static void AddNewItem(object newRow)
         {
             var row = newRow as jartrekDataSet.PresetMasterRow;
-
-
-        }
-    }
-
-    public class RowEvents
-    {
-        public RowEvents()
-        {
-            DataAccessor.presetDataTable.RowChanging += PresetDataTable_RowChanging;
         }
 
-        private static void PresetDataTable_RowChanging(object sender, DataRowChangeEventArgs e)
-        {
-            MessageBox.Show($"The row {e.Row.ItemArray[0]} is changing!");
-
-        }
     }
 }
