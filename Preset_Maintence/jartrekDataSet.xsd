@@ -278,6 +278,19 @@ ORDER BY KeyPriority</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="Jartrek (Settings)" DbObjectName="KeyMaster" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillXKeys" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetXKeys" GeneratorSourceName="FillXKeys" GetMethodModifier="Public" GetMethodName="GetXKeys" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetXKeys" UserSourceName="FillXKeys">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        KeyCode, KeyDesc, KeyLegend, KeyDept, KeyPriority, KeyTax, KeyType, KeyPrice, KeyPrint, KeyMtdQty, KeyMtdAmt, KeyYtdQty, KeyYtdAmt, KeyRemPrt1, 
+                         KeyRemPrt2, KeyColor, KeyPrice2, KeyPrice3, KeyPrice4, KeyPrice5, KeyReceipt, KeyPicture, KeyChip, KeyChippable, KeyPrintChit, KeyChitToggle, 
+                         KeyGiftSaleCode, KeyPrice6, KeyPrice7, KeyPrice8, KeyEventDetail
+FROM            KeyMaster
+WHERE        (KeyType = 'X')
+ORDER BY KeyCode</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PresetMasterTableAdapter" GeneratorDataComponentClassName="PresetMasterTableAdapter" Name="PresetMaster" UserDataComponentName="PresetMasterTableAdapter">
@@ -832,7 +845,7 @@ WHERE        (PresetCode = ?)</CommandText>
   <xs:element name="jartrekDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="jartrekDataSet" msprop:Generator_UserDSName="jartrekDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="KeyMaster" msprop:Generator_TableClassName="KeyMasterDataTable" msprop:Generator_TableVarName="tableKeyMaster" msprop:Generator_TablePropName="KeyMaster" msprop:Generator_RowDeletingName="KeyMasterRowDeleting" msprop:Generator_RowChangingName="KeyMasterRowChanging" msprop:Generator_RowEvHandlerName="KeyMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="KeyMasterRowDeleted" msprop:Generator_UserTableName="KeyMaster" msprop:Generator_RowChangedName="KeyMasterRowChanged" msprop:Generator_RowEvArgName="KeyMasterRowChangeEvent" msprop:Generator_RowClassName="KeyMasterRow">
+        <xs:element name="KeyMaster" msprop:Generator_TableClassName="KeyMasterDataTable" msprop:Generator_TableVarName="tableKeyMaster" msprop:Generator_RowChangedName="KeyMasterRowChanged" msprop:Generator_TablePropName="KeyMaster" msprop:Generator_RowDeletingName="KeyMasterRowDeleting" msprop:Generator_RowChangingName="KeyMasterRowChanging" msprop:Generator_RowEvHandlerName="KeyMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="KeyMasterRowDeleted" msprop:Generator_RowClassName="KeyMasterRow" msprop:Generator_UserTableName="KeyMaster" msprop:Generator_RowEvArgName="KeyMasterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="KeyCode" msprop:Generator_ColumnVarNameInTable="columnKeyCode" msprop:Generator_ColumnPropNameInRow="KeyCode" msprop:Generator_ColumnPropNameInTable="KeyCodeColumn" msprop:Generator_UserColumnName="KeyCode">
@@ -971,7 +984,7 @@ WHERE        (PresetCode = ?)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PresetMaster" msprop:Generator_TableClassName="PresetMasterDataTable" msprop:Generator_TableVarName="tablePresetMaster" msprop:Generator_TablePropName="PresetMaster" msprop:Generator_RowDeletingName="PresetMasterRowDeleting" msprop:Generator_RowChangingName="PresetMasterRowChanging" msprop:Generator_RowEvHandlerName="PresetMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="PresetMasterRowDeleted" msprop:Generator_UserTableName="PresetMaster" msprop:Generator_RowChangedName="PresetMasterRowChanged" msprop:Generator_RowEvArgName="PresetMasterRowChangeEvent" msprop:Generator_RowClassName="PresetMasterRow">
+        <xs:element name="PresetMaster" msprop:Generator_TableClassName="PresetMasterDataTable" msprop:Generator_TableVarName="tablePresetMaster" msprop:Generator_RowChangedName="PresetMasterRowChanged" msprop:Generator_TablePropName="PresetMaster" msprop:Generator_RowDeletingName="PresetMasterRowDeleting" msprop:Generator_RowChangingName="PresetMasterRowChanging" msprop:Generator_RowEvHandlerName="PresetMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="PresetMasterRowDeleted" msprop:Generator_RowClassName="PresetMasterRow" msprop:Generator_UserTableName="PresetMaster" msprop:Generator_RowEvArgName="PresetMasterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PresetCode" msprop:Generator_ColumnVarNameInTable="columnPresetCode" msprop:Generator_ColumnPropNameInRow="PresetCode" msprop:Generator_ColumnPropNameInTable="PresetCodeColumn" msprop:Generator_UserColumnName="PresetCode">
@@ -1096,7 +1109,7 @@ WHERE        (PresetCode = ?)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GoToPrior" msprop:Generator_TableClassName="GoToPriorDataTable" msprop:Generator_TableVarName="tableGoToPrior" msprop:Generator_RowChangedName="GoToPriorRowChanged" msprop:Generator_TablePropName="GoToPrior" msprop:Generator_RowDeletingName="GoToPriorRowDeleting" msprop:Generator_RowChangingName="GoToPriorRowChanging" msprop:Generator_RowEvHandlerName="GoToPriorRowChangeEventHandler" msprop:Generator_RowDeletedName="GoToPriorRowDeleted" msprop:Generator_RowClassName="GoToPriorRow" msprop:Generator_UserTableName="GoToPrior" msprop:Generator_RowEvArgName="GoToPriorRowChangeEvent">
+        <xs:element name="GoToPrior" msprop:Generator_TableClassName="GoToPriorDataTable" msprop:Generator_TableVarName="tableGoToPrior" msprop:Generator_TablePropName="GoToPrior" msprop:Generator_RowDeletingName="GoToPriorRowDeleting" msprop:Generator_RowChangingName="GoToPriorRowChanging" msprop:Generator_RowEvHandlerName="GoToPriorRowChangeEventHandler" msprop:Generator_RowDeletedName="GoToPriorRowDeleted" msprop:Generator_UserTableName="GoToPrior" msprop:Generator_RowChangedName="GoToPriorRowChanged" msprop:Generator_RowEvArgName="GoToPriorRowChangeEvent" msprop:Generator_RowClassName="GoToPriorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="GoToKeyCode" msprop:Generator_ColumnVarNameInTable="columnGoToKeyCode" msprop:Generator_ColumnPropNameInRow="GoToKeyCode" msprop:Generator_ColumnPropNameInTable="GoToKeyCodeColumn" msprop:Generator_UserColumnName="GoToKeyCode">
@@ -1336,8 +1349,8 @@ WHERE        (PresetCode = ?)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="KeyMaster_GoToPrior" msdata:parent="KeyMaster" msdata:child="GoToPrior" msdata:parentkey="KeyCode" msdata:childkey="GoToKeyCode" msprop:Generator_UserChildTable="GoToPrior" msprop:Generator_ChildPropName="GetGoToPriorRows" msprop:Generator_UserRelationName="KeyMaster_GoToPrior" msprop:Generator_ParentPropName="KeyMasterRow" msprop:Generator_RelationVarName="relationKeyMaster_GoToPrior" msprop:Generator_UserParentTable="KeyMaster" />
-      <msdata:Relationship name="MyKeyRelate" msdata:parent="KeyMaster" msdata:child="PresetMaster" msdata:parentkey="KeyCode" msdata:childkey="KeyCode" msprop:Generator_UserChildTable="PresetMaster" msprop:Generator_ChildPropName="GetPresetMasterRows" msprop:Generator_UserRelationName="MyKeyRelate" msprop:Generator_ParentPropName="KeyMasterRow" msprop:Generator_RelationVarName="relationMyKeyRelate" msprop:Generator_UserParentTable="KeyMaster" />
+      <msdata:Relationship name="KeyMaster_GoToPrior" msdata:parent="KeyMaster" msdata:child="GoToPrior" msdata:parentkey="KeyCode" msdata:childkey="GoToKeyCode" msprop:Generator_UserChildTable="GoToPrior" msprop:Generator_ChildPropName="GetGoToPriorRows" msprop:Generator_UserRelationName="KeyMaster_GoToPrior" msprop:Generator_RelationVarName="relationKeyMaster_GoToPrior" msprop:Generator_UserParentTable="KeyMaster" msprop:Generator_ParentPropName="KeyMasterRow" />
+      <msdata:Relationship name="MyKeyRelate" msdata:parent="KeyMaster" msdata:child="PresetMaster" msdata:parentkey="KeyCode" msdata:childkey="KeyCode" msprop:Generator_UserChildTable="PresetMaster" msprop:Generator_ChildPropName="GetPresetMasterRows" msprop:Generator_UserRelationName="MyKeyRelate" msprop:Generator_RelationVarName="relationMyKeyRelate" msprop:Generator_UserParentTable="KeyMaster" msprop:Generator_ParentPropName="KeyMasterRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

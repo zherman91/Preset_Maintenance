@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -75,7 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomGrpBox.cs">
+    <Compile Include="Custom Controls\CustomGrpBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataAccessor.cs" />
@@ -91,6 +91,12 @@
     </Compile>
     <Compile Include="Key.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Custom Controls\MyPresetButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\MyPresetButton.Designer.cs">
+      <DependentUpon>MyPresetButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preset.cs" />
     <Compile Include="PresetForm.cs">
       <SubType>Form</SubType>
@@ -98,19 +104,22 @@
     <Compile Include="PresetForm.Designer.cs">
       <DependentUpon>PresetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PresetPriorityControl.cs">
+    <Compile Include="Custom Controls\PresetPriorityControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PresetPriorityControl.Designer.cs">
+    <Compile Include="Custom Controls\PresetPriorityControl.Designer.cs">
       <DependentUpon>PresetPriorityControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Custom Controls\MyPresetButton.resx">
+      <DependentUpon>MyPresetButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PresetForm.resx">
       <DependentUpon>PresetForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PresetPriorityControl.resx">
+    <EmbeddedResource Include="Custom Controls\PresetPriorityControl.resx">
       <DependentUpon>PresetPriorityControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

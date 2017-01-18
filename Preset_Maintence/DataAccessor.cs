@@ -27,8 +27,6 @@ namespace Preset_Maintenance
 
         public static string BitPath { get { return BitMapPath; } }
 
-        private static TreeNode[] nodes;
-
         #endregion
 
         static DataAccessor()
@@ -42,60 +40,55 @@ namespace Preset_Maintenance
 
         #region TreeView Methods
 
-        private static void AddChildNodes(TreeView MainTreeView)
-        {
-            for (int i = 0; i < MainTreeView.Nodes.Count; i++)
-            {
-                var presets =
-                    from presetData in presetMasterDataTable
-                    where (presetData.KeyCode) == MainTreeView.Nodes[i].Text
-                    select presetData;
+        //private static void AddChildNodes(TreeView MainTreeView)
+        //{
+        //    for (int i = 0; i < MainTreeView.Nodes.Count; i++)
+        //    {
+        //        var presets =
+        //            from presetData in presetMasterDataTable
+        //            where (presetData.KeyCode) == MainTreeView.Nodes[i].Text
+        //            select presetData;
 
-                foreach (var preset in presets)
-                {
-                    MainTreeView.Nodes[i].Nodes.Add(preset.PresetCode, preset.PresetDesc);
-                }
-            }
-        }
+        //        foreach (var preset in presets)
+        //        {
+        //            MainTreeView.Nodes[i].Nodes.Add(preset.PresetCode, preset.PresetDesc);
+        //        }
+        //    }
+        //}
 
-        public static void AddParentNodes(TreeView MainTreeView)
-        {
-            MainTreeView.BeginUpdate();
-            if (MainTreeView.Nodes == null)
-                nodes = new TreeNode[keyMasterDataTable.Rows.Count];
-            try
-            {
-                for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
-                {
-                    var parent = new TreeNode();
-                    parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
-                    MainTreeView.Nodes.Add(parent);
-                }
-                AddChildNodes(MainTreeView);
-            }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
-            }
-            MainTreeView.Sort();
-            MainTreeView.EndUpdate();
-        }
+        //public static void AddParentNodes(TreeView MainTreeView)
+        //{
+        //    MainTreeView.BeginUpdate();
+        //    if (MainTreeView.Nodes == null)
+        //        nodes = new System.Windows.Forms.TreeNode[keyMasterDataTable.Rows.Count];
+        //    try
+        //    {
+        //        for (int i = 0; i < keyMasterDataTable.Rows.Count; i++)
+        //        {
+        //            var parent = new System.Windows.Forms.TreeNode();
+        //            parent.Text = keyMasterDataTable.Rows[i].ItemArray[0].ToString();
+        //            MainTreeView.Nodes.Add(parent);
+        //        }
+        //        AddChildNodes(MainTreeView);
+        //    }
+        //    catch (ArgumentNullException e)
+        //    {
+        //        Console.WriteLine("It appears there are no presets assigned at this time. " + e.Message);
+        //    }
+        //    MainTreeView.Sort();
+        //    MainTreeView.EndUpdate();
+        //}//NEEDS FIX
 
-        public static void UpdateNodes(TreeView MainTreeView)
-        {
+        //public static void RebuildTree(TreeView MainTreeView, PresetPriorityControl priority)
+        //{
+        //    if (!presetMasterAdapter.ClearBeforeFill)
+        //        presetMasterDataTable.Clear();
+        //    int rows = presetMasterAdapter.Fill(presetMasterDataTable);
 
-        }
-
-        public static void RebuildTree(TreeView MainTreeView, PresetPriorityControl priority)
-        {
-            if (!presetMasterAdapter.ClearBeforeFill)
-                presetMasterDataTable.Clear();
-            int rows = presetMasterAdapter.Fill(presetMasterDataTable);
-
-            MainTreeView.Nodes.Clear();
-            AddParentNodes(MainTreeView);
-            priority.ResetPriority();
-        }
+        //    MainTreeView.Nodes.Clear();
+        //    //AddParentNodes(MainTreeView);
+        //    priority.ResetPriority();
+        //}
 
         #endregion
 
@@ -110,8 +103,7 @@ namespace Preset_Maintenance
             }
 
         }
-
-        internal static Image GetBitMaps(string presetCode, string bitMap)//can make this wayyyyyy more efficient!
+        internal static Image GetBitMaps(string presetCode, string bitMap)
         {
             if (bitMap != "<None>" || bitMap == "None")//TODO: FIX THIS
             {
@@ -133,7 +125,6 @@ namespace Preset_Maintenance
             }
             return null;
         }
-
         internal static void ChangeRow(jartrekDataSet.PresetMasterRow rowToEdit, DataRowView editedRow)
         {
             try
@@ -153,18 +144,12 @@ namespace Preset_Maintenance
             }
             catch (ArgumentException e)
             {
-                MessageBox.Show("Too many characters!");
+                MessageBox.Show("Too many characters!" + e.Message);
             }
 
             if (presetMasterAdapter.Update(rowToEdit) > 0)
                 Console.WriteLine("Successfully updated row!");
 
         }
-
-        internal static void AddNewItem(object newRow)
-        {
-            var row = newRow as jartrekDataSet.PresetMasterRow;
-        }
-
     }
 }

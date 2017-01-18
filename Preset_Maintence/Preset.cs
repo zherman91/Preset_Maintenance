@@ -14,28 +14,31 @@ namespace Preset_Maintenance
         private Preset defaultPreset;
 
         public PresetData Data { get { return _presetData; } set { _presetData = value; } }
+        public string PresetCode => this._presetData.CurrentPresetData.PresetCode;
+        public int Priority { get { return this._presetData.CurrentPresetData.PresetPriority; } set { this._presetData.CurrentPresetData.PresetPriority = value; } }
+        public int Color { get { return this._presetData.CurrentPresetData.PresetColor; } set { _presetData.CurrentPresetData.PresetColor = value; } }
 
-        public Preset() { if (this.Data == null) CreateDefaultPreset(this); }
-
+        public Preset()
+        {
+            if (this.Data == null)
+                CreateDefaultPreset(this);
+        }
         public Preset(Preset preset, PresetData data)
         {
             defaultPreset = preset;
             //_presetData = new PresetData(this, data);
 
         }
-
         public Preset(jartrekDataSet.PresetMasterRow data)
         {
             _presetData = new PresetData(this, data);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChange([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         private Preset CreateDefaultPreset(Preset defaultPreset)
         {
             //defaultPreset.Data = new PresetData(defaultPreset, new PresetData());
@@ -44,7 +47,6 @@ namespace Preset_Maintenance
 
             return defaultPreset;
         }
-
         public class PresetData
         {
             #region - Variable Declarations
@@ -56,7 +58,6 @@ namespace Preset_Maintenance
             #endregion
 
             public jartrekDataSet.PresetMasterRow CurrentPresetData { get { return _presetData; } set { _presetData = value; } }
-
             public jartrekDataSet.PresetMasterRow DefaultPresetData
             {
                 get
@@ -87,7 +88,7 @@ namespace Preset_Maintenance
                      * **/
 
                     _defaultPresetData.PresetDesc = "Default Description";//
-                    _defaultPresetData.PresetCode = "Default";//
+                    _defaultPresetData.PresetCode = " ";//
                     _defaultPresetData.PresetPriority = 0;
                     _defaultPresetData.PresetColor = 6;
                     _defaultPresetData.PresetLegend = "Default Legend";
@@ -116,12 +117,10 @@ namespace Preset_Maintenance
             }
 
             public PresetData() { }
-
             public PresetData(Preset preset)
             {
                 preset.Data.DefaultPresetData = DefaultPresetData;
             }
-
             public PresetData(Preset preset, jartrekDataSet.PresetMasterRow data)
             {
                 _currentPreset = preset;

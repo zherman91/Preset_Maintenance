@@ -5627,7 +5627,7 @@ namespace Preset_Maintenance.jartrekDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[3];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[4];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT KeyCode, KeyDesc, KeyLegend, KeyDept, KeyPriority, KeyTax, KeyType, KeyPrice, KeyPrint, KeyMtdQty, KeyMtdAmt, KeyYtdQty, KeyYtdAmt, KeyRemPrt1, KeyRemPrt2, KeyColor, KeyPrice2, KeyPrice3, KeyPrice4, KeyPrice5, KeyReceipt, KeyPicture, KeyChip, KeyChippable, KeyPrintChit, KeyChitToggle, KeyGiftSaleCode, KeyPrice6, KeyPrice7, KeyPrice8, KeyEventDetail FROM KeyMaster";
@@ -5642,6 +5642,15 @@ namespace Preset_Maintenance.jartrekDataSetTableAdapters {
             this._commandCollection[2].CommandText = "SELECT        KeyCode, KeyDesc, KeyLegend, KeyPriority\r\nFROM            KeyMaster" +
                 "\r\nWHERE        (KeyPriority <> 0)\r\nORDER BY KeyPriority";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT        KeyCode, KeyDesc, KeyLegend, KeyDept, KeyPriority, KeyTax, KeyType, KeyPrice, KeyPrint, KeyMtdQty, KeyMtdAmt, KeyYtdQty, KeyYtdAmt, KeyRemPrt1, 
+                         KeyRemPrt2, KeyColor, KeyPrice2, KeyPrice3, KeyPrice4, KeyPrice5, KeyReceipt, KeyPicture, KeyChip, KeyChippable, KeyPrintChit, KeyChitToggle, 
+                         KeyGiftSaleCode, KeyPrice6, KeyPrice7, KeyPrice8, KeyEventDetail
+FROM            KeyMaster
+WHERE        (KeyType = 'X')
+ORDER BY KeyCode";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5711,6 +5720,30 @@ namespace Preset_Maintenance.jartrekDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual jartrekDataSet.KeyMasterDataTable GetKeyPriorInfo() {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            jartrekDataSet.KeyMasterDataTable dataTable = new jartrekDataSet.KeyMasterDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillXKeys(jartrekDataSet.KeyMasterDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual jartrekDataSet.KeyMasterDataTable GetXKeys() {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             jartrekDataSet.KeyMasterDataTable dataTable = new jartrekDataSet.KeyMasterDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

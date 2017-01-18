@@ -9,7 +9,7 @@ namespace MyTreeView
     public class DataBoundTreeView : UserControl
     {
         private System.ComponentModel.Container components = null;
-        
+
         public DataBoundTreeView()
         {
             InitializeComponent();
@@ -90,14 +90,14 @@ namespace MyTreeView
             {
                 _treeView.SelectedNode = _treeView.Nodes[0];
 
-                TreeNode node = _treeView.SelectedNode;
+                BoundTreeNode node = (BoundTreeNode)_treeView.SelectedNode;
 
                 //Since Child lists (IBindingList) are always changing, handle the ListChanged for each. 
                 while (node.Nodes.Count > 0)
                 {
                     ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged -= handlerListChanged;
                     ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged += handlerListChanged;
-                    node = node.Nodes[0];
+                    node = (BoundTreeNode)node.Nodes[0];
                 }
             }
         }//Complete
@@ -168,7 +168,7 @@ namespace MyTreeView
             foreach (object rowParent in cmParent.List)
             {
                 DataRowView drvParent = (DataRowView)rowParent;
-                TreeNode nodeParent = CreateNode(drvParent, cmParent, i);
+                System.Windows.Forms.TreeNode nodeParent = CreateNode(drvParent, cmParent, i);
                 nodes.Add(nodeParent);
                 cmParent.Position = i;
 
@@ -178,7 +178,7 @@ namespace MyTreeView
             }
         }//Complete
 
-        private void AddChildNodes(DataTable dt, TreeNode nodeParent, string relationName)
+        private void AddChildNodes(DataTable dt, System.Windows.Forms.TreeNode nodeParent, string relationName)
         {
             foreach (DataRelation relation in dt.ChildRelations)
             {
@@ -190,7 +190,7 @@ namespace MyTreeView
                 {
                     //Unbox the DataRowView, create the custom node (BoundTreeNode) and add it to the TreeView.
                     DataRowView drvChild = (DataRowView)rowChild;
-                    TreeNode nodeChild = CreateNode(drvChild, cmChild, i);
+                    System.Windows.Forms.TreeNode nodeChild = CreateNode(drvChild, cmChild, i);
 
                     //Add it to the parent nodes node collection. 
                     nodeParent.Nodes.Add(nodeChild);
@@ -257,7 +257,7 @@ namespace MyTreeView
 
             // Start searching the tree with the base nodes collection
             TreeNodeCollection nodes = _treeView.Nodes;
-            TreeNode node = null;
+            BoundTreeNode node = null;
             TableBinding tableBinding;
 
             // TableBinding tells us what the field in the datarow is that will be
@@ -269,6 +269,7 @@ namespace MyTreeView
             {
                 node = SelectNode(dr[tableBinding.ValueMember], nodes);
                 node.Text = dr[tableBinding.DisplayMember].ToString();
+                //this._treeView.SelectedNode = node;// This selects nodes from position only in current key...
             }
             else
             {
@@ -354,7 +355,7 @@ namespace MyTreeView
 
                         //Start searching the tree with the base nodes collection. 
                         TreeNodeCollection nodes = _treeView.Nodes;
-                        TreeNode node = null;
+                        System.Windows.Forms.TreeNode node = null;
                         TableBinding tableBinding;
 
                         //Select the highest parent and then the subsequent children from 
@@ -405,9 +406,9 @@ namespace MyTreeView
         /// <param name="nodes">The nodes.</param>
         /// <returns>TreeNode.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        private TreeNode SelectNode(object item, TreeNodeCollection nodes)
+        private BoundTreeNode SelectNode(object item, TreeNodeCollection nodes)
         {
-            foreach (TreeNode node in nodes)
+            foreach (BoundTreeNode node in nodes)
             {
                 //if this is the node, return it..
                 if (((BoundTreeNode)node).Tag.Equals(item))
@@ -416,7 +417,7 @@ namespace MyTreeView
                 }
 
                 //Current node isnt the one so search its children (possible no match)
-                TreeNode foundNode = SelectNode(item, node.Nodes);
+                BoundTreeNode foundNode = SelectNode(item, node.Nodes);
 
                 if (foundNode != null)
                     return foundNode;
@@ -432,7 +433,7 @@ namespace MyTreeView
     /// Custom class that allows us to store more details on the TreeNode object. 
     /// </summary>
     /// <seealso cref="System.Windows.Forms.TreeNode" />
-    public class BoundTreeNode : TreeNode
+    public class BoundTreeNode : System.Windows.Forms.TreeNode
     {
         /// <summary>
         /// The table name that corresponds to the node's data. 

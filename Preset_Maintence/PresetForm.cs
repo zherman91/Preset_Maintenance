@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,11 +24,15 @@ namespace Preset_Maintenance
         static string currentKey;
         string currentPresetCode;
 
+        List<Button> removedBtns = new List<Button>();
+        private Preset newPreset;
+
         #endregion
 
-        private Preset newPreset;
-        public PresetForm form { get { return this; } }
-        public DataRowView CurrentRow { get { return presetMasterBindingSource.Current as DataRowView; } }
+        object newObj = null;
+
+        public PresetForm Form => this;
+        public DataRowView CurrentRow => presetMasterBindingSource.Current as DataRowView;
 
         public PresetForm()
         {
@@ -49,42 +52,96 @@ namespace Preset_Maintenance
         {
             // TODO: This line of code loads data into the 'jartrekDataSet.PresetMaster' table. You can move, or remove it, as needed.
             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
-            this.keyMasterTableAdapter1.Fill(this.jartrekDataSet.KeyMaster);
+            this.keyMasterTableAdapter1.FillXKeys(this.jartrekDataSet.KeyMaster);//fills KeyMaster with only Keys with presets...
 
             presetMasterBindingSource.Sort = "KeyCode";
 
             createBindableTree(this.DataBoundTree);
-            Console.WriteLine((DataBoundTree.TreeView.SelectedNode as BoundTreeNode).Position);
+            Console.WriteLine((DataBoundTree.TreeView.SelectedNode as MyTreeView.BoundTreeNode).Position);
 
             SearchResults_GroupBox.Show();
             BindControls();
             DataBoundTree.TreeView.AfterSelect += DataBoundTree_AfterSelect;
-            priority = new PresetPriorityControl(form);
+            priority = new PresetPriorityControl(Form);
 
-            this.SetStyle(ControlStyles.StandardClick, true);
-            this.SetStyle(ControlStyles.StandardDoubleClick, true);
+            DataBoundTree.TreeView.ItemDrag += TreeView_ItemDrag;
+            DataBoundTree.TreeView.DragDrop += TreeView_DragDrop;
 
+            TrashBin_Panel.DragDrop += TrashBin_Panel_DragDrop;
+            TrashBin_Panel.DragEnter += TrashBin_Panel_DragEnter;
+
+            AssignDefaults(jartrekDataSet);
+            //presetMasterBindingSource.AddingNew += presetMasterBindingSource_AddingNew;
         }
 
         private void AssignDefaults(jartrekDataSet jartrekDataSet)
         {
             this.jartrekDataSet.PresetMaster.KeyCodeColumn.DefaultValue = string.Empty;
             this.jartrekDataSet.PresetMaster.PresetCodeColumn.DefaultValue = string.Empty;
+            this.jartrekDataSet.PresetMaster.PresetMtdAmtColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetMtdQtyColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetYtdAmtColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetYtdQtyColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PreRemPrt1Column.DefaultValue = "N";
+            this.jartrekDataSet.PresetMaster.PreRemPrt2Column.DefaultValue = "N";
+            this.jartrekDataSet.PresetMaster.PresetChipColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChippableColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChitScanColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChitToggleColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetPrintChitColumn.DefaultValue = "O";
 
+        }
+
+        private void AddNew_Button_Click_1(object sender, EventArgs e)
+        {
+            //Here i am creating a new blank row in which i can edit and update.. 
+            var newRow = (presetMasterBindingSource.AddNew() as DataRowView);
+            var newPreset = BuildNewPreset((jartrekDataSet.PresetMasterRow)newRow.Row);
+            newPreset.Data.DefaultPresetData.KeyCode = currentKey;
+            presetMasterBindingSource.ResetCurrentItem();
+
+            HideLabels();
+            BuildKeyBox();
+            CurrentlyAdding_Label.Visible = true;
+            CancelChanges_Button.Visible = true;
+            Update_Button.Visible = false;
+            ConfirmAdd_Button.Visible = true;
+            CurrentRow.Row.BeginEdit();
+
+        }//UNDONE: Left off here!
+
+        private void AddNew_ButtonClick_Test(object sender, EventArgs e)
+        {
+            newObj = presetMasterBindingSource.AddNew();//Creates new DataRowView and clears all the fields for new info.. Returns the object created which is equal to the current row...
+            (((DataRowView)newObj).Row as jartrekDataSet.PresetMasterRow).KeyCode = currentKey;//Sets the new item as the previous keycode...
+            presetMasterBindingSource.ResetCurrentItem();//Does not show that the line above took effect until calling this...
+           // CurrentRow.Row.BeginEdit();
+
+            ConfirmAdd_Button.Visible = true;
+            CancelChanges_Button.Visible = true;
+            BuildKeyBox();
+        }
+
+        private void ConfirmAdd_Button_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Testing");
+
+            if (ValidateInput())
+            {
+                this.Validate();
+                this.presetMasterBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.jartrekDataSet);
+
+            }
         }
 
         #region New Row Methods
 
-        private void AddNew_Button_Click(object sender, EventArgs e)
-        {
-            var newRow = (presetMasterBindingSource.AddNew() as DataRowView).Row as jartrekDataSet.PresetMasterRow;
-
-        }//UNDONE: Left off here!
-
         private void presetMasterBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
             currentKey = (CurrentRow.Row as jartrekDataSet.PresetMasterRow).KeyCode.ToString();
-            Console.WriteLine("Adding new event");
+            Console.WriteLine("Adding new event " + currentKey);
+            e.NewObject = newObj;
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -103,45 +160,54 @@ namespace Preset_Maintenance
             CancelChanges_Button.Visible = true;
             Update_Button.Visible = false;
             ConfirmAdd_Button.Visible = true;
-
-            CurrentRow.BeginEdit();//Starts the editing of the current row in case something needs canceled..
+            CurrentRow.Row.BeginEdit();//Starts the editing of the current row in case something needs canceled..
             CurrentRow.Row.ItemArray = newPreset.Data.DefaultPresetData.ItemArray;//moves all default data to current row..
-            presetMasterBindingSource.ResetCurrentItem();//Refreshes textboxes with the values in the row object..
+            presetMasterBindingSource.ResetBindings(false);//Refreshes textboxes with the values in the row object..
 
         }
 
-        private void ConfirmAdd_Button_Click(object sender, EventArgs e)
-        {
-            if (ValidateInput())
-            {
-                if (CurrentRow.IsNew)
-                {
-                    Console.WriteLine("Are you adding a new row?");
-                    try
-                    {
-                        presetMasterBindingSource.ResetBindings(true);
-                        presetMasterBindingSource.EndEdit();
-                        DataAccessor.presetMasterAdapter.Update(CurrentRow.Row);
-                        MessageBox.Show("Update Success!");
-                        Update_Button.Visible = true;
-                        presetMasterBindingNavigator.AddNewItem.Enabled = true;
-                        ConfirmAdd_Button.Visible = false;
-                        CancelChanges_Button.Visible = false;
-                        DataAccessor.RebuildTree(DataBoundTree.TreeView, priority);
+        //private void ConfirmAdd_Button_Click(object sender, EventArgs e)
+        //{
+        //    if (ValidateInput())
+        //    {
+        //        if (CurrentRow.IsNew)
+        //        {
+        //            Console.WriteLine("Are you adding a new row?");
+        //            Console.WriteLine("Current row version: " + CurrentRow.RowVersion);
 
-                    }
-                    catch (Exception ee)
-                    {
-                        Console.WriteLine(ee.Message);
-                        return;
-                    }
-                    HideLabels();
-                    // DataAccessor.RebuildTree(MainTreeView);
-                    Success_Label.Visible = true;
-                    CancelChanges_Button.Visible = false;
-                }
-            }
-        }
+        //            try
+        //            {                        
+        //                CurrentRow.Row.EndEdit();
+        //                presetMasterBindingSource.EndEdit();//BUG: Data Constraint Exception here... 
+                        
+        //                if (this.presetMasterTableAdapter.Update(CurrentRow.Row) > 0)
+        //                {
+        //                    MessageBox.Show("Update Success!");
+        //                    Update_Button.Visible = true;
+        //                    presetMasterBindingNavigator.AddNewItem.Enabled = true;
+        //                    ConfirmAdd_Button.Visible = false;
+        //                    CancelChanges_Button.Visible = false;
+        //                    //createBindableTree(DataBoundTree);
+        //                    //DataBoundTree.TreeView.SelectedNode = GetNodeFrom(((jartrekDataSet.PresetMasterRow)CurrentRow.Row).PresetCode, DataBoundTree.TreeView.Nodes);
+
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("New item not added!");
+        //                    return;
+        //                }
+        //            }
+        //            catch (Exception ee)
+        //            {
+        //                Console.WriteLine(ee.Message);
+        //                return;
+        //            }
+        //            HideLabels();
+        //            Success_Label.Visible = true;
+        //            CancelChanges_Button.Visible = false;
+        //        }
+        //    }
+        //}//BUG:Need to rewrite this...
 
         private void Update_Button_Click(object sender, EventArgs e)
         {
@@ -156,6 +222,7 @@ namespace Preset_Maintenance
 
                     HideLabels();
                     UpdateRow_Label.Visible = true;
+                    presetMasterBindingSource.Position = presetMasterBindingSource.Position + 1;
                 }
                 else
                 {
@@ -171,7 +238,7 @@ namespace Preset_Maintenance
 
             List<string> keys = new List<string>();
 
-            foreach (TreeNode key in DataBoundTree.TreeView.Nodes)
+            foreach (System.Windows.Forms.TreeNode key in DataBoundTree.TreeView.Nodes)
             {
                 keys.Add((string)key.Tag);
             }
@@ -206,11 +273,6 @@ namespace Preset_Maintenance
 
         }//still need to validate and bind comboboxes
 
-        private void CreateNewRow(object newRow)
-        {
-            DataAccessor.AddNewItem(newRow);
-        }
-
         #endregion
 
         #region TreeView Events
@@ -237,7 +299,6 @@ namespace Preset_Maintenance
         {
             var tree = sender as TreeView;
             string currentNodeText;
-            //    priority = null;
 
             if (e.Node.Parent != null)
             {
@@ -246,9 +307,10 @@ namespace Preset_Maintenance
 
                 #region Should Fix This...
                 //TODO: I beleive this is causing the button click events to fire multiple times when clicking a preset...
-                priority.Dispose();
+                //Found out that i wasnt unsubscribing to my events properly...
+                priority.DisposeObj();
                 priority = null;
-                priority = new PresetPriorityControl(form);
+                priority = new PresetPriorityControl(Form);
 
                 #endregion
             }
@@ -272,13 +334,13 @@ namespace Preset_Maintenance
                     CurrentPreset_Button.Text = e.Node.Text.ToLower();
                     CurrentPreset_Button.BackColor = GetColor((JartrekColors)currentSourceRow.PresetColor);
                 }
+                CurrentPreset_Button.Tag = BuildNewPreset(currentSourceRow);
             }
             catch (NullReferenceException nr)
             {
                 Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
             }
-        }
-
+        }//TODO: This could use some work...
         private void createBindableTree(DataBoundTreeView btv)
         {
             BindTree(btv);
@@ -288,17 +350,29 @@ namespace Preset_Maintenance
         {
             TableBinding[] tableBindings = new TableBinding[] {
                 new TableBinding("PresetMaster", "PresetCode", "PresetDesc"),
-                new TableBinding("KeyMaster", "KeyCode", "KeyDesc") };
+                new TableBinding("KeyMaster", "KeyCode", "KeyCode") };
 
             //setup the initial TreeView defaults.
             btv.TreeView.HideSelection = false;
             btv.TreeView.Sort();
+
+            btv.SetEvents(jartrekDataSet, false);
             btv.LoadTree(jartrekDataSet, tableBindings);
+            btv.SetEvents(jartrekDataSet, true);
+
         }
 
         #endregion
 
         #region Binding Source Methods
+
+        private void BindPresetCode()
+        {
+            foreach (Binding bind in presetCodeTextBox.BindingContext[presetMasterBindingSource, "PresetCode"].Bindings)
+            {
+                bind.WriteValue();
+            }
+        }
 
         private void BindControls()
         {
@@ -307,9 +381,9 @@ namespace Preset_Maintenance
             if (row.IsEdit && !row.IsNew)
             {
                 var newRow = row.Row as jartrekDataSet.PresetMasterRow;
-                Binding bind = new Binding("Checked", presetMasterBindingSource, "PresetChippable", true);
-                Binding rem1 = new Binding("Checked", presetMasterBindingSource, "PreRemPrt1", true);
-                Binding rem2 = new Binding("Checked", presetMasterBindingSource, "PreRemPrt2", true);
+                Binding bind = new Binding("Checked", presetMasterBindingSource, "PresetChippable", true, DataSourceUpdateMode.OnPropertyChanged);
+                Binding rem1 = new Binding("Checked", presetMasterBindingSource, "PreRemPrt1", true, DataSourceUpdateMode.OnPropertyChanged);
+                Binding rem2 = new Binding("Checked", presetMasterBindingSource, "PreRemPrt2", true, DataSourceUpdateMode.OnPropertyChanged);
 
                 Binding[] binders = { bind, rem1, rem2 };
                 foreach (Binding binder in binders)
@@ -355,6 +429,10 @@ namespace Preset_Maintenance
         {
             Console.WriteLine("Position changed");
 
+            var source = sender as BindingSource;
+
+            //((CurrencyManager)DataBoundTree.TreeView.BindingContext[jartrekDataSet, "PresetMaster"]).Position = source.CurrencyManager.Position;
+
             var currentCode = (CurrentRow.Row as jartrekDataSet.PresetMasterRow).PresetCode;
 
             DataBoundTree.TreeView.SelectedNode = GetNodeFrom(currentCode, DataBoundTree.TreeView.Nodes);
@@ -370,22 +448,22 @@ namespace Preset_Maintenance
         /// <param name="presetCode">The preset code.</param>
         /// <param name="root">The root.</param>
         /// <returns>TreeNode.</returns>
-        public TreeNode GetNodeFrom(string presetCode, TreeNodeCollection root)
+        public MyTreeView.BoundTreeNode GetNodeFrom(string presetCode, TreeNodeCollection root)
         {
-            foreach (TreeNode node in root)
+            foreach (MyTreeView.BoundTreeNode node in root)
             {
                 if (node.Tag.Equals(presetCode)) return node;
-                TreeNode next = GetNodeFrom(presetCode, node.Nodes);
+                MyTreeView.BoundTreeNode next = GetNodeFrom(presetCode, node.Nodes);
                 if (next != null) return next;
             }
             return null;
         }
 
-        private BoundTreeNode FindTreeNode(string presetCode, string currentKey, TreeNode startNode)
+        private MyTreeView.BoundTreeNode FindTreeNode(string presetCode, string currentKey, System.Windows.Forms.TreeNode startNode)
         {
-            TreeNode[] nodesFound = startNode.Nodes.Cast<TreeNode>().Where(r => (string)r.Tag == presetCode).ToArray();
+            MyTreeView.BoundTreeNode[] nodesFound = startNode.Nodes.Cast<MyTreeView.BoundTreeNode>().Where(r => (string)r.Tag == presetCode).ToArray();
 
-            return nodesFound[0] as BoundTreeNode;
+            return nodesFound[0] as MyTreeView.BoundTreeNode;
         }
 
         private void presetPriceTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -404,7 +482,7 @@ namespace Preset_Maintenance
                 }
                 catch (Exception nr)
                 {
-
+                    Console.WriteLine(nr.Message);
                 }
                 presetPrice2TextBox.Focus();
             }
@@ -415,6 +493,11 @@ namespace Preset_Maintenance
             Console.WriteLine((sender as ComboBox).SelectedItem);
             presetPictureTextBox.Text = (sender as ComboBox).SelectedItem.ToString();
             CurrentPreset_Button.Image = DataAccessor.GetBitMaps(null, (sender as ComboBox).SelectedIndex.ToString());
+        }
+
+        private void presetMasterBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Current changed!");
         }
 
         #endregion
@@ -445,7 +528,7 @@ namespace Preset_Maintenance
             if (lastNodeIndex >= 0 && currentNodeMatches.Count > 0 && lastNodeIndex < currentNodeMatches.Count)
             {
                 searchResults_DataGridView.Rows.Clear();
-                TreeNode selectedNode = currentNodeMatches[lastNodeIndex];
+                System.Windows.Forms.TreeNode selectedNode = currentNodeMatches[lastNodeIndex];
                 lastNodeIndex++;
                 DataBoundTree.TreeView.SelectedNode = selectedNode;
                 DataBoundTree.TreeView.SelectedNode.Expand();
@@ -458,18 +541,16 @@ namespace Preset_Maintenance
             //PresetSearch_Button.Select();
             SearchResults_Label.Text = SearchResults_Label.Text + " " + currentNodeMatches.Count;
         }
-
-        private TreeNode NewSearch(string SearchText, TreeNode StartNode)
+        private MyTreeView.BoundTreeNode NewSearch(string SearchText, System.Windows.Forms.TreeNode StartNode)
         {
-            return default(TreeNode);
+            return default(MyTreeView.BoundTreeNode);
         }
-
         /// <summary>
         /// Recursivly searches for the specified node and starting node. 
         /// </summary>
         /// <param name="SearchText">The search text.</param>
         /// <param name="StartNode">The start node.</param>
-        private void SearchNodes(string SearchText, TreeNode StartNode)
+        private void SearchNodes(string SearchText, System.Windows.Forms.TreeNode StartNode)
         {
             while (StartNode != null)
             {
@@ -485,14 +566,12 @@ namespace Preset_Maintenance
                 StartNode = StartNode.NextNode;
             }
         }
-
         private void SearchResults_DataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string test = (string)(sender as DataGridView).Rows[e.RowIndex].Cells[0].Value;
             PresetSearch_TextBox.Text = test;
             PresetSearch_Button.PerformClick();
         }
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
             PresetSearch_TextBox.Clear();
@@ -501,22 +580,7 @@ namespace Preset_Maintenance
 
         #endregion
 
-        private void keyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            keyCodeTextBox.Text = (sender as ComboBox).Text;
-        }
-
-        private void presetDescTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (CurrentRow.IsNew)
-            {
-                string presetCode = (keyCodeTextBox.Text + (sender as TextBox).Text).Trim(' ');
-                if (presetCode.Length < 11)
-                {
-                    presetCodeTextBox.Text = presetCode;
-                }
-            }
-        }//need to fix this!
+        #region Private Methods
 
         private void HideLabels()
         {
@@ -525,12 +589,25 @@ namespace Preset_Maintenance
             UpdateRow_Label.Visible = false;
             CurrentlyAdding_Label.Visible = false;
         }
-
+        private void keyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            keyCodeTextBox.Text = (sender as ComboBox).Text;
+        }
+        private void presetDescTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (CurrentRow.IsNew)
+            {
+                string presetCode = (keyCodeTextBox.Text + (sender as TextBox).Text).Trim(' ');
+                if (presetCode.Length < 10)
+                {
+                    presetCodeTextBox.Text = presetCode;
+                }
+            }
+        }//need to fix this!
         private void presetLegendTextBox_TextChanged(object sender, EventArgs e)
         {
             CurrentPreset_Button.Text = (sender as TextBox).Text;
         }
-
         private void CancelChanges_Button_Click(object sender, EventArgs e)
         {
             presetMasterBindingSource.CancelEdit();
@@ -539,19 +616,12 @@ namespace Preset_Maintenance
             Update_Button.Visible = true;
             HideLabels();
             CanceledChanges_Label.Visible = true;
-            (sender as Button).Visible = false;
+            (sender as System.Windows.Forms.Button).Visible = false;
         }
-
-        private void presetMasterBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("Current changed!");
-        }
-
         private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
         {
             // (sender as TextBox).Text = string.Format("{0:#,##0.00}", double.Parse((sender as TextBox).Text));
         }
-
         private void presetPriceTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -565,40 +635,103 @@ namespace Preset_Maintenance
                 e.Handled = true;
             }
         }
+        #endregion
 
-        #region Drag & Drop
+        #region Drag & Drop Event
 
-        private void ClipBoard_FlowPanel_DragEnter(object sender, DragEventArgs e)
+        #endregion
+
+        #region Current Preset Events
+
+        private void CurrentPreset_Button_MouseDown(object sender, MouseEventArgs e)
         {
-            var obj = sender as FlowLayoutPanel;
-            e.Effect = DragDropEffects.Move;
-
-            if (e.AllowedEffect == DragDropEffects.All)
+            if (e.Button == MouseButtons.Left)
             {
-                var test = e.Data.GetData("Preset_Maintenance.Preset", true);
-                var effect = obj.DoDragDrop(test, DragDropEffects.Move);
+                Console.WriteLine("Current Preset Button Mouse Down!");
+                var preview = ((Button)sender).Tag as Preset;
+                Console.WriteLine("Current Preset: " + preview.PresetCode);
+
             }
         }
-
-        private void ClipBoard_FlowPanel_DragDrop(object sender, DragEventArgs e)
-        {
-            Preset preset = (Preset)e.Data.GetData("Preset_Maintenance.Preset", true);
-
-            MessageBox.Show($"You just dragged {preset.Data.CurrentPresetData.PresetCode} to the ClipBoard!");
-        }
-
-        private void panel1_DragDrop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void panel1_DragEnter(object sender, DragEventArgs e)
+        private void CurrentPreset_Button_MouseMove(object sender, MouseEventArgs e)
         {
 
         }
 
         #endregion
 
+        private void TrashBin_Panel_DragEnter(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("Entered Trash!");
+            var dragData = e.Data.GetData(typeof(Preset));
+
+            if (e.KeyState == 1 && !presetPriorityControl1.IsMouseDown)
+                if (e.Data.GetDataPresent("Preset_Maintenance.Preset"))
+                {
+                    Console.WriteLine(((Preset)dragData).PresetCode + " Dragged to trash!");
+                    e.Effect = DragDropEffects.Move;
+                }
+
+        }
+        private void TrashBin_Panel_DragDrop(object sender, DragEventArgs e)
+        {
+            var dragData = e.Data.GetData(typeof(Preset));
+            var newButton = new MyPresetButton();
+
+            if (!presetPriorityControl1.IsMouseDown)
+            {
+                Console.WriteLine($"{((Preset)dragData).PresetCode} Dropped!");
+
+                removedBtns.Add(presetPriorityControl1.GetPresetButton(((Preset)dragData), newButton));
+                addToTrashPanel(TrashBin_Panel, removedBtns);
+
+
+                ((Preset)dragData).Priority = 0;
+                if (this.presetMasterTableAdapter.Update(((Preset)dragData).Data.CurrentPresetData) > 0)
+                {
+                    Console.WriteLine($"Successfully removed {((Preset)dragData).PresetCode}");
+
+                    presetMasterBindingSource.Position = presetMasterBindingSource.Find("PresetCode", ((Preset)dragData).PresetCode);
+                }
+            }
+        }
+        private static void addToTrashPanel(FlowLayoutPanel panel, List<Button> buttons)
+        {
+            foreach (Button btn in buttons)
+                panel.Controls.Add(btn);
+            panel.Controls.SetChildIndex(panel.Controls[0], 0);
+
+        }//UNDONE
+        private void TreeView_DragDrop(object sender, DragEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void TreeView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            Console.WriteLine($"{((MyTreeView.BoundTreeNode)e.Item).Value} Dragged");//Vale is the KeyCode or PresetCode...
+
+            DoDragDrop(((MyTreeView.BoundTreeNode)e.Item), DragDropEffects.Copy);
+
+        }
+        private void presetMasterBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            Console.WriteLine("List has changed!");
+
+        }
+
+        private void presetMasterBindingSource_DataError(object sender, BindingManagerDataErrorEventArgs e)
+        {
+            MessageBox.Show("There was an error!");
+        }
+
+    }
+
+    public class EventTests : PresetForm
+    {
+        public EventTests()
+        {
+
+        }
     }
 
     #region - SetColorClass
