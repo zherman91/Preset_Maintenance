@@ -78,13 +78,8 @@
     <Compile Include="Custom Controls\CustomGrpBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataAccessor.cs" />
     <Compile Include="IPreset.cs" />
-    <Compile Include="jartrekDataSet.cs">
-      <DependentUpon>jartrekDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="jartrekDataSet1.Designer.cs">
+    <Compile Include="jartrekDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
@@ -134,18 +129,14 @@
     </Compile>
     <None Include="jartrekDataSet.xsc">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
     <None Include="jartrekDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>jartrekDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <LastGenOutput>jartrekDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="jartrekDataSet.xss">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

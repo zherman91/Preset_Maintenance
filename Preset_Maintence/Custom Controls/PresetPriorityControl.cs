@@ -141,7 +141,7 @@ namespace Preset_Maintenance
                 {
                     btn.PresetButton.Text = VirtualPreset.PresetLegend;
                     btn.PresetButton.BackColor = SetColor.GetColor((SetColor.JartrekColors)VirtualPreset.PresetColor);
-                    btn.PresetButton.Image = DataAccessor.GetBitMaps(VirtualPreset.PresetCode, VirtualPreset.PresetPicture);
+                    btn.PresetButton.Image = _parent.GetBitMaps(VirtualPreset.PresetCode, VirtualPreset.PresetPicture);
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace Preset_Maintenance
             {
                 btn.PresetButton.Text = originalLegend;
                 btn.PresetButton.BackColor = default(Color);
-                btn.PresetButton.Image = DataAccessor.GetBitMaps(originalBitMap);
+                btn.PresetButton.Image = _parent.GetBitMaps(originalBitMap);
                 btn.PresetButton.UseVisualStyleBackColor = true;
             }
         }
@@ -186,7 +186,7 @@ namespace Preset_Maintenance
             destBtn.BackColor = SetColor.GetColor((SetColor.JartrekColors)presetInfo.Color);
 
             if (presetInfo.Data.CurrentPresetData.PresetPicture != "<None>")
-                destBtn.Image = DataAccessor.GetBitMaps(presetInfo.PresetCode, presetInfo.Data.CurrentPresetData.PresetPicture);
+                destBtn.Image = _parent. GetBitMaps(presetInfo.PresetCode, presetInfo.Data.CurrentPresetData.PresetPicture);
             else
                 destBtn.Image = null;
 
@@ -233,7 +233,7 @@ namespace Preset_Maintenance
                 {
                     originalButton.Text = originalLegend;
                     originalButton.BackColor = default(Color);
-                    originalButton.Image = DataAccessor.GetBitMaps(originalBitMap);
+                    originalButton.Image = _parent.GetBitMaps(originalBitMap);
                     originalButton.UseVisualStyleBackColor = true;
                     originalButton.Tag = originalPriority;
                     //UNDONE
@@ -368,6 +368,5 @@ namespace Preset_Maintenance
         {
             isMouseDown = false;
         }
-
     }
 }
