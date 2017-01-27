@@ -25,7 +25,8 @@ namespace Preset_Maintenance
         string currentPresetCode;
 
         List<Button> removedBtns = new List<Button>();
-        private Preset newPreset;
+
+        private const string BitMapPath = @"C:\Jartrek\BitMaps\";
 
         #endregion
 
@@ -33,16 +34,13 @@ namespace Preset_Maintenance
 
         public PresetForm Form => this;
         public DataRowView CurrentRow => presetMasterBindingSource.Current as DataRowView;
+        public static string BitPath { get { return BitMapPath; } }
 
         public PresetForm()
         {
             InitializeComponent();
 
-            for (int i = 2; i < searchResults_DataGridView.ColumnCount; i++)
-            {
-                searchResults_DataGridView.Columns[i].DefaultCellStyle.Format = "c";
-            }
-            foreach (string bitmap in Directory.GetFiles(DataAccessor.BitPath))
+            foreach (string bitmap in Directory.GetFiles(BitPath))
             {
                 bitMap_ComboBox.Items.Add(Path.GetFileName(bitmap));
             }
@@ -56,10 +54,9 @@ namespace Preset_Maintenance
 
             presetMasterBindingSource.Sort = "KeyCode";
 
-            createBindableTree(this.DataBoundTree);
-            Console.WriteLine((DataBoundTree.TreeView.SelectedNode as MyTreeView.BoundTreeNode).Position);
+            BindTree(this.DataBoundTree);
+            BuildKeyBox();
 
-            SearchResults_GroupBox.Show();
             BindControls();
             DataBoundTree.TreeView.AfterSelect += DataBoundTree_AfterSelect;
             priority = new PresetPriorityControl(Form);
@@ -74,23 +71,7 @@ namespace Preset_Maintenance
             //presetMasterBindingSource.AddingNew += presetMasterBindingSource_AddingNew;
         }
 
-        private void AssignDefaults(jartrekDataSet jartrekDataSet)
-        {
-            this.jartrekDataSet.PresetMaster.KeyCodeColumn.DefaultValue = string.Empty;
-            this.jartrekDataSet.PresetMaster.PresetCodeColumn.DefaultValue = string.Empty;
-            this.jartrekDataSet.PresetMaster.PresetMtdAmtColumn.DefaultValue = 0;
-            this.jartrekDataSet.PresetMaster.PresetMtdQtyColumn.DefaultValue = 0;
-            this.jartrekDataSet.PresetMaster.PresetYtdAmtColumn.DefaultValue = 0;
-            this.jartrekDataSet.PresetMaster.PresetYtdQtyColumn.DefaultValue = 0;
-            this.jartrekDataSet.PresetMaster.PreRemPrt1Column.DefaultValue = "N";
-            this.jartrekDataSet.PresetMaster.PreRemPrt2Column.DefaultValue = "N";
-            this.jartrekDataSet.PresetMaster.PresetChipColumn.DefaultValue = "Y";
-            this.jartrekDataSet.PresetMaster.PresetChippableColumn.DefaultValue = "Y";
-            this.jartrekDataSet.PresetMaster.PresetChitScanColumn.DefaultValue = "Y";
-            this.jartrekDataSet.PresetMaster.PresetChitToggleColumn.DefaultValue = "Y";
-            this.jartrekDataSet.PresetMaster.PresetPrintChitColumn.DefaultValue = "O";
-
-        }
+        #region New Row Methods
 
         private void AddNew_Button_Click_1(object sender, EventArgs e)
         {
@@ -115,7 +96,7 @@ namespace Preset_Maintenance
             newObj = presetMasterBindingSource.AddNew();//Creates new DataRowView and clears all the fields for new info.. Returns the object created which is equal to the current row...
             (((DataRowView)newObj).Row as jartrekDataSet.PresetMasterRow).KeyCode = currentKey;//Sets the new item as the previous keycode...
             presetMasterBindingSource.ResetCurrentItem();//Does not show that the line above took effect until calling this...
-           // CurrentRow.Row.BeginEdit();
+                                                         // CurrentRow.Row.BeginEdit();
 
             ConfirmAdd_Button.Visible = true;
             CancelChanges_Button.Visible = true;
@@ -129,85 +110,36 @@ namespace Preset_Maintenance
             if (ValidateInput())
             {
                 this.Validate();
-                this.presetMasterBindingSource.EndEdit();
-                this.tableAdapterManager.UpdateAll(this.jartrekDataSet);
-
+                this.CurrentRow.EndEdit();
+                if (presetMasterTableAdapter.Update(CurrentRow.Row) > 0)
+                {
+                    MessageBox.Show("Successfully added Row!");
+                    Console.WriteLine("Successfully added row!");
+                }
             }
         }
-
-        #region New Row Methods
 
         private void presetMasterBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
             currentKey = (CurrentRow.Row as jartrekDataSet.PresetMasterRow).KeyCode.ToString();
             Console.WriteLine("Adding new event " + currentKey);
-            e.NewObject = newObj;
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            //CurrentRow IsNew & IsEdit
+            jartrekDataSet.EnforceConstraints = false;
 
             Console.WriteLine("Add new item click");
 
-            newPreset = BuildNewPreset(CurrentRow.Row as jartrekDataSet.PresetMasterRow);
-            newPreset.Data.DefaultPresetData.KeyCode = currentKey;
+            CurrentRow.BeginEdit();
+            keyCodeComboBox.Text = currentKey;
 
-            presetMasterBindingNavigator.AddNewItem.Enabled = false;
             HideLabels();
-            BuildKeyBox();
             CurrentlyAdding_Label.Visible = true;
             CancelChanges_Button.Visible = true;
             Update_Button.Visible = false;
             ConfirmAdd_Button.Visible = true;
-            CurrentRow.Row.BeginEdit();//Starts the editing of the current row in case something needs canceled..
-            CurrentRow.Row.ItemArray = newPreset.Data.DefaultPresetData.ItemArray;//moves all default data to current row..
-            presetMasterBindingSource.ResetBindings(false);//Refreshes textboxes with the values in the row object..
-
         }
-
-        //private void ConfirmAdd_Button_Click(object sender, EventArgs e)
-        //{
-        //    if (ValidateInput())
-        //    {
-        //        if (CurrentRow.IsNew)
-        //        {
-        //            Console.WriteLine("Are you adding a new row?");
-        //            Console.WriteLine("Current row version: " + CurrentRow.RowVersion);
-
-        //            try
-        //            {                        
-        //                CurrentRow.Row.EndEdit();
-        //                presetMasterBindingSource.EndEdit();//BUG: Data Constraint Exception here... 
-                        
-        //                if (this.presetMasterTableAdapter.Update(CurrentRow.Row) > 0)
-        //                {
-        //                    MessageBox.Show("Update Success!");
-        //                    Update_Button.Visible = true;
-        //                    presetMasterBindingNavigator.AddNewItem.Enabled = true;
-        //                    ConfirmAdd_Button.Visible = false;
-        //                    CancelChanges_Button.Visible = false;
-        //                    //createBindableTree(DataBoundTree);
-        //                    //DataBoundTree.TreeView.SelectedNode = GetNodeFrom(((jartrekDataSet.PresetMasterRow)CurrentRow.Row).PresetCode, DataBoundTree.TreeView.Nodes);
-
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show("New item not added!");
-        //                    return;
-        //                }
-        //            }
-        //            catch (Exception ee)
-        //            {
-        //                Console.WriteLine(ee.Message);
-        //                return;
-        //            }
-        //            HideLabels();
-        //            Success_Label.Visible = true;
-        //            CancelChanges_Button.Visible = false;
-        //        }
-        //    }
-        //}//BUG:Need to rewrite this...
 
         private void Update_Button_Click(object sender, EventArgs e)
         {
@@ -218,11 +150,10 @@ namespace Preset_Maintenance
                     var presetToEdit = presetMasterTableAdapter.GetData().FindByPresetCode((CurrentRow.Row as jartrekDataSet.PresetMasterRow).PresetCode);
                     var editedRow = CurrentRow;
                     //add try catch for more solidity...
-                    DataAccessor.ChangeRow(presetToEdit, editedRow);//BUG: Need to find a better way.. 
+                    ChangeRow(presetToEdit, editedRow);//BUG: Need to find a better way.. 
 
                     HideLabels();
                     UpdateRow_Label.Visible = true;
-                    presetMasterBindingSource.Position = presetMasterBindingSource.Position + 1;
                 }
                 else
                 {
@@ -322,7 +253,7 @@ namespace Preset_Maintenance
             try
             {
                 KeyPreview_Button.Text = currentNodeText;
-                CurrentPreset_Button.Image = DataAccessor.GetBitMaps(currentSourceRow.PresetCode, currentSourceRow.PresetPicture);
+                CurrentPreset_Button.Image = GetBitMaps(currentSourceRow.PresetCode, currentSourceRow.PresetPicture);
 
                 if (CurrentPreset_Button.Image != null)
                 {
@@ -488,13 +419,6 @@ namespace Preset_Maintenance
             }
         }
 
-        private void bitMap_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Console.WriteLine((sender as ComboBox).SelectedItem);
-            presetPictureTextBox.Text = (sender as ComboBox).SelectedItem.ToString();
-            CurrentPreset_Button.Image = DataAccessor.GetBitMaps(null, (sender as ComboBox).SelectedIndex.ToString());
-        }
-
         private void presetMasterBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             Console.WriteLine("Current changed!");
@@ -589,15 +513,29 @@ namespace Preset_Maintenance
             UpdateRow_Label.Visible = false;
             CurrentlyAdding_Label.Visible = false;
         }
-        private void keyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void AssignDefaults(jartrekDataSet jartrekDataSet)
         {
-            keyCodeTextBox.Text = (sender as ComboBox).Text;
+            this.jartrekDataSet.PresetMaster.KeyCodeColumn.DefaultValue = string.Empty;
+            this.jartrekDataSet.PresetMaster.PresetCodeColumn.DefaultValue = string.Empty;
+            this.jartrekDataSet.PresetMaster.PresetMtdAmtColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetMtdQtyColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetYtdAmtColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PresetYtdQtyColumn.DefaultValue = 0;
+            this.jartrekDataSet.PresetMaster.PreRemPrt1Column.DefaultValue = "N";
+            this.jartrekDataSet.PresetMaster.PreRemPrt2Column.DefaultValue = "N";
+            this.jartrekDataSet.PresetMaster.PresetChipColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChippableColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChitScanColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetChitToggleColumn.DefaultValue = "Y";
+            this.jartrekDataSet.PresetMaster.PresetPrintChitColumn.DefaultValue = "O";
+
         }
+
         private void presetDescTextBox_TextChanged(object sender, EventArgs e)
         {
             if (CurrentRow.IsNew)
             {
-                string presetCode = (keyCodeTextBox.Text + (sender as TextBox).Text).Trim(' ');
+                string presetCode = (keyCodeComboBox.Text + (sender as TextBox).Text).Trim(' ');
                 if (presetCode.Length < 10)
                 {
                     presetCodeTextBox.Text = presetCode;
@@ -618,10 +556,6 @@ namespace Preset_Maintenance
             CanceledChanges_Label.Visible = true;
             (sender as System.Windows.Forms.Button).Visible = false;
         }
-        private void presetPriceTextBox_TextChanged(object sender, EventArgs e)
-        {
-            // (sender as TextBox).Text = string.Format("{0:#,##0.00}", double.Parse((sender as TextBox).Text));
-        }
         private void presetPriceTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -638,27 +572,6 @@ namespace Preset_Maintenance
         #endregion
 
         #region Drag & Drop Event
-
-        #endregion
-
-        #region Current Preset Events
-
-        private void CurrentPreset_Button_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Console.WriteLine("Current Preset Button Mouse Down!");
-                var preview = ((Button)sender).Tag as Preset;
-                Console.WriteLine("Current Preset: " + preview.PresetCode);
-
-            }
-        }
-        private void CurrentPreset_Button_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        #endregion
 
         private void TrashBin_Panel_DragEnter(object sender, DragEventArgs e)
         {
@@ -713,27 +626,89 @@ namespace Preset_Maintenance
             DoDragDrop(((MyTreeView.BoundTreeNode)e.Item), DragDropEffects.Copy);
 
         }
-        private void presetMasterBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+
+        #endregion
+
+        #region Current Preset Events
+
+        private void CurrentPreset_Button_MouseDown(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("List has changed!");
+            if (e.Button == MouseButtons.Left)
+            {
+                Console.WriteLine("Current Preset Button Mouse Down!");
+                var preview = ((Button)sender).Tag as Preset;
+                Console.WriteLine("Current Preset: " + preview.PresetCode);
+
+            }
+        }
+        private void CurrentPreset_Button_MouseMove(object sender, MouseEventArgs e)
+        {
 
         }
 
-        private void presetMasterBindingSource_DataError(object sender, BindingManagerDataErrorEventArgs e)
+        #endregion
+
+        internal Bitmap GetBitMaps(string code)
         {
-            MessageBox.Show("There was an error!");
+            if (code == "<None>")
+                return null;
+            else
+            {
+                Console.WriteLine("Are you using the right bitmap method?");
+                return null;
+            }
+
+        }
+        internal Image GetBitMaps(string presetCode, string bitMap)
+        {
+            if (bitMap != "<None>" || bitMap == "None")//TODO: FIX THIS
+            {
+                var presetPic =
+                    from presetData in jartrekDataSet.PresetMaster
+                    where (presetData.PresetCode) == presetCode
+                    select presetData.PresetPicture;
+
+                try
+                {
+                    return new Bitmap(BitMapPath + bitMap);
+
+                }
+                catch (ArgumentException e)
+                {
+                    Console.WriteLine("No picture for this preset..." + e.Message);
+                    return null;
+                }
+            }
+            return null;
+        }
+        internal void ChangeRow(jartrekDataSet.PresetMasterRow rowToEdit, DataRowView editedRow)
+        {
+            try
+            {
+                if (rowToEdit != null)
+                {
+                    if (rowToEdit.RowState == DataRowState.Unchanged)
+                    {
+                        rowToEdit.ItemArray = editedRow.Row.ItemArray;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Adding a new row..");
+
+                }
+            }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show("Too many characters!" + e.Message);
+            }
+
+            if (presetMasterTableAdapter.Update(rowToEdit) > 0)
+                Console.WriteLine("Successfully updated row!");
+
         }
 
     }
-
-    public class EventTests : PresetForm
-    {
-        public EventTests()
-        {
-
-        }
-    }
-
     #region - SetColorClass
     public static class SetColor
     {

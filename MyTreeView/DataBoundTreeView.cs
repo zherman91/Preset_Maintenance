@@ -248,6 +248,8 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void cm_ListChanged(object sender, ListChangedEventArgs e)
         {
+            Console.WriteLine("cm_ListChanged!");
+
             // Cast the sender to a DataView 
             DataView dv = (DataView)sender;
 

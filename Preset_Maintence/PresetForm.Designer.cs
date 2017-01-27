@@ -74,7 +74,6 @@
             this.keyMasterTableAdapter1 = new Preset_Maintenance.jartrekDataSetTableAdapters.KeyMasterTableAdapter();
             this.CancelChanges_Button = new System.Windows.Forms.Button();
             this.Pricing_GroupBox = new Preset_Maintenance.CustomGrpBox();
-            this.AddNew_Button = new System.Windows.Forms.Button();
             this.PresetPriority_Label = new System.Windows.Forms.Label();
             this.presetMasterBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -104,10 +103,8 @@
             this.Success_Label = new System.Windows.Forms.Label();
             this.keyCodeComboBox = new System.Windows.Forms.ComboBox();
             this.presetPrintComboBox = new System.Windows.Forms.ComboBox();
-            this.keyCodeTextBox = new System.Windows.Forms.TextBox();
             this.presetCodeTextBox = new System.Windows.Forms.TextBox();
             this.presetColorTextBox = new System.Windows.Forms.TextBox();
-            this.presetPictureTextBox = new System.Windows.Forms.TextBox();
             this.presetDescTextBox = new System.Windows.Forms.TextBox();
             this.presetLegendTextBox = new System.Windows.Forms.TextBox();
             this.presetTaxTextBox = new System.Windows.Forms.TextBox();
@@ -234,8 +231,6 @@
             this.presetMasterBindingSource.DataMember = "PresetMaster";
             this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
             this.presetMasterBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.presetMasterBindingSource_AddingNew);
-            this.presetMasterBindingSource.DataError += new System.Windows.Forms.BindingManagerDataErrorEventHandler(this.presetMasterBindingSource_DataError);
-            this.presetMasterBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.presetMasterBindingSource_ListChanged);
             this.presetMasterBindingSource.PositionChanged += new System.EventHandler(this.presetMasterBindingSource_PositionChanged);
             // 
             // jartrekDataSet
@@ -438,7 +433,6 @@
             // 
             // Pricing_GroupBox
             // 
-            this.Pricing_GroupBox.Controls.Add(this.AddNew_Button);
             this.Pricing_GroupBox.Controls.Add(this.PresetPriority_Label);
             this.Pricing_GroupBox.Controls.Add(this.presetMasterBindingNavigator);
             this.Pricing_GroupBox.Controls.Add(this.ChitSettings_GroupBox);
@@ -455,14 +449,12 @@
             this.Pricing_GroupBox.Controls.Add(presetPrintLabel1);
             this.Pricing_GroupBox.Controls.Add(this.presetPrintComboBox);
             this.Pricing_GroupBox.Controls.Add(keyCodeLabel);
-            this.Pricing_GroupBox.Controls.Add(this.keyCodeTextBox);
             this.Pricing_GroupBox.Controls.Add(presetCodeLabel);
             this.Pricing_GroupBox.Controls.Add(this.presetCodeTextBox);
             this.Pricing_GroupBox.Controls.Add(this.presetColorTextBox);
             this.Pricing_GroupBox.Controls.Add(presetColorLabel);
             this.Pricing_GroupBox.Controls.Add(presetPictureLabel);
             this.Pricing_GroupBox.Controls.Add(presetDescLabel);
-            this.Pricing_GroupBox.Controls.Add(this.presetPictureTextBox);
             this.Pricing_GroupBox.Controls.Add(this.presetDescTextBox);
             this.Pricing_GroupBox.Controls.Add(presetLegendLabel);
             this.Pricing_GroupBox.Controls.Add(this.presetLegendTextBox);
@@ -494,16 +486,6 @@
             this.Pricing_GroupBox.TabIndex = 107;
             this.Pricing_GroupBox.TabStop = false;
             this.Pricing_GroupBox.Text = "Pricing Information";
-            // 
-            // AddNew_Button
-            // 
-            this.AddNew_Button.Location = new System.Drawing.Point(227, 634);
-            this.AddNew_Button.Name = "AddNew_Button";
-            this.AddNew_Button.Size = new System.Drawing.Size(65, 38);
-            this.AddNew_Button.TabIndex = 148;
-            this.AddNew_Button.Text = "Add New Item";
-            this.AddNew_Button.UseVisualStyleBackColor = true;
-            this.AddNew_Button.Click += new System.EventHandler(this.AddNew_ButtonClick_Test);
             // 
             // PresetPriority_Label
             // 
@@ -546,7 +528,6 @@
             // bindingNavigatorAddNewItem
             // 
             this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Enabled = false;
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
@@ -807,16 +788,15 @@
             // 
             this.bitMap_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.bitMap_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.bitMap_ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
             this.bitMap_ComboBox.FormattingEnabled = true;
             this.bitMap_ComboBox.Items.AddRange(new object[] {
             "None"});
-            this.bitMap_ComboBox.Location = new System.Drawing.Point(211, 179);
+            this.bitMap_ComboBox.Location = new System.Drawing.Point(98, 179);
             this.bitMap_ComboBox.Name = "bitMap_ComboBox";
-            this.bitMap_ComboBox.Size = new System.Drawing.Size(75, 21);
+            this.bitMap_ComboBox.Size = new System.Drawing.Size(188, 21);
             this.bitMap_ComboBox.TabIndex = 4;
             this.bitMap_ComboBox.Text = "Button Picture";
-            this.bitMap_ComboBox.SelectionChangeCommitted += new System.EventHandler(this.bitMap_ComboBox_SelectionChangeCommitted);
-            this.bitMap_ComboBox.SelectedValueChanged += new System.EventHandler(this.bitMap_ComboBox_SelectionChangeCommitted);
             // 
             // presetPriorityTextBox
             // 
@@ -845,11 +825,10 @@
             this.keyCodeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.keyCodeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "KeyCode", true));
             this.keyCodeComboBox.FormattingEnabled = true;
-            this.keyCodeComboBox.Location = new System.Drawing.Point(189, 75);
+            this.keyCodeComboBox.Location = new System.Drawing.Point(98, 75);
             this.keyCodeComboBox.Name = "keyCodeComboBox";
-            this.keyCodeComboBox.Size = new System.Drawing.Size(97, 21);
+            this.keyCodeComboBox.Size = new System.Drawing.Size(108, 21);
             this.keyCodeComboBox.TabIndex = 1;
-            this.keyCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.keyCodeComboBox_SelectedIndexChanged);
             // 
             // presetPrintLabel1
             // 
@@ -884,15 +863,6 @@
             keyCodeLabel.Size = new System.Drawing.Size(56, 13);
             keyCodeLabel.TabIndex = 138;
             keyCodeLabel.Text = "Key Code:";
-            // 
-            // keyCodeTextBox
-            // 
-            this.keyCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "KeyCode", true));
-            this.keyCodeTextBox.Location = new System.Drawing.Point(98, 75);
-            this.keyCodeTextBox.Name = "keyCodeTextBox";
-            this.keyCodeTextBox.Size = new System.Drawing.Size(85, 20);
-            this.keyCodeTextBox.TabIndex = 91;
-            this.keyCodeTextBox.TabStop = false;
             // 
             // presetCodeLabel
             // 
@@ -947,16 +917,6 @@
             presetDescLabel.Size = new System.Drawing.Size(68, 13);
             presetDescLabel.TabIndex = 116;
             presetDescLabel.Text = "Preset Desc:";
-            // 
-            // presetPictureTextBox
-            // 
-            this.presetPictureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
-            this.presetPictureTextBox.Location = new System.Drawing.Point(98, 179);
-            this.presetPictureTextBox.Name = "presetPictureTextBox";
-            this.presetPictureTextBox.Size = new System.Drawing.Size(108, 20);
-            this.presetPictureTextBox.TabIndex = 97;
-            this.presetPictureTextBox.TabStop = false;
-            this.presetPictureTextBox.Text = " ";
             // 
             // presetDescTextBox
             // 
@@ -1019,7 +979,6 @@
             this.presetPriceTextBox.Name = "presetPriceTextBox";
             this.presetPriceTextBox.Size = new System.Drawing.Size(108, 20);
             this.presetPriceTextBox.TabIndex = 7;
-            this.presetPriceTextBox.TextChanged += new System.EventHandler(this.presetPriceTextBox_TextChanged);
             this.presetPriceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presetPriceTextBox_KeyDown);
             this.presetPriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.presetPriceTextBox_KeyPress);
             // 
@@ -1315,10 +1274,8 @@
         public System.Windows.Forms.SplitContainer PresetSplitContainer;
         private System.Windows.Forms.ComboBox bitMap_ComboBox;
         public CustomGrpBox Pricing_GroupBox;
-        private System.Windows.Forms.TextBox keyCodeTextBox;
         private System.Windows.Forms.TextBox presetCodeTextBox;
         private System.Windows.Forms.TextBox presetColorTextBox;
-        private System.Windows.Forms.TextBox presetPictureTextBox;
         private System.Windows.Forms.TextBox presetDescTextBox;
         private System.Windows.Forms.TextBox presetLegendTextBox;
         private System.Windows.Forms.TextBox presetTaxTextBox;
@@ -1363,7 +1320,6 @@
         private CustomGrpBox presetTrashBin;
         public PresetPriorityControl presetPriorityControl1;
         private System.Windows.Forms.FlowLayoutPanel TrashBin_Panel;
-        private System.Windows.Forms.Button AddNew_Button;
     }
 }
 

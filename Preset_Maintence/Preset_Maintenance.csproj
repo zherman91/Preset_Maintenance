@@ -78,7 +78,6 @@
     <Compile Include="Custom Controls\CustomGrpBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataAccessor.cs" />
     <Compile Include="IPreset.cs" />
     <Compile Include="jartrekDataSet.cs">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
