@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace MyTreeView
     public class DataBoundTreeView : UserControl
     {
         private System.ComponentModel.Container components = null;
+        private List<CurrencyManager> managers = null;
 
         public DataBoundTreeView()
         {
@@ -65,6 +67,10 @@ namespace MyTreeView
 
             _treeView.Nodes.Clear();
 
+            handlerPositionChanged = null;
+            handleAfterSelect = null;
+            handlerListChanged = null;
+
             handlerPositionChanged = new EventHandler(cm_PositionChanged);
 
             handleAfterSelect = new TreeViewEventHandler(tv_AfterSelect);
@@ -72,6 +78,7 @@ namespace MyTreeView
             handlerListChanged = new ListChangedEventHandler(cm_ListChanged);
 
             SetEvents(dataSet, true);
+            managers = new List<CurrencyManager>();
 
             foreach (DataTable dt in dataSet.Tables)
             {
@@ -168,7 +175,7 @@ namespace MyTreeView
             foreach (object rowParent in cmParent.List)
             {
                 DataRowView drvParent = (DataRowView)rowParent;
-                System.Windows.Forms.TreeNode nodeParent = CreateNode(drvParent, cmParent, i);
+                BoundTreeNode nodeParent = CreateNode(drvParent, cmParent, i);
                 nodes.Add(nodeParent);
                 cmParent.Position = i;
 
@@ -215,6 +222,8 @@ namespace MyTreeView
         {
             TableBinding tableBinding = GetBinding(drv.Row.Table.TableName);
 
+            managers.Add(cm);
+
             BoundTreeNode node = null;
 
             if (tableBinding != null)
@@ -226,7 +235,7 @@ namespace MyTreeView
 
         }//Complete
 
-        private TableBinding GetBinding(string tableName)
+        public TableBinding GetBinding(string tableName)
         {
             // Each table can have one and only one binding
             foreach (TableBinding binding in _tableBindings)
@@ -249,6 +258,12 @@ namespace MyTreeView
         private void cm_ListChanged(object sender, ListChangedEventArgs e)
         {
             Console.WriteLine("cm_ListChanged!");
+
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                MessageBox.Show("List change type added!");
+                return;
+            }
 
             // Cast the sender to a DataView 
             DataView dv = (DataView)sender;
@@ -288,6 +303,8 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void tv_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            Console.WriteLine("tv_AfterSelect!");            
+            
             // We have to move the currency manager positions for every node in the
             // selected heirarchy because the parent node selection determines the
             // currency manager "list" contents for the children
@@ -329,6 +346,8 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void cm_PositionChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("cm_PositionChanged!");
+
             // Manually disable this if we are changing position from tv_AfterSelect
             if (!DisablePositionChanged)
             {
@@ -408,7 +427,7 @@ namespace MyTreeView
         /// <param name="nodes">The nodes.</param>
         /// <returns>TreeNode.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        private BoundTreeNode SelectNode(object item, TreeNodeCollection nodes)
+        public BoundTreeNode SelectNode(object item, TreeNodeCollection nodes)
         {
             foreach (BoundTreeNode node in nodes)
             {

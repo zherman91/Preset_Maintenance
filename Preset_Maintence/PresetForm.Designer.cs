@@ -53,8 +53,6 @@
             System.Windows.Forms.Label presetPrice5Label;
             this.Main_SplitCon = new System.Windows.Forms.SplitContainer();
             this.Nested_SplitCon = new System.Windows.Forms.SplitContainer();
-            this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jartrekDataSet = new Preset_Maintenance.jartrekDataSet();
             this.PresetSplitContainer = new System.Windows.Forms.SplitContainer();
             this.SearchResults_GroupBox = new System.Windows.Forms.GroupBox();
             this.searchResults_DataGridView = new System.Windows.Forms.DataGridView();
@@ -68,10 +66,13 @@
             this.ExpandNodes_Button = new System.Windows.Forms.Button();
             this.ViewKeys_Button = new System.Windows.Forms.Button();
             this.Update_Button = new System.Windows.Forms.Button();
-            this.DataBoundTree = new MyTreeView.DataBoundTreeView();
+            this.presetMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jartrekDataSet = new Preset_Maintenance.jartrekDataSet();
             this.presetMasterTableAdapter = new Preset_Maintenance.jartrekDataSetTableAdapters.PresetMasterTableAdapter();
             this.tableAdapterManager = new Preset_Maintenance.jartrekDataSetTableAdapters.TableAdapterManager();
             this.keyMasterTableAdapter1 = new Preset_Maintenance.jartrekDataSetTableAdapters.KeyMasterTableAdapter();
+            this.NewItem_TreeView = new MyTreeView.DataBoundTreeView();
+            this.DataBoundTree = new MyTreeView.DataBoundTreeView();
             this.CancelChanges_Button = new System.Windows.Forms.Button();
             this.Pricing_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.PresetPriority_Label = new System.Windows.Forms.Label();
@@ -152,13 +153,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).BeginInit();
             this.Nested_SplitCon.Panel1.SuspendLayout();
             this.Nested_SplitCon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PresetSplitContainer)).BeginInit();
             this.PresetSplitContainer.Panel2.SuspendLayout();
             this.PresetSplitContainer.SuspendLayout();
             this.SearchResults_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchResults_DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).BeginInit();
             this.Pricing_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNavigator)).BeginInit();
             this.presetMasterBindingNavigator.SuspendLayout();
@@ -182,8 +183,8 @@
             // Main_SplitCon.Panel2
             // 
             this.Main_SplitCon.Panel2.Controls.Add(this.DataBoundTree);
-            this.Main_SplitCon.Size = new System.Drawing.Size(964, 752);
-            this.Main_SplitCon.SplitterDistance = 641;
+            this.Main_SplitCon.Size = new System.Drawing.Size(1228, 752);
+            this.Main_SplitCon.SplitterDistance = 862;
             this.Main_SplitCon.SplitterWidth = 2;
             this.Main_SplitCon.TabIndex = 0;
             // 
@@ -199,6 +200,7 @@
             // Nested_SplitCon.Panel1
             // 
             this.Nested_SplitCon.Panel1.AutoScroll = true;
+            this.Nested_SplitCon.Panel1.Controls.Add(this.NewItem_TreeView);
             this.Nested_SplitCon.Panel1.Controls.Add(this.Pricing_GroupBox);
             this.Nested_SplitCon.Panel1.Controls.Add(this.PresetSplitContainer);
             this.Nested_SplitCon.Panel1.Controls.Add(this.SearchResults_GroupBox);
@@ -220,30 +222,17 @@
             this.Nested_SplitCon.Panel2.AccessibleName = "";
             this.Nested_SplitCon.Panel2Collapsed = true;
             this.Nested_SplitCon.Panel2MinSize = 100;
-            this.Nested_SplitCon.Size = new System.Drawing.Size(641, 752);
+            this.Nested_SplitCon.Size = new System.Drawing.Size(862, 752);
             this.Nested_SplitCon.SplitterDistance = 400;
             this.Nested_SplitCon.SplitterWidth = 2;
             this.Nested_SplitCon.TabIndex = 2;
-            // 
-            // presetMasterBindingSource
-            // 
-            this.presetMasterBindingSource.AllowNew = true;
-            this.presetMasterBindingSource.DataMember = "PresetMaster";
-            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
-            this.presetMasterBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.presetMasterBindingSource_AddingNew);
-            this.presetMasterBindingSource.PositionChanged += new System.EventHandler(this.presetMasterBindingSource_PositionChanged);
-            // 
-            // jartrekDataSet
-            // 
-            this.jartrekDataSet.DataSetName = "jartrekDataSet";
-            this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // PresetSplitContainer
             // 
             this.PresetSplitContainer.AllowDrop = true;
             this.PresetSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PresetSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.PresetSplitContainer.Location = new System.Drawing.Point(314, 285);
+            this.PresetSplitContainer.Location = new System.Drawing.Point(535, 285);
             this.PresetSplitContainer.Name = "PresetSplitContainer";
             this.PresetSplitContainer.Panel1Collapsed = true;
             // 
@@ -261,7 +250,7 @@
             this.SearchResults_GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchResults_GroupBox.Controls.Add(this.searchResults_DataGridView);
-            this.SearchResults_GroupBox.Location = new System.Drawing.Point(427, 17);
+            this.SearchResults_GroupBox.Location = new System.Drawing.Point(648, 17);
             this.SearchResults_GroupBox.Name = "SearchResults_GroupBox";
             this.SearchResults_GroupBox.Size = new System.Drawing.Size(207, 182);
             this.SearchResults_GroupBox.TabIndex = 105;
@@ -297,7 +286,7 @@
             // 
             this.SearchResults_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchResults_Label.AutoSize = true;
-            this.SearchResults_Label.Location = new System.Drawing.Point(421, 203);
+            this.SearchResults_Label.Location = new System.Drawing.Point(642, 203);
             this.SearchResults_Label.Name = "SearchResults_Label";
             this.SearchResults_Label.Size = new System.Drawing.Size(71, 13);
             this.SearchResults_Label.TabIndex = 100;
@@ -306,7 +295,7 @@
             // ClearButton
             // 
             this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearButton.Location = new System.Drawing.Point(612, 250);
+            this.ClearButton.Location = new System.Drawing.Point(833, 250);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(20, 25);
             this.ClearButton.TabIndex = 5;
@@ -317,7 +306,7 @@
             // PresetSearch_Button
             // 
             this.PresetSearch_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearch_Button.Location = new System.Drawing.Point(550, 250);
+            this.PresetSearch_Button.Location = new System.Drawing.Point(771, 250);
             this.PresetSearch_Button.Name = "PresetSearch_Button";
             this.PresetSearch_Button.Size = new System.Drawing.Size(56, 25);
             this.PresetSearch_Button.TabIndex = 3;
@@ -328,7 +317,7 @@
             // PresetSearchLabel
             // 
             this.PresetSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetSearchLabel.Location = new System.Drawing.Point(370, 224);
+            this.PresetSearchLabel.Location = new System.Drawing.Point(591, 224);
             this.PresetSearchLabel.Name = "PresetSearchLabel";
             this.PresetSearchLabel.Size = new System.Drawing.Size(94, 20);
             this.PresetSearchLabel.TabIndex = 12;
@@ -340,7 +329,7 @@
             this.PresetSearch_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PresetSearch_TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.PresetSearch_TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.PresetSearch_TextBox.Location = new System.Drawing.Point(470, 224);
+            this.PresetSearch_TextBox.Location = new System.Drawing.Point(691, 224);
             this.PresetSearch_TextBox.Name = "PresetSearch_TextBox";
             this.PresetSearch_TextBox.Size = new System.Drawing.Size(164, 20);
             this.PresetSearch_TextBox.TabIndex = 2;
@@ -348,7 +337,7 @@
             // CollapseNodes_Button
             // 
             this.CollapseNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CollapseNodes_Button.Location = new System.Drawing.Point(373, 250);
+            this.CollapseNodes_Button.Location = new System.Drawing.Point(594, 250);
             this.CollapseNodes_Button.Name = "CollapseNodes_Button";
             this.CollapseNodes_Button.Size = new System.Drawing.Size(82, 25);
             this.CollapseNodes_Button.TabIndex = 4;
@@ -359,7 +348,7 @@
             // ExpandNodes_Button
             // 
             this.ExpandNodes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpandNodes_Button.Location = new System.Drawing.Point(461, 250);
+            this.ExpandNodes_Button.Location = new System.Drawing.Point(682, 250);
             this.ExpandNodes_Button.Name = "ExpandNodes_Button";
             this.ExpandNodes_Button.Size = new System.Drawing.Size(82, 25);
             this.ExpandNodes_Button.TabIndex = 3;
@@ -371,7 +360,7 @@
             // 
             this.ViewKeys_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ViewKeys_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewKeys_Button.Location = new System.Drawing.Point(587, 3);
+            this.ViewKeys_Button.Location = new System.Drawing.Point(808, 3);
             this.ViewKeys_Button.Name = "ViewKeys_Button";
             this.ViewKeys_Button.Size = new System.Drawing.Size(46, 15);
             this.ViewKeys_Button.TabIndex = 99;
@@ -392,15 +381,18 @@
             this.Update_Button.UseVisualStyleBackColor = true;
             this.Update_Button.Click += new System.EventHandler(this.Update_Button_Click);
             // 
-            // DataBoundTree
+            // presetMasterBindingSource
             // 
-            this.DataBoundTree.AllowDrop = true;
-            this.DataBoundTree.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DataBoundTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataBoundTree.Location = new System.Drawing.Point(0, 0);
-            this.DataBoundTree.Name = "DataBoundTree";
-            this.DataBoundTree.Size = new System.Drawing.Size(321, 752);
-            this.DataBoundTree.TabIndex = 1;
+            this.presetMasterBindingSource.AllowNew = true;
+            this.presetMasterBindingSource.DataMember = "PresetMaster";
+            this.presetMasterBindingSource.DataSource = this.jartrekDataSet;
+            this.presetMasterBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.presetMasterBindingSource_AddingNew);
+            this.presetMasterBindingSource.PositionChanged += new System.EventHandler(this.presetMasterBindingSource_PositionChanged);
+            // 
+            // jartrekDataSet
+            // 
+            this.jartrekDataSet.DataSetName = "jartrekDataSet";
+            this.jartrekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // presetMasterTableAdapter
             // 
@@ -417,6 +409,23 @@
             // keyMasterTableAdapter1
             // 
             this.keyMasterTableAdapter1.ClearBeforeFill = true;
+            // 
+            // NewItem_TreeView
+            // 
+            this.NewItem_TreeView.Location = new System.Drawing.Point(309, 289);
+            this.NewItem_TreeView.Name = "NewItem_TreeView";
+            this.NewItem_TreeView.Size = new System.Drawing.Size(220, 455);
+            this.NewItem_TreeView.TabIndex = 108;
+            // 
+            // DataBoundTree
+            // 
+            this.DataBoundTree.AllowDrop = true;
+            this.DataBoundTree.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DataBoundTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataBoundTree.Location = new System.Drawing.Point(0, 0);
+            this.DataBoundTree.Name = "DataBoundTree";
+            this.DataBoundTree.Size = new System.Drawing.Size(364, 752);
+            this.DataBoundTree.TabIndex = 1;
             // 
             // CancelChanges_Button
             // 
@@ -791,7 +800,7 @@
             this.bitMap_ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presetMasterBindingSource, "PresetPicture", true));
             this.bitMap_ComboBox.FormattingEnabled = true;
             this.bitMap_ComboBox.Items.AddRange(new object[] {
-            "None"});
+            "<None>"});
             this.bitMap_ComboBox.Location = new System.Drawing.Point(98, 179);
             this.bitMap_ComboBox.Name = "bitMap_ComboBox";
             this.bitMap_ComboBox.Size = new System.Drawing.Size(188, 21);
@@ -1208,7 +1217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.CancelChanges_Button;
-            this.ClientSize = new System.Drawing.Size(964, 752);
+            this.ClientSize = new System.Drawing.Size(1228, 752);
             this.Controls.Add(this.Main_SplitCon);
             this.MinimumSize = new System.Drawing.Size(980, 790);
             this.Name = "PresetForm";
@@ -1224,13 +1233,13 @@
             this.Nested_SplitCon.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nested_SplitCon)).EndInit();
             this.Nested_SplitCon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
             this.PresetSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PresetSplitContainer)).EndInit();
             this.PresetSplitContainer.ResumeLayout(false);
             this.SearchResults_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchResults_DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jartrekDataSet)).EndInit();
             this.Pricing_GroupBox.ResumeLayout(false);
             this.Pricing_GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetMasterBindingNavigator)).EndInit();
@@ -1320,6 +1329,7 @@
         private CustomGrpBox presetTrashBin;
         public PresetPriorityControl presetPriorityControl1;
         private System.Windows.Forms.FlowLayoutPanel TrashBin_Panel;
+        private MyTreeView.DataBoundTreeView NewItem_TreeView;
     }
 }
 

@@ -30,8 +30,6 @@ namespace Preset_Maintenance {
         
         private GoToPriorDataTable tableGoToPrior;
         
-        private global::System.Data.DataRelation relationKeyMaster_GoToPrior;
-        
         private global::System.Data.DataRelation relationMyKeyRelate;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -246,7 +244,6 @@ namespace Preset_Maintenance {
                     this.tableGoToPrior.InitVars();
                 }
             }
-            this.relationKeyMaster_GoToPrior = this.Relations["KeyMaster_GoToPrior"];
             this.relationMyKeyRelate = this.Relations["MyKeyRelate"];
         }
         
@@ -264,10 +261,6 @@ namespace Preset_Maintenance {
             base.Tables.Add(this.tablePresetMaster);
             this.tableGoToPrior = new GoToPriorDataTable();
             base.Tables.Add(this.tableGoToPrior);
-            this.relationKeyMaster_GoToPrior = new global::System.Data.DataRelation("KeyMaster_GoToPrior", new global::System.Data.DataColumn[] {
-                        this.tableKeyMaster.KeyCodeColumn}, new global::System.Data.DataColumn[] {
-                        this.tableGoToPrior.GoToKeyCodeColumn}, false);
-            this.Relations.Add(this.relationKeyMaster_GoToPrior);
             this.relationMyKeyRelate = new global::System.Data.DataRelation("MyKeyRelate", new global::System.Data.DataColumn[] {
                         this.tableKeyMaster.KeyCodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablePresetMaster.KeyCodeColumn}, false);
@@ -2167,7 +2160,7 @@ namespace Preset_Maintenance {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public GoToPriorRow AddGoToPriorRow(
-                        KeyMasterRow parentKeyMasterRowByKeyMaster_GoToPrior, 
+                        string GoToKeyCode, 
                         string GoToKey1, 
                         string GoToKey2, 
                         string GoToKey3, 
@@ -2200,7 +2193,7 @@ namespace Preset_Maintenance {
                         string GoToKey30) {
                 GoToPriorRow rowGoToPriorRow = ((GoToPriorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        GoToKeyCode,
                         GoToKey1,
                         GoToKey2,
                         GoToKey3,
@@ -2231,9 +2224,6 @@ namespace Preset_Maintenance {
                         GoToKey28,
                         GoToKey29,
                         GoToKey30};
-                if ((parentKeyMasterRowByKeyMaster_GoToPrior != null)) {
-                    columnValuesArray[0] = parentKeyMasterRowByKeyMaster_GoToPrior[0];
-                }
                 rowGoToPriorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGoToPriorRow);
                 return rowGoToPriorRow;
@@ -3385,17 +3375,6 @@ namespace Preset_Maintenance {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetKeyEventDetailNull() {
                 this[this.tableKeyMaster.KeyEventDetailColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GoToPriorRow[] GetGoToPriorRows() {
-                if ((this.Table.ChildRelations["KeyMaster_GoToPrior"] == null)) {
-                    return new GoToPriorRow[0];
-                }
-                else {
-                    return ((GoToPriorRow[])(base.GetChildRows(this.Table.ChildRelations["KeyMaster_GoToPrior"])));
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4733,17 +4712,6 @@ namespace Preset_Maintenance {
                 }
                 set {
                     this[this.tableGoToPrior.GoToKey30Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KeyMasterRow KeyMasterRow {
-                get {
-                    return ((KeyMasterRow)(this.GetParentRow(this.Table.ParentRelations["KeyMaster_GoToPrior"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["KeyMaster_GoToPrior"]);
                 }
             }
             

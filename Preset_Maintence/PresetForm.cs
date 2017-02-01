@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using MyTreeView;
 using static Preset_Maintenance.SetColor;
+using System.Collections;
 
 namespace Preset_Maintenance
 {
@@ -30,7 +31,9 @@ namespace Preset_Maintenance
 
         #endregion
 
-        object newObj = null;
+        private ListChangedEventHandler handlerListChanged = null;
+
+        TableBinding[] tableBindings;
 
         public PresetForm Form => this;
         public DataRowView CurrentRow => presetMasterBindingSource.Current as DataRowView;
@@ -52,12 +55,11 @@ namespace Preset_Maintenance
             this.presetMasterTableAdapter.Fill(this.jartrekDataSet.PresetMaster);
             this.keyMasterTableAdapter1.FillXKeys(this.jartrekDataSet.KeyMaster);//fills KeyMaster with only Keys with presets...
 
-            presetMasterBindingSource.Sort = "KeyCode";
-
             BindTree(this.DataBoundTree);
+
             BuildKeyBox();
 
-            BindControls();
+            //BindControls();
             DataBoundTree.TreeView.AfterSelect += DataBoundTree_AfterSelect;
             priority = new PresetPriorityControl(Form);
 
@@ -68,44 +70,16 @@ namespace Preset_Maintenance
             TrashBin_Panel.DragEnter += TrashBin_Panel_DragEnter;
 
             AssignDefaults(jartrekDataSet);
-            //presetMasterBindingSource.AddingNew += presetMasterBindingSource_AddingNew;
+
+
+
         }
 
         #region New Row Methods
 
-        private void AddNew_Button_Click_1(object sender, EventArgs e)
-        {
-            //Here i am creating a new blank row in which i can edit and update.. 
-            var newRow = (presetMasterBindingSource.AddNew() as DataRowView);
-            var newPreset = BuildNewPreset((jartrekDataSet.PresetMasterRow)newRow.Row);
-            newPreset.Data.DefaultPresetData.KeyCode = currentKey;
-            presetMasterBindingSource.ResetCurrentItem();
-
-            HideLabels();
-            BuildKeyBox();
-            CurrentlyAdding_Label.Visible = true;
-            CancelChanges_Button.Visible = true;
-            Update_Button.Visible = false;
-            ConfirmAdd_Button.Visible = true;
-            CurrentRow.Row.BeginEdit();
-
-        }//UNDONE: Left off here!
-
-        private void AddNew_ButtonClick_Test(object sender, EventArgs e)
-        {
-            newObj = presetMasterBindingSource.AddNew();//Creates new DataRowView and clears all the fields for new info.. Returns the object created which is equal to the current row...
-            (((DataRowView)newObj).Row as jartrekDataSet.PresetMasterRow).KeyCode = currentKey;//Sets the new item as the previous keycode...
-            presetMasterBindingSource.ResetCurrentItem();//Does not show that the line above took effect until calling this...
-                                                         // CurrentRow.Row.BeginEdit();
-
-            ConfirmAdd_Button.Visible = true;
-            CancelChanges_Button.Visible = true;
-            BuildKeyBox();
-        }
-
         private void ConfirmAdd_Button_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Testing");
+            Console.WriteLine("Confirm add button event!");
 
             if (ValidateInput())
             {
@@ -113,8 +87,24 @@ namespace Preset_Maintenance
                 this.CurrentRow.EndEdit();
                 if (presetMasterTableAdapter.Update(CurrentRow.Row) > 0)
                 {
-                    MessageBox.Show("Successfully added Row!");
-                    Console.WriteLine("Successfully added row!");
+
+                    try
+                    {
+                        CurrencyManager pm = (CurrencyManager)BindingContext[jartrekDataSet, jartrekDataSet.KeyMaster.TableName + "." + jartrekDataSet.KeyMaster.ChildRelations[0].RelationName];
+
+                        MessageBox.Show("Successfully added Row!");
+                        Console.WriteLine("Successfully added row!");
+                        Success_Label.Visible = true;
+                        ConfirmAdd_Button.Visible = false;
+                        Update_Button.Visible = true;
+
+                        presetMasterBindingSource.PositionChanged += presetMasterBindingSource_PositionChanged;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Could not add node!" + ex.Message);
+                    }
                 }
             }
         }
@@ -123,11 +113,18 @@ namespace Preset_Maintenance
         {
             currentKey = (CurrentRow.Row as jartrekDataSet.PresetMasterRow).KeyCode.ToString();
             Console.WriteLine("Adding new event " + currentKey);
+            presetMasterBindingSource.PositionChanged -= presetMasterBindingSource_PositionChanged;
+
+        }
+
+        private void PresetForm_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            jartrekDataSet.EnforceConstraints = false;
+            //jartrekDataSet.EnforceConstraints = false;
 
             Console.WriteLine("Add new item click");
 
@@ -228,12 +225,51 @@ namespace Preset_Maintenance
 
         private void DataBoundTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+            ////Console.WriteLine("tv_AfterSelect!");
+
+            //// We have to move the currency manager positions for every node in the
+            //// selected heirarchy because the parent node selection determines the
+            //// currency manager "list" contents for the children
+            //ArrayList nodeList = new ArrayList();
+
+            ////Start with the node that has been selected
+            //BoundTreeNode node = (BoundTreeNode)((TreeView)sender).SelectedNode;
+            //nodeList.Add(node);
+
+            ////Recursively add all the parent nodes
+            //node = (BoundTreeNode)node.Parent;
+            //while (node != null)
+            //{
+            //    nodeList.Add(node);
+            //    node = (BoundTreeNode)node.Parent;
+            //}
+
+            //// Don't fire the our own position change event other controls bound to the 
+            //// currency managers will move accordingly because we are setting the position
+            //// explicitly. 
+            ////DisablePositionChanged = true;
+
+            //// Start at the root node
+            //for (int i = nodeList.Count; i > 0; i--)
+            //{
+            //    node = (BoundTreeNode)nodeList[i - 1];
+            //    ((IBindingList)node.CurrencyManager.List).ListChanged -= handlerListChanged;
+            //    node.CurrencyManager.Position = node.Position;
+            //    ((IBindingList)node.CurrencyManager.List).ListChanged += handlerListChanged;
+            //}
+            ////DisablePositionChanged = false;
+
+            Console.WriteLine("My After Select!");
+
+
             var tree = sender as TreeView;
             string currentNodeText;
 
             if (e.Node.Parent != null)
             {
                 currentNodeText = e.Node.Parent.Text;
+                var test = presetMasterBindingSource.CurrencyManager.List;
                 presetMasterBindingSource.Position = presetMasterBindingSource.Find("PresetCode", e.Node.Tag);
 
                 #region Should Fix This...
@@ -272,14 +308,10 @@ namespace Preset_Maintenance
                 Console.WriteLine(nr.Message + "Looks like that node doesnt have a parent...");
             }
         }//TODO: This could use some work...
-        private void createBindableTree(DataBoundTreeView btv)
-        {
-            BindTree(btv);
-        }
 
         internal void BindTree(DataBoundTreeView btv)
         {
-            TableBinding[] tableBindings = new TableBinding[] {
+            tableBindings = new TableBinding[] {
                 new TableBinding("PresetMaster", "PresetCode", "PresetDesc"),
                 new TableBinding("KeyMaster", "KeyCode", "KeyCode") };
 
@@ -287,11 +319,11 @@ namespace Preset_Maintenance
             btv.TreeView.HideSelection = false;
             btv.TreeView.Sort();
 
-            btv.SetEvents(jartrekDataSet, false);
             btv.LoadTree(jartrekDataSet, tableBindings);
             btv.SetEvents(jartrekDataSet, true);
-
         }
+
+
 
         #endregion
 
@@ -362,10 +394,9 @@ namespace Preset_Maintenance
 
             var source = sender as BindingSource;
 
-            //((CurrencyManager)DataBoundTree.TreeView.BindingContext[jartrekDataSet, "PresetMaster"]).Position = source.CurrencyManager.Position;
-
             var currentCode = (CurrentRow.Row as jartrekDataSet.PresetMasterRow).PresetCode;
 
+            // This was happening during the insertion of a new row causing the selected node to be null, therefore no filter on the CurrencyManager's List!
             DataBoundTree.TreeView.SelectedNode = GetNodeFrom(currentCode, DataBoundTree.TreeView.Nodes);
 
             int color;
@@ -392,9 +423,9 @@ namespace Preset_Maintenance
 
         private MyTreeView.BoundTreeNode FindTreeNode(string presetCode, string currentKey, System.Windows.Forms.TreeNode startNode)
         {
-            MyTreeView.BoundTreeNode[] nodesFound = startNode.Nodes.Cast<MyTreeView.BoundTreeNode>().Where(r => (string)r.Tag == presetCode).ToArray();
+            MyTreeView.BoundTreeNode[] nodesFound = startNode.Nodes.Cast<MyTreeView.BoundTreeNode>().Where(r => (string)r.Value == currentKey).ToArray();
 
-            return nodesFound[0] as MyTreeView.BoundTreeNode;
+            return nodesFound[0];
         }
 
         private void presetPriceTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -530,7 +561,6 @@ namespace Preset_Maintenance
             this.jartrekDataSet.PresetMaster.PresetPrintChitColumn.DefaultValue = "O";
 
         }
-
         private void presetDescTextBox_TextChanged(object sender, EventArgs e)
         {
             if (CurrentRow.IsNew)
@@ -707,7 +737,6 @@ namespace Preset_Maintenance
                 Console.WriteLine("Successfully updated row!");
 
         }
-
     }
     #region - SetColorClass
     public static class SetColor

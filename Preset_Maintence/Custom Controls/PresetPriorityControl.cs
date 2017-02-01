@@ -79,7 +79,6 @@ namespace Preset_Maintenance
                 btn.PresetButton.DragOver += PresetButton_DragOver;
                 btn.PresetButton.DragDrop += Btn_DragDrop;
                 btn.PresetButton.MouseMove += PresetButton_MouseMove;
-                btn.PresetButton.GiveFeedback += PresetButton_GiveFeedback;
                 btn.PresetButton.AllowDrop = true;
                 var buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
                 btn.PresetButton.Tag = getIndex(buttonName);
@@ -103,12 +102,13 @@ namespace Preset_Maintenance
                 btn.PresetButton.DragDrop -= Btn_DragDrop;
                 btn.PresetButton.DragEnter -= Btn_DragEnter;
                 btn.PresetButton.DragOver -= PresetButton_DragOver;
+                btn.PresetButton.MouseUp -= PresetButton_MouseUp;
+                btn.PresetButton.MouseMove -= PresetButton_MouseMove;
 
             }
             if (toolTip != null)
                 toolTip.Dispose();
             base.Dispose();
-
         }
 
         #endregion
@@ -223,6 +223,10 @@ namespace Preset_Maintenance
                 var btn = (sender as Button);
                 var preset = (Preset)btn.Tag;
                 _parent.DataBoundTree.TreeView.SelectedNode = _parent.GetNodeFrom(preset.PresetCode, _parent.DataBoundTree.TreeView.Nodes);
+                if (_parent.DataBoundTree.TreeView.SelectedNode == null)
+                {
+
+                }
             }
             else if (e.Button == MouseButtons.Left)
             {
@@ -333,11 +337,6 @@ namespace Preset_Maintenance
             }
             Point point = (sender as Button).PointToClient(new Point(e.X, e.Y));//Not sure if i know what to do with this yet...
         }
-        private void PresetButton_GiveFeedback(object sender, GiveFeedbackEventArgs e)
-        {
-            //Console.WriteLine("Giving Feedback!");
-
-        }
         private void PresetButton_MouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown)
@@ -368,6 +367,5 @@ namespace Preset_Maintenance
         {
             isMouseDown = false;
         }
-
     }
 }
