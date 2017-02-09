@@ -14,9 +14,13 @@ namespace Preset_Maintenance
         private Preset defaultPreset;
 
         public PresetData Data { get { return _presetData; } set { _presetData = value; } }
+        public string Legend { get { return this.Data.CurrentPresetData.PresetLegend; } }
+        public string KeyCode => this._presetData.CurrentPresetData.KeyCode;
         public string PresetCode => this._presetData.CurrentPresetData.PresetCode;
         public int Priority { get { return this._presetData.CurrentPresetData.PresetPriority; } set { this._presetData.CurrentPresetData.PresetPriority = value; } }
         public int Color { get { return this._presetData.CurrentPresetData.PresetColor; } set { _presetData.CurrentPresetData.PresetColor = value; } }
+        public string BitMap { get { return this._presetData.CurrentPresetData.PresetPicture; } }
+
 
         public Preset()
         {
@@ -62,30 +66,6 @@ namespace Preset_Maintenance
             {
                 get
                 {
-                    /**
-                     * PresetCode
-                     * KeyCode
-                     * PresetDesc
-                     * PresetLegend
-                     * PresetPriority
-                     * PresetTax
-                     * PresetPrice
-                     * PresetPrint
-                     * PresetMtdQty
-                     * PresetMtdAmt
-                     * PreRemPrt1
-                     * PreRemPrt2
-                     * PresetColor
-                     * PresetPrice 1 - 8
-                     * PresetReceipt
-                     * PresetPicture
-                     * PresetChip = N
-                     * PresetChippable = Y
-                     * PrestChitToggle = N
-                     * PresetPrintChit = N
-                     * PresetPrintScan = N
-                     *  
-                     * **/
 
                     _defaultPresetData.PresetDesc = "Default Description";//
                     _defaultPresetData.PresetCode = " ";//

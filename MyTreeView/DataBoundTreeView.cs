@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
@@ -8,7 +9,8 @@ namespace MyTreeView
 {
     public class DataBoundTreeView : UserControl
     {
-        private Container components = null;
+        private System.ComponentModel.Container components = null;
+        private List<CurrencyManager> managers = null;
 
         public DataBoundTreeView()
         {
@@ -65,13 +67,18 @@ namespace MyTreeView
 
             _treeView.Nodes.Clear();
 
+            handlerPositionChanged = null;
+            handleAfterSelect = null;
+            handlerListChanged = null;
+
             handlerPositionChanged = new EventHandler(cm_PositionChanged);
 
             handleAfterSelect = new TreeViewEventHandler(tv_AfterSelect);
 
             handlerListChanged = new ListChangedEventHandler(cm_ListChanged);
 
-            SetEvents(dataSet, false);
+            SetEvents(dataSet, true);
+            managers = new List<CurrencyManager>();
 
             foreach (DataTable dt in dataSet.Tables)
             {
@@ -90,14 +97,14 @@ namespace MyTreeView
             {
                 _treeView.SelectedNode = _treeView.Nodes[0];
 
-                TreeNode node = _treeView.SelectedNode;
+                BoundTreeNode node = (BoundTreeNode)_treeView.SelectedNode;
 
                 //Since Child lists (IBindingList) are always changing, handle the ListChanged for each. 
                 while (node.Nodes.Count > 0)
                 {
                     ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged -= handlerListChanged;
                     ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged += handlerListChanged;
-                    node = node.Nodes[0];
+                    node = (BoundTreeNode)node.Nodes[0];
                 }
             }
         }//Complete
@@ -178,7 +185,7 @@ namespace MyTreeView
             }
         }//Complete
 
-        private void AddChildNodes(DataTable dt, BoundTreeNode nodeParent, string relationName)
+        private void AddChildNodes(DataTable dt, System.Windows.Forms.TreeNode nodeParent, string relationName)
         {
             foreach (DataRelation relation in dt.ChildRelations)
             {
@@ -190,7 +197,7 @@ namespace MyTreeView
                 {
                     //Unbox the DataRowView, create the custom node (BoundTreeNode) and add it to the TreeView.
                     DataRowView drvChild = (DataRowView)rowChild;
-                    BoundTreeNode nodeChild = CreateNode(drvChild, cmChild, i);
+                    System.Windows.Forms.TreeNode nodeChild = CreateNode(drvChild, cmChild, i);
 
                     //Add it to the parent nodes node collection. 
                     nodeParent.Nodes.Add(nodeChild);
@@ -215,6 +222,8 @@ namespace MyTreeView
         {
             TableBinding tableBinding = GetBinding(drv.Row.Table.TableName);
 
+            managers.Add(cm);
+
             BoundTreeNode node = null;
 
             if (tableBinding != null)
@@ -226,7 +235,7 @@ namespace MyTreeView
 
         }//Complete
 
-        private TableBinding GetBinding(string tableName)
+        public TableBinding GetBinding(string tableName)
         {
             // Each table can have one and only one binding
             foreach (TableBinding binding in _tableBindings)
@@ -249,6 +258,12 @@ namespace MyTreeView
         private void cm_ListChanged(object sender, ListChangedEventArgs e)
         {
             Console.WriteLine("cm_ListChanged!");
+
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                MessageBox.Show("List change type added!");
+                return;
+            }
 
             // Cast the sender to a DataView 
             DataView dv = (DataView)sender;
@@ -288,6 +303,9 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void tv_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            Console.WriteLine("tv_AfterSelect!");
+            
+            
             // We have to move the currency manager positions for every node in the
             // selected heirarchy because the parent node selection determines the
             // currency manager "list" contents for the children
@@ -329,6 +347,8 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void cm_PositionChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("cm_PositionChanged!");
+
             // Manually disable this if we are changing position from tv_AfterSelect
             if (!DisablePositionChanged)
             {
@@ -357,7 +377,7 @@ namespace MyTreeView
 
                         //Start searching the tree with the base nodes collection. 
                         TreeNodeCollection nodes = _treeView.Nodes;
-                        BoundTreeNode node = null;
+                        System.Windows.Forms.TreeNode node = null;
                         TableBinding tableBinding;
 
                         //Select the highest parent and then the subsequent children from 
@@ -394,7 +414,7 @@ namespace MyTreeView
                         {
                             ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged -= handlerListChanged;
                             ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged += handlerListChanged;
-                            node = (BoundTreeNode)node.Nodes[0];
+                            node = node.Nodes[0];
                         }
                     }
                 }
@@ -408,7 +428,7 @@ namespace MyTreeView
         /// <param name="nodes">The nodes.</param>
         /// <returns>TreeNode.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        private BoundTreeNode SelectNode(object item, TreeNodeCollection nodes)
+        public BoundTreeNode SelectNode(object item, TreeNodeCollection nodes)
         {
             foreach (BoundTreeNode node in nodes)
             {
@@ -434,8 +454,8 @@ namespace MyTreeView
     /// <summary>
     /// Custom class that allows us to store more details on the TreeNode object. 
     /// </summary>
-    /// <seealso cref="TreeNode" />
-    public class BoundTreeNode : TreeNode
+    /// <seealso cref="System.Windows.Forms.TreeNode" />
+    public class BoundTreeNode : System.Windows.Forms.TreeNode
     {
         /// <summary>
         /// The table name that corresponds to the node's data. 
