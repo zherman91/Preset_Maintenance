@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Preset_Maintenance
+namespace PriorityControl
 {
     partial class PresetPriorityControl
     {
@@ -32,36 +32,36 @@ namespace Preset_Maintenance
         {
             this.Preset_GroupBox = new Preset_Maintenance.CustomGrpBox();
             this.PresetPanel = new System.Windows.Forms.Panel();
-            this.button30 = new PresetButton();
-            this.button25 = new PresetButton();
-            this.button26 = new PresetButton();
-            this.button27 = new PresetButton();
-            this.button28 = new PresetButton();
-            this.button29 = new PresetButton();
-            this.button19 = new PresetButton();
-            this.button20 = new PresetButton();
-            this.button21 = new PresetButton();
-            this.button22 = new PresetButton();
-            this.button23 = new PresetButton();
-            this.button24 = new PresetButton();
-            this.button13 = new PresetButton();
-            this.button14 = new PresetButton();
-            this.button15 = new PresetButton();
-            this.button16 = new PresetButton();
-            this.button17 = new PresetButton();
-            this.button18 = new PresetButton();
-            this.button07 = new PresetButton();
-            this.button08 = new PresetButton();
-            this.button09 = new PresetButton();
-            this.button10 = new PresetButton();
-            this.button11 = new PresetButton();
-            this.button12 = new PresetButton();
-            this.button06 = new PresetButton();
-            this.button05 = new PresetButton();
-            this.button04 = new PresetButton();
-            this.button03 = new PresetButton();
-            this.button02 = new PresetButton();
-            this.button01 = new PresetButton();
+            this.button30 = new MyPresetButton();
+            this.button25 = new MyPresetButton();
+            this.button26 = new MyPresetButton();
+            this.button27 = new MyPresetButton();
+            this.button28 = new MyPresetButton();
+            this.button29 = new MyPresetButton();
+            this.button19 = new MyPresetButton();
+            this.button20 = new MyPresetButton();
+            this.button21 = new MyPresetButton();
+            this.button22 = new MyPresetButton();
+            this.button23 = new MyPresetButton();
+            this.button24 = new MyPresetButton();
+            this.button13 = new MyPresetButton();
+            this.button14 = new MyPresetButton();
+            this.button15 = new MyPresetButton();
+            this.button16 = new MyPresetButton();
+            this.button17 = new MyPresetButton();
+            this.button18 = new MyPresetButton();
+            this.button07 = new MyPresetButton();
+            this.button08 = new MyPresetButton();
+            this.button09 = new MyPresetButton();
+            this.button10 = new MyPresetButton();
+            this.button11 = new MyPresetButton();
+            this.button12 = new MyPresetButton();
+            this.button06 = new MyPresetButton();
+            this.button05 = new MyPresetButton();
+            this.button04 = new MyPresetButton();
+            this.button03 = new MyPresetButton();
+            this.button02 = new MyPresetButton();
+            this.button01 = new MyPresetButton();
             this.Preset_GroupBox.SuspendLayout();
             this.PresetPanel.SuspendLayout();
             this.SuspendLayout();
@@ -369,36 +369,36 @@ namespace Preset_Maintenance
 
         #endregion
         private System.Windows.Forms.Panel PresetPanel;
-        private PresetButton button30;
-        private PresetButton button25;
-        private PresetButton button26;
-        private PresetButton button27;
-        private PresetButton button28;
-        private PresetButton button29;
-        private PresetButton button19;
-        private PresetButton button20;
-        private PresetButton button21;
-        private PresetButton button22;
-        private PresetButton button23;
-        private PresetButton button24;
-        private PresetButton button13;
-        private PresetButton button14;
-        private PresetButton button15;
-        private PresetButton button16;
-        private PresetButton button17;
-        private PresetButton button18;
-        private PresetButton button07;
-        private PresetButton button08;
-        private PresetButton button09;
-        private PresetButton button10;
-        private PresetButton button11;
-        private PresetButton button12;
-        private PresetButton button06;
-        private PresetButton button05;
-        private PresetButton button04;
-        private PresetButton button03;
-        private PresetButton button02;
-        private PresetButton button01;
-        public Preset_Maintenance.CustomGrpBox Preset_GroupBox;
+        private MyPresetButton button30;
+        private MyPresetButton button25;
+        private MyPresetButton button26;
+        private MyPresetButton button27;
+        private MyPresetButton button28;
+        private MyPresetButton button29;
+        private MyPresetButton button19;
+        private MyPresetButton button20;
+        private MyPresetButton button21;
+        private MyPresetButton button22;
+        private MyPresetButton button23;
+        private MyPresetButton button24;
+        private MyPresetButton button13;
+        private MyPresetButton button14;
+        private MyPresetButton button15;
+        private MyPresetButton button16;
+        private MyPresetButton button17;
+        private MyPresetButton button18;
+        private MyPresetButton button07;
+        private MyPresetButton button08;
+        private MyPresetButton button09;
+        private MyPresetButton button10;
+        private MyPresetButton button11;
+        private MyPresetButton button12;
+        private MyPresetButton button06;
+        private MyPresetButton button05;
+        private MyPresetButton button04;
+        private MyPresetButton button03;
+        private MyPresetButton button02;
+        private MyPresetButton button01;
+        private Preset_Maintenance.CustomGrpBox Preset_GroupBox;
     }
 }

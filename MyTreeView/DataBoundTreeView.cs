@@ -303,7 +303,8 @@ namespace MyTreeView
         /// <exception cref="System.NotImplementedException"></exception>
         private void tv_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            Console.WriteLine("tv_AfterSelect!");            
+            Console.WriteLine("tv_AfterSelect!");
+            
             
             // We have to move the currency manager positions for every node in the
             // selected heirarchy because the parent node selection determines the
