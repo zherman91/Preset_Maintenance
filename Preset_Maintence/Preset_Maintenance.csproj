@@ -24,8 +24,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -65,6 +65,9 @@
   <PropertyGroup>
     <StartupObject>Preset_Maintenance.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Walla.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -84,7 +87,6 @@
     <Compile Include="Custom Controls\DataBoundTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="IPreset.cs" />
     <Compile Include="jartrekDataSet.cs">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -93,8 +95,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Key.cs" />
+    <Compile Include="LiquorOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiquorOrder.Designer.cs">
+      <DependentUpon>LiquorOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log.cs" />
     <Compile Include="ModifierForm.cs">
       <SubType>Form</SubType>
@@ -102,7 +111,7 @@
     <Compile Include="ModifierForm.Designer.cs">
       <DependentUpon>ModifierForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Preset.cs" />
+    <Compile Include="ModTemplate.cs" />
     <Compile Include="Custom Controls\PresetButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -128,12 +137,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RegisterItem.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Custom Controls\DataBoundTreeView.resx">
       <DependentUpon>DataBoundTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\PresetButton.resx">
       <DependentUpon>PresetButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiquorOrder.resx">
+      <DependentUpon>LiquorOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifierForm.resx">
       <DependentUpon>ModifierForm.cs</DependentUpon>
@@ -157,14 +170,14 @@
     </Compile>
     <None Include="jartrekDataSet.xsc">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="jartrekDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <LastGenOutput>jartrekDataSet1.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="jartrekDataSet.xss">
       <DependentUpon>jartrekDataSet.xsd</DependentUpon>
@@ -190,7 +203,22 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\silver-trash-can-icon.jpg_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrashCan copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrashCan Fadded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrashCan Fadded 50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="smallerpng.ico" />
+    <Content Include="Resources\Walla.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

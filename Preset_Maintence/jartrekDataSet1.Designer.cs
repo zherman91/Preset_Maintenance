@@ -40,6 +40,8 @@ namespace Preset_Maintenance {
         
         private global::System.Data.DataRelation relationPresetMaster_Modifier;
         
+        private global::System.Data.DataRelation relationPresetMaster_ModTemplate;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -299,6 +301,7 @@ namespace Preset_Maintenance {
             this.relationMyKeyRelate = this.Relations["MyKeyRelate"];
             this.relationKeyMaster_GoToPrior = this.Relations["KeyMaster_GoToPrior"];
             this.relationPresetMaster_Modifier = this.Relations["PresetMaster_Modifier"];
+            this.relationPresetMaster_ModTemplate = this.Relations["PresetMaster_ModTemplate"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -331,6 +334,10 @@ namespace Preset_Maintenance {
                         this.tablePresetMaster.PresetCodeColumn}, new global::System.Data.DataColumn[] {
                         this.tableModifier.ModifierCodeColumn}, false);
             this.Relations.Add(this.relationPresetMaster_Modifier);
+            this.relationPresetMaster_ModTemplate = new global::System.Data.DataRelation("PresetMaster_ModTemplate", new global::System.Data.DataColumn[] {
+                        this.tablePresetMaster.PresetCodeColumn}, new global::System.Data.DataColumn[] {
+                        this.tableModTemplate.TemplatePresetColumn}, false);
+            this.Relations.Add(this.relationPresetMaster_ModTemplate);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3084,13 +3091,16 @@ namespace Preset_Maintenance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ModTemplateRow AddModTemplateRow(string TemplateName, string TemplatePreset, int TemplatePriority, int TemplateColor) {
+            public ModTemplateRow AddModTemplateRow(string TemplateName, PresetMasterRow parentPresetMasterRowByPresetMaster_ModTemplate, int TemplatePriority, int TemplateColor) {
                 ModTemplateRow rowModTemplateRow = ((ModTemplateRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TemplateName,
-                        TemplatePreset,
+                        null,
                         TemplatePriority,
                         TemplateColor};
+                if ((parentPresetMasterRowByPresetMaster_ModTemplate != null)) {
+                    columnValuesArray[1] = parentPresetMasterRowByPresetMaster_ModTemplate[0];
+                }
                 rowModTemplateRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModTemplateRow);
                 return rowModTemplateRow;
@@ -4989,6 +4999,17 @@ namespace Preset_Maintenance {
                     return ((ModifierRow[])(base.GetChildRows(this.Table.ChildRelations["PresetMaster_Modifier"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ModTemplateRow[] GetModTemplateRows() {
+                if ((this.Table.ChildRelations["PresetMaster_ModTemplate"] == null)) {
+                    return new ModTemplateRow[0];
+                }
+                else {
+                    return ((ModTemplateRow[])(base.GetChildRows(this.Table.ChildRelations["PresetMaster_ModTemplate"])));
+                }
+            }
         }
         
         /// <summary>
@@ -6132,6 +6153,17 @@ namespace Preset_Maintenance {
                 }
                 set {
                     this[this.tableModTemplate.TemplateColorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresetMasterRow PresetMasterRow {
+                get {
+                    return ((PresetMasterRow)(this.GetParentRow(this.Table.ParentRelations["PresetMaster_ModTemplate"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["PresetMaster_ModTemplate"]);
                 }
             }
             

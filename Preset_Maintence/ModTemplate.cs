@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Preset_Maintenance
 {
-    interface IPreset
+    class ModTemplate
     {
-        Preset.PresetData defaultPresetData { get; set; }
+        public ModTemplate()
+        {
 
-
-
-        Preset CreateDefaultPreset(jartrekDataSet.PresetMasterRow data);
-
-
+        }
     }
 }

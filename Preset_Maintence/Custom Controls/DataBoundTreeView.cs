@@ -109,9 +109,7 @@ namespace Preset_Maintenance
                     ((IBindingList)((BoundTreeNode)node.Nodes[0]).CurrencyManager.List).ListChanged += handlerListChanged;
                     node = node.Nodes[0];
                 }
-
             }
-
         }
 
         // Allow access to client to Wire and Unwire the PositionChanged event for the currency managers.
@@ -149,7 +147,7 @@ namespace Preset_Maintenance
         private TreeView _treeView;
         private TableBinding[] _tableBindings;
         private bool DisablePositionChanged = true;
-        private TreeViewEventHandler handlerAfterSelect = null;
+        public TreeViewEventHandler handlerAfterSelect = null;
         private EventHandler handlerPositionChanged = null;
         public ListChangedEventHandler handlerListChanged = null;
 
@@ -209,6 +207,8 @@ namespace Preset_Maintenance
         // Build the child nodes for each parent and then the subsequent children 
         private void AddChildNodes(DataTable dt, TreeNode nodeParent, String relationName)
         {
+            Key.Preset preset = null;
+            Key.Preset.Modifier mod = null;
             // Add the child rows for every relation on this table
             foreach (DataRelation relation in dt.ChildRelations)
             {
@@ -221,7 +221,21 @@ namespace Preset_Maintenance
                 {
                     // Cast out the DataRowView, create the custom node (BoundTreeNode) and add it to the TreeView.
                     DataRowView drvChild = (DataRowView)rowChild;
-                    TreeNode nodeChild = CreateNode(drvChild, cmChild, i);
+
+                    switch (relationName + "." + relation)
+                    {
+                        case "KeyMaster.MyKeyRelate":
+                            preset = new Key.Preset(drvChild.Row as jartrekDataSet.PresetMasterRow);
+                            break;
+                        case "PresetMaster":
+                            preset = new Key.Preset(drvChild.Row as jartrekDataSet.PresetMasterRow);
+                            break;
+                        case "KeyMaster.MyKeyRelate.PresetMaster_Modifier":
+                            mod = new Key.Preset.Modifier(drvChild.Row as jartrekDataSet.ModifierRow);
+                            break;
+                    }
+
+                    TreeNode nodeChild = CreateNode(drvChild, cmChild, i, preset);
 
                     // Add it to the parent node's node collection
                     nodeParent.Nodes.Add(nodeChild);
@@ -236,7 +250,7 @@ namespace Preset_Maintenance
         }
 
         // Mechanism to build a custom BoundTreeNode, supplies the data, currency and position...
-        private BoundTreeNode CreateNode(DataRowView drv, CurrencyManager cm, int position)
+        private BoundTreeNode CreateNode(DataRowView drv, CurrencyManager cm, int position, Key.Preset preset = null)
         {
             // TableBinding object allows us to customize the DisplayMember and ValueMember for each binding
             TableBinding tableBinding = GetBinding(drv.Row.Table.TableName);
@@ -245,12 +259,12 @@ namespace Preset_Maintenance
 
             if (tableBinding != null)
             {
-                node = new BoundTreeNode(drv[tableBinding.DisplayMember].ToString(), drv[tableBinding.ValueMember], cm, position, tableBinding.ImageIndex, tableBinding.SelectedImageIndex);
+                node = new BoundTreeNode(drv[tableBinding.DisplayMember].ToString(), drv[tableBinding.ValueMember], cm, position, tableBinding.ImageIndex, tableBinding.SelectedImageIndex, preset);
             }
             else
             {
                 // when no binding is supplied, default to the first datarow column...
-                node = new BoundTreeNode(drv[0].ToString(), drv[0], cm, position, -1, -1);
+                node = new BoundTreeNode(drv[0].ToString(), drv[0], cm, position, -1, -1, preset);
             }
 
             return node;
@@ -273,10 +287,8 @@ namespace Preset_Maintenance
         #endregion
 
         // When the BoundTreeView's nodes are selected, we must synchronize the CurrencyManagers...
-        private void tv_AfterSelect(object sender, TreeViewEventArgs e)
+        public void tv_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //if (e.Action == TreeViewAction.ByKeyboard)
-            //    return;
             // We have to move the currency manager positions for every node in the
             // selected heirarchy because the parent node selection determines the
             // currency manager "list" contents for the children
@@ -305,7 +317,7 @@ namespace Preset_Maintenance
                 node = (BoundTreeNode)nodeList[i - 1];
 
                 ((IBindingList)node.CurrencyManager.List).ListChanged -= handlerListChanged;
-                node.CurrencyManager.Position = node.Position;                
+                node.CurrencyManager.Position = node.Position;
                 ((IBindingList)node.CurrencyManager.List).ListChanged += handlerListChanged;
 
             }
@@ -393,10 +405,9 @@ namespace Preset_Maintenance
         {
             Console.WriteLine("TreeView's Event: " + e.ListChangedType);
 
-
             if (e.ListChangedType == ListChangedType.Reset || e.ListChangedType == ListChangedType.ItemDeleted)
             {
-                Console.WriteLine("List Reset!");
+                //Console.WriteLine("List Reset!");
                 return;
             }
 
@@ -427,7 +438,7 @@ namespace Preset_Maintenance
                 if (drv.IsNew)
                     return;
 
-                newNode = CreateNode(drv, cm, e.NewIndex);
+                newNode = CreateNode(drv, cm, e.NewIndex, new Key.Preset(((jartrekDataSet.PresetMasterRow)drv.Row)));
                 _treeView.SelectedNode.Parent.Nodes.Add(newNode);//need to check for parent node being null here...
                 _treeView.SelectedNode = newNode;
 
@@ -486,8 +497,10 @@ namespace Preset_Maintenance
         // The CurrencyManager of the Table or Navigation Path
         private CurrencyManager _cm;
 
+        private Key.Preset preset;
+
         // Construct the node
-        public BoundTreeNode(string nodeLabel, object nodeValue, CurrencyManager cm, int position, int imageIndex, int selectedImageIndex)
+        public BoundTreeNode(string nodeLabel, object nodeValue, CurrencyManager cm, int position, int imageIndex, int selectedImageIndex, Key.Preset preset = null)
         {
             _tableName = ((DataView)cm.List).Table.TableName;
             _position = position;
@@ -496,6 +509,8 @@ namespace Preset_Maintenance
 
             // Node value could be any data type, so we store it as an object in the tag field
             this.Tag = nodeValue;
+
+            this.preset = preset;
 
             // Unnecessary, but I know everyone will ask for it... These are set in the client code.
             this.ImageIndex = imageIndex;
@@ -509,6 +524,8 @@ namespace Preset_Maintenance
         public int Position { get { return _position; } }
 
         public CurrencyManager CurrencyManager { get { return _cm; } }
+
+        public Key.Preset Preset { get { return this.preset; } }
     }
 
     // Simple class to store Table Binding information such as DisplayMember and ValueMember

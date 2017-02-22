@@ -1,9 +1,11 @@
 ﻿using Preset_Maintenance;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Preset_Maintenance
@@ -12,7 +14,7 @@ namespace Preset_Maintenance
     {
         #region Variable Declarations
 
-        Preset[] Presets;
+        Key.Preset[] Presets;
 
         const string originalLegend = "Not Used!";
         const int originalColor = -1;
@@ -20,9 +22,11 @@ namespace Preset_Maintenance
 
         #endregion
 
-        static ToolTip toolTip;
+        private static ToolTip toolTip = null;
         private Button originalButton;
-        private Preset newButton;
+        private Key.Preset newButton;
+
+        StringBuilder str = null;
 
         Point ptOffset = new Point();
 
@@ -67,7 +71,7 @@ namespace Preset_Maintenance
         public void AssignButtonTags()
         {
             Console.WriteLine("Assigning Button Tags & Events...");
-
+            int buttonName;
             foreach (PresetButton btn in PriorityButtons)
             {
                 btn.Main_Button.MouseDown += Btn_MouseDown;
@@ -79,14 +83,14 @@ namespace Preset_Maintenance
                 btn.Main_Button.DragDrop += Btn_DragDrop;
                 btn.Main_Button.MouseMove += PresetButton_MouseMove;
                 btn.Main_Button.AllowDrop = true;
-                var buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
+                buttonName = int.Parse(btn.Name.Substring(btn.Name.Length - 2, 2));
                 btn.Main_Button.Tag = getIndex(buttonName);
             }
         }
-        public Button GetPresetButton(Preset preset, Button btn)//this used to be PresetButton's... experimenting
+        public Button GetPresetButton(Key.Preset preset, Button btn)
         {
             return ConvertToButton(preset, btn);
-        }
+        }//this used to be PresetButton's... experimenting
         public void ResetPriority()
         {
             Console.WriteLine("Resetting Presets & Events...");
@@ -95,7 +99,7 @@ namespace Preset_Maintenance
             {
                 btn.Main_Button.Text = originalLegend;
                 btn.Main_Button.BackColor = default(Color);
-                btn.Main_Button.Image = PresetForm.GetBitMaps(originalBitMap);
+                btn.Main_Button.Image = null;
                 btn.Main_Button.UseVisualStyleBackColor = true;
                 btn.Main_Button.Click -= Btn_Click;
                 btn.Main_Button.MouseHover -= Btn_MouseHover;
@@ -113,70 +117,55 @@ namespace Preset_Maintenance
             if (toolTip != null)
                 toolTip.Dispose();
         }
-        public void DisposeObj()
-        {
-            //foreach (PresetButton btn in PriorityButtons)
-            //{
-            //btn.PresetButton.Click -= Btn_Click;
-            //btn.PresetButton.MouseHover -= Btn_MouseHover;
-            //btn.PresetButton.MouseDown -= Btn_MouseDown;
-            //btn.PresetButton.DragDrop -= Btn_DragDrop;
-            //btn.PresetButton.DragEnter -= Btn_DragEnter;
-            //btn.PresetButton.DragOver -= PresetButton_DragOver;
-            //btn.PresetButton.MouseUp -= PresetButton_MouseUp;
-            //btn.PresetButton.MouseMove -= PresetButton_MouseMove;
-
-            //}
-            //if (toolTip != null)
-            //    toolTip.Dispose();
-            //base.Dispose();
-        }
 
         #endregion
 
         #region Private Methods
 
-        public void ComposePriority(object item = null)//pass in the buttons??
+        public void ComposePriority(object item = null)
         {
             //need to clear the previous buttons..
             ResetPriority();
             AssignButtonTags();
-            jartrekDataSet.PresetMasterDataTable presets = null;
-            jartrekDataSet.GoToPriorDataTable go = null;
+            DataView presets = null;
+            //TODO:Not yet implemented... //jartrekDataSet.GoToPriorDataTable go = null;
+            //TODO: not yet implemented! //go = ParentForm.GoToPriorAdapter.GetGoToKeys((string)item);
 
             if (item != null)
             {
-                presets = ParentForm.presetMasterTableAdapter.GetPresetPriority((string)item);
-                //go = ParentForm.GoToPriorAdapter.GetGoToKeys((string)item);//not yet implemented!
-
-            }
-            else
-            {
-                presets = ParentForm.presetMasterTableAdapter.GetPresetPriority((ParentForm.CurrentRow.Row as jartrekDataSet.PresetMasterRow).KeyCode);
+                //presets = ParentForm.presetMasterTableAdapter.GetPresetPriority((string)item);
+                presets = (DataView)ParentForm.cm.List;
             }
             var buttons = PriorityButtons.ToDictionary((btn) => int.Parse(btn.Main_Button.Tag.ToString()));
 
-            Presets = new Preset[presets.Count];
+            Presets = new Key.Preset[presets.Count];
             int index = 0;
+            presets.Sort = "KeyCode";
 
-            foreach (jartrekDataSet.PresetMasterRow row in presets)//create preset objects!!!
+            if (presets.Count == 0)
+                return;
+            ParentForm.presetMasterBindingSource.DataSource = presets;
+
+            foreach (DataRowView row in presets.FindRows(item))//create preset objects!!!
             {
-                Presets[index] = new Preset(row);//Grabs the entire row and becomes the preset data for this button.
-
-                PresetButton btn = buttons[Presets[index].Data.CurrentPresetData.PresetPriority];
-
+                Presets[index] = new Key.Preset((jartrekDataSet.PresetMasterRow)row.Row);//Grabs the entire row and becomes the preset data for this button.
+                if (((jartrekDataSet.PresetMasterRow)row.Row).PresetPriority == 0)
+                {
+                    index++;
+                    continue;
+                }
+                PresetButton btn = buttons[Presets[index].Priority];
 
                 btn.Main_Button.Tag = Presets[index];
-                //((Preset)btn.MainPreset_Button.Tag).PropertyChanged += PresetPriorityControl_PropertyChanged;
                 index++;
 
-                var VirtualPreset = (btn.Main_Button.Tag as Preset).Data.CurrentPresetData;
+                var VirtualPreset = ((Key.Preset)btn.Main_Button.Tag);
 
-                if (VirtualPreset.PresetPriority == row.PresetPriority)
+                if (VirtualPreset.Priority == ((jartrekDataSet.PresetMasterRow)row.Row).PresetPriority)
                 {
-                    btn.Main_Button.Text = VirtualPreset.PresetLegend;
-                    btn.Main_Button.BackColor = SetColor.GetColor((SetColor.JartrekColors)VirtualPreset.PresetColor);
-                    btn.Main_Button.Image = ParentForm.GetBitMaps(VirtualPreset.PresetCode, VirtualPreset.PresetPicture);
+                    btn.Main_Button.Text = VirtualPreset.Legend;
+                    btn.Main_Button.BackColor = SetColor.GetColor((SetColor.JartrekColors)VirtualPreset.Color);
+                    btn.Main_Button.Image = ParentForm.GetBitMaps(VirtualPreset.PresetCode, VirtualPreset.BitMap);
                 }
             }
         }
@@ -223,12 +212,12 @@ namespace Preset_Maintenance
         /// <param name="preset">The preset.</param>
         /// <param name="destBtn">My preset button.</param>
         /// <returns>Button.</returns>
-        private Button ConvertToButton(Preset preset, Button destBtn)
+        private Button ConvertToButton(Key.Preset preset, Button destBtn)
         {
             Console.WriteLine("Converting To Button...");
 
-            destBtn.Tag = (Preset)preset;
-            var presetInfo = (Preset)destBtn.Tag;
+            destBtn.Tag = (Key.Preset)preset;
+            var presetInfo = (Key.Preset)destBtn.Tag;
             destBtn.Text = presetInfo.Data.CurrentPresetData.PresetLegend;
             destBtn.BackColor = SetColor.GetColor((SetColor.JartrekColors)presetInfo.Color);
 
@@ -242,42 +231,35 @@ namespace Preset_Maintenance
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            var sndr = sender as PresetButton;
-            Console.WriteLine(sndr.Name.ToString() + " Clicked!");
+            Button btn = ((Button)sender);
+            Console.WriteLine($"{btn.Tag} Clicked!");
 
-            try
-            {
-                Console.WriteLine((sndr.Tag as Preset).Data.CurrentPresetData.PresetCode);
-                Console.WriteLine("Printing info for button clicked...");
 
-                foreach (object info in ((sndr.Tag as Preset).Data.CurrentPresetData.ItemArray))
-                {
-                    Console.WriteLine(info);
-                }
-            }
-            catch (NullReferenceException nr)
-            {
-                Console.WriteLine("This button is not in use..." + nr.Message);
-            }
+
         }//Not working at the moment...
 
         private void Btn_MouseDown(object sender, MouseEventArgs e)
         {
             Console.WriteLine("Mouse Down!");
             originalButton = sender as Button;
+            Key.Preset preset = originalButton.Tag as Key.Preset;
 
-            if (e.Button == MouseButtons.Right && originalButton.Tag.GetType() == typeof(Preset))
+            //if (e.Button == MouseButtons.Right && originalButton.Tag.GetType() == typeof(Key.Preset))
+            //{
+            //    var btn = (sender as Button);
+            //    preset = (Key.Preset)btn.Tag;
+            //    ParentForm.DataBoundTree.TreeView.AfterSelect -= ParentForm.DataBoundTree_AfterSelect;
+            //    ParentForm.DataBoundTree.TreeView.SelectedNode = ParentForm.DataBoundTree.SelectNode(preset.PresetCode, ParentForm.DataBoundTree.TreeView.Nodes);
+            //    ParentForm.DataBoundTree.TreeView.AfterSelect += ParentForm.DataBoundTree_AfterSelect;
+
+            //    ConfigureCurrents(preset);
+            //}
+            //else
+
+            if (e.Button == MouseButtons.Left && originalButton.Tag.GetType() == typeof(Key.Preset))
             {
-                var btn = (sender as Button);
-                var preset = (Preset)btn.Tag;
-                //ParentForm.DataBoundTree.TreeView.AfterSelect -= ParentForm.DataBoundTree_AfterSelect;
                 ParentForm.DataBoundTree.TreeView.SelectedNode = ParentForm.DataBoundTree.SelectNode(preset.PresetCode, ParentForm.DataBoundTree.TreeView.Nodes);
-                //ParentForm.DataBoundTree.TreeView.AfterSelect += ParentForm.DataBoundTree_AfterSelect;
 
-                ConfigureCurrents(preset);
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
                 isMouseDown = true;
                 DragDropEffects effect = originalButton.DoDragDrop(originalButton.Tag, DragDropEffects.All);
                 isMouseDown = false;
@@ -286,46 +268,53 @@ namespace Preset_Maintenance
                 {
                     originalButton.Text = originalLegend;
                     originalButton.BackColor = default(Color);
-                    originalButton.Image = PresetForm.GetBitMaps(originalBitMap);
+                    originalButton.Image = null;
                     originalButton.UseVisualStyleBackColor = true;
                     originalButton.Tag = originalPriority;
 
                     //UNDONE
                 }
-                else if (effect == DragDropEffects.Link)
+                else if (effect == DragDropEffects.Scroll)
                 {
                     originalButton.Text = originalLegend;
                     originalButton.BackColor = default(Color);
-                    originalButton.Image = PresetForm.GetBitMaps(originalBitMap);
+                    originalButton.Image = null;
                     originalButton.UseVisualStyleBackColor = true;
                     originalButton.Tag = originalPriority;
-                    ParentForm.CurrentRow.BeginEdit();
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = 0;
-                    ParentForm.CurrentRow.EndEdit();
-                    if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)
-                        Console.WriteLine("Removed!");
+                    preset.Data.CurrentPresetData.BeginEdit();
+                    preset.Priority = 0;
+                    preset.Data.CurrentPresetData.EndEdit();
+                    try
+                    {
+                        if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)
+                            Console.WriteLine("Removed!");
+                        ParentForm.RefreshNodeImages();
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show("Error when updating presets!");
+
+                    }
                 }
             }
-            else
-            {
-                Console.WriteLine("Button was not moved...");
-                if (ParentForm.CurrentRow.IsNew)
-                {
-                    int pri = (int)originalButton.Tag;
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = pri;
-                    //((DataRowView)ParentForm.CurrentRow).EndEdit();
-                    //ParentForm.presetMasterBindingSource.EndEdit();
-                }
-                else
-                {
-                    int pri = (int)originalButton.Tag;
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = pri;
-                    ((DataRowView)ParentForm.CurrentRow).EndEdit();
-                }
-            }
+            //else
+            //{
+            //    Console.WriteLine("Button was not moved...");
+            //    if (ParentForm.CurrentRow.IsNew)
+            //    {
+            //        int pri = (int)originalButton.Tag;
+            //        ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = pri;
+            //    }
+            //    else
+            //    {
+            //        int pri = (int)originalButton.Tag;
+            //        ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = pri;
+            //        ((DataRowView)ParentForm.CurrentRow).EndEdit();
+            //    }
+            //}
         }
 
-        public void ConfigureCurrents(Preset preset)
+        public void ConfigureCurrents(Key.Preset preset)
         {
             if (preset.BitMap != "<None>")
             {
@@ -339,21 +328,86 @@ namespace Preset_Maintenance
                 ParentForm.CurrentPreset_Button.BackColor = SetColor.GetColor((SetColor.JartrekColors)preset.Color);
                 ParentForm.CurrentPreset_Button.Text = preset.Data.CurrentPresetData.PresetLegend;
             }
-            ParentForm.KeyPreview_Button.Text = preset.KeyCode;
-            //ParentForm.KeyPreview_Button.BackColor = SetColor.GetColor((SetColor.JartrekColors)preset.Data.CurrentPresetData.KeyMasterRow.KeyColor);
             ParentForm.CurrentPreset_Button.Tag = preset;
         }
 
         private void Btn_MouseHover(object sender, EventArgs e)
         {
             var btn = (sender as Button);
+            str = null;
+            str = new StringBuilder();
+            string tempPreset = null;
+            //string templateLab = "Modifier Preset: ";
+            string[] mods = null;
+            //int priority = 0;
             toolTip.Dispose();
             toolTip = new ToolTip();
-
             try
             {
-                var preset = (btn.Tag as Preset).Data.CurrentPresetData;
-                toolTip.SetToolTip(btn, (preset.PresetCode + "\n" + preset.PresetPriority));
+                var preset = (btn.Tag as Key.Preset).Data.CurrentPresetData;
+                CurrencyManager cm = (CurrencyManager)ParentForm.BindingContext[ParentForm.jartrekDataSet, "keymaster.mykeyrelate.presetmaster_modtemplate"];
+
+                if (cm.List.Count != 0)
+                {
+                    tempPreset = ((jartrekDataSet.ModTemplateRow)((DataRowView)cm.Current).Row).TemplatePreset;
+                    mods = new string[cm.List.Count];
+
+                    int i = 0;
+                    foreach (DataRowView drv in cm.List)
+                    {
+                        mods[i] = (string)((jartrekDataSet.ModTemplateRow)drv.Row).TemplateName;
+                        i++;
+                    }
+                    //templateLab = "Template: ";
+                }
+                else
+                {
+                    CurrencyManager cm2 = (CurrencyManager)ParentForm.BindingContext[ParentForm.jartrekDataSet, "keymaster.mykeyrelate.presetmaster_modifier"];
+
+                    if (cm2.List.Count > 0)
+                    {
+                        try
+                        {
+                            //templateLab = "Modifier Preset: ";
+                            tempPreset = ((jartrekDataSet.ModifierRow)((DataRowView)cm2.Current).Row).ModifierPreset;//Modifier preset is the preset code for that modifier preset..
+                            mods = new string[cm2.List.Count];
+                            int i = 0;
+                            foreach (DataRowView drv in cm2.List)
+                            {
+                                mods[i] = (string)((jartrekDataSet.ModifierRow)drv.Row).ModifierPreset;//modifier code is the preset code for that modifier.. 
+                                i++;
+                            }
+
+                        }
+                        catch (IndexOutOfRangeException o)
+                        {
+                            tempPreset = "No Modifiers for this Preset!";
+                            Console.WriteLine("Problem with template index in mouse hover... " + o.Message);
+                        }
+                    }
+
+                }
+                //Console.WriteLine("Assigned Modifier Templates: ");
+
+                str.Append("Assigned Modifiers: \n");
+                if (mods != null)
+                    for (int j = 0; j < mods.Length; j++) { str.Append("* " + mods[j] + "\n"); }
+
+                str.Insert(0,
+
+                    "Preset Code: " + preset.PresetCode + "\n" +
+                    "PresetPriority: " + preset.PresetPriority + "\n"
+
+                    );
+
+                toolTip.SetToolTip(btn, str.ToString());
+                toolTip.AutoPopDelay = 10000;
+                toolTip.ToolTipIcon = ToolTipIcon.Info;
+                toolTip.UseAnimation = true;
+                toolTip.UseFading = true;
+                toolTip.IsBalloon = true;
+                toolTip.ShowAlways = true;
+
 
             }
             catch (NullReferenceException nr)
@@ -369,14 +423,14 @@ namespace Preset_Maintenance
             Console.WriteLine("Beginning Drag Drop Event");
             isMouseDown = false;
 
-            Preset currentData;
+            Key.Preset currentData;
 
             var destBtn = ((Button)sender);
-            currentData = (Preset)e.Data.GetData("Preset_Maintenance.Preset");
+            currentData = (Key.Preset)e.Data.GetData("Preset_Maintenance.Preset");
 
             //should test for type of element first...
 
-            if (((Button)sender).Tag.GetType() == typeof(Preset))
+            if (((Button)sender).Tag.GetType() == typeof(Key.Preset))
             {
                 if (e.Data.GetDataPresent("Preset_Maintenance.Preset", false))//data is a preset
                 {
@@ -384,33 +438,26 @@ namespace Preset_Maintenance
                     Button newPresetBtn = ConvertToButton(currentData, destBtn);
 
                     //printing out priority read from database...
-                    Console.WriteLine("Priority from Preset object: " + ((Preset)newPresetBtn.Tag).Data.CurrentPresetData.PresetPriority);
+                    Console.WriteLine("Priority from Preset object: " + ((Key.Preset)newPresetBtn.Tag).Data.CurrentPresetData.PresetPriority);
 
-                    bool newSwap = PositionSwap(((Preset)newPresetBtn.Tag), ((Preset)destBtn.Tag));//we should just swap the entire button...
+                    bool newSwap = PositionSwap(((Key.Preset)newPresetBtn.Tag), ((Key.Preset)destBtn.Tag));//we should just swap the entire button...
                 }
             }
             else if (int.TryParse(destBtn.Tag.ToString(), out notUsedPri))
             {
                 Console.WriteLine("Above unused!");
 
-                if (e.Data.GetDataPresent(typeof(Preset)))
+                if (e.Data.GetDataPresent(typeof(Key.Preset)))
                 {
-                    Preset draggedPreset = (Preset)e.Data.GetData(typeof(Preset));
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).BeginEdit();
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).PresetPriority = notUsedPri;
-                    ((jartrekDataSet.PresetMasterRow)ParentForm.CurrentRow.Row).EndEdit();
+                    Key.Preset draggedPreset = (Key.Preset)e.Data.GetData(typeof(Key.Preset));
 
-                    //draggedPreset.Data.CurrentPresetData.BeginEdit();
-                    //draggedPreset.Data.CurrentPresetData.PresetPriority = notUsedPri;
-                    //draggedPreset.Data.CurrentPresetData.EndEdit();
-                    ParentForm.presetMasterBindingSource.RaiseListChangedEvents = false;
-                    ParentForm.presetMasterBindingSource.EndEdit();
-                    ParentForm.presetMasterBindingSource.RaiseListChangedEvents = true;
+                    draggedPreset.Data.CurrentPresetData.BeginEdit();
+                    draggedPreset.Priority = notUsedPri;
+                    draggedPreset.Data.CurrentPresetData.EndEdit();
 
-                    if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)
+                    if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)//TODO: ADD TRY CATCH!
                     {
                         ComposePriority(draggedPreset.KeyCode);
-
                     }
                 }
             }
@@ -422,25 +469,25 @@ namespace Preset_Maintenance
         /// <param name="sourcePreset">The source Preset object.</param>
         /// <param name="destPreset">The destination Preset object.</param>
         /// <returns>Button.</returns>
-        private bool PositionSwap(Preset sourcePreset, Preset destPreset)
+        private bool PositionSwap(Key.Preset sourcePreset, Key.Preset destPreset)
         {
-            var sourcePri = ((Preset)sourcePreset).Priority;//need the priority checked here...
-            var destPri = ((Preset)destPreset).Priority;
+            var sourcePri = ((Key.Preset)sourcePreset).Priority;//need the priority checked here...
+            var destPri = ((Key.Preset)destPreset).Priority;
 
             Console.WriteLine($"Potential swap of Source: {sourcePri} Destination: {destPri}");
 
 
             return false;
-        }//UNDONE: Left off here!
+        }//UNDONE
 
         private void Btn_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
-            var data = e.Data.GetData(typeof(Preset));//can check for bound treenode here...
+            var data = e.Data.GetData(typeof(Key.Preset));//can check for bound treenode here...
 
             bool thisIsAdequate = e.Data.GetDataPresent("Preset_Maintenance.Preset", false);
 
-            originalPriority = ((Preset)data).Priority;
+            originalPriority = ((Key.Preset)data).Priority;
 
             if (int.TryParse(((Button)sender).Tag.ToString(), out potentialPriority))//if button is not in use...
             {
@@ -451,10 +498,10 @@ namespace Preset_Maintenance
             {//UNDONE:need to fix this.. the drag enter event goes off as soon as i click.. need to add a "threshold"
                 //must be preset then
                 //i now have access to the data row... Can be used to store a potential priority as well as if a swap must be performed...
-                Console.WriteLine($"Preset Code: {((Preset)data).PresetCode} Priority: {((Preset)data).Priority}");//could a stack be used here?
-                Console.WriteLine($"Currently Above: {((Preset)((Button)sender).Tag).PresetCode} Position: {((Preset)((Button)sender).Tag).Priority} ");
-                newButton = ((Preset)(sender as Button).Tag);
-                newPriority = ((Preset)((Button)sender).Tag).Priority;//gets the priority of the button below the cursor if it is of type Preset
+                Console.WriteLine($"Preset Code: {((Key.Preset)data).PresetCode} Priority: {((Key.Preset)data).Priority}");//could a stack be used here?
+                Console.WriteLine($"Currently Above: {((Key.Preset)((Button)sender).Tag).PresetCode} Position: {((Key.Preset)((Button)sender).Tag).Priority} ");
+                newButton = ((Key.Preset)(sender as Button).Tag);
+                newPriority = ((Key.Preset)((Button)sender).Tag).Priority;//gets the priority of the button below the cursor if it is of type Preset
 
             }
             //Point point = (sender as Button).PointToClient(new Point(e.X, e.Y));//Not sure if i know what to do with this yet...
@@ -466,26 +513,26 @@ namespace Preset_Maintenance
             {
                 Point newPoint = ((Button)sender).PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(ptOffset);
-                ((Button)sender).Location = newPoint;
+                //((Button)sender).Location = newPoint;
             }
         }
 
         private void PresetButton_DragOver(object sender, DragEventArgs e)
         {
-            var draggedPreset = e.Data.GetData("Preset_Maintenance.Preset", true);
+            //var draggedPreset = e.Data.GetData("Preset_Maintenance.Preset", true);
 
-            var senderTag = ((Button)sender).Tag;
+            //var senderTag = ((Button)sender).Tag;
 
-            if (int.TryParse(senderTag.ToString(), out notUsedPri))
-            {
-                Console.WriteLine($"Currently above position: {senderTag.ToString()}");
-            }
-            else if (senderTag.GetType() == typeof(Preset))
-            {
-                if (((Preset)senderTag).PresetCode != ((Preset)originalButton.Tag).PresetCode)
-                    Console.WriteLine($"Currently above: {((Preset)senderTag).PresetCode}");
+            //if (int.TryParse(senderTag.ToString(), out notUsedPri))
+            //{
+            //    Console.WriteLine($"Currently above position: {senderTag.ToString()}");
+            //}
+            //else if (senderTag.GetType() == typeof(Key.Preset))
+            //{
+            //    if (((Key.Preset)senderTag).PresetCode != ((Key.Preset)originalButton.Tag).PresetCode)
+            //        Console.WriteLine($"Currently above: {((Key.Preset)senderTag).PresetCode}");
 
-            }
+            //}
         }
 
         private void PresetButton_MouseUp(object sender, MouseEventArgs e)
@@ -495,37 +542,52 @@ namespace Preset_Maintenance
 
         internal void RandomizePriority()
         {
-            var cm = (CurrencyManager)ParentForm.BindingContext[ParentForm.presetMasterBindingSource.DataSource, "PresetMaster"];
+            ParentForm.presetMasterBindingSource.RaiseListChangedEvents = false;
+            ParentForm.DataBoundTree.TreeView.AfterSelect -= ParentForm.DataBoundTree_AfterSelect;
+            ParentForm.DataBoundTree.handlerAfterSelect -= ParentForm.DataBoundTree.tv_AfterSelect;
+            ParentForm.DataBoundTree.handlerListChanged -= ParentForm.DataBoundTree.cm_ListChanged;
+            ParentForm.presetMasterBindingSource.PositionChanged -= ParentForm.presetMasterBindingSource_PositionChanged;
 
             Random rand = new Random();
-            string key = null;
+            List<Key.Preset> presetList = new List<Key.Preset>();
+            List<PresetButton> unused = new List<PresetButton>();
+
             foreach (PresetButton btn in PriorityButtons)
             {
-                if (btn.Main_Button.Tag.GetType() != typeof(Preset))
-                    continue;
-                if (key == null)
-                    key = (string)((Preset)btn.Main_Button.Tag).KeyCode;
-                ((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.BeginEdit();
-                ((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.PresetColor = rand.Next(1, 17);
-                ((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.ItemArray[4] = rand.Next(1, 30);
-
-
-                //((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.PresetPriority = rand.Next(1, 30);
-                ((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.EndEdit();
-                if (((Preset)btn.Main_Button.Tag).Data.CurrentPresetData.RowState == DataRowState.Modified)
+                if (btn.Main_Button.Tag.GetType() == typeof(Key.Preset))
                 {
-                    Console.WriteLine("Modified!");
-
+                    presetList.Add(btn.Main_Button.Tag as Key.Preset);
+                    unused.Add(btn);
+                }
+                else
+                {
+                    unused.Add(btn);
                 }
             }
-            // ParentForm.presetMasterBindingSource.EndEdit();
-            if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)
-            {
-                MessageBox.Show("Success!");
-                ComposePriority();
 
+            presetList.Sort(delegate (Key.Preset p1, Key.Preset p2) { return p1.Description.CompareTo(p2.Description); });
+            unused.Sort(delegate (PresetButton b1, PresetButton b2) { return (int)b1.Name.CompareTo(b2.Name); });
+
+            for (int i = 0; i < presetList.Count; i++)
+            {
+                presetList[i].Priority = (i * 6) + 1;
+
+                while (presetList[i].Priority > 30)
+                    presetList[i].Priority -= 29;
 
             }
+
+            if (ParentForm.tableAdapterManager.UpdateAll(ParentForm.jartrekDataSet) > 0)
+            {
+                Console.WriteLine("Successfully Ordered Priority!");
+                ComposePriority(ParentForm.Key);
+            }
+            ParentForm.DataBoundTree.handlerListChanged += ParentForm.DataBoundTree.cm_ListChanged;
+            ParentForm.DataBoundTree.handlerAfterSelect += ParentForm.DataBoundTree.tv_AfterSelect;
+            ParentForm.presetMasterBindingSource.RaiseListChangedEvents = true;
+            ParentForm.presetMasterBindingSource.PositionChanged += ParentForm.presetMasterBindingSource_PositionChanged;
+            ParentForm.DataBoundTree.TreeView.AfterSelect += ParentForm.DataBoundTree_AfterSelect;
+
         }
     }
 }
